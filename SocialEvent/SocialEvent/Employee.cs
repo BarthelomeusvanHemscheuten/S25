@@ -5,14 +5,7 @@ using System.Text;
 
 namespace SocialEvent
 {
-    class Tag
+    class Employee : User
     {
-        private string text;
-        private List<Post> posts;
-
-        public Tag()
-        {
-
-        }
     }
 }

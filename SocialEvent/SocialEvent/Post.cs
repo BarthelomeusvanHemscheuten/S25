@@ -9,6 +9,7 @@ namespace SocialEvent
     {
         private string text;
         private Attachment attachment;
+        private Tag tag;
         
         public Post(string text)
         {
