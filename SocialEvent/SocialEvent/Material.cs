@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SocialEvent
 {
-    class Item
+    class Material
     {
     }
 }
