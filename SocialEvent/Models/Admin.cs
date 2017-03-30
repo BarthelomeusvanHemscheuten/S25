@@ -7,5 +7,9 @@ namespace MediaSharingSysteem
 {
     class Admin : User
     {
+        public Admin()
+        {
+
+        }
     }
 }

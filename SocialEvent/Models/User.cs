@@ -6,7 +6,7 @@ using System.Drawing;
 
 namespace MediaSharingSysteem
 {
-    class User
+    abstract class User
     {
         private string username;
         private string name;
