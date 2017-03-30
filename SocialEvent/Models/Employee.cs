@@ -7,5 +7,13 @@ namespace MediaSharingSysteem
 {
     class Employee : User
     {
+        public Employee()
+        {
+
+        }
+        public void RentMaterial()
+        {
+
+        }
     }
 }
