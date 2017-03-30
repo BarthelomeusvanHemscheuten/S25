@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SocialEvent
+namespace MediaSharingSysteem
 {
-    class Report
+    class Comment
     {
-        private string reason;
+        private string comment;
     }
 }

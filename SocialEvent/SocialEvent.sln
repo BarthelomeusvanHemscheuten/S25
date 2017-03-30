@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialEvent", "SocialEvent\SocialEvent.csproj", "{F9DE0F62-9803-41E7-AAA6-03FB37797BC8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MediaSharingSyteem", "SocialEvent\MediaSharingSyteem.csproj", "{F9DE0F62-9803-41E7-AAA6-03FB37797BC8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{97D41E4F-9763-4D1F-9F52-D88632145BD5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{F9DE0F62-9803-41E7-AAA6-03FB37797BC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F9DE0F62-9803-41E7-AAA6-03FB37797BC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F9DE0F62-9803-41E7-AAA6-03FB37797BC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97D41E4F-9763-4D1F-9F52-D88632145BD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97D41E4F-9763-4D1F-9F52-D88632145BD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97D41E4F-9763-4D1F-9F52-D88632145BD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97D41E4F-9763-4D1F-9F52-D88632145BD5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

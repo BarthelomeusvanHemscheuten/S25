@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SocialEvent
+namespace MediaSharingSysteem
 {
-    class Reservation
+    class Report
     {
+        private string reason;
     }
 }

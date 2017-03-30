@@ -1,4 +1,4 @@
-﻿namespace SocialEvent
+﻿namespace MediaSharingSysteem
 {
     partial class Form1
     {
