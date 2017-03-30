@@ -7,6 +7,9 @@ namespace MediaSharingSysteem
 {
     class Comment
     {
+        private List<Report> reports;
+        private Post post;
+        private User user;
         private string comment;
     }
 }

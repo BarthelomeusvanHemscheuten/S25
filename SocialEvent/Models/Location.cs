@@ -8,6 +8,7 @@ namespace MediaSharingSysteem
     class Location
     {
         private int number;
+        private Reservation resevation;
 
         public Location(int number)
         {

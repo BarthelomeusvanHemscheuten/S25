@@ -7,5 +7,7 @@ namespace MediaSharingSysteem
 {
     class Like
     {
+        private Post post;
+        private User user;
     }
 }

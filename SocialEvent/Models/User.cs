@@ -16,8 +16,14 @@ namespace MediaSharingSysteem
         private Image picture;
         private string adress;
         private DateTime dateofbirth;
+        private Reservation reservation;
+        private List<Material> materials;
+        private List<Like> likes;
+        private List<Comment> comments;
+        private List<Post> posts;
+        private List<Report> reports;
 
-        public User(string username, string name, string password, string email, string telnr, Image picutre, string adress, DateTime dateofbirth)
+        public User(string username, string name, string password, string email, string telnr, Image picture, string adress, DateTime dateofbirth)
         {
             this.username = username;
             this.name = name;

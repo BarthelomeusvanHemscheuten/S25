@@ -7,5 +7,7 @@ namespace MediaSharingSysteem
 {
     class Material
     {
+        private Event thisevent;
+        private Visitor visitor;
     }
 }

@@ -10,6 +10,8 @@ namespace MediaSharingSysteem
         private string text;
         private Attachment attachment;
         private Tag tag;
+        private User user;
+        private List<Comment> comments;
         
         public Post(string text)
         {

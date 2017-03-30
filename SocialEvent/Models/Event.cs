@@ -8,12 +8,12 @@ namespace MediaSharingSysteem
     class Event
     {
         private string name;
-        private Reservation reservation;
-        private Item item;
-        public Event(string name, Reservation reservation, Item item)
+        private List<Reservation> reservations;
+        private List<Material> materials;
+        public Event(string name, List<Reservation> reservations, List<Material> materials)
         {
-            this.reservation = reservation;
-            this.item = item;
+            this.reservations = reservations;
+            this.materials = materials;
             this.name = name;
         }
     }

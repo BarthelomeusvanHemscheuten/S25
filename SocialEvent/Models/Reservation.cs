@@ -7,7 +7,7 @@ namespace MediaSharingSysteem
 {
     class Reservation
     {
-        private Location location;
+        private List<Location> location;
         private User user;
         private List<Event> events;
 

@@ -7,13 +7,15 @@ namespace MediaSharingSysteem
 {
     class Attachment
     {
-        private string URL;
-        private Post post;
+        private string text;
+        private string path;
+        private List<string> tags;
         
-        public Attachment(string URL, Post post)
+        public Attachment(string text, string path, List<string> tags)
         {
-            this.URL = URL;
-            this.post = post;
+            this.text = text;
+            this.path = path;
+            this.tags = tags;
         }
     }
 }
