@@ -7,5 +7,9 @@ namespace SocialEvent
 {
     class Reservation
     {
+        private Location location;
+        private User user;
+        private List<Event> events;
+
     }
 }

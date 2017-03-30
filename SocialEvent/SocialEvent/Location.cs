@@ -7,5 +7,11 @@ namespace SocialEvent
 {
     class Location
     {
+        private int number;
+
+        public Location(int number)
+        {
+            this.number = number;
+        }
     }
 }
