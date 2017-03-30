@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SocialEvent
+namespace MediaSharingSysteem
 {
-    class Comment
+    class Material
     {
-        private string comment;
     }
 }

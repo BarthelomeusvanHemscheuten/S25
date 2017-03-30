@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace SocialEvent.Properties
+namespace MediaSharingSysteem.Properties
 {
 
 
