@@ -1,2 +1,0 @@
-# S25
-SocialEvent
