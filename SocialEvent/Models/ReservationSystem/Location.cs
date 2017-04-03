@@ -7,12 +7,15 @@ namespace Models.ReservationSystem
 {
     class Location
     {
-        private int number;
-        private Reservation resevation;
+        public int Number { get; private set; }
+        public string Features { get; private set; }
+        public string Type { get; private set; }
 
-        public Location(int number)
+        public Location(int number, string features, string type)
         {
-            this.number = number;
+            this.Number = number;
+            this.Features = features;
+            this.Type = type;
         }
     }
 }

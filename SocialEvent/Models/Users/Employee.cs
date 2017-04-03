@@ -7,13 +7,18 @@ namespace Models.Users
 {
     class Employee : User
     {
-        public Employee()
+        public Employee(string username, string name, string password, string emailAddress, string telnr, string address, DateTime dateOfBirth) : base(username, name, password, emailAddress, telnr, address, dateOfBirth)
         {
 
         }
-        public void RentMaterial()
+        public bool AddVisitor(Visitor visitor)
         {
+            return false;
+        }
 
+        public bool DeleteVisitor(Visitor visitor)
+        {
+            return false;
         }
     }
 }

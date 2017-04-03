@@ -8,24 +8,19 @@ namespace Models.Users
 {
     class Admin : User
     {
-        public Admin()
+        public Admin(string username, string name, string password, string emailAddress, string telnr, string address, DateTime dateOfBirth) : base(username, name, password, emailAddress, telnr, address, dateOfBirth)
         {
 
         }
 
-        public void AddEvent(string name)
+        public bool AddEvent(Event eventt)
         {
-            Event myevent = new Event(name);
-        }
-        public void AddMaterial(string desc, string name, decimal price)
-        {
-            Material material = new Material(desc, name, price);
-
+            return false;
         }
 
-        public void DeleteUser(Visitor visitor)
+        public bool DeleteVisitor(Visitor visitor)
         {
-            visitor = null;
+            return false;
         }
     }
 }

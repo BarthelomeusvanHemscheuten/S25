@@ -10,47 +10,39 @@ namespace Models.Users
 {
     abstract class User
     {
-        private string username;
-        private string name;
-        private string password;
-        private string email;
-        private string telnr;
-        private Image picture;
-        private string adress;
-        private DateTime dateofbirth;
-        private Reservation reservation;
-        private List<Material> materials;
-        private List<Like> likes;
-        private List<Comment> comments;
-        private List<Post> posts;
-        private List<Report> reports;
+        public string Username { get; private set; }
+        public string Name { get; private set; }
+        public string Password { get; private set; }
+        public string EmailAddress { get; private set; }
+        public string Telnr { get; private set; }
+        public Image Picture { get; private set; }
+        public string Address { get; private set; }
+        public DateTime DateOfBirth { get; private set; }
 
-        public List<Material> Materials { get { return materials; } set { materials = value; } }
-        public List<Post> Posts { get { return posts; } set { posts = value; } }
-        public User(string username, string name, string password, string email, string telnr, Image picture, string adress, DateTime dateofbirth)
+        public List<Material> Materials { get; private set; }
+        public List<Comment> Comments { get; private set; }
+        public List<Post> Posts { get; private set; }
+        public List<Report> Reports { get; private set; }
+
+        public User(string username, string name, string password, string emailAddress, string telnr, string address, DateTime dateOfBirth)
         {
-            this.username = username;
-            this.name = name;
-            this.password = password;
-            this.email = email;
-            this.telnr = telnr;
-            this.picture = picture;
-            this.adress = adress;
-            this.dateofbirth = dateofbirth;
+            this.Username = username;
+            this.Name = name;
+            this.Password = password;
+            this.EmailAddress = emailAddress;
+            this.Telnr = telnr;
+            this.Address = address;
+            this.DateOfBirth = dateOfBirth;
         }
 
-        public void Save(string username, string name, string password, string email, string telnr, Image picture, string adress, DateTime dateofbirth)
+        public bool PlacePost(Post post)
         {
-            this.username = username;
-            this.name = name;
-            this.password = password;
-            this.email = email;
-            this.telnr = telnr;
-            this.picture = picture;
-            this.adress = adress;
-            this.dateofbirth = dateofbirth;
+            return false;
+        }
 
-
+        public bool PlaceComment(Comment comment)
+        {
+            return false;
         }
     }
 }
