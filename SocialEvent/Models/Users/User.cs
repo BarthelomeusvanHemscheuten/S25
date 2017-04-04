@@ -35,13 +35,59 @@ namespace Models.Users
             this.DateOfBirth = dateOfBirth;
         }
 
-        public bool PlacePost(Post post)
+        public User(string username, string name, string password, string telnr)
         {
+            this.Username = username;
+            this.Name = name;
+            this.Password = password;
+            this.Telnr = telnr;
+        }
+
+        public bool PlacePost(string text, string path)
+        {
+            if (text != null && path != null)
+            {
+                Post post = new Post(text, path);
+                this.Posts.Add(post);
+
+                return true;
+            }
             return false;
         }
 
-        public bool PlaceComment(Comment comment)
+        public bool PlacePost(string text, string path, List<string> tags)
         {
+            if(text != null && path != null && tags != null)
+            {
+                Post post = new Post(text, path, tags);
+                this.Posts.Add(post);
+
+                return true;
+            }
+            return false;
+        }
+
+        public bool PlaceComment(string text, Post post)
+        {
+            if (text != null && post != null)
+            {
+                Comment comment = new Comment(text);
+                this.Comments.Add(comment);
+                post.Comments.Add(comment);
+
+                return true;
+            }
+            return false;
+        }
+
+        public bool ChangePicture(Image image)
+        {
+            if(image != null)
+            {
+                this.Picture = image;
+
+                return true;
+            }
             return false;
         }
     }

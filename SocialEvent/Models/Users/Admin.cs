@@ -13,13 +13,25 @@ namespace Models.Users
 
         }
 
-        public bool AddEvent(Event eventt)
+        public bool AddEvent(string name, string description)
         {
+            if (name != null && description != null)
+            {
+                Event eventt = new Event(name, description);
+
+                return true;
+            }
             return false;
         }
 
         public bool DeleteVisitor(Visitor visitor)
         {
+            if (visitor != null)
+            {
+
+
+                return true;
+            }
             return false;
         }
     }

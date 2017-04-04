@@ -9,11 +9,9 @@ namespace Models.MediaSharingSystem
     class Report
     {
         public string Reason { get; private set; }
-        public User User { get; private set; }
 
-        public Report(User user, string reason)
+        public Report(string reason)
         {
-            this.User = user;
             this.Reason = reason;
         }
     }

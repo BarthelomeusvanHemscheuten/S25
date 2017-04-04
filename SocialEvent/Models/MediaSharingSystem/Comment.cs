@@ -9,23 +9,25 @@ namespace Models.MediaSharingSystem
     class Comment
     {
         public string Text { get; private set; }
-        public User User { get; private set; }
-        public Post Post { get; private set; }
 
-        public List<Report> Report { get; private set; }
+        public List<Report> Reports { get; private set; }
 
-        public Comment(string text, User user, Post post)
+        public Comment(string text)
         {
             this.Text = text;
-            this.User = user;
-            this.Post = post;
         }    
         
-        public bool ReportComment(Report report)
+        public bool ReportComment(User user, string reason)
         {
-            this.Report.Add(report);
-            return false;
-        }   
+            if(user != null || reason != null)
+            {
+                Report report = new Report(reason);
+                this.Reports.Add(report);
+                user.Reports.Add(report);
 
+                return true;
+            }
+            return false;
+        }
     }
 }

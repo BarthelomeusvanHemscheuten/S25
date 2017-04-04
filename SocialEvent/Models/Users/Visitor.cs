@@ -15,5 +15,10 @@ namespace Models.Users
 
         }
 
+        public Visitor(string username, string name, string password, string telnr) : base(username, name, password, telnr)
+        {
+
+        }
+
     }
 }

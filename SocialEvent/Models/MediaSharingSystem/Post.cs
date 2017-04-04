@@ -12,36 +12,45 @@ namespace Models.MediaSharingSystem
         public string Path { get; private set; }
         public List<string> Tags { get; private set; }
         public List<User> Likes { get; private set; }
-        public User PostedBy { get; private set; }
 
-        public List<Report> Report { get; private set; }
-        public List<Comment> Comment { get; private set; }
+        public List<Report> Reports { get; private set; }
+        public List<Comment> Comments { get; private set; }
 
         
-        public Post(string text, string path, User user)
+        public Post(string text, string path)
         {
             this.Text = text;
             this.Path = path;
-            this.PostedBy = user;
         }
 
-        public Post(string text, string path, User user, List<string> tags)
+        public Post(string text, string path, List<string> tags)
         {
             this.Text = text;
             this.Path = path;
-            this.PostedBy = user;
             this.Tags = tags;
         }
 
         public bool Like(User user)
         {
-            this.Likes.Add(user);
+            if(user != null)
+            {
+                this.Likes.Add(user);
+
+                return true;
+            }
             return false;
         }
 
-        public bool ReportPost(Report report)
+        public bool ReportPost(User user, string reason)
         {
-            this.Report.Add(report);
+            if (user != null && reason != null)
+            {
+                Report report = new Report(reason);
+                this.Reports.Add(report);
+                user.Reports.Add(report);
+
+                return true;
+            }
             return false;
         }
     }
