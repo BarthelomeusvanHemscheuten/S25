@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Models.ReservationSystem;
+using DAL.Repositories;
 
 namespace Models.Users
 {
     class Admin : User
     {
-        public Admin(string username, string name, string password, string emailAddress, string telnr, string address, DateTime dateOfBirth) : base(username, name, password, emailAddress, telnr, address, dateOfBirth)
+        ReservationRepository reservationRepo = new ReservationRepository(new ReservationSQLContext());
+
+        public Admin(string username, string name, string password, string emailAddress, string telnr, string address, DateTime dateOfBirth, int eventID, int reservationID) : base(username, name, password, emailAddress, telnr, address, dateOfBirth, eventID, reservationID)
         {
 
         }
@@ -18,6 +21,7 @@ namespace Models.Users
             if (name != null && description != null)
             {
                 Event eventt = new Event(name, description);
+                reservationRepo.InsertEvent(name, description); //check
 
                 return true;
             }
@@ -28,7 +32,7 @@ namespace Models.Users
         {
             if (visitor != null)
             {
-
+                reservationRepo.DeleteVisitor(visitor.ID); //check
 
                 return true;
             }

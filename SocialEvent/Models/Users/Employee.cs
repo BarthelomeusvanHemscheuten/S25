@@ -3,35 +3,43 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Models.ReservationSystem;
+using DAL.Repositories;
+
 namespace Models.Users
 {
     class Employee : User
     {
-        public Employee(string username, string name, string password, string emailAddress, string telnr, string address, DateTime dateOfBirth) : base(username, name, password, emailAddress, telnr, address, dateOfBirth)
+        ReservationRepository reservationRepo = new ReservationRepository(new ReservationSQLContext()); // check
+
+        public Employee(string username, string name, string password, string emailAddress, string telnr, string address, DateTime dateOfBirth, int eventID, int reservationID) : base(username, name, password, emailAddress, telnr, address, dateOfBirth, eventID, reservationID)
         {
 
         }
 
-        public Visitor AddVisitor(string username, string name, string password, string emailAddress, string telnr, string address, DateTime dateOfBirth, Event eventt, Location location)
+        public Visitor AddVisitor(string username, string name, string password, string emailAddress, string telnr, string address, DateTime dateOfBirth, Event eventt, Location location, int eventID, int reservationID)
         {
             if (username != null && name != null && password != null && emailAddress != null && telnr != null && address != null && dateOfBirth != null && eventt != null)
             {
-                Visitor visitor = new Visitor(username, name, password, emailAddress, telnr, address, dateOfBirth);
+                Visitor visitor = new Visitor(username, name, password, emailAddress, telnr, address, dateOfBirth, eventID, reservationID);
                 eventt.Visitors.Add(visitor);
                 location.Visitors.Add(visitor);
-
+                reservationRepo.UpdateLocation(location.ID, reservationID); //check
+                userRepo.InsertVisitor(visitor.ReservationID, 3, visitor.DateOfBirth, visitor.EmailAddress, visitor.Name, visitor.Address, visitor.Username, visitor.Password, visitor.Telnr); //check
+                
                 return visitor;
             }
             return null;
         }
 
-        public Visitor AddVisitor(string username, string name, string password, string telnr, Event eventt, Location location)
+        public Visitor AddVisitor(string username, string name, string password, string telnr, Event eventt, Location location, int eventID, int reservationID)
         {
             if (username != null && name != null && password != null && telnr != null && eventt != null)
             {
-                Visitor visitor = new Visitor(username, name, password, telnr);
+                Visitor visitor = new Visitor(username, name, password, telnr, eventID, reservationID);
                 eventt.Visitors.Add(visitor);
                 location.Visitors.Add(visitor);
+                reservationRepo.UpdateLocation(location.ID, reservationID); //check
+                userRepo.InsertVisitor(visitor.ReservationID, 3, visitor.Name, visitor.Username, visitor.Password, visitor.Telnr); //check
 
                 return visitor;
             }
@@ -42,7 +50,7 @@ namespace Models.Users
         {
             if(visitor != null)
             {
-
+                userRepo.DeleteVisitor(visitor.ID); //check
 
                 return true;
             }
@@ -53,13 +61,15 @@ namespace Models.Users
         {
             if (eventt != null)
             {
+                int reservationID = reservationRepo.InsertGetReservation(0); //check
+
                 // voor de eerste locatie. 
                 List<Visitor> visitors = new List<Visitor>();
-                Visitor mainVisitor = AddVisitor(username[0], name[0], password[0], emailAddress[0], telnr[0], address[0], dateOfBirth[0], eventt, locations[0]);
+                Visitor mainVisitor = AddVisitor(username[0], name[0], password[0], emailAddress[0], telnr[0], address[0], dateOfBirth[0], eventt, locations[0], eventt.ID, reservationID);
                 
                 for (int i = 1; i <= quantityVisitors; i++)
                 {
-                    Visitor visitor = AddVisitor(username[i], name[i], password[i], telnr[i], eventt, locations[0]);
+                    Visitor visitor = AddVisitor(username[i], name[i], password[i], telnr[i], eventt, locations[0], eventt.ID, reservationID);
                     visitors.Add(visitor);
                 }
 
@@ -73,6 +83,7 @@ namespace Models.Users
                     }
                 }
 
+                
                 return true;
             }
             return false;
@@ -83,6 +94,8 @@ namespace Models.Users
             if (visitor != null && material != null)
             {
                 visitor.Materials.Add(material);
+                reservationRepo.UpdateMaterial(visitor.ID); //check
+
 
                 return true;
             }

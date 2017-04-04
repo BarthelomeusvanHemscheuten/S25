@@ -5,11 +5,17 @@ using System.Text;
 using System.Drawing;
 using Models.MediaSharingSystem;
 using Models.ReservationSystem;
+using DAL.Repositories;
 
 namespace Models.Users
 {
     abstract class User
     {
+        UserRepository userRepo = new UserRepository(new UserSQLContext());
+
+        public int ID { get; private set; }
+        public int ReservationID { get; private set; }
+        public int EventID { get; private set; }
         public string Username { get; private set; }
         public string Name { get; private set; }
         public string Password { get; private set; }
@@ -24,8 +30,11 @@ namespace Models.Users
         public List<Post> Posts { get; private set; }
         public List<Report> Reports { get; private set; }
 
-        public User(string username, string name, string password, string emailAddress, string telnr, string address, DateTime dateOfBirth)
+        public User(string username, string name, string password, string emailAddress, string telnr, string address, DateTime dateOfBirth, int eventID, int reservationID)
         {
+            this.ID = userRepo.CountUsers() + 1;
+            this.EventID = eventID;
+            this.ReservationID = reservationID;
             this.Username = username;
             this.Name = name;
             this.Password = password;
@@ -35,8 +44,11 @@ namespace Models.Users
             this.DateOfBirth = dateOfBirth;
         }
 
-        public User(string username, string name, string password, string telnr)
+        public User(string username, string name, string password, string telnr, int eventID, int reservationID)
         {
+            this.ID = userRepo.CountUsers() + 1;
+            this.EventID = eventID;
+            this.ReservationID = reservationID;
             this.Username = username;
             this.Name = name;
             this.Password = password;

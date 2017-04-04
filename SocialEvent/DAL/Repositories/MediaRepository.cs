@@ -7,7 +7,7 @@ using DAL.Interfaces;
 
 namespace DAL.Repositories
 {
-    class MediaRepository
+    public class MediaRepository
     {
         IMedia context;
 

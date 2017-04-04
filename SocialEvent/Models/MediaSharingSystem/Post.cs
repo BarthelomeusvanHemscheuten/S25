@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Models.Users;
+using DAL.Repositories;
 
 namespace Models.MediaSharingSystem
 {
     class Post
     {
+        MediaRepository mediaRepo = new MediaRepository(new MediaSQLContext());
+
+        public int ID { get; private set; }
         public string Text { get; private set; }
         public string Path { get; private set; }
         public List<string> Tags { get; private set; }
@@ -19,6 +23,7 @@ namespace Models.MediaSharingSystem
         
         public Post(string text, string path)
         {
+            this.ID = mediaRepo.CountPosts() + 1;
             this.Text = text;
             this.Path = path;
         }

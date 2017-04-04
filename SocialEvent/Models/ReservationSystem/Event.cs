@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Models.Users;
+using DAL.Repositories;
 
 namespace Models.ReservationSystem
 {
     class Event
     {
+        ReservationRepository reservationRepo = new ReservationRepository(new ReservationSQLContext());
+
+        public int ID { get; private set; }
         public string Name { get; private set; }
         public string Description { get; private set; }
         
@@ -18,6 +22,7 @@ namespace Models.ReservationSystem
         
         public Event(string name, string description)
         {
+            this.ID = reservationRepo.CountEvents() + 1;
             this.Name = name;
             this.Description = description;
         }
