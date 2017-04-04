@@ -67,26 +67,32 @@ namespace DAL.SQLContext
 
         public string getEmail(string username)
         {
-            throw new NotImplementedException();
+            string query = @"SELECT email FROM user WHERE username = '" + username + "'";
+            return databaseConnection.executeReaderString(query);
         }
 
         public string getAdres(string username)
         {
-            throw new NotImplementedException();
+            string query = @"SELECT adres FROM user WHERE username = '" + username + "'";
+            return databaseConnection.executeReaderString(query);
         }
 
         public string getTelNr(string username)
         {
-            throw new NotImplementedException();
+            string query = @"SELECT telnr FROM user WHERE username = '" + username + "'";
+            return databaseConnection.executeReaderString(query);
         }
 
         public string getRFID(string username)
         {
-            throw new NotImplementedException();
+            string query = @"SELECT rfid FROM user WHERE username = '" + username + "'";
+            return databaseConnection.executeReaderString(query);
         }
 
         public Image getImage(string username)
         {
+            string query = @"SELECT picture FROM user WHERE username = '" + username + "'";
+            //todo: return uitkomst van een database connection methode die een image uit de db haalt
             throw new NotImplementedException();
         }
     }
