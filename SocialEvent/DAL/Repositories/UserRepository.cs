@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DAL.Interfaces;
+using System.Drawing;
 
 namespace DAL.Repositories
 {
@@ -16,9 +17,13 @@ namespace DAL.Repositories
             this.context = context;
         }
 
-        public string GetPassword(string username)
+        public bool checkLogin(string username, string password)
         {
-            return context.GetPassword(username);
+            if (context.checkLogin(username, password))
+            {
+                return true;
+            }
+            return false;
         }
 
         public bool UpdatePassword(string username, string password)
@@ -46,6 +51,50 @@ namespace DAL.Repositories
                 return true;
             }
             return false;
+        }
+
+        public int getUserGroup(string username)
+        {
+            return context.getUserGroup(username);
+        }
+
+        public bool getIsPresent(string username)
+        {
+            if (context.getIsPresent(username))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public DateTime getDateOfBirth(string username)
+        {
+            return context.getDateOfBirth(username);
+        }
+
+        public string getEmail(string username)
+        {
+            return context.getEmail(username);
+        }
+
+        public string getAdres(string username)
+        {
+            return context.getAdres(username);
+        }
+
+        public string getTelNr(string username)
+        {
+            return context.getTelNr(username);
+        }
+
+        public string getRFID(string username)
+        {
+            return context.getRFID(username);
+        }
+
+        public Image getImage(string username)
+        {
+            return context.getImage(username);
         }
     }
 }

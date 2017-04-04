@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Drawing;
 
 namespace DAL.Interfaces
 {
@@ -15,7 +16,11 @@ namespace DAL.Interfaces
 
         int getUserGroup(string username);
         bool getIsPresent(string username);
-
-
+        DateTime getDateOfBirth(string username);
+        string getEmail(string username);
+        string getAdres(string username);
+        string getTelNr(string username);
+        string getRFID(string username);
+        Image getImage(string username);
     }
 }
