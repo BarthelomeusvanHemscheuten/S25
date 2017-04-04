@@ -29,6 +29,7 @@ namespace Models.MediaSharingSystem
                 Report report = new Report(reason);
                 this.Reports.Add(report);
                 user.Reports.Add(report);
+                mediaRepo.InsertReportComment(user.ID, this.ID); //check
 
                 return true;
             }

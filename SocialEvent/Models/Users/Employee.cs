@@ -89,12 +89,12 @@ namespace Models.Users
             return false;
         }
 
-        public bool RentMaterial(Visitor visitor, Material material)
+        public bool RentMaterial(Visitor visitor, Material material, DateTime startDate, DateTime endDate)
         {
             if (visitor != null && material != null)
             {
                 visitor.Materials.Add(material);
-                reservationRepo.UpdateMaterial(visitor.ID); //check
+                reservationRepo.UpdateMaterial(visitor.ID, startDate, endDate); //check
 
 
                 return true;

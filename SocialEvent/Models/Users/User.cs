@@ -12,6 +12,7 @@ namespace Models.Users
     abstract class User
     {
         UserRepository userRepo = new UserRepository(new UserSQLContext());
+        MediaRepository mediaRepo = new MediaRepository(new MediaSQLContext());
 
         public int ID { get; private set; }
         public int ReservationID { get; private set; }
@@ -61,6 +62,7 @@ namespace Models.Users
             {
                 Post post = new Post(text, path);
                 this.Posts.Add(post);
+                mediaRepo.InsertPost(this.ID, text, path); //check
 
                 return true;
             }
@@ -73,6 +75,12 @@ namespace Models.Users
             {
                 Post post = new Post(text, path, tags);
                 this.Posts.Add(post);
+                mediaRepo.InsertPost(this.ID, text, path); //check
+                
+                for (int i = 0; i < tags.Count; i++)
+                {
+                    mediaRepo.InsertGetTag(post.ID, tags[i]); //check
+                }
 
                 return true;
             }
@@ -86,6 +94,7 @@ namespace Models.Users
                 Comment comment = new Comment(text);
                 this.Comments.Add(comment);
                 post.Comments.Add(comment);
+                mediaRepo.InsertComment(this.ID, post.ID, text); //check
 
                 return true;
             }
@@ -97,6 +106,7 @@ namespace Models.Users
             if(image != null)
             {
                 this.Picture = image;
+                mediaRepo.UpdatePicture(this.ID, image); //check
 
                 return true;
             }

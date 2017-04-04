@@ -40,6 +40,7 @@ namespace Models.MediaSharingSystem
             if(user != null)
             {
                 this.Likes.Add(user);
+                mediaRepo.InsertLike(user.ID, this.ID); //check
 
                 return true;
             }
@@ -53,6 +54,7 @@ namespace Models.MediaSharingSystem
                 Report report = new Report(reason);
                 this.Reports.Add(report);
                 user.Reports.Add(report);
+                mediaRepo.InsertReportPost(user.ID, this.ID); //check
 
                 return true;
             }
