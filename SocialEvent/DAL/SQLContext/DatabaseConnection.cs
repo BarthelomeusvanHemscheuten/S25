@@ -57,7 +57,6 @@ namespace DAL.SQLContext
 
         public List<string> executeReaderStringList(string query)
         {
-            ;
             try
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))

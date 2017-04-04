@@ -21,8 +21,7 @@ namespace DAL.SQLContext
 
         public bool AddUser(string name, string username, string emailAddress, string password, int age)
         { 
-            // IK HAD GEEN AUTO INCREMENT BIJ ID, DUS MOEST IK DIT VIA VISUAL STUDIO DOEN. WEGHALEN WANNEER JE WEL AUTO INCREMENT BIJ ID HEBT.
-            string query = @"INSERT INTO [User]([ID], [Username], [EmailAddress], [Password], [Name], [UserType], [Age]) VALUES (" + lastID + @", '" + username + @"', '" + emailAddress + @"', '" + password + @"', '" + name + @"', " + 2 + @", " + age + @");";
+            string query = @"INSERT INTO [User]([ID], [Username], [EmailAddress], [Password], [Name], [UserType], [Age]) VALUES ('" + username + @"', '" + emailAddress + @"', '" + password + @"', '" + name + @"', " + 2 + @", " + age + @");";
 
             databaseConnection.executeNonQuery(query);
             return false;
@@ -37,18 +36,28 @@ namespace DAL.SQLContext
 
         public bool checkLogin(string username, string password)
         {
-            string query = @"SELECT password FROM user";
+            string query = @"SELECT password FROM user WHERE username = '" + username + "'";
+            if (databaseConnection.executeReaderString(query) == password)
+            {
+                return true;
+            }
             return false;
         }
 
         public int getUserGroup(string username)
         {
-            throw new NotImplementedException();
+            string query = @"SELECT UserGroup FROM user WHERE username = '" + username + "'";
+            return databaseConnection.executeReaderInt(query);
         }
 
         public bool getIsPresent(string username)
         {
-            throw new NotImplementedException();
+            string query = @"SELECT isPresent FROM user WHERE username = '" + username + "'";
+            if (databaseConnection.executeReaderInt(query) == 1)
+            {
+                return true;
+            }
+            return false;
         }
 
         public DateTime getDateOfBirth(string username)
