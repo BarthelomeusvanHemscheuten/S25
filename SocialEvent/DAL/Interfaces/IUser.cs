@@ -22,5 +22,6 @@ namespace DAL.Interfaces
         string getTelNr(string username);
         string getRFID(string username);
         Image getImage(string username);
+        //uihuuhi
     }
 }
