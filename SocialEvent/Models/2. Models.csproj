@@ -53,7 +53,12 @@
     <Compile Include="Users\User.cs" />
     <Compile Include="Users\Visitor.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\DAL\3. DAL.csproj">
+      <Project>{883abceb-2b31-4927-9020-8c573342f63b}</Project>
+      <Name>3. DAL</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
