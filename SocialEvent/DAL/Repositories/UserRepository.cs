@@ -77,6 +77,24 @@ namespace DAL.Repositories
             return context.GetUserDataDateTime(username);
         }
 
+        public bool UpdatePassword(string username, string password)
+        {
+            if(context.UpdatePassword(username, password))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool UpdateUsername(string username)
+        {
+            if (context.UpdateUsername(username))
+            {
+                return true;
+            }
+            return false;
+        }
+
         public bool CheckLogin(string username, string password)
         {
             if (context.CheckLogin(username, password))
@@ -103,11 +121,6 @@ namespace DAL.Repositories
         //    return false;
         //}
 
-        //public int getUserGroup(string username)
-        //{
-        //    return context.getUserGroup(username);
-        //}
-
         //public bool getIsPresent(string username)
         //{
         //    if (context.getIsPresent(username))
@@ -115,26 +128,6 @@ namespace DAL.Repositories
         //        return true;
         //    }
         //    return false;
-        //}
-
-        //public DateTime getDateOfBirth(string username)
-        //{
-        //    return context.getDateOfBirth(username);
-        //}
-
-        //public string getEmail(string username)
-        //{
-        //    return context.getEmail(username);
-        //}
-
-        //public string getAdres(string username)
-        //{
-        //    return context.getAdres(username);
-        //}
-
-        //public string getTelNr(string username)
-        //{
-        //    return context.getTelNr(username);
         //}
 
         //public string getRFID(string username)

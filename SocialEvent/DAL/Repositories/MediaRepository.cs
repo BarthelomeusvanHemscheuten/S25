@@ -124,7 +124,7 @@ namespace DAL.Repositories
 
 
 
-        // CONTROLEREN!!
+        // nog niet nodig
         //public List<string> GetAllPosts()
         //{
         //    return context.GetAllPosts();
@@ -140,14 +140,9 @@ namespace DAL.Repositories
         //    return context.GetAllLikesPost(postID);
         //}
 
-        //public List<string> GetAllReportedPosts()
+        //public List<string> GetAllReportedPostsComments()
         //{
         //    return context.GetAllReportedPosts();
-        //}
-
-        //public List<string> GetAllReportsFromPostOrComment(int postCommentID)
-        //{
-        //    return context.GetAllReportsFromPostOrComment(postCommentID);
         //}
     }
 }

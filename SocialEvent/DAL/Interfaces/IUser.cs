@@ -20,6 +20,9 @@ namespace DAL.Interfaces
         List<int> GetUserDataInt(string username);
         DateTime? GetUserDataDateTime(string username);
 
+        bool UpdatePassword(string username, string password);
+        bool UpdateUsername(string username);
+
         bool CheckLogin(string username, string password);
 
 
@@ -29,13 +32,7 @@ namespace DAL.Interfaces
         // CONTROLEREN!!
 
         //bool UpdatePassword(string username, string password);
-        //bool AddUser(string name, string username, string emailAddress, string password, int age);
-        //int getUserGroup(string username);
         //bool getIsPresent(string username);
-        //DateTime getDateOfBirth(string username);
-        //string getEmail(string username);
-        //string getAdres(string username);
-        //string getTelNr(string username);
         //string getRFID(string username);
         //Image getImage(string username);
     }

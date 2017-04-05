@@ -120,7 +120,40 @@ namespace MediaSharingSystem.Controllers
             return false;
         }
 
-        // change settings
+        public bool ChangePassword(string password1, string password2)
+        {
+            switch (userGroup)
+            {
+                case 3:
+                    visitor.ChangePassword(password1, password2);
+                    return true;
+                case 2:
+                    employee.ChangePassword(password1, password2);
+                    return true;
+                case 1:
+                    admin.ChangePassword(password1, password2);
+                    return true;
+            }
+            return false;
+        }
+
+        public bool ChangeUsername(string newUsername, string password1, string password2)
+        {
+            
+            switch (userGroup)
+            {
+                case 3:
+                    visitor.ChangeUsername(newUsername, password1, password2);
+                    return true;
+                case 2:
+                    employee.ChangeUsername(newUsername, password1, password2);
+                    return true;
+                case 1:
+                    admin.ChangeUsername(newUsername, password1, password2);
+                    return true;
+            }
+            return false;
+        }
 
         // EMPLOYEE AND ADMIN
         public bool DeleteVisitor(Visitor visitor)

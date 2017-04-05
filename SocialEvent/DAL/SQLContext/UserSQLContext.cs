@@ -87,9 +87,24 @@ namespace DAL.SQLContext
             return databaseConnection.executeReaderDateTime(query);
         }
 
+        public bool UpdatePassword(string username, string password)
+        {
+            string query = @"";
+
+            return databaseConnection.executeNonQuery(query);
+        }
+
+        public bool UpdateUsername(string username)
+        {
+            string query = @"";
+
+            return databaseConnection.executeNonQuery(query);
+        }
+
         public bool CheckLogin(string username, string password)
         {
             string query = @"SELECT password FROM user WHERE username = '" + username + @"'";
+
             if (databaseConnection.executeReaderString(query) == password)
             {
                 return true;
@@ -101,28 +116,13 @@ namespace DAL.SQLContext
 
 
 
-        // CONTROLEREN!!
+        // nog niet nodig
         //public bool UpdatePassword(string username, string password)
         //{
         //    // query aanpassen aan de hand van onze database
         //    string query = @"UPDATE [User] SET [Password] = '" + password + @"' WHERE [Username] = '" + username + @"';";
         //    databaseConnection.executeNonQuery(query);
         //    return false;
-        //}
-
-        //public bool DeleteUser(string username)
-        //{
-        //    string query = @"DELETE FROM [User] WHERE [Username] = '" + username + @"';";
-        //    databaseConnection.executeNonQuery(query);
-        //    return false;
-        //}
-
-
-
-        //public int getUserGroup(string username)
-        //{
-        //    string query = @"SELECT UserGroup FROM user WHERE username = '" + username + @"'";
-        //    return databaseConnection.executeReaderInt(query);
         //}
 
         //public bool getIsPresent(string username)
@@ -133,29 +133,6 @@ namespace DAL.SQLContext
         //        return true;
         //    }
         //    return false;
-        //}
-
-        //public DateTime getDateOfBirth(string username)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        //public string getEmail(string username)
-        //{
-        //    string query = @"SELECT email FROM user WHERE username = '" + username + @"'";
-        //    return databaseConnection.executeReaderString(query);
-        //}
-
-        //public string getAdres(string username)
-        //{
-        //    string query = @"SELECT adres FROM user WHERE username = '" + username + @"'";
-        //    return databaseConnection.executeReaderString(query);
-        //}
-
-        //public string getTelNr(string username)
-        //{
-        //    string query = @"SELECT telnr FROM user WHERE username = '" + username + @"'";
-        //    return databaseConnection.executeReaderString(query);
         //}
 
         //public string getRFID(string username)

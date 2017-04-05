@@ -26,7 +26,7 @@ namespace DAL.Interfaces
 
 
 
-        // CONTROLEREN!!
+        // nog niet nodig
         //bool UpdatePayment(int trueOrFalse);
         //bool CheckPayment(int reservationID);
     }

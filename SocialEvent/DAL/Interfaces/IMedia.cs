@@ -34,11 +34,10 @@ namespace DAL.Interfaces
 
 
 
-        // CONTROLEREN!!
+        // nog niet nodig
         //List<string> GetAllPosts();
         //List<string> GetAllComments(int postID);
         //List<int> GetAllLikesPost(int postID);
-        //List<string> GetAllReportedPosts();
-        //List<string> GetAllReportsFromPostOrComment(int postCommentID);
+        //List<string> GetAllReportedPostsComments();
     }
 }

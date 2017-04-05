@@ -129,5 +129,30 @@ namespace Models.Users
             }
             return null;
         }
+
+        public bool ChangePassword(string password1, string password2)
+        {
+            if (password1 == password2)
+            {
+                userRepo.UpdatePassword(this.Username, password1);
+
+                return true;
+            }
+            return false;
+        }
+
+        public bool ChangeUsername(string newUsername, string password1, string password2)
+        {
+            if (password1 == password2)
+            {
+                if (userRepo.CheckLogin(this.Username, password1) == true)
+                {
+                    userRepo.UpdateUsername(newUsername);
+
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }
