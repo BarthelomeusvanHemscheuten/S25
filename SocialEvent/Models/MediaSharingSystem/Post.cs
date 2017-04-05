@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using Models.Users;
 using DAL.Repositories;
+using DAL.SQLContext;
 
 namespace Models.MediaSharingSystem
 {
-    class Post
+    public class Post
     {
         MediaRepository mediaRepo = new MediaRepository(new MediaSQLContext());
 
@@ -20,7 +21,7 @@ namespace Models.MediaSharingSystem
         public List<Report> Reports { get; private set; }
         public List<Comment> Comments { get; private set; }
 
-        
+        // constructor om nieuwe post aan te maken
         public Post(string text, string path)
         {
             this.ID = mediaRepo.CountPosts() + 1;
@@ -28,8 +29,27 @@ namespace Models.MediaSharingSystem
             this.Path = path;
         }
 
+        // constructor om nieuwe post aan te maken
         public Post(string text, string path, List<string> tags)
         {
+            this.ID = mediaRepo.CountPosts() + 1;
+            this.Text = text;
+            this.Path = path;
+            this.Tags = tags;
+        }
+
+        // constructor om post aan te maken die al bestaat in database
+        public Post(int id, string text, string path)
+        {
+            this.ID = id;
+            this.Text = text;
+            this.Path = path;
+        }
+
+        // constructor om post aan te maken die al bestaat in database
+        public Post(int id, string text, string path, List<string> tags)
+        {
+            this.ID = id;
             this.Text = text;
             this.Path = path;
             this.Tags = tags;

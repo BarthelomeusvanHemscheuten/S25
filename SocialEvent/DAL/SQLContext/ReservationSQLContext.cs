@@ -41,28 +41,35 @@ namespace DAL.SQLContext
             return databaseConnection.executeNonQuery(query);
         }
 
-        public bool UpdateLocation(int ID, int reservationID)
+        public bool UpdateLocation(int id, int reservationID)
         {
             string query = @"";
 
             return databaseConnection.executeNonQuery(query);
         }
 
-        public bool UpdateMaterial(int visitorID, DateTime startDate, DateTime endDate)
+        public bool UpdateMaterial(int visitorId, DateTime startDate, DateTime endDate)
         {
             string query = @"";
 
             return databaseConnection.executeNonQuery(query);
         }
 
-        public int CountEvents()
+        public int GetEventID(string name)
         {
             string query = @"";
 
             return databaseConnection.executeReaderInt(query);
         }
+        
+        public string GetEventDescription(int id)
+        {
+            string query = @"";
 
-        public int CountLocations()
+            return databaseConnection.executeReaderString(query);
+        }
+
+        public int GetLocationID(int number)
         {
             string query = @"";
 

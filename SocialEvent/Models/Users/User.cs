@@ -6,15 +6,16 @@ using System.Drawing;
 using Models.MediaSharingSystem;
 using Models.ReservationSystem;
 using DAL.Repositories;
+using DAL.SQLContext;
 
 namespace Models.Users
 {
-    abstract class User
+    public abstract class User
     {
         UserRepository userRepo = new UserRepository(new UserSQLContext());
         MediaRepository mediaRepo = new MediaRepository(new MediaSQLContext());
 
-        public int ID { get; private set; }
+        public int ID { get { return userRepo.GetID(this.Username); } }
         public int ReservationID { get; private set; }
         public int EventID { get; private set; }
         public string Username { get; private set; }
@@ -24,16 +25,15 @@ namespace Models.Users
         public string Telnr { get; private set; }
         public Image Picture { get; private set; }
         public string Address { get; private set; }
-        public DateTime DateOfBirth { get; private set; }
+        public DateTime? DateOfBirth { get; private set; }
 
         public List<Material> Materials { get; private set; }
         public List<Comment> Comments { get; private set; }
         public List<Post> Posts { get; private set; }
         public List<Report> Reports { get; private set; }
 
-        public User(string username, string name, string password, string emailAddress, string telnr, string address, DateTime dateOfBirth, int eventID, int reservationID)
+        public User(string username, string name, string password, string emailAddress, string telnr, string address, DateTime? dateOfBirth, int eventID, int reservationID)
         {
-            this.ID = userRepo.CountUsers() + 1;
             this.EventID = eventID;
             this.ReservationID = reservationID;
             this.Username = username;
@@ -47,7 +47,6 @@ namespace Models.Users
 
         public User(string username, string name, string password, string telnr, int eventID, int reservationID)
         {
-            this.ID = userRepo.CountUsers() + 1;
             this.EventID = eventID;
             this.ReservationID = reservationID;
             this.Username = username;
@@ -111,6 +110,24 @@ namespace Models.Users
                 return true;
             }
             return false;
+        }
+
+        public List<string> ShowPost(Post post)
+        {
+            if (post != null)
+            {
+                return mediaRepo.GetTextPathPost(post.ID);
+            }
+            return null;
+        }
+
+        public string ShowComment(Comment comment)
+        {
+            if(comment != null)
+            {
+                return mediaRepo.GetTextComment(comment.ID);
+            }
+            return null;
         }
     }
 }

@@ -17,38 +17,74 @@ namespace DAL.Repositories
             this.context = context;
         }
 
-        public bool InsertUser(int reservationID, int userGroup, DateTime dateOfBirth, string emailAddress, string name, string address, string username, string password, string telnr)
+        public bool InsertUser(int reservationId, int userGroup, DateTime? dateOfBirth, string emailAddress, string name, string address, string username, string password, string telnr)
         {
-            if (context.InsertUser(reservationID, userGroup, dateOfBirth, emailAddress, name, address, username, password, telnr))
+            if (context.InsertUser(reservationId, userGroup, dateOfBirth, emailAddress, name, address, username, password, telnr))
             {
                 return true;
             }
             return false;
         }
 
-        public bool InsertUser(int reservationID, int userGroup, string name, string username, string password, string telnr)
+        public bool InsertUser(int reservationId, int userGroup, string name, string username, string password, string telnr)
         {
-            if (context.InsertUser(reservationID, userGroup, name, username, password, telnr))
+            if (context.InsertUser(reservationId, userGroup, name, username, password, telnr))
             {
                 return true;
             }
             return false;
         }
 
-        public bool DeleteUser(int ID)
+        public bool DeleteUser(int Id)
         {
-            if (context.DeleteUser(ID))
+            if (context.DeleteUser(Id))
             {
                 return true;
             }
             return false;
         }
 
-        public int CountUsers()
+        public bool InsertSwearWord(string swearWord)
         {
-            return context.CountUsers();
+            if (context.InsertSwearWord(swearWord))
+            {
+                return true;
+            }
+            return false;
         }
 
+        public int GetUserGroup(string username)
+        {
+            return context.GetUserGroup(username);
+        }
+
+        public int GetID(string username)
+        {
+            return context.GetID(username);
+        }
+
+        public List<string> GetUserDataString(string username)
+        {
+            return context.GetUserDataString(username);
+        }
+
+        public List<int> GetUserDataInt(string username)
+        {
+            return context.GetUserDataInt(username);
+        }
+        public DateTime? GetUserDataDateTime(string username)
+        {
+            return context.GetUserDataDateTime(username);
+        }
+
+        public bool CheckLogin(string username, string password)
+        {
+            if (context.CheckLogin(username, password))
+            {
+                return true;
+            }
+            return false;
+        }
 
 
 
@@ -56,14 +92,7 @@ namespace DAL.Repositories
 
 
         // CONTROLEREN!!
-        //public bool checkLogin(string username, string password)
-        //{
-        //    if (context.checkLogin(username, password))
-        //    {
-        //        return true;
-        //    }
-        //    return false;
-        //}
+
 
         //public bool UpdatePassword(string username, string password)
         //{
@@ -73,7 +102,7 @@ namespace DAL.Repositories
         //    }
         //    return false;
         //}
-        
+
         //public int getUserGroup(string username)
         //{
         //    return context.getUserGroup(username);

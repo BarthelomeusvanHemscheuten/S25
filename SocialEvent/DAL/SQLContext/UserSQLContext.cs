@@ -12,7 +12,7 @@ namespace DAL.SQLContext
     {
         DatabaseConnection databaseConnection = new DatabaseConnection();
 
-        public bool InsertUser(int reservationID, int userGroup, DateTime dateOfBirth, string emailAddress, string name, string address, string username, string password, string telnr)
+        public bool InsertUser(int reservationId, int userGroup, DateTime? dateOfBirth, string emailAddress, string name, string address, string username, string password, string telnr)
         {
             // query aanpassen aan de hand van onze database
             string query = @"INSERT INTO [User]([ID], [Username], [EmailAddress], [Password], [Name], [UserType], [Age]) VALUES ('" + username + @"', '" + emailAddress + @"', '" + password + @"', '" + name + @"', " + 2 + @");";
@@ -20,7 +20,7 @@ namespace DAL.SQLContext
             return databaseConnection.executeNonQuery(query);
         }
 
-        public bool InsertUser(int reservationID, int userGroup, string name, string username, string password, string telnr)
+        public bool InsertUser(int reservationId, int userGroup, string name, string username, string password, string telnr)
         {
             // query aanpassen aan de hand van onze database
             string query = @"INSERT INTO [User]([ID], [Username], [EmailAddress], [Password], [Name], [UserType], [Age]) VALUES ('" + username + @"', '" + password + @"', '" + name + @"', " + 2 + @");";
@@ -28,12 +28,20 @@ namespace DAL.SQLContext
             return databaseConnection.executeNonQuery(query);
         }
 
-        public bool DeleteUser(int ID)
+        public bool DeleteUser(int Id)
         {
             string query = @"";
 
             return databaseConnection.executeNonQuery(query);
         }
+
+        public bool InsertSwearWord(string swearWord)
+        {
+            string query = @"";
+
+            return databaseConnection.executeNonQuery(query);
+        }
+
 
         public int CountUsers()
         {
@@ -42,7 +50,52 @@ namespace DAL.SQLContext
             return databaseConnection.executeReaderInt(query);
         }
 
+        public int GetUserGroup(string username)
+        {
+            string query = @"";
 
+            return databaseConnection.executeReaderInt(query);
+        }
+
+        public int GetID(string username)
+        {
+            string query = @"";
+
+            return databaseConnection.executeReaderInt(query);
+        }
+
+        public List<string> GetUserDataString(string username)
+        {
+            // LET OP DE VOLGORDE DIE DE LIST MOET TERUG KRIJGEN; username, name, emailaddress, telnr, address
+            string query = @"";
+
+            return databaseConnection.executeReaderStringList(query);
+        }
+
+        public List<int> GetUserDataInt(string username)
+        {
+            // LET OP DE VOLGORDE DIE DE LIST MOET TERUG KRIJGEN; eventID, reservationID
+            string query = @"";
+
+            return databaseConnection.executeReaderIntList(query);
+        }
+
+        public DateTime? GetUserDataDateTime(string username)
+        {
+            string query = @"";
+
+            return databaseConnection.executeReaderDateTime(query);
+        }
+
+        public bool CheckLogin(string username, string password)
+        {
+            string query = @"SELECT password FROM user WHERE username = '" + username + @"'";
+            if (databaseConnection.executeReaderString(query) == password)
+            {
+                return true;
+            }
+            return false;
+        }
 
 
 
@@ -56,7 +109,7 @@ namespace DAL.SQLContext
         //    databaseConnection.executeNonQuery(query);
         //    return false;
         //}
-        
+
         //public bool DeleteUser(string username)
         //{
         //    string query = @"DELETE FROM [User] WHERE [Username] = '" + username + @"';";
@@ -64,15 +117,7 @@ namespace DAL.SQLContext
         //    return false;
         //}
 
-        //public bool checkLogin(string username, string password)
-        //{
-        //    string query = @"SELECT password FROM user WHERE username = '" + username + @"'";
-        //    if (databaseConnection.executeReaderString(query) == password)
-        //    {
-        //        return true;
-        //    }
-        //    return false;
-        //}
+
 
         //public int getUserGroup(string username)
         //{

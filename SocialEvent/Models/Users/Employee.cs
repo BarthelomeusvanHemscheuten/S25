@@ -2,31 +2,33 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Globalization;
 using Models.ReservationSystem;
 using DAL.Repositories;
+using DAL.SQLContext;
 
 namespace Models.Users
 {
-    class Employee : User
+    public class Employee : User
     {
         UserRepository userRepo = new UserRepository(new UserSQLContext());
         ReservationRepository reservationRepo = new ReservationRepository(new ReservationSQLContext());
 
-        public Employee(string username, string name, string password, string emailAddress, string telnr, string address, DateTime dateOfBirth, int eventID, int reservationID) : base(username, name, password, emailAddress, telnr, address, dateOfBirth, eventID, reservationID)
+        public Employee(string username, string name, string password, string emailAddress, string telnr, string address, DateTime? dateOfBirth, int eventID, int reservationID) : base(username, name, password, emailAddress, telnr, address, dateOfBirth, eventID, reservationID)
         {
 
         }
 
-        public Visitor AddVisitor(string username, string name, string password, string emailAddress, string telnr, string address, DateTime dateOfBirth, Event eventt, Location location, int eventID, int reservationID)
+        public Visitor AddVisitor(string username, string name, string password, string emailAddress, string telnr, string address, DateTime? dateOfBirth, Event eventt, Location location, int eventID, int reservationID)
         {
             if (username != null && name != null && password != null && emailAddress != null && telnr != null && address != null && dateOfBirth != null && eventt != null)
             {
                 Visitor visitor = new Visitor(username, name, password, emailAddress, telnr, address, dateOfBirth, eventID, reservationID);
                 eventt.Visitors.Add(visitor);
                 location.Visitors.Add(visitor);
-                reservationRepo.UpdateLocation(location.ID, reservationID);
                 userRepo.InsertUser(visitor.ReservationID, 3, visitor.DateOfBirth, visitor.EmailAddress, visitor.Name, visitor.Address, visitor.Username, visitor.Password, visitor.Telnr);
-                
+                reservationRepo.UpdateLocation(location.ID, reservationID);
+
                 return visitor;
             }
             return null;
@@ -39,8 +41,8 @@ namespace Models.Users
                 Visitor visitor = new Visitor(username, name, password, telnr, eventID, reservationID);
                 eventt.Visitors.Add(visitor);
                 location.Visitors.Add(visitor);
-                reservationRepo.UpdateLocation(location.ID, reservationID);
                 userRepo.InsertUser(visitor.ReservationID, 3, visitor.Name, visitor.Username, visitor.Password, visitor.Telnr);
+                reservationRepo.UpdateLocation(location.ID, reservationID);
 
                 return visitor;
             }
@@ -58,7 +60,7 @@ namespace Models.Users
             return false;
         }
 
-        public bool Reserve(Event eventt, List<Location> locations, int quantityVisitors, int quantityLocations, List<string> username, List<string> name, List<string> password, List<string> emailAddress, List<string> telnr, List<string> address, List<DateTime> dateOfBirth)
+        public bool Reserve(Event eventt, List<Location> locations, int quantityVisitors, int quantityLocations, List<string> username, List<string> name, List<string> password, List<string> emailAddress, List<string> telnr, List<string> address, List<string> dateOfBirth)
         {
             if (eventt != null)
             {
@@ -66,7 +68,7 @@ namespace Models.Users
 
                 // voor de eerste locatie. 
                 List<Visitor> visitors = new List<Visitor>();
-                Visitor mainVisitor = AddVisitor(username[0], name[0], password[0], emailAddress[0], telnr[0], address[0], dateOfBirth[0], eventt, locations[0], eventt.ID, reservationID);
+                Visitor mainVisitor = AddVisitor(username[0], name[0], password[0], emailAddress[0], telnr[0], address[0], DateTime.ParseExact(dateOfBirth[0], "yyyy/MM/dd", CultureInfo.InvariantCulture), eventt, locations[0], eventt.ID, reservationID);
                 
                 for (int i = 1; i <= quantityVisitors; i++)
                 {
@@ -90,12 +92,12 @@ namespace Models.Users
             return false;
         }
 
-        public bool RentMaterial(Visitor visitor, Material material, DateTime startDate, DateTime endDate)
+        public bool RentMaterial(Visitor visitor, Material material, string startDate, string endDate)
         {
             if (visitor != null && material != null)
             {
                 visitor.Materials.Add(material);
-                reservationRepo.UpdateMaterial(visitor.ID, startDate, endDate);
+                reservationRepo.UpdateMaterial(visitor.ID, DateTime.ParseExact(startDate, "yyyy/MM/dd", CultureInfo.InvariantCulture), DateTime.ParseExact(endDate, "yyyy/MM/dd", CultureInfo.InvariantCulture));
 
 
                 return true;

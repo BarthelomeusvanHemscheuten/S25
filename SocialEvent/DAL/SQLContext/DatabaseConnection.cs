@@ -128,6 +128,30 @@ namespace DAL.SQLContext
                 Console.WriteLine("Error: " + exception.Message);
             }
             return null;
-        } 
+        }
+
+        public DateTime? executeReaderDateTime(string query)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    Console.WriteLine("Connection established");
+
+                    SqlCommand command = new SqlCommand(query, connection);
+                    if (command.ExecuteScalar() != null)
+                    {
+                        Console.WriteLine("Execute reader executed");
+                        return Convert.ToDateTime(command.ExecuteScalar());
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: " + e.Message);
+            }
+            return null;
+        }
     }
 }

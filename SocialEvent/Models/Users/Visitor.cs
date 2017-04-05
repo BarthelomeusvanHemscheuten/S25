@@ -8,9 +8,9 @@ using System.Drawing;
 
 namespace Models.Users
 {
-    class Visitor : User
+    public class Visitor : User
     {
-        public Visitor(string username, string name, string password, string emailAddress, string telnr, string address, DateTime dateOfBirth, int eventID, int reservationID) : base(username, name, password, emailAddress, telnr, address, dateOfBirth, eventID, reservationID)
+        public Visitor(string username, string name, string password, string emailAddress, string telnr, string address, DateTime? dateOfBirth, int eventID, int reservationID) : base(username, name, password, emailAddress, telnr, address, dateOfBirth, eventID, reservationID)
         {
 
         }
@@ -20,5 +20,9 @@ namespace Models.Users
 
         }
 
+        public override string ToString()
+        {
+            return "Username: " + this.Username + ", name: " + this.Name + ", Telnr: " + this.Telnr;
+        }
     }
 }

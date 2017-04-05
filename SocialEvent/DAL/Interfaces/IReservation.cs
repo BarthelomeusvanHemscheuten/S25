@@ -13,13 +13,14 @@ namespace DAL.Interfaces
         bool InsertLocation(int number, string features, string type);
         bool InsertMaterial(string name, string description, double price);
 
-        bool UpdateLocation(int ID, int reservationID);
-        bool UpdateMaterial(int visitorID, DateTime startDate, DateTime endDate);
+        bool UpdateLocation(int id, int reservationId);
+        bool UpdateMaterial(int visitorId, DateTime startDate, DateTime endDate);
 
-        int CountEvents();
-        int CountLocations();
+        int GetEventID(string name);
+        string GetEventDescription(int id);
+        int GetLocationID(int number);
         int CountMaterials();
-
+        
 
 
 

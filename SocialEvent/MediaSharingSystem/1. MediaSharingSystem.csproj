@@ -46,6 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\MediaController.cs" />
+    <Compile Include="Controllers\ReservationController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Forms\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,7 +80,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\DAL\3. DAL.csproj">
+      <Project>{883abceb-2b31-4927-9020-8c573342f63b}</Project>
+      <Name>3. DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Models\2. Models.csproj">
+      <Project>{97d41e4f-9763-4d1f-9f52-d88632145bd5}</Project>
+      <Name>2. Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

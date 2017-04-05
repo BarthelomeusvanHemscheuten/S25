@@ -9,18 +9,24 @@ namespace DAL.Interfaces
 {
     public interface IMedia
     {
-        bool InsertPost(int userID, string text, string path);
-        bool InsertTag(int postID, string text);
-        bool InsertComment(int userID, int postID, string text);
-        bool InsertReportPost(int userID, int postID, string reason);
-        bool InsertReportComment(int userID, int commentID, string reason);
-        bool InsertLike(int userID, int postID);
+        bool InsertPost(int userId, string text, string path);
+        bool InsertTag(int postId, string text);
+        bool InsertComment(int userId, int postId, string text);
+        bool InsertReportPost(int userId, int postId, string reason);
+        bool InsertReportComment(int userId, int commentId, string reason);
+        bool InsertLike(int userId, int postId);
 
-        bool UpdatePicture(int userID, Image image);
+        bool UpdatePicture(int userId, Image image);
 
         int CountPosts();
         int CountComments();
         int CountReports();
+        List<string> GetTextPathPost(int id);
+        string GetTextComment(int id);
+
+        bool DeletePost(int id);
+        bool DeleteComment(int id);
+
 
 
 

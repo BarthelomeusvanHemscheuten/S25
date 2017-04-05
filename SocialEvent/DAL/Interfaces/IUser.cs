@@ -9,20 +9,25 @@ namespace DAL.Interfaces
 {
     public interface IUser
     {
-        bool InsertUser(int reservationID, int userGroup, DateTime dateOfBirth, string emailAddress, string name, string address, string username, string password, string telnr);
-        bool InsertUser(int reservationID, int userGroup, string name, string username, string password, string telnr);
-        bool DeleteUser(int ID);
+        bool InsertUser(int reservationId, int userGroup, DateTime? dateOfBirth, string emailAddress, string name, string address, string username, string password, string telnr);
+        bool InsertUser(int reservationId, int userGroup, string name, string username, string password, string telnr);
+        bool DeleteUser(int Id);
+        bool InsertSwearWord(string swearWord);
+        
+        int GetUserGroup(string username);
+        int GetID(string username);
+        List<string> GetUserDataString(string username);
+        List<int> GetUserDataInt(string username);
+        DateTime? GetUserDataDateTime(string username);
 
-        int CountUsers();
-
-
+        bool CheckLogin(string username, string password);
 
 
 
 
 
         // CONTROLEREN!!
-        //bool checkLogin(string username, string password);
+
         //bool UpdatePassword(string username, string password);
         //bool AddUser(string name, string username, string emailAddress, string password, int age);
         //int getUserGroup(string username);

@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using Models.Users;
 using DAL.Repositories;
+using DAL.SQLContext;
 
 namespace Models.MediaSharingSystem
 {
-    class Comment
+    public class Comment
     {
         MediaRepository mediaRepo = new MediaRepository(new MediaSQLContext());
 
@@ -16,11 +17,19 @@ namespace Models.MediaSharingSystem
 
         public List<Report> Reports { get; private set; }
 
+        // constructor om nieuwe comment aan te maken
         public Comment(string text)
         {
             this.ID = mediaRepo.CountComments() + 1;
             this.Text = text;
-        }    
+        }
+
+        // constructor om comment aan te maken die al bestaat in database
+        public Comment(int id, string text)
+        {
+            this.ID = id;
+            this.Text = text;
+        } 
         
         public bool ReportComment(User user, string reason)
         {

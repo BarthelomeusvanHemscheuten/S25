@@ -17,69 +17,69 @@ namespace DAL.Repositories
             this.context = context;
         }
 
-        public bool InsertPost(int userID, string text, string path)
+        public bool InsertPost(int userId, string text, string path)
         {
-            if(context.InsertPost(userID, text, path)){
+            if(context.InsertPost(userId, text, path)){
                 return true;
             }
             return false;
         }
 
-        public bool InsertTag(int postID, string text)
+        public bool InsertTag(int postId, string text)
         {
-            if(context.InsertTag(postID, text))
+            if(context.InsertTag(postId, text))
             {
                 return true;
             }
             return false;
         }
 
-        public bool InsertComment(int userID, int postID, string text)
+        public bool InsertComment(int userId, int postId, string text)
         {
-            if(context.InsertComment(userID, postID, text))
+            if(context.InsertComment(userId, postId, text))
             {
                 return true;
             }
             return false;
         }
 
-        public bool InsertReportPost(int userID, int postID, string reason)
+        public bool InsertReportPost(int userId, int postId, string reason)
         {
-            if(context.InsertReportComment(userID, postID, reason))
+            if(context.InsertReportComment(userId, postId, reason))
             {
                 return true;
             }
             return false;
         }
 
-        public bool InsertReportComment(int userID, int commentID, string reason)
+        public bool InsertReportComment(int userId, int commentId, string reason)
         {
-            if(context.InsertReportComment(userID, commentID, reason))
+            if(context.InsertReportComment(userId, commentId, reason))
             {
                 return true;
             }
             return false;
         }
 
-        public bool InsertLike(int userID, int postID)
+        public bool InsertLike(int userId, int postId)
         {
-            if(context.InsertLike(userID, postID))
+            if(context.InsertLike(userId, postId))
             {
                 return true;
             }
             return false;
         }
 
-        public bool UpdatePicture(int userID, Image image)
+        public bool UpdatePicture(int userId, Image image)
         {
-            if(context.UpdatePicture(userID, image))
+            if(context.UpdatePicture(userId, image))
             {
                 return true;
             }
             return false;
         }
 
-        public int CountPostS()
+        public int CountPosts()
         {
             return context.CountPosts();
         }
@@ -94,7 +94,33 @@ namespace DAL.Repositories
             return context.CountReports();
         }
 
+        public List<string> GetTextPathPost(int id)
+        {
+            return context.GetTextPathPost(id);
+        }
 
+        public string GetTextComment(int id)
+        {
+            return context.GetTextComment(id);
+        }
+
+        public bool DeletePost(int id)
+        {
+            if (context.DeletePost(id))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool DeleteComment(int id)
+        {
+            if (context.DeleteComment(id))
+            {
+                return true;
+            }
+            return false;
+        }
 
 
 

@@ -48,32 +48,37 @@ namespace DAL.Repositories
             return false;
         }
 
-        public bool UpdateLocation(int ID, int reservationID)
+        public bool UpdateLocation(int id, int reservationID)
         {
-            if(context.UpdateLocation(ID, reservationID))
+            if(context.UpdateLocation(id, reservationID))
             {
                 return true;
             }
             return false;
         }
 
-        public bool UpdateMaterial(int visitorID, DateTime startDate, DateTime endDate)
+        public bool UpdateMaterial(int visitorId, DateTime startDate, DateTime endDate)
         {
-            if(context.UpdateMaterial(visitorID, startDate, endDate))
+            if(context.UpdateMaterial(visitorId, startDate, endDate))
             {
                 return true;
             }
             return false;
         }
 
-        public int CountEvents()
+        public int GetEventID(string name)
         {
-            return context.CountEvents();
+            return context.GetEventID(name);
         }
 
-        public int CountLocations()
+        public string GetEventDescription(int id)
         {
-            return context.CountLocations();
+            return context.GetEventDescription(id);
+        }
+
+        public int GetLocationID(int number)
+        {
+            return context.GetLocationID(number);
         }
 
         public int CountMaterials()
