@@ -11,7 +11,7 @@ namespace DAL.SQLContext
     {
         private const string connectionString = "???";
 
-        public void executeNonQuery(string query)
+        public bool executeNonQuery(string query)
         {
             try
             {
@@ -23,12 +23,15 @@ namespace DAL.SQLContext
                     SqlCommand command = new SqlCommand(query, connection);
                     command.ExecuteNonQuery();
                     Console.WriteLine("Execute reader executed");
+
+                    return true;
                 }
             }
             catch (Exception e)
             {
                 Console.WriteLine("Error: " + e.Message);
             }
+            return false;
         }
 
         public string executeReaderString(string query)

@@ -9,6 +9,7 @@ namespace Models.Users
 {
     class Admin : User
     {
+        UserRepository userRepo = new UserRepository(new UserSQLContext());
         ReservationRepository reservationRepo = new ReservationRepository(new ReservationSQLContext());
 
         public Admin(string username, string name, string password, string emailAddress, string telnr, string address, DateTime dateOfBirth, int eventID, int reservationID) : base(username, name, password, emailAddress, telnr, address, dateOfBirth, eventID, reservationID)
@@ -21,7 +22,7 @@ namespace Models.Users
             if (name != null && description != null)
             {
                 Event eventt = new Event(name, description);
-                reservationRepo.InsertEvent(name, description); //check
+                reservationRepo.InsertEvent(name, description);
 
                 return true;
             }
@@ -32,7 +33,7 @@ namespace Models.Users
         {
             if (visitor != null)
             {
-                reservationRepo.DeleteVisitor(visitor.ID); //check
+                userRepo.DeleteUser(visitor.ID);
 
                 return true;
             }

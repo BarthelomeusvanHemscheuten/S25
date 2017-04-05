@@ -19,7 +19,7 @@ namespace Models.ReservationSystem
 
         public Material(string name, string description, double price)
         {
-            this.ID = reservationRepo.CountMaterial() + 1;
+            this.ID = reservationRepo.CountMaterials() + 1;
             this.Name = name;
             this.Description = description;
             this.Price = price;

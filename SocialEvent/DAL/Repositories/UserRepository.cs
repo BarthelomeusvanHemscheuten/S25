@@ -17,84 +17,105 @@ namespace DAL.Repositories
             this.context = context;
         }
 
-        public bool checkLogin(string username, string password)
+        public bool InsertUser(int reservationID, int userGroup, DateTime dateOfBirth, string emailAddress, string name, string address, string username, string password, string telnr)
         {
-            if (context.checkLogin(username, password))
+            if (context.InsertUser(reservationID, userGroup, dateOfBirth, emailAddress, name, address, username, password, telnr))
             {
                 return true;
             }
             return false;
         }
 
-        public bool UpdatePassword(string username, string password)
+        public bool InsertUser(int reservationID, int userGroup, string name, string username, string password, string telnr)
         {
-            if (context.UpdatePassword(username, password))
+            if (context.InsertUser(reservationID, userGroup, name, username, password, telnr))
             {
                 return true;
             }
             return false;
         }
 
-        public bool AddUser(string name, string username, string emailAddress, string password, int age)
+        public bool DeleteUser(int ID)
         {
-            if (context.AddUser(name, username, emailAddress, password, age))
+            if (context.DeleteUser(ID))
             {
                 return true;
             }
             return false;
         }
 
-        public bool DeleteUser(string username)
+        public int CountUsers()
         {
-            if (context.DeleteUser(username))
-            {
-                return true;
-            }
-            return false;
+            return context.CountUsers();
         }
 
-        public int getUserGroup(string username)
-        {
-            return context.getUserGroup(username);
-        }
 
-        public bool getIsPresent(string username)
-        {
-            if (context.getIsPresent(username))
-            {
-                return true;
-            }
-            return false;
-        }
 
-        public DateTime getDateOfBirth(string username)
-        {
-            return context.getDateOfBirth(username);
-        }
 
-        public string getEmail(string username)
-        {
-            return context.getEmail(username);
-        }
 
-        public string getAdres(string username)
-        {
-            return context.getAdres(username);
-        }
 
-        public string getTelNr(string username)
-        {
-            return context.getTelNr(username);
-        }
 
-        public string getRFID(string username)
-        {
-            return context.getRFID(username);
-        }
+        // CONTROLEREN!!
+        //public bool checkLogin(string username, string password)
+        //{
+        //    if (context.checkLogin(username, password))
+        //    {
+        //        return true;
+        //    }
+        //    return false;
+        //}
 
-        public Image getImage(string username)
-        {
-            return context.getImage(username);
-        }
+        //public bool UpdatePassword(string username, string password)
+        //{
+        //    if (context.UpdatePassword(username, password))
+        //    {
+        //        return true;
+        //    }
+        //    return false;
+        //}
+        
+        //public int getUserGroup(string username)
+        //{
+        //    return context.getUserGroup(username);
+        //}
+
+        //public bool getIsPresent(string username)
+        //{
+        //    if (context.getIsPresent(username))
+        //    {
+        //        return true;
+        //    }
+        //    return false;
+        //}
+
+        //public DateTime getDateOfBirth(string username)
+        //{
+        //    return context.getDateOfBirth(username);
+        //}
+
+        //public string getEmail(string username)
+        //{
+        //    return context.getEmail(username);
+        //}
+
+        //public string getAdres(string username)
+        //{
+        //    return context.getAdres(username);
+        //}
+
+        //public string getTelNr(string username)
+        //{
+        //    return context.getTelNr(username);
+        //}
+
+        //public string getRFID(string username)
+        //{
+        //    return context.getRFID(username);
+        //}
+
+        //public Image getImage(string username)
+        //{
+        //    return context.getImage(username);
+        //}
     }
 }

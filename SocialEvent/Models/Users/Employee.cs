@@ -9,7 +9,8 @@ namespace Models.Users
 {
     class Employee : User
     {
-        ReservationRepository reservationRepo = new ReservationRepository(new ReservationSQLContext()); // check
+        UserRepository userRepo = new UserRepository(new UserSQLContext());
+        ReservationRepository reservationRepo = new ReservationRepository(new ReservationSQLContext());
 
         public Employee(string username, string name, string password, string emailAddress, string telnr, string address, DateTime dateOfBirth, int eventID, int reservationID) : base(username, name, password, emailAddress, telnr, address, dateOfBirth, eventID, reservationID)
         {
@@ -23,8 +24,8 @@ namespace Models.Users
                 Visitor visitor = new Visitor(username, name, password, emailAddress, telnr, address, dateOfBirth, eventID, reservationID);
                 eventt.Visitors.Add(visitor);
                 location.Visitors.Add(visitor);
-                reservationRepo.UpdateLocation(location.ID, reservationID); //check
-                userRepo.InsertVisitor(visitor.ReservationID, 3, visitor.DateOfBirth, visitor.EmailAddress, visitor.Name, visitor.Address, visitor.Username, visitor.Password, visitor.Telnr); //check
+                reservationRepo.UpdateLocation(location.ID, reservationID);
+                userRepo.InsertUser(visitor.ReservationID, 3, visitor.DateOfBirth, visitor.EmailAddress, visitor.Name, visitor.Address, visitor.Username, visitor.Password, visitor.Telnr);
                 
                 return visitor;
             }
@@ -38,8 +39,8 @@ namespace Models.Users
                 Visitor visitor = new Visitor(username, name, password, telnr, eventID, reservationID);
                 eventt.Visitors.Add(visitor);
                 location.Visitors.Add(visitor);
-                reservationRepo.UpdateLocation(location.ID, reservationID); //check
-                userRepo.InsertVisitor(visitor.ReservationID, 3, visitor.Name, visitor.Username, visitor.Password, visitor.Telnr); //check
+                reservationRepo.UpdateLocation(location.ID, reservationID);
+                userRepo.InsertUser(visitor.ReservationID, 3, visitor.Name, visitor.Username, visitor.Password, visitor.Telnr);
 
                 return visitor;
             }
@@ -50,7 +51,7 @@ namespace Models.Users
         {
             if(visitor != null)
             {
-                userRepo.DeleteVisitor(visitor.ID); //check
+                userRepo.DeleteUser(visitor.ID);
 
                 return true;
             }
@@ -61,7 +62,7 @@ namespace Models.Users
         {
             if (eventt != null)
             {
-                int reservationID = reservationRepo.InsertGetReservation(0); //check
+                int reservationID = reservationRepo.InsertGetReservation(0);
 
                 // voor de eerste locatie. 
                 List<Visitor> visitors = new List<Visitor>();
@@ -94,7 +95,7 @@ namespace Models.Users
             if (visitor != null && material != null)
             {
                 visitor.Materials.Add(material);
-                reservationRepo.UpdateMaterial(visitor.ID, startDate, endDate); //check
+                reservationRepo.UpdateMaterial(visitor.ID, startDate, endDate);
 
 
                 return true;

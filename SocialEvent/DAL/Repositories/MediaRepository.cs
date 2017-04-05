@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DAL.Interfaces;
+using System.Drawing;
 
 namespace DAL.Repositories
 {
@@ -16,7 +17,7 @@ namespace DAL.Repositories
             this.context = context;
         }
 
-        bool InsertPost(int userID, string text, string path)
+        public bool InsertPost(int userID, string text, string path)
         {
             if(context.InsertPost(userID, text, path)){
                 return true;
@@ -24,7 +25,16 @@ namespace DAL.Repositories
             return false;
         }
 
-        bool InsertComment(int userID, int postID, string text)
+        public bool InsertTag(int postID, string text)
+        {
+            if(context.InsertTag(postID, text))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool InsertComment(int userID, int postID, string text)
         {
             if(context.InsertComment(userID, postID, text))
             {
@@ -33,46 +43,85 @@ namespace DAL.Repositories
             return false;
         }
 
-        bool InsertReportPost(int userID, int postID, string reason)
+        public bool InsertReportPost(int userID, int postID, string reason)
         {
-            if(context.InsertReportPost(userID, postID, reason))
+            if(context.InsertReportComment(userID, postID, reason))
             {
                 return true;
             }
             return false;
         }
-        bool InsertReportComment(int userID, int commentID, string reason)
+
+        public bool InsertReportComment(int userID, int commentID, string reason)
         {
-            if (context.InsertReportComment(userID, commentID, reason)){
-                return true;                
+            if(context.InsertReportComment(userID, commentID, reason))
+            {
+                return true;
             }
             return false;
         }
-        
 
-        List<string> GetAllPosts()
+        public bool InsertLike(int userID, int postID)
         {
-            return context.GetAllPosts();
+            if(context.InsertLike(userID, postID))
+            {
+                return true;
+            }
+            return false;
         }
 
-        List<string> GetAllComments(int postID)
+        public bool UpdatePicture(int userID, Image image)
         {
-            return context.GetAllComments(postID);
+            if(context.UpdatePicture(userID, image))
+            {
+                return true;
+            }
+            return false;
         }
 
-        List<int> GetAllLikesPost(int postID)
+        public int CountPostS()
         {
-            return context.GetAllLikesPost(postID);
+            return context.CountPosts();
         }
 
-        List<string> GetAllReportedPosts()
+        public int CountComments()
         {
-            return context.GetAllReportedPosts();
+            return context.CountComments();
         }
 
-        List<string> GetAllReportsFromPostOrComment(int postCommentID)
+        public int CountReports()
         {
-            return context.GetAllReportsFromPostOrComment(postCommentID);
+            return context.CountReports();
         }
+
+
+
+
+
+        // CONTROLEREN!!
+        //public List<string> GetAllPosts()
+        //{
+        //    return context.GetAllPosts();
+        //}
+
+        //public List<string> GetAllComments(int postID)
+        //{
+        //    return context.GetAllComments(postID);
+        //}
+
+        //public List<int> GetAllLikesPost(int postID)
+        //{
+        //    return context.GetAllLikesPost(postID);
+        //}
+
+        //public List<string> GetAllReportedPosts()
+        //{
+        //    return context.GetAllReportedPosts();
+        //}
+
+        //public List<string> GetAllReportsFromPostOrComment(int postCommentID)
+        //{
+        //    return context.GetAllReportsFromPostOrComment(postCommentID);
+        //}
     }
 }

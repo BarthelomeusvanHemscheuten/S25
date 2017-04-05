@@ -33,7 +33,7 @@ namespace Models.ReservationSystem
             {
                 Location location = new Location(number, features, type);
                 this.Locations.Add(location);
-                reservationRepo.InsertLocation(number, features, type); //check
+                reservationRepo.InsertLocation(number, features, type);
 
                 return location;
             }
@@ -46,7 +46,7 @@ namespace Models.ReservationSystem
             {
                 Material material = new Material(name, description, price);
                 this.Material.Add(material);
-                reservationRepo.InsertMaterial(name, description, price); //check
+                reservationRepo.InsertMaterial(name, description, price);
 
                 return material;
             }

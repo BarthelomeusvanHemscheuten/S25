@@ -6,12 +6,27 @@ using System.Threading.Tasks;
 
 namespace DAL.Interfaces
 {
-    interface IReservation
+    public interface IReservation
     {
-        bool InsertEvent(string name);
-        bool InsertReservation();
-        bool InsertLocation(int locationNr, string locationFeatures, string locationType);
-        bool UpdatePayment(int trueOrFalse);
-        bool CheckPayment(int reservationID);
+        bool InsertEvent(string name, string description);
+        int InsertGetReservation(int paymentTrueOrFalse);
+        bool InsertLocation(int number, string features, string type);
+        bool InsertMaterial(string name, string description, double price);
+
+        bool UpdateLocation(int ID, int reservationID);
+        bool UpdateMaterial(int visitorID, DateTime startDate, DateTime endDate);
+
+        int CountEvents();
+        int CountLocations();
+        int CountMaterials();
+
+
+
+
+
+
+        // CONTROLEREN!!
+        //bool UpdatePayment(int trueOrFalse);
+        //bool CheckPayment(int reservationID);
     }
 }

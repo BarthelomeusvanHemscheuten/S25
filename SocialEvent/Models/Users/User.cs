@@ -62,7 +62,7 @@ namespace Models.Users
             {
                 Post post = new Post(text, path);
                 this.Posts.Add(post);
-                mediaRepo.InsertPost(this.ID, text, path); //check
+                mediaRepo.InsertPost(this.ID, text, path);
 
                 return true;
             }
@@ -75,11 +75,11 @@ namespace Models.Users
             {
                 Post post = new Post(text, path, tags);
                 this.Posts.Add(post);
-                mediaRepo.InsertPost(this.ID, text, path); //check
+                mediaRepo.InsertPost(this.ID, text, path);
                 
                 for (int i = 0; i < tags.Count; i++)
                 {
-                    mediaRepo.InsertGetTag(post.ID, tags[i]); //check
+                    mediaRepo.InsertTag(post.ID, tags[i]);
                 }
 
                 return true;
@@ -94,7 +94,7 @@ namespace Models.Users
                 Comment comment = new Comment(text);
                 this.Comments.Add(comment);
                 post.Comments.Add(comment);
-                mediaRepo.InsertComment(this.ID, post.ID, text); //check
+                mediaRepo.InsertComment(this.ID, post.ID, text);
 
                 return true;
             }
@@ -106,7 +106,7 @@ namespace Models.Users
             if(image != null)
             {
                 this.Picture = image;
-                mediaRepo.UpdatePicture(this.ID, image); //check
+                mediaRepo.UpdatePicture(this.ID, image);
 
                 return true;
             }
