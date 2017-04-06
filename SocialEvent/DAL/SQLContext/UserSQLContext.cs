@@ -30,14 +30,16 @@ namespace DAL.SQLContext
 
         public bool DeleteUser(int Id)
         {
-            string query = @"";
+            string query = @"DELETE FROM [User] WHERE [userid] = '@ID'";
+            query = query.Replace("@ID", Id.ToString());
 
             return databaseConnection.executeNonQuery(query);
         }
 
         public bool InsertSwearWord(string swearWord)
         {
-            string query = @"";
+            string query = @"INSERT INTO [swearword] ([word]) VALUES ('@SWEARWORD')";
+            query = query.Replace("@SWEARWORD", swearWord);
 
             return databaseConnection.executeNonQuery(query);
         }
@@ -45,21 +47,23 @@ namespace DAL.SQLContext
 
         public int CountUsers()
         {
-            string query = @"";
+            string query = @"SELECT COUNT(*) FROM [user]";
 
             return databaseConnection.executeReaderInt(query);
         }
 
         public int GetUserGroup(string username)
         {
-            string query = @"";
+            string query = @"SELECT [Usergroup] FROM [user] WHERE [username] = '@USERNAME'";
+            query = query.Replace("@USERNAME", username);
 
             return databaseConnection.executeReaderInt(query);
         }
 
         public int GetID(string username)
         {
-            string query = @"";
+            string query = @"SELECT [UserID] FROM [user] WHERE [username] = '@USERNAME'";
+            query = query.Replace("@USERNAME", username);
 
             return databaseConnection.executeReaderInt(query);
         }
@@ -67,22 +71,24 @@ namespace DAL.SQLContext
         public List<string> GetUserDataString(string username)
         {
             // LET OP DE VOLGORDE DIE DE LIST MOET TERUG KRIJGEN; username, name, emailaddress, telnr, address
-            string query = @"";
-
+            string query = @"SELECT [username], [name], [email], [telnr], [addres] FROM [USER] WHERE [username] = '@ID'";
+            query = query.Replace("@USERNAME", username);
             return databaseConnection.executeReaderStringList(query);
         }
 
         public List<int> GetUserDataInt(string username)
         {
             // LET OP DE VOLGORDE DIE DE LIST MOET TERUG KRIJGEN; eventID, reservationID
-            string query = @"";
+            string query = @"SELECT [eventid], [reservationid] FROM [user] WHERE [username] = '@USERNAME'";
+            query = query.Replace("@USERNAME", username);
 
             return databaseConnection.executeReaderIntList(query);
         }
 
         public DateTime? GetUserDataDateTime(string username)
         {
-            string query = @"";
+            string query = @"SELECT [dateofbirth] FROM [user] WHERE [username] = '@USERNAME'";
+            query = query.Replace("@USERNAME", username);
 
             return databaseConnection.executeReaderDateTime(query);
         }
@@ -96,14 +102,17 @@ namespace DAL.SQLContext
 
         public bool UpdateUsername(string oldUsername, string newUsername)
         {
-            string query = @"";
+            string query = @"UPDATE [User] SET [username] = '@NEWUSERNAME' WHERE [username] = '@OLDUSERNAME'";
+            query = query.Replace("@NEWUSERNAME", newUsername);
+            query = query.Replace("@OLDUSERNAME", oldUsername);
 
             return databaseConnection.executeNonQuery(query);
         }
 
         public bool CheckLogin(string username, string password)
         {
-            string query = @"SELECT password FROM user WHERE username = '" + username + @"'";
+            string query = @"SELECT password FROM user WHERE username = '@USERNAME'";
+            query = query.Replace("@USERNAME", username);
 
             if (databaseConnection.executeReaderString(query) == password)
             {
