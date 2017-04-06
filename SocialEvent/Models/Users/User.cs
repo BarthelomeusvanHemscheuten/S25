@@ -55,7 +55,7 @@ namespace Models.Users
             this.Telnr = telnr;
         }
 
-        public bool PlacePost(string text, string path)
+        public List<string> PlacePost(string text, string path)
         {
             if (text != null && path != null)
             {
@@ -63,13 +63,15 @@ namespace Models.Users
                 this.Posts.Add(post);
                 mediaRepo.InsertPost(this.ID, text, path);
 
-                return true;
+                return post.ShowPost(post);
             }
-            return false;
+            return null;
         }
 
-        public bool PlacePost(string text, string path, List<string> tags)
+        public List<string> PlacePost(string text, string path, List<string> tags)
         {
+            List<string> result = new List<string>();
+
             if(text != null && path != null && tags != null)
             {
                 Post post = new Post(text, path, tags);
@@ -81,12 +83,14 @@ namespace Models.Users
                     mediaRepo.InsertTag(post.ID, tags[i]);
                 }
 
-                return true;
+                result.Add(post.Text);
+                result.Add(post.Path);
+                return result;
             }
-            return false;
+            return null;
         }
 
-        public bool PlaceComment(string text, Post post)
+        public string PlaceComment(string text, Post post)
         {
             if (text != null && post != null)
             {
@@ -95,9 +99,9 @@ namespace Models.Users
                 post.Comments.Add(comment);
                 mediaRepo.InsertComment(this.ID, post.ID, text);
 
-                return true;
+                return comment.Text;
             }
-            return false;
+            return null;
         }
 
         public bool ChangePicture(Image image)
@@ -110,24 +114,6 @@ namespace Models.Users
                 return true;
             }
             return false;
-        }
-
-        public List<string> ShowPost(Post post)
-        {
-            if (post != null)
-            {
-                return mediaRepo.GetTextPathPost(post.ID);
-            }
-            return null;
-        }
-
-        public string ShowComment(Comment comment)
-        {
-            if(comment != null)
-            {
-                return mediaRepo.GetTextComment(comment.ID);
-            }
-            return null;
         }
 
         public bool ChangePassword(string password1, string password2)

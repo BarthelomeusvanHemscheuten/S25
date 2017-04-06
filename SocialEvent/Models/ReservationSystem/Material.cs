@@ -36,5 +36,14 @@ namespace Models.ReservationSystem
             this.Description = description;
             this.Price = price;
         }
+
+        public Material ShowMaterial(Material material)
+        {
+            if (material != null)
+            {
+                return reservationRepo.GetMaterial(material.ID);
+            }
+            return null;
+        }
     }
 }

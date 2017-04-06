@@ -17,6 +17,8 @@ namespace MediaSharingSystem.Controllers
             mediaRepo = new MediaRepository(new MediaSQLContext());
         }
 
+        // get reported posts and comments from database
 
+        // get posts and comments (per 3 posts)
     }
 }

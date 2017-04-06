@@ -80,5 +80,14 @@ namespace Models.MediaSharingSystem
             }
             return false;
         }
+
+        public List<string> ShowPost(Post post)
+        {
+            if (post != null)
+            {
+                return mediaRepo.GetTextPathPost(post.ID);
+            }
+            return null;
+        }
     }
 }

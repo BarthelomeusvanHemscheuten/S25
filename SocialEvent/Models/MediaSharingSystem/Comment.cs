@@ -44,5 +44,14 @@ namespace Models.MediaSharingSystem
             }
             return false;
         }
+
+        public string ShowComment(Comment comment)
+        {
+            if (comment != null)
+            {
+                return mediaRepo.GetTextComment(comment.ID);
+            }
+            return null;
+        }
     }
 }

@@ -22,6 +22,11 @@ namespace MediaSharingSystem.Controllers
         
         public static Event GetEvent { get { return EVENT; } }
 
+        public bool AddLocation()
+        {
+            return false;
+        }
+
         public bool AddMaterial(string name, string description, double price, int quantity)
         {
             if (name != null && description != null && price > 0 && quantity > 0)
@@ -29,6 +34,20 @@ namespace MediaSharingSystem.Controllers
                 for (int i = 0; i < quantity; i++)
                 {
                     EVENT.AddMaterial(name, description, price);
+                }
+
+                return true;
+            }
+            return false;
+        }
+
+        public bool GetAndShowMaterialFromDatabase()
+        {
+            if (quantity > 0)
+            {
+                for (int i = 0; i < quantity; i++)
+                {
+                    
                 }
 
                 return true;

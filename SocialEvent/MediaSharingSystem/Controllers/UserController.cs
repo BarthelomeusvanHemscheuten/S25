@@ -75,41 +75,51 @@ namespace MediaSharingSystem.Controllers
             return false;
         }
 
-        public List<string> PlacePost(string text, string path)
+        public List<string> AddAndShowPost(string text, string path)
         {
             switch (userGroup)
             {
                 case 3:
-                    visitor.PlacePost(text, path);
-                    return visitor.ShowPost(visitor.Posts.Last());
+                    return visitor.PlacePost(text, path);
                 case 2:
-                    employee.PlacePost(text, path);
-                    return employee.ShowPost(employee.Posts.Last());
+                    return employee.PlacePost(text, path);
+                    
                 case 1:
-                    admin.PlacePost(text, path);
-                    return admin.ShowPost(admin.Posts.Last());
+                    return admin.PlacePost(text, path);
             }
             return null;
         }
 
-        public string PlaceComment(string text, Post post)
+        public List<string> AddAndShowPost(string text, string path, List<string> tags)
         {
             switch (userGroup)
             {
                 case 3:
-                    visitor.PlaceComment(text, post);
-                    return visitor.ShowComment(visitor.Comments.Last());
+                    return visitor.PlacePost(text, path, tags);
                 case 2:
-                    employee.PlaceComment(text, post);
-                    return employee.ShowComment(employee.Comments.Last());
+                    return employee.PlacePost(text, path, tags);
+
                 case 1:
-                    admin.PlaceComment(text, post);
-                    return admin.ShowComment(admin.Comments.Last());
+                    return admin.PlacePost(text, path, tags);
             }
             return null;
         }
 
-        public bool Like(Post post)
+        public string AddAndShowComment(string text, Post post)
+        {
+            switch (userGroup)
+            {
+                case 3:
+                    return visitor.PlaceComment(text, post);
+                case 2:
+                    return employee.PlaceComment(text, post);
+                case 1:
+                    return admin.PlaceComment(text, post);
+            }
+            return null;
+        }
+
+        public bool AddAndShowLike(Post post)
         {
             if (post != null)
             {
@@ -221,21 +231,31 @@ namespace MediaSharingSystem.Controllers
             return false;
         }
 
-        public bool DeleteOrShow(string deleteOrShow)
+        public bool DeleteShowPost(Post post, string deleteOrShow)
         {
-            if(deleteOrShow == "delete")
+            if(post != null && deleteOrShow != null)
             {
-
+                admin.DeleteShowPost(post, deleteOrShow);
 
                 return true;
-            } else if (deleteOrShow == "show")
-            {
+            } 
+            return false;
+        }
 
+        public bool DeleteShowComment(Comment comment, string deleteOrShow)
+        {
+            if (comment != null && deleteOrShow != null)
+            {
+                admin.DeleteShowComment(comment, deleteOrShow);
 
                 return true;
             }
             return false;
         }
-        
+
+        // VISITOR
+
+        // get visitors from database
+
     }
 }

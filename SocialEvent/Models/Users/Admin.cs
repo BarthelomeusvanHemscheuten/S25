@@ -43,7 +43,7 @@ namespace Models.Users
             return false;
         }
 
-        public bool DeletePost(Post post, string deleteOrShow)
+        public bool DeleteShowPost(Post post, string deleteOrShow)
         {
             if (post != null && deleteOrShow == "delete")
             {
@@ -60,7 +60,7 @@ namespace Models.Users
             return false;
         }
 
-        public bool DeletePost(Comment comment, string deleteOrShow)
+        public bool DeleteShowComment(Comment comment, string deleteOrShow)
         {
             if (comment != null && deleteOrShow == "delete")
             {
