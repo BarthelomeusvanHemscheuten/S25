@@ -9,8 +9,8 @@ namespace DAL.Interfaces
 {
     public interface IUser
     {
-        bool InsertUser(int reservationId, int userGroup, DateTime? dateOfBirth, string emailAddress, string name, string address, string username, string password, string telnr);
-        bool InsertUser(int reservationId, int userGroup, string name, string username, string password, string telnr);
+        bool InsertUser(int eventid, int reservationid, int usergroup, bool ispresent, DateTime dateofbirth, string email, string address, string name, string username, string password, string telnr, string RFID);
+        bool InsertUser(int eventid, int reservationid, int usergroup, bool ispresent, string name, string username, string password, string telnr, string RFID);
         bool DeleteUser(int Id);
         bool InsertSwearWord(string swearWord);
         

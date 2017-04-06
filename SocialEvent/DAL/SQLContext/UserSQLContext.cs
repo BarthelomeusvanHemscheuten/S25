@@ -12,18 +12,37 @@ namespace DAL.SQLContext
     {
         DatabaseConnection databaseConnection = new DatabaseConnection();
 
-        public bool InsertUser(int reservationId, int userGroup, DateTime? dateOfBirth, string emailAddress, string name, string address, string username, string password, string telnr)
+        public bool InsertUser(int eventid, int reservationid, int usergroup, bool ispresent, DateTime dateofbirth, string email, string address, string name, string username, string password, string telnr, string RFID)
         {
             // query aanpassen aan de hand van onze database
-            string query = @"INSERT INTO [User]([ID], [Username], [EmailAddress], [Password], [Name], [UserType], [Age]) VALUES ('" + username + @"', '" + emailAddress + @"', '" + password + @"', '" + name + @"', " + 2 + @");";
+            string query = @"INSERT INTO [user] ([eventid], [reservationid], [usergroup], [ispresent], [dateofbirth], [email], [address], [name], [username], [password], [telnr], [rfid]) VALUES('@EVENTID', '@RESERVATIONID', '@USERGROUP', '@ISPRESENT', '@DATEOFBIRTH', '@EMAIL', '@ADDRESS', '@NAME', '@USERNAME', '@PASSWORD', '@TELNR', '@RFID')";
+            query = query.Replace("@EVENTID", eventid.ToString());
+            query = query.Replace("@RESERVATIONID", reservationid.ToString());
+            query = query.Replace("@USERGROUP", usergroup.ToString());
+            query = query.Replace("@ISPRESENT", ispresent.ToString());
+            query = query.Replace("@DATEOFBIRTH", dateofbirth.ToShortDateString());
+            query = query.Replace("@EMAIL", email);
+            query = query.Replace("@ADDRESS", address);
+            query = query.Replace("@USERNAME", username);
+            query = query.Replace("@PASSWORD", password);
+            query = query.Replace("@TELNR", telnr);
+            query = query.Replace("@RFID", RFID);
 
             return databaseConnection.executeNonQuery(query);
         }
 
-        public bool InsertUser(int reservationId, int userGroup, string name, string username, string password, string telnr)
+        public bool InsertUser(int eventid, int reservationid, int usergroup, bool ispresent, string name, string username, string password, string telnr, string RFID)
         {
             // query aanpassen aan de hand van onze database
-            string query = @"INSERT INTO [User]([ID], [Username], [EmailAddress], [Password], [Name], [UserType], [Age]) VALUES ('" + username + @"', '" + password + @"', '" + name + @"', " + 2 + @");";
+            string query = @"INSERT INTO [user] ([eventid], [reservationid], [usergroup], [ispresent], [name], [username], [password], [telnr], [rfid]) VALUES('@EVENTID', '@RESERVATIONID', '@USERGROUP', '@ISPRESENT', '@NAME', '@USERNAME', '@PASSWORD', '@TELNR', '@RFID')";
+            query = query.Replace("@EVENTID", eventid.ToString());
+            query = query.Replace("@RESERVATIONID", reservationid.ToString());
+            query = query.Replace("@USERGROUP", usergroup.ToString());
+            query = query.Replace("@ISPRESENT", ispresent.ToString());
+            query = query.Replace("@USERNAME", username);
+            query = query.Replace("@PASSWORD", password);
+            query = query.Replace("@TELNR", telnr);
+            query = query.Replace("@RFID", RFID);
 
             return databaseConnection.executeNonQuery(query);
         }
