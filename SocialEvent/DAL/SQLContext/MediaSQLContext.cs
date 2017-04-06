@@ -96,6 +96,27 @@ namespace DAL.SQLContext
             return databaseConnection.executeReaderString(query);
         }
 
+        public List<int> GetAllIDReportedPostsComments()
+        {
+            string query = @"";
+
+            return databaseConnection.executeReaderIntList(query);
+        }
+
+        public List<string> GetTextPathPostReported(List<int> id)
+        {
+            string query = @"";
+
+            return databaseConnection.executeReaderStringList(query);
+        }
+
+        public string GetTextCommentReported(List<int> id)
+        {
+            string query = @"";
+
+            return databaseConnection.executeReaderString(query);
+        }
+
         public bool DeletePost(int id)
         {
             string query = @"";

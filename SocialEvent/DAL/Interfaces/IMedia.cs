@@ -23,6 +23,9 @@ namespace DAL.Interfaces
         int CountReports();
         List<string> GetTextPathPost(int id);
         string GetTextComment(int id);
+        List<int> GetAllIDReportedPostsComments();
+        List<string> GetTextPathPostReported(List<int> id);
+        string GetTextCommentReported(List<int> id);
 
         bool DeletePost(int id);
         bool DeleteComment(int id);

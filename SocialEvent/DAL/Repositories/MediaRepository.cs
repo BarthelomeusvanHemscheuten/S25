@@ -104,6 +104,21 @@ namespace DAL.Repositories
             return context.GetTextComment(id);
         }
 
+        public List<int> GetAllIDReportedPostsComments()
+        {
+            return context.GetAllIDReportedPostsComments();
+        }
+
+        public List<string> GetTextPathPostReported(List<int> id)
+        {
+            return context.GetTextPathPostReported(id);
+        }
+    
+        public string GetTextCommentReported(List<int> id)
+        {
+            return context.GetTextCommentReported(id);
+        }
+
         public bool DeletePost(int id)
         {
             if (context.DeletePost(id))
