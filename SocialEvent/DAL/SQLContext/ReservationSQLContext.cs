@@ -13,15 +13,19 @@ namespace DAL.SQLContext
 
         public bool InsertEvent(string name, string description)
         {
-            string query = @"";
+            string query = @"INSERT INTO [Event]([name], [description]) VALUES ('@NAME', '@DESCRIPTION')";
+            query = query.Replace("@NAME", name);
+            query = query.Replace("@DESCRIPTION", description);
 
             return databaseConnection.executeNonQuery(query);
         }
 
         public int InsertGetReservation(int paymentTrueOrFalse)
         {
-            string queryInsert = @"";
-            string queryGet = @"";
+            string queryInsert = @"INSERT INTO [Reservation]([payed]) VALUES ('@PAYED')";
+            string queryGet = @"SELECT [reservationid] FROM [reservation] ORDER BY [reservationid] DESC LIMIT 1;";
+
+            queryInsert = queryInsert.Replace("@PAYED", paymentTrueOrFalse.ToString());
 
             databaseConnection.executeNonQuery(queryInsert);
             return databaseConnection.executeReaderInt(queryGet);
@@ -29,25 +33,33 @@ namespace DAL.SQLContext
 
         public bool InsertLocation(int number, string features, string type)
         {
-            string query = @"";
+            string query = @"INSERT INTO [Location]([locationNr], [locationfeatures], [locationtype]) VALUES('@LOCATIONNR', '@LOCATIONFEATURES', '@LOCATIONTYPE')";
+            query = query.Replace("@LOCATIONNR", number.ToString());
+            query = query.Replace("@LOCATIONFEATURES", features);
+            query = query.Replace("@LOCATIONTYPE", type);
+
 
             return databaseConnection.executeNonQuery(query);
         }
 
         public bool InsertMaterial(string name, string description, double price)
         {
-            string query = @"";
+            string query = @"INSERT INTO [Material]([name], [description], [price]) VALUES ('@NAME', '@DESCRIPTION', '@PRICE')";
+            query = query.Replace("@NAME", name);
+            query = query.Replace("@DESCRIPTION", description);
+            query = query.Replace("@PRICE", price.ToString());
 
             return databaseConnection.executeNonQuery(query);
         }
 
         public bool UpdateLocation(int id, int reservationID)
         {
-            string query = @"";
+            string query = @"UPDATE [location] SET [reservationid] = ['@RESERVATIONID'] WHERE locationid = '@LOCATIONID'";
+            query = query.Replace("@RESERVATIONID", reservationID.ToString());
+            query = query.Replace("@LOCATIONID", id.ToString());
 
             return databaseConnection.executeNonQuery(query);
         }
-        //Break
 
         public bool UpdateMaterial(int visitorId, DateTime startDate, DateTime endDate)
         {
