@@ -93,6 +93,27 @@ namespace DAL.SQLContext
             return databaseConnection.executeReaderDateTime(query);
         }
 
+        public List<List<string>> GetAllUserDataString()
+        {
+            string query = @"";
+
+            return databaseConnection.executeReaderListStringList(query);
+        }
+
+        public List<List<int>> GetAllUserDataInt()
+        {
+            string query = @"";
+
+            return databaseConnection.executeReaderListIntList(query);
+        }
+
+        public List<DateTime?> GetAllUserDataDateTime()
+        {
+            string query = @"";
+
+            return databaseConnection.executeReaderDateTimeList(query);
+        }
+
         public bool UpdatePassword(string username, string password)
         {
             string query = @"";

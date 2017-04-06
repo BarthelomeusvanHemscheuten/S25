@@ -19,6 +19,10 @@ namespace DAL.Interfaces
         List<string> GetUserDataString(string username);
         List<int> GetUserDataInt(string username);
         DateTime? GetUserDataDateTime(string username);
+        List<List<string>> GetAllUserDataString();
+        List<List<int>> GetAllUserDataInt();
+        List<DateTime?> GetAllUserDataDateTime();
+
 
         bool UpdatePassword(string username, string password);
         bool UpdateUsername(string oldUsername, string newUsername);

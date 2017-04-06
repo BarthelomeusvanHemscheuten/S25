@@ -72,9 +72,25 @@ namespace DAL.Repositories
         {
             return context.GetUserDataInt(username);
         }
+
         public DateTime? GetUserDataDateTime(string username)
         {
             return context.GetUserDataDateTime(username);
+        }
+
+        public List<List<string>> GetAllUserDataString()
+        {
+            return context.GetAllUserDataString();
+        }
+
+        public List<List<int>> GetAllUserDataInt()
+        {
+            return context.GetAllUserDataInt();
+        }
+
+        public List<DateTime?> GetAllUserDataDateTime()
+        {
+            return context.GetAllUserDataDateTime();
         }
 
         public bool UpdatePassword(string username, string password)
