@@ -85,5 +85,20 @@ namespace DAL.Repositories
         {
             return context.CountMaterials();
         }
+
+        public List<double> GetAllMaterialsPrice()
+        {
+            return context.GetAllMaterialsPrice();
+        }
+
+        public List<string> GetAllMaterialsDescription()
+        {
+            return context.GetAllMaterialsDescription();
+        }
+
+        public List<string> GetAllMaterialsName()
+        {
+            return context.GetAllMaterialsName();
+        }
     }
 }

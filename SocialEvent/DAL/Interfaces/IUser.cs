@@ -21,7 +21,7 @@ namespace DAL.Interfaces
         DateTime? GetUserDataDateTime(string username);
 
         bool UpdatePassword(string username, string password);
-        bool UpdateUsername(string username);
+        bool UpdateUsername(string oldUsername, string newUsername);
 
         bool CheckLogin(string username, string password);
 

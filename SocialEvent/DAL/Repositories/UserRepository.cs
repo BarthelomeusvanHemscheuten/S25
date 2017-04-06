@@ -86,9 +86,9 @@ namespace DAL.Repositories
             return false;
         }
 
-        public bool UpdateUsername(string username)
+        public bool UpdateUsername(string oldUsername, string newUsername)
         {
-            if (context.UpdateUsername(username))
+            if (context.UpdateUsername(oldUsername, newUsername))
             {
                 return true;
             }

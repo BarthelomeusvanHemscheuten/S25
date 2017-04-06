@@ -20,7 +20,10 @@ namespace DAL.Interfaces
         string GetEventDescription(int id);
         int GetLocationID(int number);
         int CountMaterials();
-        
+        List<double> GetAllMaterialsPrice();
+        List<string> GetAllMaterialsDescription();
+        List<string> GetAllMaterialsName();
+
 
 
 

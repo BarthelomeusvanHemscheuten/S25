@@ -94,7 +94,7 @@ namespace DAL.SQLContext
             return databaseConnection.executeNonQuery(query);
         }
 
-        public bool UpdateUsername(string username)
+        public bool UpdateUsername(string oldUsername, string newUsername)
         {
             string query = @"";
 

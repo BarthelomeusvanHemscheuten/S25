@@ -25,14 +25,5 @@ namespace Models.ReservationSystem
             this.Features = features;
             this.Type = type;
         }
-
-        public Location ShowMaterial(Location location)
-        {
-            if (location != null)
-            {
-                return reservationRepo.GetLocation(location.ID);
-            }
-            return null;
-        }
     }
 }

@@ -82,5 +82,27 @@ namespace DAL.SQLContext
 
             return databaseConnection.executeReaderInt(query);
         }
+
+        public List<double> GetAllMaterialsPrice()
+        {   // zorg ervoor dat de namen die met elkaar overeenkomen samengevoegd worden dmv SQL aangezien het materiaal per 1x in database wordt toegevoegd
+            // EN alleen het materiaal selecteren als startdate en enddate NULL is, aangezien je dit materiaal niet opnieuw wilt laten verhuren terwijl ze al verhuurd zijn.
+            string query = @"";
+
+            return databaseConnection.executeReaderDoubleList(query);
+        }
+
+        public List<string> GetAllMaterialsDescription()
+        {   // zie opmerking hierboven
+            string query = @"";
+
+            return databaseConnection.executeReaderStringList(query);
+        }
+
+        public List<string> GetAllMaterialsName()
+        {  // zie opmerking hierboven
+            string query = @"";
+
+            return databaseConnection.executeReaderStringList(query);
+        }
     }
 }

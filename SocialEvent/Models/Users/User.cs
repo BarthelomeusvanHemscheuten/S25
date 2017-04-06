@@ -45,32 +45,27 @@ namespace Models.Users
             this.DateOfBirth = dateOfBirth;
         }
 
-        public User(string username, string name, string password, string telnr, int eventID, int reservationID)
-        {
-            this.EventID = eventID;
-            this.ReservationID = reservationID;
-            this.Username = username;
-            this.Name = name;
-            this.Password = password;
-            this.Telnr = telnr;
-        }
-
         public List<string> PlacePost(string text, string path)
         {
+            List<string> result = new List<string>();
+
             if (text != null && path != null)
             {
                 Post post = new Post(text, path);
                 this.Posts.Add(post);
                 mediaRepo.InsertPost(this.ID, text, path);
-
-                return post.ShowPost(post);
+                
+                result.Add(post.Text);
+                result.Add(post.Path);
+                return result;
             }
             return null;
         }
 
-        public List<string> PlacePost(string text, string path, List<string> tags)
+        public List<List<string>> PlacePost(string text, string path, List<string> tags)
         {
-            List<string> result = new List<string>();
+            List<string> result1 = new List<string>();
+            List<List<string>> result2 = new List<List<string>>();
 
             if(text != null && path != null && tags != null)
             {
@@ -83,9 +78,11 @@ namespace Models.Users
                     mediaRepo.InsertTag(post.ID, tags[i]);
                 }
 
-                result.Add(post.Text);
-                result.Add(post.Path);
-                return result;
+                result1.Add(post.Text);
+                result1.Add(post.Path);
+                result2.Add(result1);
+                result2.Add(tags);
+                return result2;
             }
             return null;
         }
@@ -133,7 +130,7 @@ namespace Models.Users
             {
                 if (userRepo.CheckLogin(this.Username, password1) == true)
                 {
-                    userRepo.UpdateUsername(newUsername);
+                    userRepo.UpdateUsername(this.Username, newUsername);
 
                     return true;
                 }

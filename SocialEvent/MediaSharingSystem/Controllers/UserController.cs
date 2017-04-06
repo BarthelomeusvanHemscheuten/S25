@@ -255,7 +255,10 @@ namespace MediaSharingSystem.Controllers
 
         // VISITOR
 
-        // get visitors from database
+        public List<Visitor> GetAndShowVisitorsFromDatabase()
+        {
+            return userRepo.GetAllVisitors();
+        }
 
     }
 }
