@@ -60,7 +60,7 @@ namespace DAL.SQLContext
 
             return databaseConnection.executeNonQuery(query);
         }
-        //Image hoeft nog niet
+        
         public bool UpdatePicture(int userID, Image image)
         {
             string query = @"";
@@ -82,9 +82,16 @@ namespace DAL.SQLContext
             return databaseConnection.executeReaderInt(query);
         }
 
-        public int CountReports()
+        public int CountReportedPosts() 
         {
-            string query = @"SELECT COUNT(ReportID) FROM [Report]";
+            string query = @"";
+
+            return databaseConnection.executeReaderInt(query);
+        }
+
+        public int CountReportedComments()
+        {
+            string query = @"";
 
             return databaseConnection.executeReaderInt(query);
         }
@@ -96,12 +103,26 @@ namespace DAL.SQLContext
             return databaseConnection.executeReaderStringList(query);
         }
 
+        public int GetUserIdPost(int id)
+        {
+            string query = @"";
+
+            return databaseConnection.executeReaderInt(query);
+        }
+
         public string GetTextComment(int id)
         {
             string query = @"SELECT Text FROM [Comment] WHERE CommentID = @id";
             query.Replace("@id", id.ToString());
 
             return databaseConnection.executeReaderString(query);
+        }
+
+        List<int> GetUserIdPostIdComment(int id)
+        {
+            string query = @"";
+
+            return databaseConnection.executeReaderIntList(query);
         }
 
         public int GetAllIDReportedPosts()

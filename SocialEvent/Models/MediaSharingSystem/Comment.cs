@@ -31,27 +31,24 @@ namespace Models.MediaSharingSystem
             this.Text = text;
         } 
         
-        public bool ReportComment(User user, string reason)
+        public bool ReportComment(int id, User user, string reason)
         {
             if(user != null || reason != null)
             {
                 Report report = new Report(reason);
                 this.Reports.Add(report);
                 user.Reports.Add(report);
-                mediaRepo.InsertReportComment(user.ID, this.ID, reason);
+
+                return true;
+            } else if(user != null || reason != null && id > 0)
+            {
+                Report report = new Report(id, reason);
+                this.Reports.Add(report);
+                user.Reports.Add(report);
 
                 return true;
             }
             return false;
-        }
-
-        public string ShowComment(Comment comment)
-        {
-            if (comment != null)
-            {
-                return mediaRepo.GetTextComment(comment.ID);
-            }
-            return null;
         }
     }
 }

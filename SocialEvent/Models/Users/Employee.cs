@@ -26,8 +26,6 @@ namespace Models.Users
                 Visitor visitor = new Visitor(username, name, password, emailAddress, telnr, address, dateOfBirth, eventID, reservationID);
                 eventt.Visitors.Add(visitor);
                 location.Visitors.Add(visitor);
-                userRepo.InsertUser(visitor.ReservationID, 3, visitor.DateOfBirth, visitor.EmailAddress, visitor.Name, visitor.Address, visitor.Username, visitor.Password, visitor.Telnr);
-                reservationRepo.UpdateLocation(location.ID, reservationID);
 
                 return visitor;
             }
@@ -41,8 +39,6 @@ namespace Models.Users
                 Visitor visitor = new Visitor(username, name, password, telnr, eventID, reservationID);
                 eventt.Visitors.Add(visitor);
                 location.Visitors.Add(visitor);
-                userRepo.InsertUser(visitor.ReservationID, 3, visitor.Name, visitor.Username, visitor.Password, visitor.Telnr);
-                reservationRepo.UpdateLocation(location.ID, reservationID);
 
                 return visitor;
             }
@@ -64,15 +60,19 @@ namespace Models.Users
         {
             if (eventt != null)
             {
-                int reservationID = reservationRepo.InsertGetReservation(0);
+                int reservationId = reservationRepo.InsertGetReservation(0);
+                string rfid = "???";
 
                 // voor de eerste locatie. 
                 List<Visitor> visitors = new List<Visitor>();
-                Visitor mainVisitor = AddVisitor(username[0], name[0], password[0], emailAddress[0], telnr[0], address[0], DateTime.ParseExact(dateOfBirth[0], "yyyy/MM/dd", CultureInfo.InvariantCulture), eventt, locations[0], eventt.ID, reservationID);
+                Visitor mainVisitor = AddVisitor(username[0], name[0], password[0], emailAddress[0], telnr[0], address[0], DateTime.ParseExact(dateOfBirth[0], "yyyy/MM/dd", CultureInfo.InvariantCulture), eventt, locations[0], eventt.ID, reservationId);
+                userRepo.InsertUser(eventt.ID, reservationId, 3, 0, DateTime.ParseExact(dateOfBirth[0], "yyyy/MM/dd", CultureInfo.InvariantCulture), emailAddress[0], address[0], name[0], username[0], password[0], telnr[0], rfid);
                 
+
                 for (int i = 1; i <= quantityVisitors; i++)
                 {
-                    Visitor visitor = AddVisitor(username[i], name[i], password[i], telnr[i], eventt, locations[0], eventt.ID, reservationID);
+                    Visitor visitor = AddVisitor(username[i], name[i], password[i], telnr[i], eventt, locations[0], eventt.ID, reservationId);
+                    userRepo.InsertUser(eventt.ID, reservationId, 3, 0, name[i], username[i], password[i], telnr[i], rfid);
                     visitors.Add(visitor);
                 }
 
@@ -83,6 +83,7 @@ namespace Models.Users
                     for (int j = 1; j <= quantityVisitors; j++)
                     {
                         locations[i].Visitors.Add(visitors[j]);
+                        reservationRepo.UpdateLocation(locations[i].ID, reservationId);
                     }
                 }
 
@@ -98,7 +99,6 @@ namespace Models.Users
             {
                 visitor.Materials.Add(material);
                 reservationRepo.UpdateMaterial(visitor.ID, DateTime.ParseExact(startDate, "yyyy/MM/dd", CultureInfo.InvariantCulture), DateTime.ParseExact(endDate, "yyyy/MM/dd", CultureInfo.InvariantCulture));
-
 
                 return true;
             }

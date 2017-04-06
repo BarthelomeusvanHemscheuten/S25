@@ -89,9 +89,14 @@ namespace DAL.Repositories
             return context.CountComments();
         }
 
-        public int CountReports()
+        public int CountReportedPosts()
         {
-            return context.CountReports();
+            return context.CountReportedPosts();
+        }
+
+        public int CountReportedComments()
+        {
+            return context.CountReportedComments();
         }
 
         public List<string> GetTextPathPost(int id)
@@ -99,26 +104,22 @@ namespace DAL.Repositories
             return context.GetTextPathPost(id);
         }
 
+        public int GetUserIdPost(int id)
+        {
+            return context.GetUserIdPost(id);
+        }
+
         public string GetTextComment(int id)
         {
             return context.GetTextComment(id);
         }
 
-        public List<int> GetAllIDReportedPostsComments()
+        List<int> GetUserIdPostIdComment(int id)
         {
-            return context.GetAllIDReportedPostsComments();
+            return context.GetUserIdPostIdComment(id);
         }
 
-        public List<string> GetTextPathPostReported(List<int> id)
-        {
-            return context.GetTextPathPostReported(id);
-        }
-    
-        public string GetTextCommentReported(List<int> id)
-        {
-            return context.GetTextCommentReported(id);
-        }
-
+        
         public bool DeletePost(int id)
         {
             if (context.DeletePost(id))
