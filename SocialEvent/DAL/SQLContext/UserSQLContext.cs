@@ -12,45 +12,43 @@ namespace DAL.SQLContext
     {
         DatabaseConnection databaseConnection = new DatabaseConnection();
 
-        public bool InsertUser(int eventid, int reservationid, int usergroup, bool ispresent, DateTime dateofbirth, string email, string address, string name, string username, string password, string telnr, string RFID)
+        public bool InsertUser(int eventId, int reservationId, int userGroup, int isPresent, DateTime? dateOfBirth, string emailAddress, string address, string name, string username, string password, string telnr, string rfid)
         {
-            // query aanpassen aan de hand van onze database
             string query = @"INSERT INTO [user] ([eventid], [reservationid], [usergroup], [ispresent], [dateofbirth], [email], [address], [name], [username], [password], [telnr], [rfid]) VALUES('@EVENTID', '@RESERVATIONID', '@USERGROUP', '@ISPRESENT', '@DATEOFBIRTH', '@EMAIL', '@ADDRESS', '@NAME', '@USERNAME', '@PASSWORD', '@TELNR', '@RFID')";
-            query = query.Replace("@EVENTID", eventid.ToString());
-            query = query.Replace("@RESERVATIONID", reservationid.ToString());
-            query = query.Replace("@USERGROUP", usergroup.ToString());
-            query = query.Replace("@ISPRESENT", ispresent.ToString());
-            query = query.Replace("@DATEOFBIRTH", dateofbirth.ToShortDateString());
-            query = query.Replace("@EMAIL", email);
+            query = query.Replace("@EVENTID", eventId.ToString());
+            query = query.Replace("@RESERVATIONID", reservationId.ToString());
+            query = query.Replace("@USERGROUP", userGroup.ToString());
+            query = query.Replace("@ISPRESENT", isPresent.ToString());
+            query = query.Replace("@DATEOFBIRTH", dateOfBirth.ToString());
+            query = query.Replace("@EMAIL", emailAddress);
             query = query.Replace("@ADDRESS", address);
             query = query.Replace("@USERNAME", username);
             query = query.Replace("@PASSWORD", password);
             query = query.Replace("@TELNR", telnr);
-            query = query.Replace("@RFID", RFID);
+            query = query.Replace("@RFID", rfid);
 
             return databaseConnection.executeNonQuery(query);
         }
 
-        public bool InsertUser(int eventid, int reservationid, int usergroup, bool ispresent, string name, string username, string password, string telnr, string RFID)
+        public bool InsertUser(int eventId, int reservationId, int userGroup, int isPresent, string name, string username, string password, string telnr, string rfid)
         {
-            // query aanpassen aan de hand van onze database
             string query = @"INSERT INTO [user] ([eventid], [reservationid], [usergroup], [ispresent], [name], [username], [password], [telnr], [rfid]) VALUES('@EVENTID', '@RESERVATIONID', '@USERGROUP', '@ISPRESENT', '@NAME', '@USERNAME', '@PASSWORD', '@TELNR', '@RFID')";
-            query = query.Replace("@EVENTID", eventid.ToString());
-            query = query.Replace("@RESERVATIONID", reservationid.ToString());
-            query = query.Replace("@USERGROUP", usergroup.ToString());
-            query = query.Replace("@ISPRESENT", ispresent.ToString());
+            query = query.Replace("@EVENTID", eventId.ToString());
+            query = query.Replace("@RESERVATIONID", reservationId.ToString());
+            query = query.Replace("@USERGROUP", userGroup.ToString());
+            query = query.Replace("@ISPRESENT", isPresent.ToString());
             query = query.Replace("@USERNAME", username);
             query = query.Replace("@PASSWORD", password);
             query = query.Replace("@TELNR", telnr);
-            query = query.Replace("@RFID", RFID);
+            query = query.Replace("@RFID", rfid);
 
             return databaseConnection.executeNonQuery(query);
         }
 
-        public bool DeleteUser(int Id)
+        public bool DeleteUser(int id)
         {
             string query = @"DELETE FROM [User] WHERE [userid] = '@ID'";
-            query = query.Replace("@ID", Id.ToString());
+            query = query.Replace("@ID", id.ToString());
 
             return databaseConnection.executeNonQuery(query);
         }
@@ -89,15 +87,14 @@ namespace DAL.SQLContext
 
         public List<string> GetUserDataString(string username)
         {
-            // LET OP DE VOLGORDE DIE DE LIST MOET TERUG KRIJGEN; username, name, emailaddress, telnr, address
-            string query = @"SELECT [username], [name], [email], [telnr], [addres] FROM [USER] WHERE [username] = '@ID'";
+            string query = @"SELECT [username], [name], [email], [telnr], [address] FROM [USER] WHERE [username] = '@USERNAME'";
             query = query.Replace("@USERNAME", username);
+
             return databaseConnection.executeReaderStringList(query);
         }
 
         public List<int> GetUserDataInt(string username)
         {
-            // LET OP DE VOLGORDE DIE DE LIST MOET TERUG KRIJGEN; eventID, reservationID
             string query = @"SELECT [eventid], [reservationid] FROM [user] WHERE [username] = '@USERNAME'";
             query = query.Replace("@USERNAME", username);
 
@@ -112,25 +109,32 @@ namespace DAL.SQLContext
             return databaseConnection.executeReaderDateTime(query);
         }
 
-        public List<List<string>> GetAllUserDataString()
+        public List<string> GetUserDataString(int id)
         {
             string query = @"";
 
-            return databaseConnection.executeReaderListStringList(query);
+            return databaseConnection.executeReaderStringList(query);
         }
 
-        public List<List<int>> GetAllUserDataInt()
+        public List<int> GetUserDataInt(int id)
         {
             string query = @"";
 
-            return databaseConnection.executeReaderListIntList(query);
+            return databaseConnection.executeReaderIntList(query);
         }
 
-        public List<DateTime?> GetAllUserDataDateTime()
+        public DateTime? GetUserDataDateTime(int id)
         {
             string query = @"";
 
-            return databaseConnection.executeReaderDateTimeList(query);
+            return databaseConnection.executeReaderDateTime(query);
+        }
+
+        public int CountAllVisitors()
+        {
+            string query = @"";
+
+            return databaseConnection.executeReaderInt(query);
         }
 
         public bool UpdatePassword(string username, string password)
@@ -166,13 +170,6 @@ namespace DAL.SQLContext
 
 
         // nog niet nodig
-        //public bool UpdatePassword(string username, string password)
-        //{
-        //    // query aanpassen aan de hand van onze database
-        //    string query = @"UPDATE [User] SET [Password] = '" + password + @"' WHERE [Username] = '" + username + @"';";
-        //    databaseConnection.executeNonQuery(query);
-        //    return false;
-        //}
 
         //public bool getIsPresent(string username)
         //{

@@ -9,8 +9,8 @@ namespace DAL.Interfaces
 {
     public interface IUser
     {
-        bool InsertUser(int eventid, int reservationid, int usergroup, bool ispresent, DateTime dateofbirth, string email, string address, string name, string username, string password, string telnr, string RFID);
-        bool InsertUser(int eventid, int reservationid, int usergroup, bool ispresent, string name, string username, string password, string telnr, string RFID);
+        bool InsertUser(int eventId, int reservationId, int userGroup, int isPresent, DateTime? dateOfBirth, string emailAddress, string address, string name, string username, string password, string telnr, string rfid);
+        bool InsertUser(int eventId, int reservationId, int userGroup, int isPresent, string name, string username, string password, string telnr, string rfid);
         bool DeleteUser(int Id);
         bool InsertSwearWord(string swearWord);
         
@@ -19,9 +19,10 @@ namespace DAL.Interfaces
         List<string> GetUserDataString(string username);
         List<int> GetUserDataInt(string username);
         DateTime? GetUserDataDateTime(string username);
-        List<List<string>> GetAllUserDataString();
-        List<List<int>> GetAllUserDataInt();
-        List<DateTime?> GetAllUserDataDateTime();
+        List<string> GetUserDataString(int id);
+        List<int> GetUserDataInt(int id);
+        DateTime? GetUserDataDateTime(int id);
+        int CountAllVisitors();
 
 
         bool UpdatePassword(string username, string password);
@@ -34,8 +35,7 @@ namespace DAL.Interfaces
 
 
         // CONTROLEREN!!
-
-        //bool UpdatePassword(string username, string password);
+        
         //bool getIsPresent(string username);
         //string getRFID(string username);
         //Image getImage(string username);

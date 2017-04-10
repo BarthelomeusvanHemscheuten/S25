@@ -17,18 +17,18 @@ namespace DAL.Repositories
             this.context = context;
         }
 
-        public bool InsertUser(int reservationId, int userGroup, DateTime? dateOfBirth, string emailAddress, string name, string address, string username, string password, string telnr)
+        public bool InsertUser(int eventId, int reservationId, int userGroup, int isPresent, DateTime? dateOfBirth, string emailAddress, string address, string name, string username, string password, string telnr, string rfid)
         {
-            if (context.InsertUser(reservationId, userGroup, dateOfBirth, emailAddress, name, address, username, password, telnr))
+            if (context.InsertUser(eventId, reservationId, userGroup, isPresent, dateOfBirth, emailAddress, address, name, username, password, telnr, rfid))
             {
                 return true;
             }
             return false;
         }
 
-        public bool InsertUser(int reservationId, int userGroup, string name, string username, string password, string telnr)
+        public bool InsertUser(int eventId, int reservationId, int userGroup, int isPresent, string name, string username, string password, string telnr, string rfid)
         {
-            if (context.InsertUser(reservationId, userGroup, name, username, password, telnr))
+            if (context.InsertUser(eventId, reservationId, userGroup, isPresent, name, username, password, telnr, rfid))
             {
                 return true;
             }
@@ -78,19 +78,24 @@ namespace DAL.Repositories
             return context.GetUserDataDateTime(username);
         }
 
-        public List<List<string>> GetAllUserDataString()
+        public List<string> GetUserDataString(int id)
         {
-            return context.GetAllUserDataString();
+            return context.GetUserDataString(id);
         }
 
-        public List<List<int>> GetAllUserDataInt()
+        public List<int> GetUserDataInt(int id)
         {
-            return context.GetAllUserDataInt();
+            return context.GetUserDataInt(id);
         }
 
-        public List<DateTime?> GetAllUserDataDateTime()
+        public DateTime? GetUserDataDateTime(int id)
         {
-            return context.GetAllUserDataDateTime();
+            return context.GetUserDataDateTime(id);
+        }
+
+        public int CountAllVisitors()
+        {
+            return context.CountAllVisitors();
         }
 
         public bool UpdatePassword(string username, string password)
@@ -126,17 +131,7 @@ namespace DAL.Repositories
 
 
         // CONTROLEREN!!
-
-
-        //public bool UpdatePassword(string username, string password)
-        //{
-        //    if (context.UpdatePassword(username, password))
-        //    {
-        //        return true;
-        //    }
-        //    return false;
-        //}
-
+        
         //public bool getIsPresent(string username)
         //{
         //    if (context.getIsPresent(username))

@@ -45,72 +45,74 @@ namespace Models.Users
             this.DateOfBirth = dateOfBirth;
         }
 
-        public List<string> PlacePost(string text, string path)
+        public Post PlacePost(int id,string text, string path)
         {
-            List<string> result = new List<string>();
-
             if (text != null && path != null)
             {
                 Post post = new Post(text, path);
                 this.Posts.Add(post);
-                mediaRepo.InsertPost(this.ID, text, path);
                 
-                result.Add(post.Text);
-                result.Add(post.Path);
-                return result;
+                return post;
+            } else if (text != null && path != null && id > 0)
+            {
+                Post post = new Post(id, text, path);
+                this.Posts.Add(post);
+
+                return post;
             }
             return null;
         }
 
-        public List<List<string>> PlacePost(string text, string path, List<string> tags)
+        public Post PlacePost(int id, string text, string path, List<string> tags)
         {
-            List<string> result1 = new List<string>();
-            List<List<string>> result2 = new List<List<string>>();
-
-            if(text != null && path != null && tags != null)
+            if(text != null && path != null && tags != null && id != 0)
             {
                 Post post = new Post(text, path, tags);
                 this.Posts.Add(post);
-                mediaRepo.InsertPost(this.ID, text, path);
                 
-                for (int i = 0; i < tags.Count; i++)
-                {
-                    mediaRepo.InsertTag(post.ID, tags[i]);
-                }
+                return post;
+            }
+            else if(text != null && path != null && tags != null && id > 0)
+            {
+                Post post = new Post(id, text, path, tags);
+                this.Posts.Add(post);
 
-                result1.Add(post.Text);
-                result1.Add(post.Path);
-                result2.Add(result1);
-                result2.Add(tags);
-                return result2;
+                return post;
             }
             return null;
         }
 
-        public string PlaceComment(string text, Post post)
+        public Comment PlaceComment(int id, string text, Post post)
         {
-            if (text != null && post != null)
+            if (text != null && post != null && id != 0)
             {
                 Comment comment = new Comment(text);
                 this.Comments.Add(comment);
                 post.Comments.Add(comment);
-                mediaRepo.InsertComment(this.ID, post.ID, text);
 
-                return comment.Text;
+                return comment;
+            }
+            else if (text != null && post != null && id > 0)
+            {
+                Comment comment = new Comment(id, text);
+                this.Comments.Add(comment);
+                post.Comments.Add(comment);
+
+                return comment;
             }
             return null;
         }
-
-        public bool ChangePicture(Image image)
+        
+        public Image ChangePicture(Image image)
         {
             if(image != null)
             {
                 this.Picture = image;
                 mediaRepo.UpdatePicture(this.ID, image);
 
-                return true;
+                return image;
             }
-            return false;
+            return null;
         }
 
         public bool ChangePassword(string password1, string password2)

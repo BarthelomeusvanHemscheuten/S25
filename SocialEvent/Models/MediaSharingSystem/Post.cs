@@ -67,14 +67,20 @@ namespace Models.MediaSharingSystem
             return false;
         }
 
-        public bool ReportPost(User user, string reason)
+        public bool ReportPost(int id, User user, string reason)
         {
             if (user != null && reason != null)
             {
                 Report report = new Report(reason);
                 this.Reports.Add(report);
                 user.Reports.Add(report);
-                mediaRepo.InsertReportPost(user.ID, this.ID, reason);
+
+                return true;
+            } else if (user != null && reason != null && id > 0)
+            {
+                Report report = new Report(id, reason);
+                this.Reports.Add(report);
+                user.Reports.Add(report);
 
                 return true;
             }

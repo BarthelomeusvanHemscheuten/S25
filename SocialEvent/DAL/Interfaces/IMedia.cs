@@ -20,27 +20,15 @@ namespace DAL.Interfaces
 
         int CountPosts();
         int CountComments();
-        int CountReports();
+        int CountReportedPosts();
+        int CountReportedComments();
         List<string> GetTextPathPost(int id);
+        int GetUserIdPost(int id);
         string GetTextComment(int id);
-        List<int> GetAllIDReportedPostsComments();
-        List<string> GetTextPathPostReported(List<int> id);
-        string GetTextCommentReported(List<int> id);
-
+        List<int> GetUserIdPostIdComment(int id);
+       
         bool DeletePost(int id);
         bool DeleteComment(int id);
-
-
-
-
-
-
-
-
-        // nog niet nodig
-        //List<string> GetAllPosts();
-        //List<string> GetAllComments(int postID);
-        //List<int> GetAllLikesPost(int postID);
-        //List<string> GetAllReportedPostsComments();
+        
     }
 }
