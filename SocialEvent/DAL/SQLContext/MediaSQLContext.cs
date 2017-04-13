@@ -166,5 +166,55 @@ namespace DAL.SQLContext
 
             return databaseConnection.executeNonQuery(query);
         }
+
+        public int GetUserIdComment(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<int> GetReportedPostsId()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<int> GetReportedCommentsId()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<int> GetPostIdFromComment(int ids)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<int> GetPostsID()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<int> GetCommentsID()
+        {
+            throw new NotImplementedException();
+        }
+
+        public int GetGetPostIdFromComment(int commentid)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<int> GetReportedPostsID()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<int> GetReportedCommentsID()
+        {
+            throw new NotImplementedException();
+        }
+
+        int IMedia.GetPostIdFromComment(int commentid)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

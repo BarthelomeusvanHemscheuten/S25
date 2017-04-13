@@ -2,3 +2,11 @@ C:\Users\thoma\Source\Repos\S25\SocialEvent\MediaSharingSystem\obj\Release\1. Me
 C:\Users\thoma\Source\Repos\S25\SocialEvent\MediaSharingSystem\obj\Release\MediaSharingSystem.Forms.Form1.resources
 C:\Users\thoma\Source\Repos\S25\SocialEvent\MediaSharingSystem\obj\Release\MediaSharingSystem.Properties.Resources.resources
 C:\Users\thoma\Source\Repos\S25\SocialEvent\MediaSharingSystem\obj\Release\1. MediaSharingSystem.csproj.GenerateResource.Cache
+C:\Users\thoma\Source\Repos\S25\SocialEvent\MediaSharingSystem\bin\Release\MediaSharingSystem.exe
+C:\Users\thoma\Source\Repos\S25\SocialEvent\MediaSharingSystem\bin\Release\MediaSharingSystem.pdb
+C:\Users\thoma\Source\Repos\S25\SocialEvent\MediaSharingSystem\bin\Release\DAL.dll
+C:\Users\thoma\Source\Repos\S25\SocialEvent\MediaSharingSystem\bin\Release\Models.dll
+C:\Users\thoma\Source\Repos\S25\SocialEvent\MediaSharingSystem\bin\Release\DAL.pdb
+C:\Users\thoma\Source\Repos\S25\SocialEvent\MediaSharingSystem\bin\Release\Models.pdb
+C:\Users\thoma\Source\Repos\S25\SocialEvent\MediaSharingSystem\obj\Release\MediaSharingSystem.exe
+C:\Users\thoma\Source\Repos\S25\SocialEvent\MediaSharingSystem\obj\Release\MediaSharingSystem.pdb

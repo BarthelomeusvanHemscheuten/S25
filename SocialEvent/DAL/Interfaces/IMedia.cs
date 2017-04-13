@@ -28,7 +28,11 @@ namespace DAL.Interfaces
         int GetUserIdComment(int id);
         List<int> GetReportedPostsId();
         List<int> GetReportedCommentsId();
-        List<int> GetPostIdFromComment();
+        List<int> GetReportedPostsID();
+        List<int> GetReportedCommentsID();
+        List<int> GetPostsID();
+        List<int> GetCommentsID();
+        int GetPostIdFromComment(int commentid);
 
 
         bool DeletePost(int id);

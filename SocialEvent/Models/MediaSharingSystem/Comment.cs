@@ -16,6 +16,7 @@ namespace Models.MediaSharingSystem
         public string Text { get; private set; }
 
         public List<Report> Reports { get; private set; }
+        public User User { get; set; }
 
         // constructor om nieuwe comment aan te maken
         public Comment(string text)

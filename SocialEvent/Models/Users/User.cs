@@ -61,6 +61,7 @@ namespace Models.Users
             {
                 Post post = new Post(text, path);
                 this.Posts.Add(post);
+                post.User = this;
 
                 return post;
             }
@@ -68,6 +69,7 @@ namespace Models.Users
             {
                 Post post = new Post(id, text, path);
                 this.Posts.Add(post);
+                post.User = this;
 
                 return post;
             }
@@ -80,6 +82,7 @@ namespace Models.Users
             {
                 Post post = new Post(text, path, tags);
                 this.Posts.Add(post);
+                post.User = this;
 
                 return post;
             }
@@ -87,6 +90,7 @@ namespace Models.Users
             {
                 Post post = new Post(id, text, path, tags);
                 this.Posts.Add(post);
+                post.User = this;
 
                 return post;
             }
@@ -100,6 +104,7 @@ namespace Models.Users
                 Comment comment = new Comment(text);
                 this.Comments.Add(comment);
                 post.Comments.Add(comment);
+                comment.User = this;
 
                 return comment;
             }
@@ -108,6 +113,7 @@ namespace Models.Users
                 Comment comment = new Comment(id, text);
                 this.Comments.Add(comment);
                 post.Comments.Add(comment);
+                comment.User = this;
 
                 return comment;
             }
@@ -121,6 +127,7 @@ namespace Models.Users
             {
                 Comment comment = new Comment(text);
                 this.Comments.Add(comment); ;
+                comment.User = this;
 
                 return comment;
             }
@@ -128,6 +135,7 @@ namespace Models.Users
             {
                 Comment comment = new Comment(id, text);
                 this.Comments.Add(comment);
+                comment.User = this;
 
                 return comment;
             }
