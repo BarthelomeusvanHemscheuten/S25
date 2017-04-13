@@ -111,35 +111,36 @@ namespace DAL.SQLContext
 
         public List<string> GetUserDataString(int id)
         {
-            string query = @"";
-
+            string query = @"SELECT UserName, Name, Password, Email, Telnr, Adress FROM [User] WHERE UserID = @id";
+            query = query.Replace("@id", id.ToString());
             return databaseConnection.executeReaderStringList(query);
         }
 
         public List<int> GetUserDataInt(int id)
         {
-            string query = @"";
-
+            string query = @"SELECT EventID, ReservationID FROM [User] WHERE UserID = @id";
+            query = query.Replace("@id", id.ToString());
             return databaseConnection.executeReaderIntList(query);
         }
 
         public DateTime? GetUserDataDateTime(int id)
         {
-            string query = @"";
-
+            string query = @"SELECT DateOfBirth FROM [User] WHERE User-ID  = @id";
+            query = query.Replace("@id", id.ToString());
             return databaseConnection.executeReaderDateTime(query);
         }
 
         public int CountAllVisitors()
         {
-            string query = @"";
+            string query = @"SELECT Count(UserID) FROM [User] WHERE UserGroup = 1";
 
             return databaseConnection.executeReaderInt(query);
         }
 
         public bool UpdatePassword(string username, string password)
         {
-            string query = @"";
+            string query = @"Update [User] SET Password = @password WHERE  Username = @username";
+            query = query.Replace("@password", password).Replace("@username", username);
 
             return databaseConnection.executeNonQuery(query);
         }
