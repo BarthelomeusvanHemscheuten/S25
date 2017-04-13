@@ -9,7 +9,7 @@ namespace DAL.SQLContext
 {
     public class DatabaseConnection
     {
-        private const string connectionString = "???";
+        private const string connectionString = @"Data Source=THOMAS-LAPTOP\SQLEXPRESS;Initial Catalog=Proftaakje;Integrated Security=True";
 
         internal bool executeNonQuery(string query)
         {
@@ -58,7 +58,7 @@ namespace DAL.SQLContext
             return null;
         }
 
-        internal List<string> executeReaderStringList(string query)
+        internal List<string> executeReaderStringList(string query, int amount)
         {
             try
             {
@@ -70,7 +70,10 @@ namespace DAL.SQLContext
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        list.Add(reader.GetString(0));
+                        for (int i = 0; i <= amount; i++)
+                        {
+                            list.Add(reader.GetString(i));
+                        }
                     }
                     return list;
                 }
