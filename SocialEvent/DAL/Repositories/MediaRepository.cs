@@ -113,12 +113,6 @@ namespace DAL.Repositories
         {
             return context.GetTextComment(id);
         }
-
-        List<int> GetUserIdPostIdComment(int id)
-        {
-            return context.GetUserIdPostIdComment(id);
-        }
-
         
         public bool DeletePost(int id)
         {
