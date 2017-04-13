@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "3. DAL", "DAL\3. DAL.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "1. MediaSharingSystem", "MediaSharingSystem\1. MediaSharingSystem.csproj", "{E4C8CD71-7C50-48F4-8AEC-B3E2B4E15363}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialEventUnitTestProject", "SocialEventUnitTestProject\SocialEventUnitTestProject.csproj", "{70595271-6D6F-42EC-97C4-AED5ABA01B6D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{E4C8CD71-7C50-48F4-8AEC-B3E2B4E15363}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E4C8CD71-7C50-48F4-8AEC-B3E2B4E15363}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E4C8CD71-7C50-48F4-8AEC-B3E2B4E15363}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70595271-6D6F-42EC-97C4-AED5ABA01B6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70595271-6D6F-42EC-97C4-AED5ABA01B6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70595271-6D6F-42EC-97C4-AED5ABA01B6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70595271-6D6F-42EC-97C4-AED5ABA01B6D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
