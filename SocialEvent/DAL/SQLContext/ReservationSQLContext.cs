@@ -77,8 +77,8 @@ namespace DAL.SQLContext
         
         public string GetEventDescription(int id)
         {
-            string query = @"";
-
+            string query = @"SELECT Beschrijving FROM [Event] WHERE EventID = @id";
+            query = query.Replace("@id", id.ToString());
             return databaseConnection.executeReaderString(query);
         }
 
