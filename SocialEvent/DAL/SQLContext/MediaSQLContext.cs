@@ -118,7 +118,7 @@ namespace DAL.SQLContext
             return databaseConnection.executeReaderString(query);
         }
 
-        List<int> GetUserIdPostIdComment(int id)
+        public List<int> GetUserIdPostIdComment(int id)
         {
             string query = @"";
 
