@@ -45,6 +45,16 @@ namespace Models.Users
             this.DateOfBirth = dateOfBirth;
         }
 
+        public User(string username, string name, string password, string telnr, int eventID, int reservationID)
+        {
+            this.Username = username;
+            this.Name = name;
+            this.Password = password;
+            this.Telnr = telnr;
+            this.EventID = eventID;
+            this.ReservationID = reservationID;
+        }
+
         public Post PlacePost(int id,string text, string path)
         {
             if (text != null && path != null)
