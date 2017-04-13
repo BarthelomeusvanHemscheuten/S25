@@ -55,15 +55,16 @@ namespace Models.Users
             this.ReservationID = reservationID;
         }
 
-        public Post PlacePost(int id,string text, string path)
+        public Post PlacePost(int id, string text, string path)
         {
             if (text != null && path != null)
             {
                 Post post = new Post(text, path);
                 this.Posts.Add(post);
-                
+
                 return post;
-            } else if (text != null && path != null && id > 0)
+            }
+            else if (text != null && path != null && id > 0)
             {
                 Post post = new Post(id, text, path);
                 this.Posts.Add(post);
@@ -75,14 +76,14 @@ namespace Models.Users
 
         public Post PlacePost(int id, string text, string path, List<string> tags)
         {
-            if(text != null && path != null && tags != null && id != 0)
+            if (text != null && path != null && tags != null && id != 0)
             {
                 Post post = new Post(text, path, tags);
                 this.Posts.Add(post);
-                
+
                 return post;
             }
-            else if(text != null && path != null && tags != null && id > 0)
+            else if (text != null && path != null && tags != null && id > 0)
             {
                 Post post = new Post(id, text, path, tags);
                 this.Posts.Add(post);
@@ -112,10 +113,30 @@ namespace Models.Users
             }
             return null;
         }
-        
+
+        //Overload voor placecomment omdat er door de controller ook comments kunnen worden aangemaakt tijdelijk zonder post.
+        public Comment PlaceComment(int id, string text)
+        {
+            if (text != null && id != 0)
+            {
+                Comment comment = new Comment(text);
+                this.Comments.Add(comment); ;
+
+                return comment;
+            }
+            else if (text != null && id > 0)
+            {
+                Comment comment = new Comment(id, text);
+                this.Comments.Add(comment);
+
+                return comment;
+            }
+            return null;
+        }
+
         public Image ChangePicture(Image image)
         {
-            if(image != null)
+            if (image != null)
             {
                 this.Picture = image;
                 mediaRepo.UpdatePicture(this.ID, image);

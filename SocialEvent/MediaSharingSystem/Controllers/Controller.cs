@@ -454,20 +454,28 @@ namespace MediaSharingSystem.Controllers
             for (int i = 0; i < quantity; i++)
             {
                 string textComment = mediaRepo.GetTextComment(listCommentsID[i]);
-                int postIdFromComment = mediaRepo.GetPostIdFromComment();
-                Comment comment = visitor.PlaceComment(listCommentsID[i], textComment, postIdFromComment);
-                visitor.Posts.Add(post);
-                result.Add(post);
+                User user = visitor as User;
+                Comment comment = user.PlaceComment(listCommentsID[i], textComment);
+                result.Add(comment);
             }
             return result;
         }
 
-        public Post GetAndShowPostComments()
+        public List<Post> GetAndShowPostComments()
         {
+            List<Post> output = new List<Post>();
+            List<int> postsID = mediaRepo.GetPostsID();
+
+            for (int i = 0; i < postsID.Count; i++)
+            {
+                List<string> postTextPath = mediaRepo.GetTextPathPost(postsID[i]);
+                Post post = new Post(postsID[i], postTextPath[0], postTextPath[1]);
+                output.Add(post);
+            }
+           
 
 
-
-            return mediaRepo.GetPostsComments();
+            return output;
         }
     }
 }
