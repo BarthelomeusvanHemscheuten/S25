@@ -1,0 +1,8 @@
+C:\Users\Bart Engelen\Source\Repos\S25\SocialEvent\Models\obj\Release\2. Models.csprojResolveAssemblyReference.cache
+C:\Users\thoma\Source\Repos\S25\SocialEvent\Models\obj\Release\2. Models.csprojResolveAssemblyReference.cache
+C:\Users\thoma\Source\Repos\S25\SocialEvent\Models\bin\Release\Models.dll
+C:\Users\thoma\Source\Repos\S25\SocialEvent\Models\bin\Release\Models.pdb
+C:\Users\thoma\Source\Repos\S25\SocialEvent\Models\bin\Release\DAL.dll
+C:\Users\thoma\Source\Repos\S25\SocialEvent\Models\bin\Release\DAL.pdb
+C:\Users\thoma\Source\Repos\S25\SocialEvent\Models\obj\Release\Models.dll
+C:\Users\thoma\Source\Repos\S25\SocialEvent\Models\obj\Release\Models.pdb

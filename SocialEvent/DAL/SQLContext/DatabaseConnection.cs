@@ -9,9 +9,9 @@ namespace DAL.SQLContext
 {
     public class DatabaseConnection
     {
-        private const string connectionString = "???";
+        private const string connectionString = @"Data Source=THOMAS-LAPTOP\SQLEXPRESS;Initial Catalog=Proftaakje;Integrated Security=True";
 
-        public bool executeNonQuery(string query)
+        internal bool executeNonQuery(string query)
         {
             try
             {
@@ -34,7 +34,7 @@ namespace DAL.SQLContext
             return false;
         }
 
-        public string executeReaderString(string query)
+        internal string executeReaderString(string query)
         {
             try
             {
@@ -58,7 +58,7 @@ namespace DAL.SQLContext
             return null;
         }
 
-        public List<string> executeReaderStringList(string query)
+        internal List<string> executeReaderStringList(string query, int amount)
         {
             try
             {
@@ -70,7 +70,10 @@ namespace DAL.SQLContext
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        list.Add(reader.GetString(0));
+                        for (int i = 0; i <= amount; i++)
+                        {
+                            list.Add(reader.GetString(i));
+                        }
                     }
                     return list;
                 }
@@ -82,7 +85,7 @@ namespace DAL.SQLContext
             return null;
         }
 
-        public int executeReaderInt(string query)
+        internal int executeReaderInt(string query)
         {
             try
             {
@@ -106,7 +109,7 @@ namespace DAL.SQLContext
             return -1;
         }
 
-        public List<int> executeReaderIntList(string query)
+        internal List<int> executeReaderIntList(string query)
         {
             try
             {
@@ -130,7 +133,7 @@ namespace DAL.SQLContext
             return null;
         }
 
-        public DateTime? executeReaderDateTime(string query)
+        internal DateTime? executeReaderDateTime(string query)
         {
             try
             {
@@ -150,6 +153,30 @@ namespace DAL.SQLContext
             catch (Exception e)
             {
                 Console.WriteLine("Error: " + e.Message);
+            }
+            return null;
+        }
+
+        internal List<double> executeReaderDoubleList(string query)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    List<double> list = new List<double>();
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(query, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        list.Add(reader.GetDouble(0));
+                    }
+                    return list;
+                }
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine("Error: " + exception.Message);
             }
             return null;
         }

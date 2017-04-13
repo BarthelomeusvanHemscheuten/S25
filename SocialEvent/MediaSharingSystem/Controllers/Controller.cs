@@ -25,12 +25,12 @@ namespace MediaSharingSystem.Controllers
         Employee employee;
         Admin admin;
 
-        public Controller(string nameEvent)
+        public Controller()
         {
             userRepo = new UserRepository(new UserSQLContext());
             mediaRepo = new MediaRepository(new MediaSQLContext());
             reservationRepo = new ReservationRepository(new ReservationSQLContext());
-            EVENT = new Event(nameEvent);
+            EVENT = new Event("Testevent");
         }
 
         public bool AddLocation(int number, string features, string type)
@@ -85,7 +85,7 @@ namespace MediaSharingSystem.Controllers
         }
 
         // VISITOR, EMPLOYEE AND ADMIN
-        public bool Login(string username, string password)
+        public int Login(string username, string password)
         {
             userGroup = userRepo.GetUserGroup(username);
 
@@ -93,22 +93,23 @@ namespace MediaSharingSystem.Controllers
             List<int> userDataInt = userRepo.GetUserDataInt(username);
             DateTime? userDate = userRepo.GetUserDataDateTime(username);
 
-            if (userGroup == 3)
+            if (userGroup == 1)
             {
                 if (userRepo.CheckLogin(username, password) == true)
                 {
-                    if(userDate != null)
+                    if (userDate != null)
                     {
                         visitor = new Visitor(userDataString[0], userDataString[1], userDataString[2], userDataString[3], userDataString[4], userDataString[5], userDate, userDataInt[0], userDataInt[1]);
                         EVENT.Visitors.Add(visitor);
-                    } else
+                    }
+                    else
                     {
                         visitor = new Visitor(userDataString[0], userDataString[1], userDataString[2], userDataString[3], userDataInt[0], userDataInt[1]);
                         EVENT.Visitors.Add(visitor);
                     }
                     // OPEN FORM VISITOR
 
-                    return true;
+                    return 1;
                 }
             }
             else if (userGroup == 2)
@@ -118,20 +119,20 @@ namespace MediaSharingSystem.Controllers
                     employee = new Employee(userDataString[0], userDataString[1], userDataString[2], userDataString[3], userDataString[4], userDataString[5], userDate, userDataInt[0], userDataInt[1]);
                     // OPEN FORM EMPLOYEE
 
-                    return true;
+                    return 2;
                 }
             }
-            else if(userGroup == 1)
+            else if (userGroup == 3)
             {
                 if (userRepo.CheckLogin(username, password) == true)
                 {
                     admin = new Admin(userDataString[0], userDataString[1], userDataString[2], userDataString[3], userDataString[4], userDataString[5], userDate, userDataInt[0], userDataInt[1]);
                     // OPEN FORM ADMIN
 
-                    return true;
+                    return 3;
                 }
             }
-            return false;
+            return -1;
         }
 
         public Post AddAndShowPost(string text, string path)
@@ -146,7 +147,7 @@ namespace MediaSharingSystem.Controllers
                     Post post2 = employee.PlacePost(0, text, path);
                     mediaRepo.InsertPost(post2.ID, text, path);
                     return post2;
-                    
+
                 case 1:
                     Post post3 = admin.PlacePost(0, text, path);
                     mediaRepo.InsertPost(post3.ID, text, path);
@@ -324,11 +325,11 @@ namespace MediaSharingSystem.Controllers
             return false;
         }
 
-        
+
         // EMPLOYEE
-        public bool Reserve(List<Location> locations, int quantityVisitors, int quantityLocations, List<string> username, List<string> name, List<string> password, List<string> emailAddress, List<string> telnr, List<string> address, List<string> dateOfBirth )
+        public bool Reserve(List<Location> locations, int quantityVisitors, int quantityLocations, List<string> username, List<string> name, List<string> password, List<string> emailAddress, List<string> telnr, List<string> address, List<string> dateOfBirth)
         {
-            if(locations != null && quantityVisitors > 0 && quantityLocations > 0 && username != null && name != null && password != null && emailAddress != null && telnr != null && address != null && dateOfBirth != null)
+            if (locations != null && quantityVisitors > 0 && quantityLocations > 0 && username != null && name != null && password != null && emailAddress != null && telnr != null && address != null && dateOfBirth != null)
             {
                 employee.Reserve(EVENT, locations, quantityVisitors, quantityLocations, username, name, password, emailAddress, telnr, address, dateOfBirth);
 
@@ -345,7 +346,7 @@ namespace MediaSharingSystem.Controllers
                 {
                     employee.RentMaterial(visitor, material, startDate, endDate);
                 }
-                 
+
                 return true;
             }
             return false;
@@ -374,12 +375,12 @@ namespace MediaSharingSystem.Controllers
 
         public bool DeleteShowPost(Post post, string deleteOrShow)
         {
-            if(post != null && deleteOrShow != null)
+            if (post != null && deleteOrShow != null)
             {
                 admin.DeleteShowPost(post, deleteOrShow);
 
                 return true;
-            } 
+            }
             return false;
         }
 
@@ -407,11 +408,11 @@ namespace MediaSharingSystem.Controllers
                 DateTime? dateTime = userRepo.GetUserDataDateTime(i);
                 List<int> userDataInt = userRepo.GetUserDataInt(i);
                 List<string> userDataString = userRepo.GetUserDataString(i);
-                
+
                 if (dateTime != null)
                 {
                     result.Add(new Visitor(userDataString[0], userDataString[1], userDataString[3], userDataString[4], userDataString[5], userDataString[6], dateTime, userDataInt[0], userDataInt[1]));
-                    
+
                 }
                 else
                 {
@@ -423,30 +424,111 @@ namespace MediaSharingSystem.Controllers
 
         // POSTS, COMMENTS, REPORTED
 
-        public Post GetAndShowReportedPostsFromDatabase()
+        public List<Post> GetAndShowReportedPostsFromDatabase()
         {
+            List<Post> result = new List<Post>();
+
             int quantity = mediaRepo.CountReportedPosts();
+            List<int> listPostsID = mediaRepo.GetReportedPostsId();
+
+            // int GetUserIdPost(int id); om te laten zien van wie de post is
 
             for (int i = 0; i < quantity; i++)
             {
-
-                visitor.PlacePost(, text, path);
+                List<string> textPathPost = mediaRepo.GetTextPathPost(listPostsID[i]);
+                Post post = visitor.PlacePost(listPostsID[i], textPathPost[0], textPathPost[1]);
+                visitor.Posts.Add(post);
+                result.Add(post);
             }
+            return result;
         }
 
-        public Comment GetAndShowReportedCommentsFromDatabase()
+        public List<Comment> GetAndShowReportedCommentsFromDatabase()
         {
+            List<Comment> result = new List<Comment>();
+
             int quantity = mediaRepo.CountReportedComments();
+            List<int> listCommentsID = mediaRepo.GetReportedCommentsId();
 
+            // int GetUserIdComment(int id); om te laten zien van wie de post is
 
+            for (int i = 0; i < quantity; i++)
+            {
+                string textComment = mediaRepo.GetTextComment(listCommentsID[i]);
+                User user = visitor as User;
+                Comment comment = user.PlaceComment(listCommentsID[i], textComment);
+                result.Add(comment);
+            }
+            return result;
         }
 
-        public Post GetAndShowPostComments()
+        public List<Post> GetAndShowPostComments()
         {
+            List<Post> output = new List<Post>();
+            List<int> postsID = mediaRepo.GetPostsID();
+            List<int> commentsID = mediaRepo.GetCommentsID();
 
+            for (int i = 0; i < postsID.Count; i++)
+            {
+                List<string> postTextPath = mediaRepo.GetTextPathPost(postsID[i]);
+                Post post = new Post(postsID[i], postTextPath[0], postTextPath[1]);
+                output.Add(post);
+            }
 
+            for (int i = 0; i < commentsID.Count; i++)
+            {
+                string textComment = mediaRepo.GetTextComment(commentsID[i]);
+                Comment comment = new Comment(commentsID[i], textComment);
+                int postID = mediaRepo.GetPostIdFromComment(commentsID[i]);
 
-            return mediaRepo.GetPostsComments();
+                foreach (Post post in output)
+                {
+                    if (post.ID == postID)
+                    {
+                        post.Comments.Add(comment);
+                    }
+                }
+                for (int j = 0; j < postsID.Count; j++)
+                {
+                    int userID = mediaRepo.GetUserIdPost(postsID[i]);
+
+                    DateTime? dateTime = userRepo.GetUserDataDateTime(userID);
+                    List<int> userDataInt = userRepo.GetUserDataInt(userID);
+                    List<string> userDataString = userRepo.GetUserDataString(userID);
+
+                    if (dateTime != null)
+                    {
+                        comment.User = new Visitor(userDataString[0], userDataString[1], userDataString[3], userDataString[4], userDataString[5], userDataString[6], dateTime, userDataInt[0], userDataInt[1]);
+                    }
+                    else
+                    {
+                        comment.User = new Visitor(userDataString[0], userDataString[1], userDataString[2], userDataString[3], userDataInt[0], userDataInt[1]);
+                    }
+
+                    if (dateTime != null)
+                    {
+                        foreach (Post post in output)
+                        {
+                            if (post.ID == postID)
+                            {
+                                post.User = new Visitor(userDataString[0], userDataString[1], userDataString[3], userDataString[4], userDataString[5], userDataString[6], dateTime, userDataInt[0], userDataInt[1]);
+                            }
+                        }
+                    }
+                    else
+                    {
+                        foreach (Post post in output)
+                        {
+                            if (post.ID == postID)
+                            {
+                                post.User = new Visitor(userDataString[0], userDataString[1], userDataString[2], userDataString[3], userDataInt[0], userDataInt[1]);
+                            }
+                        }
+                    }
+
+                }
+            }
+            return output;
         }
     }
 }

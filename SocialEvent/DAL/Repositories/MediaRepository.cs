@@ -113,12 +113,6 @@ namespace DAL.Repositories
         {
             return context.GetTextComment(id);
         }
-
-        List<int> GetUserIdPostIdComment(int id)
-        {
-            return context.GetUserIdPostIdComment(id);
-        }
-
         
         public bool DeletePost(int id)
         {
@@ -136,6 +130,36 @@ namespace DAL.Repositories
                 return true;
             }
             return false;
+        }
+
+        public int GetUserIdComment(int id)
+        {
+            return context.GetUserIdComment(id);
+        }
+
+        public List<int> GetReportedPostsId()
+        {
+            return context.GetReportedPostsId();
+        }
+
+        public List<int> GetReportedCommentsId()
+        {
+            return context.GetReportedCommentsId();
+        }
+
+        public List<int> GetPostsID()
+        {
+            return context.GetPostsID();
+        }
+
+        public List<int> GetCommentsID()
+        {
+            return context.GetCommentsID();
+        }
+
+        public int GetPostIdFromComment(int commentid)
+        {
+            return GetPostIdFromComment(commentid);
         }
 
 
