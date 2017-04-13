@@ -11,7 +11,7 @@ namespace DAL.SQLContext
     {
         private const string connectionString = "???";
 
-        public bool executeNonQuery(string query)
+        internal bool executeNonQuery(string query)
         {
             try
             {
@@ -34,7 +34,7 @@ namespace DAL.SQLContext
             return false;
         }
 
-        public string executeReaderString(string query)
+        internal string executeReaderString(string query)
         {
             try
             {
@@ -58,7 +58,7 @@ namespace DAL.SQLContext
             return null;
         }
 
-        public List<string> executeReaderStringList(string query)
+        internal List<string> executeReaderStringList(string query)
         {
             try
             {
@@ -82,7 +82,7 @@ namespace DAL.SQLContext
             return null;
         }
 
-        public int executeReaderInt(string query)
+        internal int executeReaderInt(string query)
         {
             try
             {
@@ -106,7 +106,7 @@ namespace DAL.SQLContext
             return -1;
         }
 
-        public List<int> executeReaderIntList(string query)
+        internal List<int> executeReaderIntList(string query)
         {
             try
             {
@@ -130,7 +130,7 @@ namespace DAL.SQLContext
             return null;
         }
 
-        public DateTime? executeReaderDateTime(string query)
+        internal DateTime? executeReaderDateTime(string query)
         {
             try
             {
@@ -150,6 +150,30 @@ namespace DAL.SQLContext
             catch (Exception e)
             {
                 Console.WriteLine("Error: " + e.Message);
+            }
+            return null;
+        }
+
+        internal List<double> executeReaderDoubleList(string query)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    List<double> list = new List<double>();
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(query, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        list.Add(reader.GetDouble(0));
+                    }
+                    return list;
+                }
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine("Error: " + exception.Message);
             }
             return null;
         }
