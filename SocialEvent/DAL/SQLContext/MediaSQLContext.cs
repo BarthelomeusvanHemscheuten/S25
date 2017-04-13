@@ -84,14 +84,14 @@ namespace DAL.SQLContext
 
         public int CountReportedPosts() 
         {
-            string query = @"";
+            string query = @"SELECT COUNT(Post-ID) FROM [Report]";
 
             return databaseConnection.executeReaderInt(query);
         }
 
         public int CountReportedComments()
         {
-            string query = @"";
+            string query = @"SELECT COUNT(Comment-ID) FROM [Report] ";
 
             return databaseConnection.executeReaderInt(query);
         }
