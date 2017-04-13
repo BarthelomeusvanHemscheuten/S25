@@ -25,7 +25,12 @@ namespace DAL.Interfaces
         List<string> GetTextPathPost(int id);
         int GetUserIdPost(int id);
         string GetTextComment(int id);
-       
+        int GetUserIdComment(int id);
+        List<int> GetReportedPostsId();
+        List<int> GetReportedCommentsId();
+        List<int> GetPostIdFromComment();
+
+
         bool DeletePost(int id);
         bool DeleteComment(int id);
         

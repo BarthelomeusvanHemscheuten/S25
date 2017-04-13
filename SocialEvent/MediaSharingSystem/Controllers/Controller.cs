@@ -25,7 +25,7 @@ namespace MediaSharingSystem.Controllers
         Employee employee;
         Admin admin;
 
-        public Controller(string nameEvent)
+        public Controller()
         {
             userRepo = new UserRepository(new UserSQLContext());
             mediaRepo = new MediaRepository(new MediaSQLContext());
@@ -85,7 +85,7 @@ namespace MediaSharingSystem.Controllers
         }
 
         // VISITOR, EMPLOYEE AND ADMIN
-        public bool Login(string username, string password)
+        public int Login(string username, string password)
         {
             userGroup = userRepo.GetUserGroup(username);
 
@@ -93,7 +93,7 @@ namespace MediaSharingSystem.Controllers
             List<int> userDataInt = userRepo.GetUserDataInt(username);
             DateTime? userDate = userRepo.GetUserDataDateTime(username);
 
-            if (userGroup == 3)
+            if (userGroup == 1)
             {
                 if (userRepo.CheckLogin(username, password) == true)
                 {
@@ -108,7 +108,7 @@ namespace MediaSharingSystem.Controllers
                     }
                     // OPEN FORM VISITOR
 
-                    return true;
+                    return 1;
                 }
             }
             else if (userGroup == 2)
@@ -118,20 +118,20 @@ namespace MediaSharingSystem.Controllers
                     employee = new Employee(userDataString[0], userDataString[1], userDataString[2], userDataString[3], userDataString[4], userDataString[5], userDate, userDataInt[0], userDataInt[1]);
                     // OPEN FORM EMPLOYEE
 
-                    return true;
+                    return 2;
                 }
             }
-            else if(userGroup == 1)
+            else if(userGroup == 3)
             {
                 if (userRepo.CheckLogin(username, password) == true)
                 {
                     admin = new Admin(userDataString[0], userDataString[1], userDataString[2], userDataString[3], userDataString[4], userDataString[5], userDate, userDataInt[0], userDataInt[1]);
                     // OPEN FORM ADMIN
 
-                    return true;
+                    return 3;
                 }
             }
-            return false;
+            return -1;
         }
 
         public Post AddAndShowPost(string text, string path)
@@ -423,22 +423,43 @@ namespace MediaSharingSystem.Controllers
 
         // POSTS, COMMENTS, REPORTED
 
-        public Post GetAndShowReportedPostsFromDatabase()
+        public List<Post> GetAndShowReportedPostsFromDatabase()
         {
+            List<Post> result = new List<Post>();
+
             int quantity = mediaRepo.CountReportedPosts();
+            List<int> listPostsID = mediaRepo.GetReportedPostsId();
+           
+            // int GetUserIdPost(int id); om te laten zien van wie de post is
 
             for (int i = 0; i < quantity; i++)
             {
-
-                visitor.PlacePost(, text, path);
+                List<string> textPathPost = mediaRepo.GetTextPathPost(listPostsID[i]);
+                Post post = visitor.PlacePost(listPostsID[i], textPathPost[0], textPathPost[1]);
+                visitor.Posts.Add(post);
+                result.Add(post);
             }
+            return result;
         }
 
-        public Comment GetAndShowReportedCommentsFromDatabase()
+        public List<Comment> GetAndShowReportedCommentsFromDatabase()
         {
+            List<Comment> result = new List<Comment>();
+
             int quantity = mediaRepo.CountReportedComments();
+            List<int> listCommentsID = mediaRepo.GetReportedCommentsId();
+           
+            // int GetUserIdComment(int id); om te laten zien van wie de post is
 
-
+            for (int i = 0; i < quantity; i++)
+            {
+                string textComment = mediaRepo.GetTextComment(listCommentsID[i]);
+                int postIdFromComment = mediaRepo.GetPostIdFromComment();
+                Comment comment = visitor.PlaceComment(listCommentsID[i], textComment, postIdFromComment);
+                visitor.Posts.Add(post);
+                result.Add(post);
+            }
+            return result;
         }
 
         public Post GetAndShowPostComments()
