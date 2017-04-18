@@ -109,14 +109,14 @@ namespace DAL.SQLContext
         {   // zie opmerking hierboven
             string query = @"SELECT Materials, Name FROM [Material] WHERE StartDate IS NULL AND EndDate IS NULL GROUP BY Name";
 
-            return databaseConnection.executeReaderStringList(query);
+            return databaseConnection.executeReaderStringList(query, 2);
         }
 
         public List<string> GetAllMaterialsName()
         {  // zie opmerking hierboven
             string query = @"SELECT Name FROM [Material] WHERE StartDate IS NULL AND EndDate IS NULL GROUP BY Name";
 
-            return databaseConnection.executeReaderStringList(query);
+            return databaseConnection.executeReaderStringList(query, 1);
         }
     }
 }

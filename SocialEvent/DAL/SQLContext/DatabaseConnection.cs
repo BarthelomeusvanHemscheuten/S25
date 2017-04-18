@@ -109,7 +109,7 @@ namespace DAL.SQLContext
             return -1;
         }
 
-        internal List<int> executeReaderIntList(string query)
+        internal List<int> executeReaderIntList(string query, int amount)
         {
             try
             {
@@ -121,7 +121,10 @@ namespace DAL.SQLContext
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        list.Add(reader.GetInt32(0));
+                        for (int i = 0; i <= amount; i++)
+                        {
+                            list.Add(reader.GetInt32(i));
+                        }
                     }
                     return list;
                 }
