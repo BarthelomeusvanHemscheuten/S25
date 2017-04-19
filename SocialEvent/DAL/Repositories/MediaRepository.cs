@@ -132,11 +132,6 @@ namespace DAL.Repositories
             return false;
         }
 
-        public int GetUserIdComment(int id)
-        {
-            return context.GetUserIdComment(id);
-        }
-
         public List<int> GetReportedPostsId()
         {
             return context.GetReportedPostsId();
