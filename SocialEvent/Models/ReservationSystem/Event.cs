@@ -12,7 +12,7 @@ namespace Models.ReservationSystem
     {
         ReservationRepository reservationRepo = new ReservationRepository(new ReservationSQLContext());
 
-        public int ID { get { return reservationRepo.GetEventID(this.Name); } }
+        public int ID { get; private set; }
         public string Name { get; private set; }
         public string Description { get; private set; }
         
@@ -23,15 +23,21 @@ namespace Models.ReservationSystem
         // constructor om nieuwe event aan te maken
         public Event(string name, string description)
         {
+            this.ID = reservationRepo.GetEventID(name);
             this.Name = name;
             this.Description = description;
+            Visitors = new List<Visitor>();
         }
 
         // constructor om event aan te maken die al bestaat in database
         public Event(string name)
         {
+            this.ID = reservationRepo.GetEventID(name);
             this.Name = name;
             this.Description = reservationRepo.GetEventDescription(this.ID);
+
+            //Deze moet eigenlijk ipv een nieuwe lijst maken een lijst pakken met alle visitors uit de database die bij dit event horen
+            Visitors = new List<Visitor>();
         }
 
         public Location AddLocation(int number, string features, string type)

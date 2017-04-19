@@ -72,8 +72,11 @@ namespace MediaSharingSystem.Forms
                 case 3:
                     PanelBeheerder.Visible = true;
                     break;
+                case -1:
+                    MessageBox.Show("Failed to login, incorrect login credentials");
+                    break;
                 default:
-                    MessageBox.Show("sukkel");
+                    MessageBox.Show("An unknown error has occured");
                     break;
             }
         }

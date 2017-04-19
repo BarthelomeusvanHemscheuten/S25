@@ -70,14 +70,14 @@ namespace DAL.SQLContext
 
         public int GetEventID(string name)
         {
-            string query = @"SELECT EventID FROM [Event] WHERE Naam = @naam";
+            string query = @"SELECT EventID FROM [Event] WHERE name = '@naam'";
             query = query.Replace("@naam", name);
             return databaseConnection.executeReaderInt(query);
         }
         
         public string GetEventDescription(int id)
         {
-            string query = @"SELECT Beschrijving FROM [Event] WHERE EventID = @id";
+            string query = @"SELECT description FROM [Event] WHERE EventID = @id";
             query = query.Replace("@id", id.ToString());
             return databaseConnection.executeReaderString(query);
         }
