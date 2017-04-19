@@ -99,12 +99,12 @@ namespace MediaSharingSystem.Controllers
                 {
                     if (userDate != null)
                     {
-                        visitor = new Visitor(userDataString[0], userDataString[1], userDataString[2], userDataString[3], userDataString[4], userDataString[5], userDate, userDataInt[0], userDataInt[1]);
+                        visitor = new Visitor(userDataString[0], userDataString[1], userDataString[2], userDataString[3], userDataString[4], userDate, userDataInt[0], userDataInt[1]);
                         EVENT.Visitors.Add(visitor);
                     }
                     else
                     {
-                        visitor = new Visitor(userDataString[0], userDataString[1], userDataString[2], userDataString[3], userDataInt[0], userDataInt[1]);
+                        visitor = new Visitor(userDataString[0], userDataString[1], userDataString[2], userDataInt[0], userDataInt[1]);
                         EVENT.Visitors.Add(visitor);
                     }
                     // OPEN FORM VISITOR
@@ -116,7 +116,7 @@ namespace MediaSharingSystem.Controllers
             {
                 if (userRepo.CheckLogin(username, password) == true)
                 {
-                    employee = new Employee(userDataString[0], userDataString[1], userDataString[2], userDataString[3], userDataString[4], userDataString[5], userDate, userDataInt[0], userDataInt[1]);
+                    employee = new Employee(userDataString[0], userDataString[1], userDataString[2], userDataString[3], userDataString[4], userDate, userDataInt[0], userDataInt[1]);
                     // OPEN FORM EMPLOYEE
 
                     return 2;
@@ -126,7 +126,7 @@ namespace MediaSharingSystem.Controllers
             {
                 if (userRepo.CheckLogin(username, password) == true)
                 {
-                    admin = new Admin(userDataString[0], userDataString[1], userDataString[2], userDataString[3], userDataString[4], userDataString[5], userDate, userDataInt[0], userDataInt[1]);
+                    admin = new Admin(userDataString[0], userDataString[1], userDataString[2], userDataString[3], userDataString[4], userDate, userDataInt[0], userDataInt[1]);
                     // OPEN FORM ADMIN
 
                     return 3;
@@ -411,12 +411,12 @@ namespace MediaSharingSystem.Controllers
 
                 if (dateTime != null)
                 {
-                    result.Add(new Visitor(userDataString[0], userDataString[1], userDataString[3], userDataString[4], userDataString[5], userDataString[6], dateTime, userDataInt[0], userDataInt[1]));
+                    result.Add(new Visitor(userDataString[0], userDataString[1], userDataString[3], userDataString[4], userDataString[6], dateTime, userDataInt[0], userDataInt[1]));
 
                 }
                 else
                 {
-                    result.Add(new Visitor(userDataString[0], userDataString[1], userDataString[2], userDataString[3], userDataInt[0], userDataInt[1]));
+                    result.Add(new Visitor(userDataString[0], userDataString[1], userDataString[2], userDataInt[0], userDataInt[1]));
                 }
             }
             return result;
@@ -498,11 +498,11 @@ namespace MediaSharingSystem.Controllers
 
                     if (dateTime != null)
                     {
-                        comment.User = new Visitor(userDataString[0], userDataString[1], userDataString[3], userDataString[4], userDataString[5], userDataString[6], dateTime, userDataInt[0], userDataInt[1]);
+                        comment.User = new Visitor(userDataString[0], userDataString[1], userDataString[3], userDataString[4], userDataString[6], dateTime, userDataInt[0], userDataInt[1]);
                     }
                     else
                     {
-                        comment.User = new Visitor(userDataString[0], userDataString[1], userDataString[2], userDataString[3], userDataInt[0], userDataInt[1]);
+                        comment.User = new Visitor(userDataString[0], userDataString[1], userDataString[2], userDataInt[0], userDataInt[1]);
                     }
 
                     if (dateTime != null)
@@ -511,7 +511,7 @@ namespace MediaSharingSystem.Controllers
                         {
                             if (post.ID == postID)
                             {
-                                post.User = new Visitor(userDataString[0], userDataString[1], userDataString[3], userDataString[4], userDataString[5], userDataString[6], dateTime, userDataInt[0], userDataInt[1]);
+                                post.User = new Visitor(userDataString[0], userDataString[1], userDataString[3], userDataString[4], userDataString[6], dateTime, userDataInt[0], userDataInt[1]);
                             }
                         }
                     }
@@ -521,7 +521,7 @@ namespace MediaSharingSystem.Controllers
                         {
                             if (post.ID == postID)
                             {
-                                post.User = new Visitor(userDataString[0], userDataString[1], userDataString[2], userDataString[3], userDataInt[0], userDataInt[1]);
+                                post.User = new Visitor(userDataString[0], userDataString[1], userDataString[2], userDataInt[0], userDataInt[1]);
                             }
                         }
                     }

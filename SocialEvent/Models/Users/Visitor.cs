@@ -10,12 +10,12 @@ namespace Models.Users
 {
     public class Visitor : User
     {
-        public Visitor(string username, string name, string password, string emailAddress, string telnr, string address, DateTime? dateOfBirth, int eventID, int reservationID) : base(username, name, password, emailAddress, telnr, address, dateOfBirth, eventID, reservationID)
+        public Visitor(string username, string name, string emailAddress, string telnr, string address, DateTime? dateOfBirth, int eventID, int reservationID) : base(username, name, emailAddress, telnr, address, dateOfBirth, eventID, reservationID)
         {
 
         }
 
-        public Visitor(string username, string name, string password, string telnr, int eventID, int reservationID) : base(username, name, password, telnr, eventID, reservationID)
+        public Visitor(string username, string name, string telnr, int eventID, int reservationID) : base(username, name, telnr, eventID, reservationID)
         {
 
         }

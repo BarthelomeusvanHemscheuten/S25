@@ -15,7 +15,7 @@ namespace Models.Users
         ReservationRepository reservationRepo = new ReservationRepository(new ReservationSQLContext());
         MediaRepository mediaRepo = new MediaRepository(new MediaSQLContext());
 
-        public Admin(string username, string name, string password, string emailAddress, string telnr, string address, DateTime? dateOfBirth, int eventID, int reservationID) : base(username, name, password, emailAddress, telnr, address, dateOfBirth, eventID, reservationID)
+        public Admin(string username, string name, string emailAddress, string telnr, string address, DateTime? dateOfBirth, int eventID, int reservationID) : base(username, name, emailAddress, telnr, address, dateOfBirth, eventID, reservationID)
         {
 
         }

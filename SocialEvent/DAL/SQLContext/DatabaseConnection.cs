@@ -11,7 +11,7 @@ namespace DAL.SQLContext
     {
         // LUCAS: Data Source=DESKTOP-6R0TNPL;Initial Catalog=Proftaak;Integrated Security=True
         // THOMAS: Data Source=THOMAS-LAPTOP\SQLEXPRESS;Initial Catalog=Proftaakje;Integrated Security=True
-        private const string connectionString = @"Data Source=DESKTOP-6R0TNPL;Initial Catalog=Proftaak;Integrated Security=True";
+        private const string connectionString = @"Data Source=THOMAS-LAPTOP\SQLEXPRESS;Initial Catalog=Proftaakje;Integrated Security=True";
 
         internal bool executeNonQuery(string query)
         {
@@ -150,15 +150,18 @@ namespace DAL.SQLContext
                     SqlCommand command = new SqlCommand(query, connection);
                     SqlDataReader reader = command.ExecuteReader();
 
-                        Console.WriteLine("Execute reader executed");
-                    return Convert.ToDateTime(reader.GetSqlDateTime(5));
+                    DateTime output = new DateTime();
+                    output = reader.GetDateTime(0);
+                    Console.WriteLine("Execute reader executed");
+
+                    return output;
                 }
             }
             catch (Exception e)
             {
                 Console.WriteLine("Error: " + e.Message);
             }
-            return null;
+            return new DateTime(2017, 1, 18);
         }
 
         internal List<double> executeReaderDoubleList(string query)

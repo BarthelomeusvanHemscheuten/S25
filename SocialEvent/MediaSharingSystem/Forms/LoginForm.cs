@@ -11,11 +11,11 @@ using MediaSharingSystem.Controllers;
 
 namespace MediaSharingSystem.Forms
 {
-    public partial class Login : Form
+    public partial class LoginForm : Form
     {
         Controller controller;
 
-        public Login()
+        public LoginForm()
         {
             InitializeComponent();
             controller = new Controller();
@@ -26,18 +26,18 @@ namespace MediaSharingSystem.Forms
             switch (controller.Login(tbUsername.Text, tbPassword.Text))
             {
                 case 1:
-                    Visitor visitorform = new Visitor(this);
+                    VisitorForm visitorform = new VisitorForm(this);
                     visitorform.Show();
                     this.Hide();
 
                     break;
                 case 2:
-                    Employee employeeform = new Employee();
+                    EmployeeForm employeeform = new EmployeeForm(this);
                     employeeform.Show();
                     this.Hide();
                     break;
                 case 3:
-                    Admin adminform = new Admin();
+                    AdminForm adminform = new AdminForm(this);
                     adminform.Show();
                     this.Hide();
                     break;

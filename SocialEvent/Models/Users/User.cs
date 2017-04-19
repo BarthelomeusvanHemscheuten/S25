@@ -32,26 +32,24 @@ namespace Models.Users
         public List<Post> Posts { get; private set; }
         public List<Report> Reports { get; private set; }
 
-        public User(string username, string name, string password, string emailAddress, string telnr, string address, DateTime? dateOfBirth, int eventID, int reservationID)
+        public User(string username, string name, string emailAddress, string telnr, string address, DateTime? dateOfBirth, int eventID, int reservationID)
         {
             this.ID = userRepo.GetID(username);
             this.EventID = eventID;
             this.ReservationID = reservationID;
             this.Username = username;
             this.Name = name;
-            this.Password = password;
             this.EmailAddress = emailAddress;
             this.Telnr = telnr;
             this.Address = address;
             this.DateOfBirth = dateOfBirth;
         }
 
-        public User(string username, string name, string password, string telnr, int eventID, int reservationID)
+        public User(string username, string name, string telnr, int eventID, int reservationID)
         {
             this.ID = userRepo.GetID(username);
             this.Username = username;
             this.Name = name;
-            this.Password = password;
             this.Telnr = telnr;
             this.EventID = eventID;
             this.ReservationID = reservationID;

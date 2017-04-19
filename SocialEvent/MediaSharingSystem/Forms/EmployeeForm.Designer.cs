@@ -1,6 +1,6 @@
 ﻿namespace MediaSharingSystem.Forms
 {
-    partial class Employee
+    partial class EmployeeForm
     {
         /// <summary>
         /// Required designer variable.
@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Employee));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmployeeForm));
             this.panelMedewerker = new System.Windows.Forms.Panel();
+            this.btnReserveren = new System.Windows.Forms.Button();
             this.btnUitloggenMedewerker = new System.Windows.Forms.Button();
             this.btnInfoMenuMedewerker = new System.Windows.Forms.Button();
             this.btnGebruikersBeherenMedewerker = new System.Windows.Forms.Button();
@@ -79,7 +80,6 @@
             this.tbNaamGebruikersBeheren = new System.Windows.Forms.TextBox();
             this.lblNaamGebruikersBeheren = new System.Windows.Forms.Label();
             this.lbGebruikers = new System.Windows.Forms.ListBox();
-            this.btnReserveren = new System.Windows.Forms.Button();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.PanelInfoMenu = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
@@ -147,7 +147,17 @@
             this.panelMedewerker.Name = "panelMedewerker";
             this.panelMedewerker.Size = new System.Drawing.Size(203, 532);
             this.panelMedewerker.TabIndex = 9;
-            this.panelMedewerker.Visible = false;
+            // 
+            // btnReserveren
+            // 
+            this.btnReserveren.Location = new System.Drawing.Point(17, 138);
+            this.btnReserveren.Margin = new System.Windows.Forms.Padding(4);
+            this.btnReserveren.Name = "btnReserveren";
+            this.btnReserveren.Size = new System.Drawing.Size(169, 52);
+            this.btnReserveren.TabIndex = 6;
+            this.btnReserveren.Text = "Reserveren";
+            this.btnReserveren.UseVisualStyleBackColor = true;
+            this.btnReserveren.Click += new System.EventHandler(this.btnReserveren_Click);
             // 
             // btnUitloggenMedewerker
             // 
@@ -158,6 +168,7 @@
             this.btnUitloggenMedewerker.TabIndex = 5;
             this.btnUitloggenMedewerker.Text = "Uitloggen";
             this.btnUitloggenMedewerker.UseVisualStyleBackColor = true;
+            this.btnUitloggenMedewerker.Click += new System.EventHandler(this.btnUitloggenMedewerker_Click);
             // 
             // btnInfoMenuMedewerker
             // 
@@ -168,6 +179,7 @@
             this.btnInfoMenuMedewerker.TabIndex = 4;
             this.btnInfoMenuMedewerker.Text = "Nieuws overzicht";
             this.btnInfoMenuMedewerker.UseVisualStyleBackColor = true;
+            this.btnInfoMenuMedewerker.Click += new System.EventHandler(this.btnInfoMenuMedewerker_Click);
             // 
             // btnGebruikersBeherenMedewerker
             // 
@@ -178,6 +190,7 @@
             this.btnGebruikersBeherenMedewerker.TabIndex = 3;
             this.btnGebruikersBeherenMedewerker.Text = "Gebruikers beheren";
             this.btnGebruikersBeherenMedewerker.UseVisualStyleBackColor = true;
+            this.btnGebruikersBeherenMedewerker.Click += new System.EventHandler(this.btnGebruikersBeherenMedewerker_Click);
             // 
             // btnVerhuurItemMedewerker
             // 
@@ -188,6 +201,7 @@
             this.btnVerhuurItemMedewerker.TabIndex = 1;
             this.btnVerhuurItemMedewerker.Text = "Item verhuren";
             this.btnVerhuurItemMedewerker.UseVisualStyleBackColor = true;
+            this.btnVerhuurItemMedewerker.Click += new System.EventHandler(this.btnVerhuurItemMedewerker_Click);
             // 
             // btnAccountInstellingenMedewerker
             // 
@@ -198,6 +212,7 @@
             this.btnAccountInstellingenMedewerker.TabIndex = 0;
             this.btnAccountInstellingenMedewerker.Text = "Account instellingen";
             this.btnAccountInstellingenMedewerker.UseVisualStyleBackColor = true;
+            this.btnAccountInstellingenMedewerker.Click += new System.EventHandler(this.btnAccountInstellingenMedewerker_Click);
             // 
             // tbctrlMain
             // 
@@ -218,7 +233,7 @@
             this.tabAccountInstellingen.Location = new System.Drawing.Point(4, 25);
             this.tabAccountInstellingen.Name = "tabAccountInstellingen";
             this.tabAccountInstellingen.Padding = new System.Windows.Forms.Padding(3);
-            this.tabAccountInstellingen.Size = new System.Drawing.Size(653, 474);
+            this.tabAccountInstellingen.Size = new System.Drawing.Size(653, 503);
             this.tabAccountInstellingen.TabIndex = 0;
             this.tabAccountInstellingen.Text = "tabAccountInstellingen";
             this.tabAccountInstellingen.UseVisualStyleBackColor = true;
@@ -384,7 +399,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(653, 474);
+            this.tabPage2.Size = new System.Drawing.Size(653, 503);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabNieuwsoverzicht";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -395,7 +410,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(653, 474);
+            this.tabPage1.Size = new System.Drawing.Size(653, 503);
             this.tabPage1.TabIndex = 2;
             this.tabPage1.Text = "tabItemVerhuren";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -539,7 +554,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 25);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(653, 474);
+            this.tabPage3.Size = new System.Drawing.Size(653, 503);
             this.tabPage3.TabIndex = 3;
             this.tabPage3.Text = "tabGebruikersBeheren";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -660,16 +675,6 @@
             this.lbGebruikers.Name = "lbGebruikers";
             this.lbGebruikers.Size = new System.Drawing.Size(224, 340);
             this.lbGebruikers.TabIndex = 0;
-            // 
-            // btnReserveren
-            // 
-            this.btnReserveren.Location = new System.Drawing.Point(17, 138);
-            this.btnReserveren.Margin = new System.Windows.Forms.Padding(4);
-            this.btnReserveren.Name = "btnReserveren";
-            this.btnReserveren.Size = new System.Drawing.Size(169, 52);
-            this.btnReserveren.TabIndex = 6;
-            this.btnReserveren.Text = "Reserveren";
-            this.btnReserveren.UseVisualStyleBackColor = true;
             // 
             // tabPage4
             // 
@@ -1062,7 +1067,7 @@
             this.rbtnBungalows.Text = "Bungalows";
             this.rbtnBungalows.UseVisualStyleBackColor = true;
             // 
-            // Employee
+            // EmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -1070,7 +1075,7 @@
             this.ClientSize = new System.Drawing.Size(1053, 571);
             this.Controls.Add(this.tbctrlMain);
             this.Controls.Add(this.panelMedewerker);
-            this.Name = "Employee";
+            this.Name = "EmployeeForm";
             this.Text = "Employee";
             this.panelMedewerker.ResumeLayout(false);
             this.tbctrlMain.ResumeLayout(false);

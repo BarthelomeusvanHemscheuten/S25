@@ -14,7 +14,7 @@ namespace Models.Users
         UserRepository userRepo = new UserRepository(new UserSQLContext());
         ReservationRepository reservationRepo = new ReservationRepository(new ReservationSQLContext());
 
-        public Employee(string username, string name, string password, string emailAddress, string telnr, string address, DateTime? dateOfBirth, int eventID, int reservationID) : base(username, name, password, emailAddress, telnr, address, dateOfBirth, eventID, reservationID)
+        public Employee(string username, string name, string emailAddress, string telnr, string address, DateTime? dateOfBirth, int eventID, int reservationID) : base(username, name, emailAddress, telnr, address, dateOfBirth, eventID, reservationID)
         {
 
         }
@@ -23,7 +23,7 @@ namespace Models.Users
         {
             if (username != null && name != null && password != null && emailAddress != null && telnr != null && address != null && dateOfBirth != null && eventt != null)
             {
-                Visitor visitor = new Visitor(username, name, password, emailAddress, telnr, address, dateOfBirth, eventID, reservationID);
+                Visitor visitor = new Visitor(username, name, emailAddress, telnr, address, dateOfBirth, eventID, reservationID);
                 eventt.Visitors.Add(visitor);
                 location.Visitors.Add(visitor);
 
@@ -36,7 +36,7 @@ namespace Models.Users
         {
             if (username != null && name != null && password != null && telnr != null && eventt != null)
             {
-                Visitor visitor = new Visitor(username, name, password, telnr, eventID, reservationID);
+                Visitor visitor = new Visitor(username, name, telnr, eventID, reservationID);
                 eventt.Visitors.Add(visitor);
                 location.Visitors.Add(visitor);
 
