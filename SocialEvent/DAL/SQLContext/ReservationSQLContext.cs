@@ -70,14 +70,14 @@ namespace DAL.SQLContext
 
         public int GetEventID(string name)
         {
-            string query = @"SELECT EventID FROM [Event] WHERE Naam = @naam";
+            string query = @"SELECT EventID FROM [Event] WHERE name = '@naam'";
             query = query.Replace("@naam", name);
             return databaseConnection.executeReaderInt(query);
         }
         
         public string GetEventDescription(int id)
         {
-            string query = @"SELECT Beschrijving FROM [Event] WHERE EventID = @id";
+            string query = @"SELECT description FROM [Event] WHERE EventID = @id";
             query = query.Replace("@id", id.ToString());
             return databaseConnection.executeReaderString(query);
         }
@@ -109,14 +109,14 @@ namespace DAL.SQLContext
         {   // zie opmerking hierboven
             string query = @"SELECT Materials, Name FROM [Material] WHERE StartDate IS NULL AND EndDate IS NULL GROUP BY Name";
 
-            return databaseConnection.executeReaderStringList(query);
+            return databaseConnection.executeReaderStringList(query, 2);
         }
 
         public List<string> GetAllMaterialsName()
         {  // zie opmerking hierboven
             string query = @"SELECT Name FROM [Material] WHERE StartDate IS NULL AND EndDate IS NULL GROUP BY Name";
 
-            return databaseConnection.executeReaderStringList(query);
+            return databaseConnection.executeReaderStringList(query, 1);
         }
     }
 }

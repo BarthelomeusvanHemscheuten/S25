@@ -15,7 +15,7 @@ namespace Models.Users
         UserRepository userRepo = new UserRepository(new UserSQLContext());
         MediaRepository mediaRepo = new MediaRepository(new MediaSQLContext());
 
-        public int ID { get { return userRepo.GetID(this.Username); } }
+        public int ID { get; private set; }
         public int ReservationID { get; private set; }
         public int EventID { get; private set; }
         public string Username { get; private set; }
@@ -34,6 +34,7 @@ namespace Models.Users
 
         public User(string username, string name, string password, string emailAddress, string telnr, string address, DateTime? dateOfBirth, int eventID, int reservationID)
         {
+            this.ID = userRepo.GetID(username);
             this.EventID = eventID;
             this.ReservationID = reservationID;
             this.Username = username;
@@ -47,6 +48,7 @@ namespace Models.Users
 
         public User(string username, string name, string password, string telnr, int eventID, int reservationID)
         {
+            this.ID = userRepo.GetID(username);
             this.Username = username;
             this.Name = name;
             this.Password = password;

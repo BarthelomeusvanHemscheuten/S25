@@ -30,7 +30,7 @@ namespace MediaSharingSystem.Controllers
             userRepo = new UserRepository(new UserSQLContext());
             mediaRepo = new MediaRepository(new MediaSQLContext());
             reservationRepo = new ReservationRepository(new ReservationSQLContext());
-            EVENT = new Event("Testevent");
+            EVENT = new Event("Social Event");
         }
 
         public bool AddLocation(int number, string features, string type)

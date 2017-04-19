@@ -47,7 +47,7 @@ namespace DAL.SQLContext
 
         public bool DeleteUser(int id)
         {
-            string query = @"DELETE FROM [User] WHERE [userid] = '@ID'";
+            string query = @"DELETE FROM [User] WHERE [userid] = @ID";
             query = query.Replace("@ID", id.ToString());
 
             return databaseConnection.executeNonQuery(query);
@@ -111,7 +111,7 @@ namespace DAL.SQLContext
 
         public List<string> GetUserDataString(int id)
         {
-            string query = @"SELECT UserName, Name, Password, Email, Telnr, Adress FROM [User] WHERE UserID = @id";
+            string query = @"SELECT [UserName], [Name], [Password], [Email], [Telnr], [Addres] FROM [User] WHERE UserID = @id";
             query = query.Replace("@id", id.ToString());
             return databaseConnection.executeReaderStringList(query, 6);
         }
@@ -125,7 +125,7 @@ namespace DAL.SQLContext
 
         public DateTime? GetUserDataDateTime(int id)
         {
-            string query = @"SELECT DateOfBirth FROM [User] WHERE User-ID  = @id";
+            string query = @"SELECT [DateOfBirth] FROM [User] WHERE [UserID]  = @id";
             query = query.Replace("@id", id.ToString());
             return databaseConnection.executeReaderDateTime(query);
         }
@@ -139,7 +139,7 @@ namespace DAL.SQLContext
 
         public bool UpdatePassword(string username, string password)
         {
-            string query = @"Update [User] SET Password = @password WHERE  Username = @username";
+            string query = @"UPDATE [User] SET [Password] = @password WHERE  [Username] = @username";
             query = query.Replace("@password", password).Replace("@username", username);
 
             return databaseConnection.executeNonQuery(query);
@@ -156,7 +156,7 @@ namespace DAL.SQLContext
 
         public bool CheckLogin(string username, string password)
         {
-            string query = @"SELECT password FROM [User] WHERE username = '@USERNAME'";
+            string query = @"SELECT [password] FROM [User] WHERE [username] = '@USERNAME'";
             query = query.Replace("@USERNAME", username);
 
             if (databaseConnection.executeReaderString(query) == password)

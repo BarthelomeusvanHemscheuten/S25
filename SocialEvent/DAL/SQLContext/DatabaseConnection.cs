@@ -70,7 +70,7 @@ namespace DAL.SQLContext
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        for (int i = 0; i <= amount; i++)
+                        for (int i = 0; i < amount; i++)
                         {
                             list.Add(reader.GetString(i));
                         }
@@ -109,7 +109,7 @@ namespace DAL.SQLContext
             return -1;
         }
 
-        internal List<int> executeReaderIntList(string query)
+        internal List<int> executeReaderIntList(string query, int amount)
         {
             try
             {
@@ -121,7 +121,10 @@ namespace DAL.SQLContext
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        list.Add(reader.GetInt32(0));
+                        for (int i = 0; i < amount; i++)
+                        {
+                            list.Add(reader.GetInt32(i));
+                        }
                     }
                     return list;
                 }
@@ -143,11 +146,10 @@ namespace DAL.SQLContext
                     Console.WriteLine("Connection established");
 
                     SqlCommand command = new SqlCommand(query, connection);
-                    if (command.ExecuteScalar() != null)
-                    {
+                    SqlDataReader reader = command.ExecuteReader();
+
                         Console.WriteLine("Execute reader executed");
-                        return Convert.ToDateTime(command.ExecuteScalar());
-                    }
+                    return Convert.ToDateTime(reader.GetSqlDateTime(5));
                 }
             }
             catch (Exception e)
