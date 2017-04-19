@@ -1,2 +1,6 @@
 C:\Users\Bart Engelen\Source\Repos\S25\SocialEvent\DAL\obj\Debug\3. DAL.csprojResolveAssemblyReference.cache
 C:\Users\thoma\Source\Repos\S25\SocialEvent\DAL\obj\Debug\3. DAL.csprojResolveAssemblyReference.cache
+C:\Users\thoma\Source\Repos\S25\SocialEvent\DAL\bin\Debug\DAL.dll
+C:\Users\thoma\Source\Repos\S25\SocialEvent\DAL\bin\Debug\DAL.pdb
+C:\Users\thoma\Source\Repos\S25\SocialEvent\DAL\obj\Debug\DAL.dll
+C:\Users\thoma\Source\Repos\S25\SocialEvent\DAL\obj\Debug\DAL.pdb

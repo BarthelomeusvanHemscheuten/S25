@@ -1,0 +1,3 @@
+C:\Users\thoma\Source\Repos\S25\SocialEvent\AccesControlSystem\obj\Debug\1. AccesControlSystem.csprojResolveAssemblyReference.cache
+C:\Users\thoma\Source\Repos\S25\SocialEvent\AccesControlSystem\obj\Debug\AccesControlSystem.Properties.Resources.resources
+C:\Users\thoma\Source\Repos\S25\SocialEvent\AccesControlSystem\obj\Debug\1. AccesControlSystem.csproj.GenerateResource.Cache
