@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MediaSharingSystem.Controllers;
+using Models.ReservationSystem;
+using Models.Users;
+using Models;
 
 namespace MediaSharingSystem.Forms
 {
@@ -59,7 +62,16 @@ namespace MediaSharingSystem.Forms
 
         private void btnWijzigenFoto_Click(object sender, EventArgs e)
         {
-           //Moet nog gemaakt worden
+            Image picture;
+            if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                picture = Image.FromFile(openFileDialog1.FileName);
+                pbPicture.Image = controller.ChangePicture(picture);
+            }
+            else
+            {
+                throw new NotImplementedException();
+            }
         }
 
         private void btnWijzigenNaam_Click(object sender, EventArgs e)
@@ -107,6 +119,41 @@ namespace MediaSharingSystem.Forms
             else
             {
                 throw new NotImplementedException();
+            }
+        }
+
+        private void btnVerhuurMateriaal_Click(object sender, EventArgs e)
+        {
+            foreach (Visitor visitor in controller.Event.Visitors)
+            {
+                if (lbVisitors.SelectedItem != null && lbMaterialen.SelectedItem != null && !string.IsNullOrEmpty(tbHoeveelheidMateriaal.Text))
+                {
+                    if (visitor.Name == lbVisitors.SelectedItem.ToString())
+                    {
+                        foreach (Material material in controller.Event.Material)
+                        {
+                            if (material.Name == lbMaterialen.SelectedItem.ToString())
+                            {
+                                controller.RentMaterial(visitor, material, DateTime.Now.ToString(), dtEindDatum.ToString(), Convert.ToInt32(tbHoeveelheidMateriaal));
+                            }
+                        }
+                    }
+                }
+                else MessageBox.Show("Voer eerst de benodigde waardes in!");
+            }
+        }
+
+        private void btnVerwijderGebruiker_Click(object sender, EventArgs e)
+        {
+            if (lbGebruikers.SelectedItem != null)
+            {
+                foreach (Models.Users.Visitor visitor in controller.Event.Visitors)
+                {
+                    if (visitor.Name == lbGebruikers.SelectedItem.ToString())
+                    {
+                        controller.DeleteVisitor(visitor);
+                    }
+                }
             }
         }
     }

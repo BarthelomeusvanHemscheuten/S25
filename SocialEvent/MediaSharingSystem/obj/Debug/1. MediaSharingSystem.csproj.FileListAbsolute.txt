@@ -1,0 +1,4 @@
+C:\Users\Mootj\Source\Repos\S25(GOODVERSION)\SocialEvent\MediaSharingSystem\obj\Debug\1. MediaSharingSystem.csprojResolveAssemblyReference.cache
+C:\Users\Mootj\Source\Repos\S25(GOODVERSION)\SocialEvent\MediaSharingSystem\obj\Debug\MediaSharingSystem.Forms.Form1.resources
+C:\Users\Mootj\Source\Repos\S25(GOODVERSION)\SocialEvent\MediaSharingSystem\obj\Debug\MediaSharingSystem.Properties.Resources.resources
+C:\Users\Mootj\Source\Repos\S25(GOODVERSION)\SocialEvent\MediaSharingSystem\obj\Debug\1. MediaSharingSystem.csproj.GenerateResource.Cache

@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 using MediaSharingSystem.Controllers;
 
@@ -116,7 +117,16 @@ namespace MediaSharingSystem.Forms
         /// <param name="e"></param>
         private void btnWijzigenFoto_Click(object sender, EventArgs e)
         {
-            //Insert Image into Repo, to be implemented
+            Image picture;
+            if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                picture = Image.FromFile(openFileDialog1.FileName);
+                pbPicture.Image = controller.ChangePicture(picture);
+            }
+            else
+            {
+                throw new NotImplementedException();
+            }
         }
     }
 }

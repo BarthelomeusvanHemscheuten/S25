@@ -19,3 +19,5 @@ C:\Users\Lucas Scheepers\Desktop\Lucas\School\Jaar 1\Semester 2\5. Proftaak\- Ap
 C:\Users\Lucas Scheepers\Desktop\Lucas\School\Jaar 1\Semester 2\5. Proftaak\- Applicatie\SocialEvent\Models\obj\Release\2. Models.csprojResolveAssemblyReference.cache
 C:\Users\Lucas Scheepers\Desktop\Lucas\School\Jaar 1\Semester 2\5. Proftaak\- Applicatie\SocialEvent\Models\obj\Release\Models.dll
 C:\Users\Lucas Scheepers\Desktop\Lucas\School\Jaar 1\Semester 2\5. Proftaak\- Applicatie\SocialEvent\Models\obj\Release\Models.pdb
+C:\Users\Mootj\Source\Repos\S25(GOODVERSION)\SocialEvent\Models\obj\Release\Models.pdb
+C:\Users\Mootj\Source\Repos\S25(GOODVERSION)\SocialEvent\Models\obj\Release\2. Models.csprojResolveAssemblyReference.cache

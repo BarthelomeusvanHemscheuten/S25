@@ -25,6 +25,10 @@ namespace MediaSharingSystem.Controllers
         Employee employee;
         Admin admin;
 
+        public Event Event {
+            get { return EVENT; }
+        }
+
         public Controller()
         {
             userRepo = new UserRepository(new UserSQLContext());
