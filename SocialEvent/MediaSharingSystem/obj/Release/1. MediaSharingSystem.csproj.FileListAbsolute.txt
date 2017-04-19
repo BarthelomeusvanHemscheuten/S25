@@ -43,3 +43,7 @@ C:\Users\Bart Engelen\Source\Repos\S25\SocialEvent\MediaSharingSystem\obj\Releas
 C:\Users\Bart Engelen\Source\Repos\S25\SocialEvent\MediaSharingSystem\obj\Release\MediaSharingSystem.Forms.VisitorForm.resources
 C:\Users\Bart Engelen\Source\Repos\S25\SocialEvent\MediaSharingSystem\obj\Release\MediaSharingSystem.Properties.Resources.resources
 C:\Users\Bart Engelen\Source\Repos\S25\SocialEvent\MediaSharingSystem\obj\Release\1. MediaSharingSystem.csproj.GenerateResource.Cache
+C:\Users\Lucas Scheepers\Desktop\Lucas\School\Jaar 1\Semester 2\5. Proftaak\- Applicatie\SocialEvent\MediaSharingSystem\obj\Release\MediaSharingSystem.Forms.AdminForm.resources
+C:\Users\Lucas Scheepers\Desktop\Lucas\School\Jaar 1\Semester 2\5. Proftaak\- Applicatie\SocialEvent\MediaSharingSystem\obj\Release\MediaSharingSystem.Forms.EmployeeForm.resources
+C:\Users\Lucas Scheepers\Desktop\Lucas\School\Jaar 1\Semester 2\5. Proftaak\- Applicatie\SocialEvent\MediaSharingSystem\obj\Release\MediaSharingSystem.Forms.LoginForm.resources
+C:\Users\Lucas Scheepers\Desktop\Lucas\School\Jaar 1\Semester 2\5. Proftaak\- Applicatie\SocialEvent\MediaSharingSystem\obj\Release\MediaSharingSystem.Forms.VisitorForm.resources

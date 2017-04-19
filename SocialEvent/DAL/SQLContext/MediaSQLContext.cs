@@ -65,7 +65,7 @@ namespace DAL.SQLContext
         {
             string query = @"UPDATE USER SET(Picture) = (@Image) WHERE USERID = @UserID";
             query.Replace("@userid", userID.ToString());
-            query.Replace("@Image", image);
+          //  query.Replace("@Image", image);
 
             return databaseConnection.executeNonQuery(query);
         }

@@ -16,32 +16,28 @@ namespace MediaSharingSystem.Controllers
 {
     public class Controller
     {
-        UserRepository userRepo;
-        MediaRepository mediaRepo;
-        ReservationRepository reservationRepo;
-        Event EVENT;
-        int userGroup;
-        Visitor visitor;
-        Employee employee;
-        Admin admin;
-
-        public Event Event {
-            get { return EVENT; }
-        }
+        private UserRepository userRepo;
+        private MediaRepository mediaRepo;
+        private ReservationRepository reservationRepo;
+        public Event Event { get; private set; }
+        private int userGroup;
+        private Visitor visitor;
+        private Employee employee;
+        private Admin admin;
 
         public Controller()
         {
             userRepo = new UserRepository(new UserSQLContext());
             mediaRepo = new MediaRepository(new MediaSQLContext());
             reservationRepo = new ReservationRepository(new ReservationSQLContext());
-            EVENT = new Event("Social Event");
+            Event = new Event("Social Event");
         }
 
         public bool AddLocation(int number, string features, string type)
         {
             if (number > 0 && features != null && type != null)
             {
-                EVENT.AddLocation(number, features, type);
+                Event.AddLocation(number, features, type);
                 reservationRepo.InsertLocation(number, features, type);
 
                 return true;
@@ -57,7 +53,7 @@ namespace MediaSharingSystem.Controllers
             {
                 for (int i = 0; i < quantity; i++)
                 {
-                    result.Add(EVENT.AddMaterial(name, description, price));
+                    result.Add(Event.AddMaterial(name, description, price));
                     reservationRepo.InsertMaterial(name, description, price);
                 }
 
@@ -81,7 +77,7 @@ namespace MediaSharingSystem.Controllers
             for (int i = 0; i < name.Count; i++)
             {
                 Material material = new Material(name[i], description[i], price[i]);
-                EVENT.Material.Add(material);
+                Event.Material.Add(material);
                 result.Add(material);
             }
 
@@ -104,12 +100,12 @@ namespace MediaSharingSystem.Controllers
                     if (userDate != null)
                     {
                         visitor = new Visitor(userDataString[0], userDataString[1], userDataString[2], userDataString[3], userDataString[4], userDate, userDataInt[0], userDataInt[1]);
-                        EVENT.Visitors.Add(visitor);
+                        Event.Visitors.Add(visitor);
                     }
                     else
                     {
                         visitor = new Visitor(userDataString[0], userDataString[1], userDataString[2], userDataInt[0], userDataInt[1]);
-                        EVENT.Visitors.Add(visitor);
+                        Event.Visitors.Add(visitor);
                     }
                     // OPEN FORM VISITOR
 
@@ -367,7 +363,7 @@ namespace MediaSharingSystem.Controllers
         {
             if (locations != null && quantityVisitors > 0 && quantityLocations > 0 && username != null && name != null && password != null && emailAddress != null && telnr != null && address != null && dateOfBirth != null)
             {
-                employee.Reserve(EVENT, locations, quantityVisitors, quantityLocations, username, name, password, emailAddress, telnr, address, dateOfBirth);
+                employee.Reserve(Event, locations, quantityVisitors, quantityLocations, username, name, password, emailAddress, telnr, address, dateOfBirth);
 
                 return true;
             }

@@ -16,6 +16,7 @@ namespace MediaSharingSystem.Forms
     {
         private Form login;
         private Controller controller;
+
         public VisitorForm(Form f)
         {
             InitializeComponent();
@@ -41,12 +42,8 @@ namespace MediaSharingSystem.Forms
             login.Show();
             this.Close();
         }
-
-        /// <summary>
+        
         /// Changes Name of visitor
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void btnWijzigenNaam_Click(object sender, EventArgs e)
         {
             if (controller.ChangeUsername(tbNaam.Text))
@@ -59,11 +56,7 @@ namespace MediaSharingSystem.Forms
             }
         }
 
-        /// <summary>
         /// Changes Email of visitor
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void btnWijzigenEmail_Click(object sender, EventArgs e)
         {
             if(controller.ChangeEmail(tbEmail.Text))
@@ -75,12 +68,8 @@ namespace MediaSharingSystem.Forms
                 throw new NotImplementedException();
             }
         }
-
-        /// <summary>
+        
         /// Changes Wachtwoord of visitor
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void btnWijzigenWachtwoord_Click(object sender, EventArgs e)
         {
             if(controller.ChangePassword(tbWachtwoord.Text, tbWachtwoord2.Text))
@@ -93,11 +82,7 @@ namespace MediaSharingSystem.Forms
             }
         }
 
-        /// <summary>
         /// Changes Telefoonnummer of visitor
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void btnWijzigenTelefoonNr_Click(object sender, EventArgs e)
         {
             if(controller.ChangeTelnr(tbTelefoonNr.Text))
@@ -110,23 +95,19 @@ namespace MediaSharingSystem.Forms
             }
         }
 
-        /// <summary>
         /// Changes image of visitor
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void btnWijzigenFoto_Click(object sender, EventArgs e)
         {
-            Image picture;
-            if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                picture = Image.FromFile(openFileDialog1.FileName);
-                pbPicture.Image = controller.ChangePicture(picture);
-            }
-            else
-            {
-                throw new NotImplementedException();
-            }
+            //Image picture;
+            //if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            //{
+            //    picture = Image.FromFile(openFileDialog1.FileName);
+            //    pbPicture.Image = controller.ChangePicture(picture);
+            //}
+            //else
+            //{
+            //    throw new NotImplementedException();
+            //}
         }
     }
 }
