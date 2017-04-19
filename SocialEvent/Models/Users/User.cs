@@ -165,18 +165,34 @@ namespace Models.Users
             return false;
         }
 
-        public bool ChangeUsername(string newUsername, string password1, string password2)
+        public bool ChangeUsername(string newUsername)
         {
-            if (password1 == password2)
+            if (userRepo.CheckLogin(this.Username, this.Password) == true)
             {
-                if (userRepo.CheckLogin(this.Username, password1) == true)
-                {
-                    userRepo.UpdateUsername(this.Username, newUsername);
+                userRepo.UpdateUsername(this.Username, newUsername);
+                return true;
+            }
 
-                    return true;
-                }
+            return false;
+        }
+        public bool ChangeEmail(string email)
+        {
+            if(userRepo.CheckLogin(this.Username, this.Password) == true)
+            {
+                userRepo.UpdateEmail(email, this.Username);
+                return true;
+            }
+            return false;
+        }
+        public bool ChangeTelnr(string telnr)
+        {
+            if(userRepo.CheckLogin(this.Username,this.Password) == true)
+            {
+                userRepo.UpdateTelnr(telnr, this.Username);
+                return true;
             }
             return false;
         }
     }
 }
+

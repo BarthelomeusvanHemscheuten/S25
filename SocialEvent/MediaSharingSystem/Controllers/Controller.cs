@@ -276,18 +276,18 @@ namespace MediaSharingSystem.Controllers
             return false;
         }
 
-        public bool ChangeUsername(string newUsername, string password1, string password2)
+        public bool ChangeUsername(string newUsername)
         {
             switch (userGroup)
             {
                 case 3:
-                    visitor.ChangeUsername(newUsername, password1, password2);
+                    visitor.ChangeUsername(newUsername);
                     return true;
                 case 2:
-                    employee.ChangeUsername(newUsername, password1, password2);
+                    employee.ChangeUsername(newUsername);
                     return true;
                 case 1:
-                    admin.ChangeUsername(newUsername, password1, password2);
+                    admin.ChangeUsername(newUsername);
                     return true;
             }
             return false;
@@ -305,6 +305,38 @@ namespace MediaSharingSystem.Controllers
                     return admin.ChangePicture(image);
             }
             return null;
+        }
+        public bool ChangeEmail(string email)
+        {
+            switch(userGroup)
+            {
+                case 3:
+                    visitor.ChangeEmail(email);
+                    return true;
+                case 2:
+                    employee.ChangeEmail(email);
+                    return true;
+                case 1:
+                    admin.ChangeEmail(email);
+                    return true;
+            }
+            return false;
+        }
+        public bool ChangeTelnr(string telnr)
+        {
+            switch(userGroup)
+            {
+                case 3:
+                    visitor.ChangeTelnr(telnr);
+                    return true;
+                case 2:
+                    visitor.ChangeTelnr(telnr);
+                    return true;
+                case 1:
+                    visitor.ChangeTelnr(telnr);
+                    return true;
+            }
+            return false;
         }
 
         // EMPLOYEE AND ADMIN

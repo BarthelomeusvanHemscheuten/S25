@@ -100,20 +100,20 @@ namespace DAL.Repositories
 
         public bool UpdatePassword(string username, string password)
         {
-            if(context.UpdatePassword(username, password))
-            {
-                return true;
-            }
-            return false;
+            return context.UpdatePassword(username, password);
         }
 
         public bool UpdateUsername(string oldUsername, string newUsername)
         {
-            if (context.UpdateUsername(oldUsername, newUsername))
-            {
-                return true;
-            }
-            return false;
+            return context.UpdateUsername(oldUsername, newUsername);
+        }
+        public bool UpdateEmail(string email, string username)
+        {
+            return context.UpdateEmail(email, username);
+        }
+        public bool UpdateTelnr(string newTelnr, string username)
+        {
+            return context.UpdateTelnr(newTelnr, username);
         }
 
         public bool CheckLogin(string username, string password)

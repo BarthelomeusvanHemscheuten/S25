@@ -7,16 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MediaSharingSystem.Controllers;
 
 namespace MediaSharingSystem.Forms
 {
     public partial class AdminForm : Form
     {
         Form login;
+        Controller controller;
         public AdminForm(Form f)
         {
             InitializeComponent();
-
+            controller = new Controller();
             login = f;
             tbctrlMain.Appearance = TabAppearance.FlatButtons;
             tbctrlMain.ItemSize = new Size(0, 1);
@@ -52,6 +54,59 @@ namespace MediaSharingSystem.Forms
         {
             login.Show();
             this.Close();
+        }
+        /// <summary>
+        /// Changes user  
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnWijzigenNaam_Click(object sender, EventArgs e)
+        {
+            if (controller.ChangeUsername(tbNaam.Text))
+            {
+                MessageBox.Show("Naam Verandert");
+            }
+            else
+            {
+                throw new NotImplementedException();
+            }
+
+        }
+
+        private void btnWijzigenEmail_Click(object sender, EventArgs e)
+        {
+            if (controller.ChangeEmail(tbEmail.Text))
+            {
+                MessageBox.Show("Email Verandert");
+            }
+            else
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        private void btnWijzigenWachtwoord_Click(object sender, EventArgs e)
+        {
+            if (controller.ChangePassword(tbWachtwoord.Text, tbWachtwoord2.Text))
+            {
+                MessageBox.Show("Wachtwoord Verandert");
+            }
+            else
+            {
+                throw new NotImplementedException();
+            }
+        }
+
+        private void btnWijzigenTelefoonNr_Click(object sender, EventArgs e)
+        {
+            if(controller.ChangeTelnr(tbTelefoonNr.Text))
+            {
+                MessageBox.Show("Telefoonnummer verandert");
+            }
+            else
+            {
+                throw new NotImplementedException();
+            }
         }
     }
 }

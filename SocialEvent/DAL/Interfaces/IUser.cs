@@ -27,6 +27,8 @@ namespace DAL.Interfaces
 
         bool UpdatePassword(string username, string password);
         bool UpdateUsername(string oldUsername, string newUsername);
+        bool UpdateEmail(string oldEmail, string username);
+        bool UpdateTelnr(string newTelnr, string username);
 
         bool CheckLogin(string username, string password);
 
