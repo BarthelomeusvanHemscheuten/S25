@@ -116,6 +116,7 @@
             this.rbtnInvalideCommodaties = new System.Windows.Forms.RadioButton();
             this.rbtnStaCaravans = new System.Windows.Forms.RadioButton();
             this.rbtnBungalows = new System.Windows.Forms.RadioButton();
+            this.tbWachtwoord2 = new System.Windows.Forms.TextBox();
             this.panelMedewerker.SuspendLayout();
             this.tbctrlMain.SuspendLayout();
             this.tabAccountInstellingen.SuspendLayout();
@@ -241,6 +242,7 @@
             // panelAccountInstellingen
             // 
             this.panelAccountInstellingen.BackColor = System.Drawing.Color.Lavender;
+            this.panelAccountInstellingen.Controls.Add(this.tbWachtwoord2);
             this.panelAccountInstellingen.Controls.Add(this.btnWijzigenFoto);
             this.panelAccountInstellingen.Controls.Add(this.pbPicture);
             this.panelAccountInstellingen.Controls.Add(this.btnWijzigenEmail);
@@ -270,6 +272,7 @@
             this.btnWijzigenFoto.TabIndex = 14;
             this.btnWijzigenFoto.Text = "Wijzigen";
             this.btnWijzigenFoto.UseVisualStyleBackColor = true;
+            this.btnWijzigenFoto.Click += new System.EventHandler(this.btnWijzigenFoto_Click);
             // 
             // pbPicture
             // 
@@ -291,6 +294,7 @@
             this.btnWijzigenEmail.TabIndex = 12;
             this.btnWijzigenEmail.Text = "Wijzigen";
             this.btnWijzigenEmail.UseVisualStyleBackColor = true;
+            this.btnWijzigenEmail.Click += new System.EventHandler(this.btnWijzigenEmail_Click);
             // 
             // btnWijzigenWachtwoord
             // 
@@ -301,6 +305,7 @@
             this.btnWijzigenWachtwoord.TabIndex = 11;
             this.btnWijzigenWachtwoord.Text = "Wijzigen";
             this.btnWijzigenWachtwoord.UseVisualStyleBackColor = true;
+            this.btnWijzigenWachtwoord.Click += new System.EventHandler(this.btnWijzigenWachtwoord_Click);
             // 
             // btnWijzigenTelefoonNr
             // 
@@ -311,6 +316,7 @@
             this.btnWijzigenTelefoonNr.TabIndex = 10;
             this.btnWijzigenTelefoonNr.Text = "Wijzigen";
             this.btnWijzigenTelefoonNr.UseVisualStyleBackColor = true;
+            this.btnWijzigenTelefoonNr.Click += new System.EventHandler(this.btnWijzigenTelefoonNr_Click);
             // 
             // btnWijzigenNaam
             // 
@@ -321,6 +327,7 @@
             this.btnWijzigenNaam.TabIndex = 9;
             this.btnWijzigenNaam.Text = "Wijzigen";
             this.btnWijzigenNaam.UseVisualStyleBackColor = true;
+            this.btnWijzigenNaam.Click += new System.EventHandler(this.btnWijzigenNaam_Click);
             // 
             // lblTelefoonnr
             // 
@@ -365,7 +372,7 @@
             this.tbWachtwoord.Location = new System.Drawing.Point(140, 299);
             this.tbWachtwoord.Margin = new System.Windows.Forms.Padding(4);
             this.tbWachtwoord.Name = "tbWachtwoord";
-            this.tbWachtwoord.Size = new System.Drawing.Size(287, 22);
+            this.tbWachtwoord.Size = new System.Drawing.Size(133, 22);
             this.tbWachtwoord.TabIndex = 4;
             // 
             // tbTelefoonNr
@@ -1067,6 +1074,14 @@
             this.rbtnBungalows.Text = "Bungalows";
             this.rbtnBungalows.UseVisualStyleBackColor = true;
             // 
+            // tbWachtwoord2
+            // 
+            this.tbWachtwoord2.Location = new System.Drawing.Point(281, 300);
+            this.tbWachtwoord2.Margin = new System.Windows.Forms.Padding(4);
+            this.tbWachtwoord2.Name = "tbWachtwoord2";
+            this.tbWachtwoord2.Size = new System.Drawing.Size(146, 22);
+            this.tbWachtwoord2.TabIndex = 15;
+            // 
             // EmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1190,5 +1205,6 @@
         private System.Windows.Forms.RadioButton rbtnInvalideCommodaties;
         private System.Windows.Forms.RadioButton rbtnStaCaravans;
         private System.Windows.Forms.RadioButton rbtnBungalows;
+        private System.Windows.Forms.TextBox tbWachtwoord2;
     }
 }
