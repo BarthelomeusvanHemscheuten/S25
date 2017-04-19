@@ -8,3 +8,8 @@ C:\Users\thoma\Source\Repos\S25\SocialEvent\DAL\bin\Release\DAL.pdb
 C:\Users\thoma\Source\Repos\S25\SocialEvent\DAL\obj\Release\3. DAL.csprojResolveAssemblyReference.cache
 C:\Users\thoma\Source\Repos\S25\SocialEvent\DAL\obj\Release\DAL.dll
 C:\Users\thoma\Source\Repos\S25\SocialEvent\DAL\obj\Release\DAL.pdb
+C:\Users\Lucas Scheepers\Desktop\Lucas\School\Jaar 1\Semester 2\5. Proftaak\- Applicatie\SocialEvent\DAL\bin\Release\DAL.dll
+C:\Users\Lucas Scheepers\Desktop\Lucas\School\Jaar 1\Semester 2\5. Proftaak\- Applicatie\SocialEvent\DAL\bin\Release\DAL.pdb
+C:\Users\Lucas Scheepers\Desktop\Lucas\School\Jaar 1\Semester 2\5. Proftaak\- Applicatie\SocialEvent\DAL\obj\Release\3. DAL.csprojResolveAssemblyReference.cache
+C:\Users\Lucas Scheepers\Desktop\Lucas\School\Jaar 1\Semester 2\5. Proftaak\- Applicatie\SocialEvent\DAL\obj\Release\DAL.dll
+C:\Users\Lucas Scheepers\Desktop\Lucas\School\Jaar 1\Semester 2\5. Proftaak\- Applicatie\SocialEvent\DAL\obj\Release\DAL.pdb

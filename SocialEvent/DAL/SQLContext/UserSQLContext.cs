@@ -87,7 +87,7 @@ namespace DAL.SQLContext
 
         public List<string> GetUserDataString(string username)
         {
-            string query = @"SELECT [username], [name], [email], [telnr], [addres] FROM [user] WHERE [username] = '@USERNAME'";
+            string query = @"SELECT [username], [name], [email], [telnr], [address] FROM [user] WHERE [username] = '@USERNAME'";
             query = query.Replace("@USERNAME", username);
 
             return databaseConnection.executeReaderStringList(query, 5);
