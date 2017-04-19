@@ -1,5 +1,4 @@
 C:\Users\thoma\Source\Repos\S25\SocialEvent\MediaSharingSystem\obj\Release\1. MediaSharingSystem.csprojResolveAssemblyReference.cache
-C:\Users\thoma\Source\Repos\S25\SocialEvent\MediaSharingSystem\obj\Release\MediaSharingSystem.Forms.Form1.resources
 C:\Users\thoma\Source\Repos\S25\SocialEvent\MediaSharingSystem\obj\Release\MediaSharingSystem.Properties.Resources.resources
 C:\Users\thoma\Source\Repos\S25\SocialEvent\MediaSharingSystem\obj\Release\1. MediaSharingSystem.csproj.GenerateResource.Cache
 C:\Users\thoma\Source\Repos\S25\SocialEvent\MediaSharingSystem\bin\Release\MediaSharingSystem.exe
@@ -10,3 +9,7 @@ C:\Users\thoma\Source\Repos\S25\SocialEvent\MediaSharingSystem\bin\Release\DAL.p
 C:\Users\thoma\Source\Repos\S25\SocialEvent\MediaSharingSystem\bin\Release\Models.pdb
 C:\Users\thoma\Source\Repos\S25\SocialEvent\MediaSharingSystem\obj\Release\MediaSharingSystem.exe
 C:\Users\thoma\Source\Repos\S25\SocialEvent\MediaSharingSystem\obj\Release\MediaSharingSystem.pdb
+C:\Users\thoma\Source\Repos\S25\SocialEvent\MediaSharingSystem\obj\Release\MediaSharingSystem.Forms.Employee.resources
+C:\Users\thoma\Source\Repos\S25\SocialEvent\MediaSharingSystem\obj\Release\MediaSharingSystem.Forms.Login.resources
+C:\Users\thoma\Source\Repos\S25\SocialEvent\MediaSharingSystem\obj\Release\MediaSharingSystem.Forms.Visitor.resources
+C:\Users\thoma\Source\Repos\S25\SocialEvent\MediaSharingSystem\obj\Release\MediaSharingSystem.Forms.Admin.resources
