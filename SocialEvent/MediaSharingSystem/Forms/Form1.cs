@@ -7,56 +7,51 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MediaSharingSystem.Controllers;
 
 namespace MediaSharingSystem.Forms
 {
     public partial class Form1 : Form
     {
+        Controller controller;
+
         public Form1()
         {
             InitializeComponent();
+            controller = new Controller();
+            panelHoofdmenu.Visible = false;
+            panelAccountInstellingen.Visible = false;
+            panelAddEvenement.Visible = false;
+            PanelAddFilterWoord.Visible = false;
+            panelAddMateriaal.Visible = false;
+            panelAddNew.Visible = false;
+            PanelBeheerder.Visible = false;
+            panelGebruiker.Visible = false;
+            panelGebruikersBeheren.Visible = false;
+            panelHoofdmenu.Visible = false;
+            PanelInfoMenu.Visible = false;
+            panelMedewerker.Visible = false;
+            panelVerhuurItem.Visible = false;
         }
 
         private void btnUitloggen_Click(object sender, EventArgs e)
         {
-            PanelBeheerder.Enabled = false;
-            panelMedewerker.Enabled = false;
-            panelGebruiker.Enabled = false;
-            panelAccountInstellingen.Enabled = false;
-            panelAddNew.Enabled = false;
-            panelGebruikersBeheren.Enabled = false;
-            panelHoofdmenu.Enabled = false;
-            panelVerhuurItem.Enabled = false;
+
         }
 
         private void btnHoofdmenu_Click(object sender, EventArgs e)
         {
-            panelHoofdmenu.Enabled = true;
-            panelAccountInstellingen.Enabled = false;
-            panelAddNew.Enabled = false;
-            panelGebruikersBeheren.Enabled = false;
-            panelVerhuurItem.Enabled = false;
-            panelLogin.Enabled = false;
+
         }
 
         private void btnAccountInstellingen_Click(object sender, EventArgs e)
         {
-            panelAccountInstellingen.Enabled = true;
-            panelHoofdmenu.Enabled = false;
-            panelAddNew.Enabled = false;
-            panelGebruikersBeheren.Enabled = false;
-            panelVerhuurItem.Enabled = false;
-            panelLogin.Enabled = false;
+
         }
 
         private void btnAddNew_Click(object sender, EventArgs e)
         {
-            panelAddNew.Enabled = true;
-            panelAccountInstellingen.Enabled = false;
-            panelHoofdmenu.Enabled = false;
-            panelGebruikersBeheren.Enabled = false;
-            panelVerhuurItem.Enabled = false;
-            panelLogin.Enabled = false;
+
         }
 
         private void btnGerapporteerdeBerichten_Click(object sender, EventArgs e)
@@ -66,8 +61,21 @@ namespace MediaSharingSystem.Forms
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            PanelBeheerder.Enabled = true;
-            panelHoofdmenu.Enabled = true;
+            switch (controller.Login(tbUsername.Text, tbPassword.Text))
+            {
+                case 1:
+                    panelGebruiker.Visible = true;
+                    break;
+                case 2:
+                    panelMedewerker.Visible = true;
+                    break;
+                case 3:
+                    PanelBeheerder.Visible = true;
+                    break;
+                default:
+                    MessageBox.Show("sukkel");
+                    break;
+            }
         }
 
         private void rbtnEvenement_CheckedChanged(object sender, EventArgs e)

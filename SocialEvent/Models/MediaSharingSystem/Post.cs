@@ -20,6 +20,7 @@ namespace Models.MediaSharingSystem
 
         public List<Report> Reports { get; private set; }
         public List<Comment> Comments { get; private set; }
+        public User User { get; set; }
 
         // constructor om nieuwe post aan te maken
         public Post(string text, string path)

@@ -100,7 +100,7 @@ namespace DAL.SQLContext
             string query = @"SELECT Text, Path FROM [Post] WHERE UserID = @id";
             query.Replace("@id", id.ToString());
 
-            return databaseConnection.executeReaderStringList(query);
+            return databaseConnection.executeReaderStringList(query, 2);
         }
 
         public int GetUserIdPost(int id)
@@ -116,13 +116,6 @@ namespace DAL.SQLContext
             query.Replace("@id", id.ToString());
 
             return databaseConnection.executeReaderString(query);
-        }
-
-        public List<int> GetUserIdPostIdComment(int id)
-        {
-            string query = @"";
-
-            return databaseConnection.executeReaderIntList(query);
         }
 
         public int GetAllIDReportedPosts()
@@ -141,14 +134,15 @@ namespace DAL.SQLContext
         {
             string query = @"SELECT Text, Path FROM [Post] WHERE PostID = (SELECT [Report].[PostID] FROM [Report] WHERE ReportID = @id)";
             query = query.Replace("@id", id.ToString());
-            return databaseConnection.executeReaderStringList(query);
+            return databaseConnection.executeReaderStringList(query, 2);
         }
 
-        public List<string> GetTextCommentReported(int id)
+        public string GetTextCommentReported(int id)
         {
-            string query = @"SELECT [Comment].[Text] FROM [Comment] WHERE CommentID = (SELECT [Report].[CommentID] FROM [Report] WHERE ReportID ";
+            string query = @"SELECT [Comment].[Text] FROM [Comment] WHERE CommentID = (SELECT [Report].[CommentID] FROM [Report] WHERE ReportID = @id)";
+            query = query.Replace("@id", id.ToString());
 
-            return databaseConnection.executeReaderStringList(query);
+            return databaseConnection.executeReaderString(query);
         }
 
         public bool DeletePost(int id)
@@ -165,6 +159,56 @@ namespace DAL.SQLContext
             query = query.Replace("@id", id.ToString());
 
             return databaseConnection.executeNonQuery(query);
+        }
+
+        public int GetUserIdComment(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<int> GetReportedPostsId()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<int> GetReportedCommentsId()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<int> GetPostIdFromComment(int ids)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<int> GetPostsID()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<int> GetCommentsID()
+        {
+            throw new NotImplementedException();
+        }
+
+        public int GetGetPostIdFromComment(int commentid)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<int> GetReportedPostsID()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<int> GetReportedCommentsID()
+        {
+            throw new NotImplementedException();
+        }
+
+        int IMedia.GetPostIdFromComment(int commentid)
+        {
+            throw new NotImplementedException();
         }
     }
 }
