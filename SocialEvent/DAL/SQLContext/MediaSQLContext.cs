@@ -163,52 +163,59 @@ namespace DAL.SQLContext
 
         public int GetUserIdComment(int id)
         {
-            throw new NotImplementedException();
+            string query = @"SELECT [UserID] FROM [Comment] WHERE [CommentID] = @id";
+            query = query.Replace("@id", id.ToString());
+            return databaseConnection.executeReaderInt(query);
         }
 
         public List<int> GetReportedPostsId()
         {
-            throw new NotImplementedException();
+            string query = @"SELECT [PostID] FROM [Report]";
+            string query_amount = @"SELECT COUNT(PostID) FROM [Report]";
+            return databaseConnection.executeReaderIntList(query, databaseConnection.executeReaderInt(query_amount));
         }
 
         public List<int> GetReportedCommentsId()
         {
-            throw new NotImplementedException();
-        }
-
-        public List<int> GetPostIdFromComment(int ids)
-        {
-            throw new NotImplementedException();
+            string query = @"SELECT [CommentID] FROM [Report]";
+            string query_amount = @"SELECT COUNT(CommentID) FROM [Report]";
+            return databaseConnection.executeReaderIntList(query, databaseConnection.executeReaderInt(query_amount));
         }
 
         public List<int> GetPostsID()
         {
-            throw new NotImplementedException();
+            string query = @"SELECT [PostID] FROM [Post]";
+            string query_amount = @"SELECT COUNT(PostID) FROM [Post]";
+            return databaseConnection.executeReaderIntList(query, databaseConnection.executeReaderInt(query_amount));
         }
 
         public List<int> GetCommentsID()
         {
-            throw new NotImplementedException();
+            string query = @"SELECT [CommentID] FROM [Comment]";
+            string query_amount = @"SELECT COUNT(Comment-ID) FROM [Comment]";
+            return databaseConnection.executeReaderIntList(query, databaseConnection.executeReaderInt(query_amount));
         }
 
-        public int GetGetPostIdFromComment(int commentid)
-        {
-            throw new NotImplementedException();
-        }
 
         public List<int> GetReportedPostsID()
         {
-            throw new NotImplementedException();
+            string query = @"SELECT [PostID] FROM [Report]";
+            string query_amount = @"SELECT COUNT(PostID) FROM [Report]";
+            return databaseConnection.executeReaderIntList(query, databaseConnection.executeReaderInt(query_amount));
         }
 
         public List<int> GetReportedCommentsID()
         {
-            throw new NotImplementedException();
+            string query = @"SELECT [CommentID] FROM [Report]";
+            string query_amount = @"SELECT COUNT(CommentID) FROM [Report]";
+            return databaseConnection.executeReaderIntList(query, databaseConnection.executeReaderInt(query_amount));
         }
 
-        int IMedia.GetPostIdFromComment(int commentid)
+        public int GetPostIdFromComment(int commentid)
         {
-            throw new NotImplementedException();
+            string query = @"SELECT [PostID] FROM [Comment] WHERE [CommentID] = @id";
+            query = query.Replace("@id", commentid.ToString());
+            return databaseConnection.executeReaderInt(query);
         }
     }
 }
