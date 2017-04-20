@@ -87,7 +87,7 @@ namespace MediaSharingSystem.Forms
         {
             if(controller.ChangeTelnr(tbTelefoonNr.Text))
             {
-                MessageBox.Show("Telefoonnummer verandert");
+                MessageBox.Show("Telefoonnummer is gewijzigd");
             }
             else
             {
