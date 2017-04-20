@@ -18,6 +18,12 @@ namespace MediaSharingSystem.Forms
         private Form login;
         private Controller controller;
 
+        List<Post> posts = new List<Post>();
+        Label naam = new Label();
+        Label contentText = new Label();
+        Label contentPath = new Label();
+        int postNumber = 0;
+
         public VisitorForm(Form f, Controller controller)
         {
             InitializeComponent();
@@ -36,24 +42,53 @@ namespace MediaSharingSystem.Forms
         private void btnInfoMenuGebruiker_Click(object sender, EventArgs e)
         {
             tbctrlMain.SelectedTab = tbctrlMain.TabPages[1];
-            List<Post> posts = controller.GetAndShowPostComments();
-            
-            Label naam = new Label();
-            Label contentText = new Label();
-            Label contentPath = new Label();
-
-            naam.Text = posts[0].User.ToString();
-            contentText.Text = posts[0].Text;
-            contentPath.Text = posts[0].Path;
+            if (posts.Count() == 0)
+            {
+                posts = controller.GetAndShowPostComments();
+            }
 
             naam.Location = new Point(10, 10);
             contentText.Location = new Point(10, 60);
             contentPath.Location = new Point(10, 110);
+
+            //naam.Text = posts[postNumber].User.ToString();
+            contentText.Text = posts[postNumber].Text;
+            contentPath.Text = posts[postNumber].Path;
             
             panelNewsFeed.Controls.Add(naam);
             panelNewsFeed.Controls.Add(contentText);
             panelNewsFeed.Controls.Add(contentPath);
 
+        }
+
+        private void btnNextPost_Click(object sender, EventArgs e)
+        {
+            if (posts.Count() == postNumber + 1)
+            {
+                postNumber = 0;
+            }
+            else
+            {
+                postNumber++;
+            }
+            //naam.Text = posts[postNumber].User.ToString();
+            contentText.Text = posts[postNumber].Text;
+            contentPath.Text = posts[postNumber].Path;
+
+        }
+
+        private void btnPrevPost_Click(object sender, EventArgs e)
+        {
+            if (postNumber == 0)
+            {
+                postNumber = posts.Count - 1;
+            } else
+            {
+                postNumber--;
+            }
+            //naam.Text = posts[postNumber].User.ToString();
+            contentText.Text = posts[postNumber].Text;
+            contentPath.Text = posts[postNumber].Path;
         }
 
         private void btnUitloggenGebruiker_Click(object sender, EventArgs e)

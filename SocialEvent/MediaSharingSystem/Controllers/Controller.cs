@@ -544,11 +544,11 @@ namespace MediaSharingSystem.Controllers
 
                     if (dateTime != null)
                     {
-                        comment.User = new Visitor(userDataString[0], userDataString[1], userDataString[3], userDataString[4], userDataString[6], dateTime, userDataInt[0], userDataInt[1]);
+                        comment.User = new Visitor(userDataString[0], userDataString[1], userDataString[2], userDataString[3], userDataString[4], dateTime, userDataInt[0], userDataInt[1]);
                     }
                     else
                     {
-                        comment.User = new Visitor(userDataString[0], userDataString[1], userDataString[2], userDataInt[0], userDataInt[1]);
+                        comment.User = new Visitor(userDataString[0], userDataString[1], userDataString[3], userDataInt[0], userDataInt[1]);
                     }
 
                     if (dateTime != null)
@@ -557,7 +557,7 @@ namespace MediaSharingSystem.Controllers
                         {
                             if (post.ID == postID)
                             {
-                                post.User = new Visitor(userDataString[0], userDataString[1], userDataString[3], userDataString[4], userDataString[6], dateTime, userDataInt[0], userDataInt[1]);
+                                post.User = new Visitor(userDataString[0], userDataString[1], userDataString[2], userDataString[3], userDataString[4], dateTime, userDataInt[0], userDataInt[1]);
                             }
                         }
                     }
@@ -567,7 +567,7 @@ namespace MediaSharingSystem.Controllers
                         {
                             if (post.ID == postID)
                             {
-                                post.User = new Visitor(userDataString[0], userDataString[1], userDataString[2], userDataInt[0], userDataInt[1]);
+                                post.User = new Visitor(userDataString[0], userDataString[1], userDataString[3], userDataInt[0], userDataInt[1]);
                             }
                         }
                     }

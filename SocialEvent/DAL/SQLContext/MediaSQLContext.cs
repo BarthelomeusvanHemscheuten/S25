@@ -99,15 +99,16 @@ namespace DAL.SQLContext
         }
         public List<string> GetTextPathPost(int id)
         {
-            string query = @"SELECT [Text], [Path] FROM [Post] WHERE UserID = @id";
-            query.Replace("@id", id.ToString());
+            string query = @"SELECT [Text], [Path] FROM [Post] WHERE PostID = @id";
+            query = query.Replace("@id", id.ToString());
 
             return databaseConnection.executeReaderStringList(query, 2);
         }
 
         public int GetUserIdPost(int id)
         {
-            string query = @"";
+            string query = @"SELECT [UserID] FROM [Post] WHERE PostID = @id";
+            query = query.Replace("@id", id.ToString());
 
             return databaseConnection.executeReaderInt(query);
         }
@@ -115,7 +116,7 @@ namespace DAL.SQLContext
         public string GetTextComment(int id)
         {
             string query = @"SELECT Text FROM [Comment] WHERE CommentID = @id";
-            query.Replace("@id", id.ToString());
+            query = query.Replace("@id", id.ToString());
 
             return databaseConnection.executeReaderString(query);
         }
