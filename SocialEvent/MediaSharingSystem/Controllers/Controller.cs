@@ -417,7 +417,7 @@ namespace MediaSharingSystem.Controllers
         {
             if (swearWord != null)
             {
-                userRepo.InsertSwearWord(swearWord);
+                return userRepo.InsertSwearWord(swearWord);
             }
             return false;
         }
@@ -578,6 +578,10 @@ namespace MediaSharingSystem.Controllers
                 }
             }
             return output;
+        }
+        public List<string> GetAllSwearwords()
+        {
+            return mediaRepo.GetAllSwearwords();
         }
     }
 }

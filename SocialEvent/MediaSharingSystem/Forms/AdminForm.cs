@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MediaSharingSystem.Controllers;
+using Models.
 
 namespace MediaSharingSystem.Forms
 {
@@ -20,7 +21,11 @@ namespace MediaSharingSystem.Forms
             InitializeComponent();
             controller = new Controller();
             login = f;
-            lbFilterwoorden.Items.Add(controller.geta);
+            foreach(string word in controller.GetAllSwearwords())
+            {
+                lbFilterwoorden.Items.Add(word);
+            }
+            foreach()
             tbctrlMain.Appearance = TabAppearance.FlatButtons;
             tbctrlMain.ItemSize = new Size(0, 1);
             tbctrlMain.SizeMode = TabSizeMode.Fixed;
@@ -137,12 +142,22 @@ namespace MediaSharingSystem.Forms
         {
            if(controller.AddSwearWord(tbNaamFilterwoord.Text))
             {
+                lbFilterwoorden.Items.Clear();
+                foreach (string word in controller.GetAllSwearwords())
+                {
+                    lbFilterwoorden.Items.Add(word);
+                }
                 MessageBox.Show("Filterwoord toegevoegd");
             }
            else
             {
                 MessageBox.Show("Filterwoord niet toegevoegd");
             }
+        }
+
+        private void btnVerwijderGebruiker_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
