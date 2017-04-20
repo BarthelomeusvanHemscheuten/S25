@@ -156,6 +156,10 @@ namespace DAL.Repositories
         {
             return GetPostIdFromComment(commentid);
         }
+        public List<string> GetAllSwearwords()
+        {
+            return GetAllSwearwords();
+        }
 
 
 

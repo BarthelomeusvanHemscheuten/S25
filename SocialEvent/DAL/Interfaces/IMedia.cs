@@ -32,6 +32,7 @@ namespace DAL.Interfaces
         List<int> GetReportedCommentsID();
         List<int> GetPostsID();
         List<int> GetCommentsID();
+        List<string> GetAllSwearword();
         int GetPostIdFromComment(int commentid);
 
 
