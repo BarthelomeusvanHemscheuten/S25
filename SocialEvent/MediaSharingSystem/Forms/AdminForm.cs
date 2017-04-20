@@ -20,7 +20,10 @@ namespace MediaSharingSystem.Forms
             InitializeComponent();
             controller = new Controller();
             login = f;
-            lbFilterwoorden.Items.Add(controller.geta);
+            foreach (string word in controller.GetAllSwearwords())
+            {
+                lbFilterwoorden.Items.Add(word);
+            }
             tbctrlMain.Appearance = TabAppearance.FlatButtons;
             tbctrlMain.ItemSize = new Size(0, 1);
             tbctrlMain.SizeMode = TabSizeMode.Fixed;
@@ -138,6 +141,10 @@ namespace MediaSharingSystem.Forms
            if(controller.AddSwearWord(tbNaamFilterwoord.Text))
             {
                 MessageBox.Show("Filterwoord toegevoegd");
+                foreach (string word in controller.GetAllSwearwords())
+                {
+                    lbFilterwoorden.Items.Add(word);
+                }
             }
            else
             {

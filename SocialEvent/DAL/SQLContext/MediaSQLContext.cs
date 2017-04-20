@@ -222,8 +222,7 @@ namespace DAL.SQLContext
         public List<string> GetAllSwearword()
         {
             string query = @"SELECT [Word] FROM [Swearword]";
-            string query_amount = @"SELECT COUNT(*) FROM [Swearword]";
-            return databaseConnection.executeReaderStringList(query, databaseConnection.executeReaderInt(query_amount));
+            return databaseConnection.executeReaderStringList(query, 1);
         }
     }
 }
