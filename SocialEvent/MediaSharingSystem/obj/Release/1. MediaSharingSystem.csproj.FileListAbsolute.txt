@@ -43,3 +43,18 @@ C:\Users\Lucas Scheepers\Desktop\Lucas\School\Jaar 1\Semester 2\5. Proftaak\- Ap
 C:\Users\Lucas Scheepers\Desktop\Lucas\School\Jaar 1\Semester 2\5. Proftaak\- Applicatie\SocialEvent\MediaSharingSystem\obj\Release\MediaSharingSystem.Forms.EmployeeForm.resources
 C:\Users\Lucas Scheepers\Desktop\Lucas\School\Jaar 1\Semester 2\5. Proftaak\- Applicatie\SocialEvent\MediaSharingSystem\obj\Release\MediaSharingSystem.Forms.LoginForm.resources
 C:\Users\Lucas Scheepers\Desktop\Lucas\School\Jaar 1\Semester 2\5. Proftaak\- Applicatie\SocialEvent\MediaSharingSystem\obj\Release\MediaSharingSystem.Forms.VisitorForm.resources
+C:\Users\Mootj\Source\Repos\S25\SocialEvent\MediaSharingSystem\obj\Release\MediaSharingSystem.exe
+C:\Users\Mootj\Source\Repos\S25\SocialEvent\MediaSharingSystem\obj\Release\MediaSharingSystem.pdb
+C:\Users\Mootj\Source\Repos\S25\SocialEvent\MediaSharingSystem\obj\Release\1. MediaSharingSystem.csprojResolveAssemblyReference.cache
+C:\Users\Mootj\Source\Repos\S25\SocialEvent\MediaSharingSystem\obj\Release\MediaSharingSystem.Forms.AdminForm.resources
+C:\Users\Mootj\Source\Repos\S25\SocialEvent\MediaSharingSystem\obj\Release\MediaSharingSystem.Forms.EmployeeForm.resources
+C:\Users\Mootj\Source\Repos\S25\SocialEvent\MediaSharingSystem\obj\Release\MediaSharingSystem.Forms.LoginForm.resources
+C:\Users\Mootj\Source\Repos\S25\SocialEvent\MediaSharingSystem\obj\Release\MediaSharingSystem.Forms.VisitorForm.resources
+C:\Users\Mootj\Source\Repos\S25\SocialEvent\MediaSharingSystem\obj\Release\MediaSharingSystem.Properties.Resources.resources
+C:\Users\Mootj\Source\Repos\S25\SocialEvent\MediaSharingSystem\obj\Release\1. MediaSharingSystem.csproj.GenerateResource.Cache
+C:\Users\Mootj\Source\Repos\S25\SocialEvent\MediaSharingSystem\bin\Release\MediaSharingSystem.exe
+C:\Users\Mootj\Source\Repos\S25\SocialEvent\MediaSharingSystem\bin\Release\MediaSharingSystem.pdb
+C:\Users\Mootj\Source\Repos\S25\SocialEvent\MediaSharingSystem\bin\Release\DAL.dll
+C:\Users\Mootj\Source\Repos\S25\SocialEvent\MediaSharingSystem\bin\Release\Models.dll
+C:\Users\Mootj\Source\Repos\S25\SocialEvent\MediaSharingSystem\bin\Release\DAL.pdb
+C:\Users\Mootj\Source\Repos\S25\SocialEvent\MediaSharingSystem\bin\Release\Models.pdb

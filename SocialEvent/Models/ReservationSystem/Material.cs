@@ -36,5 +36,10 @@ namespace Models.ReservationSystem
             this.Description = description;
             this.Price = price;
         }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }

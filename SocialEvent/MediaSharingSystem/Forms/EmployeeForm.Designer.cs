@@ -57,9 +57,11 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panelVerhuurItem = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tbHoeveelheidMateriaal = new System.Windows.Forms.TextBox();
+            this.dtEindDatum = new System.Windows.Forms.MonthCalendar();
+            this.lbVisitors = new System.Windows.Forms.ListBox();
             this.btnVerhuurMateriaal = new System.Windows.Forms.Button();
-            this.tbTypeMaterial = new System.Windows.Forms.TextBox();
-            this.lblTypeMaterial = new System.Windows.Forms.Label();
             this.pbMateriaalFoto = new System.Windows.Forms.PictureBox();
             this.lbVerhuurbareMaterialen = new System.Windows.Forms.Label();
             this.tbMateriaalPrijsPerDag = new System.Windows.Forms.TextBox();
@@ -78,8 +80,6 @@
             this.lblEmailGebruikersBeheren = new System.Windows.Forms.Label();
             this.pbPictureGebruikersBeheren = new System.Windows.Forms.PictureBox();
             this.lblGebruikersBeheren = new System.Windows.Forms.Label();
-            this.tbNaamGebruikersBeheren = new System.Windows.Forms.TextBox();
-            this.lblNaamGebruikersBeheren = new System.Windows.Forms.Label();
             this.lbGebruikers = new System.Windows.Forms.ListBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.PanelInfoMenu = new System.Windows.Forms.Panel();
@@ -118,10 +118,6 @@
             this.rbtnStaCaravans = new System.Windows.Forms.RadioButton();
             this.rbtnBungalows = new System.Windows.Forms.RadioButton();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.lbVisitors = new System.Windows.Forms.ListBox();
-            this.dtEindDatum = new System.Windows.Forms.MonthCalendar();
-            this.tbHoeveelheidMateriaal = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.panelMedewerker.SuspendLayout();
             this.tbctrlMain.SuspendLayout();
             this.tabAccountInstellingen.SuspendLayout();
@@ -424,8 +420,6 @@
             this.panelVerhuurItem.Controls.Add(this.dtEindDatum);
             this.panelVerhuurItem.Controls.Add(this.lbVisitors);
             this.panelVerhuurItem.Controls.Add(this.btnVerhuurMateriaal);
-            this.panelVerhuurItem.Controls.Add(this.tbTypeMaterial);
-            this.panelVerhuurItem.Controls.Add(this.lblTypeMaterial);
             this.panelVerhuurItem.Controls.Add(this.pbMateriaalFoto);
             this.panelVerhuurItem.Controls.Add(this.lbVerhuurbareMaterialen);
             this.panelVerhuurItem.Controls.Add(this.tbMateriaalPrijsPerDag);
@@ -440,6 +434,37 @@
             this.panelVerhuurItem.Size = new System.Drawing.Size(496, 406);
             this.panelVerhuurItem.TabIndex = 17;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(11, 322);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(70, 13);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "Hoeveelheid:";
+            // 
+            // tbHoeveelheidMateriaal
+            // 
+            this.tbHoeveelheidMateriaal.Location = new System.Drawing.Point(87, 319);
+            this.tbHoeveelheidMateriaal.Name = "tbHoeveelheidMateriaal";
+            this.tbHoeveelheidMateriaal.Size = new System.Drawing.Size(147, 20);
+            this.tbHoeveelheidMateriaal.TabIndex = 20;
+            this.tbHoeveelheidMateriaal.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tbHoeveelheidMateriaal_KeyPress);
+            // 
+            // dtEindDatum
+            // 
+            this.dtEindDatum.Location = new System.Drawing.Point(240, 210);
+            this.dtEindDatum.Name = "dtEindDatum";
+            this.dtEindDatum.TabIndex = 19;
+            // 
+            // lbVisitors
+            // 
+            this.lbVisitors.FormattingEnabled = true;
+            this.lbVisitors.Location = new System.Drawing.Point(120, 34);
+            this.lbVisitors.Name = "lbVisitors";
+            this.lbVisitors.Size = new System.Drawing.Size(114, 147);
+            this.lbVisitors.TabIndex = 18;
+            // 
             // btnVerhuurMateriaal
             // 
             this.btnVerhuurMateriaal.Location = new System.Drawing.Point(87, 347);
@@ -449,23 +474,6 @@
             this.btnVerhuurMateriaal.Text = "Verhuur";
             this.btnVerhuurMateriaal.UseVisualStyleBackColor = true;
             this.btnVerhuurMateriaal.Click += new System.EventHandler(this.btnVerhuurMateriaal_Click);
-            // 
-            // tbTypeMaterial
-            // 
-            this.tbTypeMaterial.Enabled = false;
-            this.tbTypeMaterial.Location = new System.Drawing.Point(387, 134);
-            this.tbTypeMaterial.Name = "tbTypeMaterial";
-            this.tbTypeMaterial.Size = new System.Drawing.Size(85, 20);
-            this.tbTypeMaterial.TabIndex = 10;
-            // 
-            // lblTypeMaterial
-            // 
-            this.lblTypeMaterial.AutoSize = true;
-            this.lblTypeMaterial.Location = new System.Drawing.Point(387, 118);
-            this.lblTypeMaterial.Name = "lblTypeMaterial";
-            this.lblTypeMaterial.Size = new System.Drawing.Size(79, 13);
-            this.lblTypeMaterial.TabIndex = 9;
-            this.lblTypeMaterial.Text = "Type materiaal:";
             // 
             // pbMateriaalFoto
             // 
@@ -543,6 +551,7 @@
             this.lbMaterialen.Name = "lbMaterialen";
             this.lbMaterialen.Size = new System.Drawing.Size(103, 147);
             this.lbMaterialen.TabIndex = 0;
+            this.lbMaterialen.SelectedIndexChanged += new System.EventHandler(this.lbMaterialen_SelectedIndexChanged);
             // 
             // tabPage3
             // 
@@ -566,8 +575,6 @@
             this.panelGebruikersBeheren.Controls.Add(this.lblEmailGebruikersBeheren);
             this.panelGebruikersBeheren.Controls.Add(this.pbPictureGebruikersBeheren);
             this.panelGebruikersBeheren.Controls.Add(this.lblGebruikersBeheren);
-            this.panelGebruikersBeheren.Controls.Add(this.tbNaamGebruikersBeheren);
-            this.panelGebruikersBeheren.Controls.Add(this.lblNaamGebruikersBeheren);
             this.panelGebruikersBeheren.Controls.Add(this.lbGebruikers);
             this.panelGebruikersBeheren.Location = new System.Drawing.Point(-3, -6);
             this.panelGebruikersBeheren.Name = "panelGebruikersBeheren";
@@ -588,7 +595,7 @@
             // tbTelefoonNrGebruikersBeheren
             // 
             this.tbTelefoonNrGebruikersBeheren.Enabled = false;
-            this.tbTelefoonNrGebruikersBeheren.Location = new System.Drawing.Point(257, 259);
+            this.tbTelefoonNrGebruikersBeheren.Location = new System.Drawing.Point(257, 253);
             this.tbTelefoonNrGebruikersBeheren.Name = "tbTelefoonNrGebruikersBeheren";
             this.tbTelefoonNrGebruikersBeheren.Size = new System.Drawing.Size(158, 20);
             this.tbTelefoonNrGebruikersBeheren.TabIndex = 12;
@@ -596,7 +603,7 @@
             // lblTelefoonNrGebruikersBeheren
             // 
             this.lblTelefoonNrGebruikersBeheren.AutoSize = true;
-            this.lblTelefoonNrGebruikersBeheren.Location = new System.Drawing.Point(185, 264);
+            this.lblTelefoonNrGebruikersBeheren.Location = new System.Drawing.Point(186, 256);
             this.lblTelefoonNrGebruikersBeheren.Name = "lblTelefoonNrGebruikersBeheren";
             this.lblTelefoonNrGebruikersBeheren.Size = new System.Drawing.Size(63, 13);
             this.lblTelefoonNrGebruikersBeheren.TabIndex = 11;
@@ -605,7 +612,7 @@
             // tbEmailGebruikersBeheren
             // 
             this.tbEmailGebruikersBeheren.Enabled = false;
-            this.tbEmailGebruikersBeheren.Location = new System.Drawing.Point(257, 234);
+            this.tbEmailGebruikersBeheren.Location = new System.Drawing.Point(257, 228);
             this.tbEmailGebruikersBeheren.Name = "tbEmailGebruikersBeheren";
             this.tbEmailGebruikersBeheren.Size = new System.Drawing.Size(158, 20);
             this.tbEmailGebruikersBeheren.TabIndex = 10;
@@ -613,7 +620,7 @@
             // lblEmailGebruikersBeheren
             // 
             this.lblEmailGebruikersBeheren.AutoSize = true;
-            this.lblEmailGebruikersBeheren.Location = new System.Drawing.Point(213, 239);
+            this.lblEmailGebruikersBeheren.Location = new System.Drawing.Point(214, 231);
             this.lblEmailGebruikersBeheren.Name = "lblEmailGebruikersBeheren";
             this.lblEmailGebruikersBeheren.Size = new System.Drawing.Size(35, 13);
             this.lblEmailGebruikersBeheren.TabIndex = 9;
@@ -637,23 +644,6 @@
             this.lblGebruikersBeheren.TabIndex = 7;
             this.lblGebruikersBeheren.Text = "Beheer gebruikers:";
             // 
-            // tbNaamGebruikersBeheren
-            // 
-            this.tbNaamGebruikersBeheren.Enabled = false;
-            this.tbNaamGebruikersBeheren.Location = new System.Drawing.Point(257, 210);
-            this.tbNaamGebruikersBeheren.Name = "tbNaamGebruikersBeheren";
-            this.tbNaamGebruikersBeheren.Size = new System.Drawing.Size(158, 20);
-            this.tbNaamGebruikersBeheren.TabIndex = 4;
-            // 
-            // lblNaamGebruikersBeheren
-            // 
-            this.lblNaamGebruikersBeheren.AutoSize = true;
-            this.lblNaamGebruikersBeheren.Location = new System.Drawing.Point(210, 216);
-            this.lblNaamGebruikersBeheren.Name = "lblNaamGebruikersBeheren";
-            this.lblNaamGebruikersBeheren.Size = new System.Drawing.Size(38, 13);
-            this.lblNaamGebruikersBeheren.TabIndex = 3;
-            this.lblNaamGebruikersBeheren.Text = "Naam:";
-            // 
             // lbGebruikers
             // 
             this.lbGebruikers.FormattingEnabled = true;
@@ -661,6 +651,7 @@
             this.lbGebruikers.Name = "lbGebruikers";
             this.lbGebruikers.Size = new System.Drawing.Size(169, 277);
             this.lbGebruikers.TabIndex = 0;
+            this.lbGebruikers.SelectedIndexChanged += new System.EventHandler(this.lbGebruikers_SelectedIndexChanged);
             // 
             // tabPage4
             // 
@@ -1022,37 +1013,6 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // lbVisitors
-            // 
-            this.lbVisitors.FormattingEnabled = true;
-            this.lbVisitors.Location = new System.Drawing.Point(120, 34);
-            this.lbVisitors.Name = "lbVisitors";
-            this.lbVisitors.Size = new System.Drawing.Size(114, 147);
-            this.lbVisitors.TabIndex = 18;
-            // 
-            // dtEindDatum
-            // 
-            this.dtEindDatum.Location = new System.Drawing.Point(240, 210);
-            this.dtEindDatum.Name = "dtEindDatum";
-            this.dtEindDatum.TabIndex = 19;
-            // 
-            // tbHoeveelheidMateriaal
-            // 
-            this.tbHoeveelheidMateriaal.Enabled = false;
-            this.tbHoeveelheidMateriaal.Location = new System.Drawing.Point(87, 319);
-            this.tbHoeveelheidMateriaal.Name = "tbHoeveelheidMateriaal";
-            this.tbHoeveelheidMateriaal.Size = new System.Drawing.Size(147, 20);
-            this.tbHoeveelheidMateriaal.TabIndex = 20;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 322);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 13);
-            this.label1.TabIndex = 21;
-            this.label1.Text = "Hoeveelheid:";
-            // 
             // EmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1117,8 +1077,6 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Panel panelVerhuurItem;
         private System.Windows.Forms.Button btnVerhuurMateriaal;
-        private System.Windows.Forms.TextBox tbTypeMaterial;
-        private System.Windows.Forms.Label lblTypeMaterial;
         private System.Windows.Forms.PictureBox pbMateriaalFoto;
         private System.Windows.Forms.Label lbVerhuurbareMaterialen;
         private System.Windows.Forms.TextBox tbMateriaalPrijsPerDag;
@@ -1137,8 +1095,6 @@
         private System.Windows.Forms.Label lblEmailGebruikersBeheren;
         private System.Windows.Forms.PictureBox pbPictureGebruikersBeheren;
         private System.Windows.Forms.Label lblGebruikersBeheren;
-        private System.Windows.Forms.TextBox tbNaamGebruikersBeheren;
-        private System.Windows.Forms.Label lblNaamGebruikersBeheren;
         private System.Windows.Forms.ListBox lbGebruikers;
         private System.Windows.Forms.Button btnReserveren;
         private System.Windows.Forms.TabPage tabPage4;

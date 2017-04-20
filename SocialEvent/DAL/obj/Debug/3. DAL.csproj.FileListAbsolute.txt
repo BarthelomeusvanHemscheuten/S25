@@ -13,3 +13,8 @@ C:\Users\Lucas Scheepers\Desktop\Lucas\School\Jaar 1\Semester 2\5. Proftaak\- Ap
 C:\Users\Lucas Scheepers\Desktop\Lucas\School\Jaar 1\Semester 2\5. Proftaak\- Applicatie\SocialEvent\DAL\obj\Debug\3. DAL.csprojResolveAssemblyReference.cache
 C:\Users\Lucas Scheepers\Desktop\Lucas\School\Jaar 1\Semester 2\5. Proftaak\- Applicatie\SocialEvent\DAL\obj\Debug\DAL.dll
 C:\Users\Lucas Scheepers\Desktop\Lucas\School\Jaar 1\Semester 2\5. Proftaak\- Applicatie\SocialEvent\DAL\obj\Debug\DAL.pdb
+C:\Users\Mootj\Source\Repos\S25\SocialEvent\DAL\bin\Debug\DAL.dll
+C:\Users\Mootj\Source\Repos\S25\SocialEvent\DAL\bin\Debug\DAL.pdb
+C:\Users\Mootj\Source\Repos\S25\SocialEvent\DAL\obj\Debug\3. DAL.csprojResolveAssemblyReference.cache
+C:\Users\Mootj\Source\Repos\S25\SocialEvent\DAL\obj\Debug\DAL.dll
+C:\Users\Mootj\Source\Repos\S25\SocialEvent\DAL\obj\Debug\DAL.pdb
