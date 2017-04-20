@@ -12,7 +12,7 @@ namespace DAL.SQLContext
         // LUCAS: Data Source=DESKTOP-6R0TNPL;Initial Catalog=Proftaak;Integrated Security=True
         // THOMAS: Data Source=THOMAS-LAPTOP\SQLEXPRESS;Initial Catalog=Proftaakje;Integrated Security=True
         // BART: Data Source=DESKTOP-6RQU3QV\SQLEXPRESS;Initial Catalog = Proftaak; Integrated Security = True"
-        private const string connectionString = @" Data Source=DESKTOP-6RQU3QV\SQLEXPRESS;Initial Catalog = Proftaak; Integrated Security = True";
+        private const string connectionString = @"Data Source=DESKTOP-6R0TNPL;Initial Catalog=Proftaak;Integrated Security=True";
 
         internal bool executeNonQuery(string query)
         {
@@ -112,7 +112,7 @@ namespace DAL.SQLContext
             return -1;
         }
 
-        internal List<int> executeReaderIntList(string query, int amount)
+        internal List<int> executeReaderIntList(string query, int i)
         {
             try
             {
@@ -124,10 +124,7 @@ namespace DAL.SQLContext
                     SqlDataReader reader = command.ExecuteReader();
                     while (reader.Read())
                     {
-                        for (int i = 0; i < amount; i++)
-                        {
-                            list.Add(reader.GetInt32(i));
-                        }
+                         list.Add(reader.GetInt32(i));
                     }
                     return list;
                 }
