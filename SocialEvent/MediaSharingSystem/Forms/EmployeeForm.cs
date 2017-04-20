@@ -18,6 +18,8 @@ namespace MediaSharingSystem.Forms
     {
         Form login;
         Controller controller;
+
+        List<List<string>> userData = new List<List<string>>();
        
         public EmployeeForm(Form f, Controller controller)
         {
@@ -159,18 +161,32 @@ namespace MediaSharingSystem.Forms
 
         private void btnReserverenLocatie_Click(object sender, EventArgs e)
         {
-
+            Visitor visitor = new Visitor(tbUserNaamHoofdreserveerder.Text, tbNaamHoofdreserveerder.Text, tbTelefoonNrHoofdreserveerder.Text, controller.Event.ID, 1);   
         }
 
 
         private void btnMoreAanhangsels1_Click(object sender, EventArgs e)
         {
+            if(userData == null)
+            {
+                List<string> username = new List<string>();
+                List<string> name = new List<string>();
+                List<string> email = new List<string>();
+                List<string> telnr = new List<string>();
+                List<string> address = new List<string>();
+                userData.Add(username);
+            }
+            int locationNr = Convert.ToInt32(tbAanhangselLocatie1.Text);
             Visitor visitor = new Visitor(tbUserNameAanhangsel1.Text, tbNaamAanhangsel1.Text, tbEmailAanhangsel1.Text, tbTelefoonNrAanhangsel1.Text, tbAddressAanhangsel1.Text, dtmAanhangsel1.Value, controller.Event.ID, 1);
+            Location location = new Location(locationNr, controller.GetAllLocationFeatures(locationNr), controller.GetAllLocationType(locationNr));
+
         }
 
         private void btnMoreAanhangsels2_Click(object sender, EventArgs e)
         {
-
+            int locationNr = Convert.ToInt32(tbAanhangselLocatie2.Text);
+            Visitor visitor = new Visitor(tbAddressAanhangsel2.Text, tbNaamAanhangsel2.Text, tbEmailAanhangsel2.Text, tbTelefoonNrAanhangsel2.Text, tbAddressAanhangsel2.Text, dtmAanhangsel2.Value, controller.Event.ID, 1);
+            Location location = new Location(locationNr, controller.GetAllLocationFeatures(locationNr), controller.GetAllLocationType(locationNr));
         }
     }
 }

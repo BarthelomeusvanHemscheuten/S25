@@ -350,7 +350,7 @@ namespace MediaSharingSystem.Controllers
                     visitor.ChangeTelnr(telnr);
                     return true;
                 case 3:
-                    visitor.ChangeTelnr(telnr);
+                    admin.ChangeTelnr(telnr);
                     return true;
             }
             return false;
@@ -576,9 +576,19 @@ namespace MediaSharingSystem.Controllers
             }
             return output;
         }
+        //SWEARWORDS
         public List<string> GetAllSwearwords()
         {
             return mediaRepo.GetAllSwearwords();
+        }
+        //LOCATION
+        public string GetAllLocationFeatures(int number)
+        {
+            return reservationRepo.GetLocationFeatures(number);
+        }
+        public string GetAllLocationType(int number)
+        {
+            return reservationRepo.GetLocationType(number);
         }
     }
 }

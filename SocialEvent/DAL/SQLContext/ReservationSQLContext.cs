@@ -89,6 +89,20 @@ namespace DAL.SQLContext
 
             return databaseConnection.executeReaderInt(query);
         }
+        public string GetLocationFeatures(int number)
+        {
+            string query = @"SELECT LocationFeatures FROM [Location] WHERE LocationNr = @number";
+            query = query.Replace("@number", number.ToString());
+
+            return databaseConnection.executeReaderString(query);
+        }
+        public string GetLocationType(int number)
+        {
+            string query = @"SELECT LocationType FROM [Location] WHERE LocationNr = @number";
+            query = query.Replace("@number", number.ToString());
+
+            return databaseConnection.executeReaderString(query);
+        }
 
         public int CountMaterials()
         {
