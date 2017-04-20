@@ -149,6 +149,15 @@ namespace DAL.Repositories
             return false;
         }
 
+        public bool CheckRFIDExists(string RFID)
+        {
+            if (context.CheckRFIDExists(RFID))
+            {
+                return true;
+            }
+            return false;
+        }
+
         public string GetUsernameFromRFID(string RFID)
         {
             return context.GetUsernameFromRFID(RFID);

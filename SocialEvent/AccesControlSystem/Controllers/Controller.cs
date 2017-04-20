@@ -19,6 +19,11 @@ namespace AccesControlSystem.Controllers
 
         public bool ScanNew(string RFID)
         {
+            return userRepo.CheckRFIDExists(RFID);
+        }
+
+        public bool hasPayed(string RFID)
+        {
             return userRepo.GetPayedFromRFID(RFID);
         }
 

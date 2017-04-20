@@ -366,7 +366,7 @@ namespace MediaSharingSystem.Controllers
                     case 2:
                         employee.DeleteVisitor(visitor);
                         return true;
-                    case 1:
+                    case 3:
                         admin.DeleteVisitor(visitor);
                         return true;
                 }
