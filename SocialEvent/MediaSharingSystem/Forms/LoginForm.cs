@@ -26,7 +26,7 @@ namespace MediaSharingSystem.Forms
             switch (controller.Login(tbUsername.Text, tbPassword.Text))
             {
                 case 1:
-                    VisitorForm visitorform = new VisitorForm(this);
+                    VisitorForm visitorform = new VisitorForm(this, controller);
                     visitorform.Show();
                     this.Hide();
 
