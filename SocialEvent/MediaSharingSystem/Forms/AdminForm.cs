@@ -16,10 +16,10 @@ namespace MediaSharingSystem.Forms
     {
         Form login;
         Controller controller;
-        public AdminForm(Form f)
+        public AdminForm(Form f, Controller controller)
         {
             InitializeComponent();
-            controller = new Controller();
+            this.controller = controller;
             login = f;
             foreach (string word in controller.GetAllSwearwords())
             {
@@ -160,7 +160,20 @@ namespace MediaSharingSystem.Forms
 
         private void btnVerwijderGebruiker_Click(object sender, EventArgs e)
         {
-
+            Visitor visitor = (Visitor)lbGebruikers.SelectedItem;
+            if (controller.DeleteVisitor(visitor))
+            {
+                MessageBox.Show("User Deleted");
+                lbGebruikers.Items.Clear();
+                foreach (User user in controller.GetAndShowVisitorsFromDatabase())
+                {
+                    lbGebruikers.Items.Add(user);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Something went wrong");
+            }
         }
 
         private void lbGebruikers_SelectedIndexChanged(object sender, EventArgs e)
