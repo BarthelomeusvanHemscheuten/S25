@@ -175,6 +175,18 @@ namespace Models.Users
 
             return false;
         }
+
+        public bool ChangeName(string newName)
+        {
+            if (userRepo.CheckLogin(this.Username, this.Password) == true)
+            {
+                userRepo.UpdateName(this.Username, newName);
+                return true;
+            }
+
+            return false;
+        }
+
         public bool ChangeEmail(string email)
         {
             if(userRepo.CheckLogin(this.Username, this.Password) == true)

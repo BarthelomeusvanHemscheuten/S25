@@ -5,3 +5,10 @@ C:\Users\thoma\Source\Repos\S25\SocialEvent\Models\bin\Debug\DAL.dll
 C:\Users\thoma\Source\Repos\S25\SocialEvent\Models\bin\Debug\DAL.pdb
 C:\Users\thoma\Source\Repos\S25\SocialEvent\Models\obj\Debug\Models.dll
 C:\Users\thoma\Source\Repos\S25\SocialEvent\Models\obj\Debug\Models.pdb
+C:\Users\Lucas Scheepers\Desktop\Lucas\School\Jaar 1\Semester 2\5. Proftaak\- Applicatie\SocialEvent\Models\bin\Debug\Models.dll
+C:\Users\Lucas Scheepers\Desktop\Lucas\School\Jaar 1\Semester 2\5. Proftaak\- Applicatie\SocialEvent\Models\bin\Debug\Models.pdb
+C:\Users\Lucas Scheepers\Desktop\Lucas\School\Jaar 1\Semester 2\5. Proftaak\- Applicatie\SocialEvent\Models\bin\Debug\DAL.dll
+C:\Users\Lucas Scheepers\Desktop\Lucas\School\Jaar 1\Semester 2\5. Proftaak\- Applicatie\SocialEvent\Models\bin\Debug\DAL.pdb
+C:\Users\Lucas Scheepers\Desktop\Lucas\School\Jaar 1\Semester 2\5. Proftaak\- Applicatie\SocialEvent\Models\obj\Debug\2. Models.csprojResolveAssemblyReference.cache
+C:\Users\Lucas Scheepers\Desktop\Lucas\School\Jaar 1\Semester 2\5. Proftaak\- Applicatie\SocialEvent\Models\obj\Debug\Models.dll
+C:\Users\Lucas Scheepers\Desktop\Lucas\School\Jaar 1\Semester 2\5. Proftaak\- Applicatie\SocialEvent\Models\obj\Debug\Models.pdb

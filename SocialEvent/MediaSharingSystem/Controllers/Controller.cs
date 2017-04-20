@@ -293,6 +293,23 @@ namespace MediaSharingSystem.Controllers
             return false;
         }
 
+        public bool ChangeName(string newName)
+        {
+            switch (userGroup)
+            {
+                case 3:
+                    visitor.ChangeName(newName);
+                    return true;
+                case 2:
+                    employee.ChangeName(newName);
+                    return true;
+                case 1:
+                    admin.ChangeName(newName);
+                    return true;
+            }
+            return false;
+        }
+
         public Image ChangePicture(Image image)
         {
             switch (userGroup)

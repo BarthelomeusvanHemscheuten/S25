@@ -153,6 +153,16 @@ namespace DAL.SQLContext
 
             return databaseConnection.executeNonQuery(query);
         }
+
+        public bool UpdateName(string oldUsername, string newName)
+        {
+            string query = @"UPDATE [User] SET [name] = '@NEWNAME' WHERE [username] = '@OLDUSERNAME'";
+            query = query.Replace("@NEWNAME", oldUsername);
+            query = query.Replace("@OLDUSERNAME", newName);
+
+            return databaseConnection.executeNonQuery(query);
+        }
+
         public bool UpdateEmail(string email, string username)
         {
             string query = @"UPDATE [User] SET [Email] = '@EMAIL' WHERE [Username] = '@USERNAME'";
