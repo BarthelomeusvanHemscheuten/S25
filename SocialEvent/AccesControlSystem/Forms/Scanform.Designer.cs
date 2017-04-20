@@ -43,6 +43,7 @@
             this.pnAllUsers = new System.Windows.Forms.Panel();
             this.lbxAllUsers = new System.Windows.Forms.ListBox();
             this.btnReturn = new System.Windows.Forms.Button();
+            this.btnAllUsers = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.pnlName.SuspendLayout();
             this.pnAllUsers.SuspendLayout();
@@ -171,10 +172,11 @@
             // 
             this.pnAllUsers.Controls.Add(this.btnReturn);
             this.pnAllUsers.Controls.Add(this.lbxAllUsers);
-            this.pnAllUsers.Location = new System.Drawing.Point(0, 2);
+            this.pnAllUsers.Location = new System.Drawing.Point(12, 12);
             this.pnAllUsers.Name = "pnAllUsers";
             this.pnAllUsers.Size = new System.Drawing.Size(1055, 573);
             this.pnAllUsers.TabIndex = 7;
+            this.pnAllUsers.Visible = false;
             // 
             // lbxAllUsers
             // 
@@ -182,7 +184,7 @@
             this.lbxAllUsers.ItemHeight = 16;
             this.lbxAllUsers.Location = new System.Drawing.Point(13, 79);
             this.lbxAllUsers.Name = "lbxAllUsers";
-            this.lbxAllUsers.Size = new System.Drawing.Size(1028, 484);
+            this.lbxAllUsers.Size = new System.Drawing.Size(1016, 468);
             this.lbxAllUsers.TabIndex = 0;
             // 
             // btnReturn
@@ -193,6 +195,17 @@
             this.btnReturn.TabIndex = 1;
             this.btnReturn.Text = "Terug";
             this.btnReturn.UseVisualStyleBackColor = true;
+            this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
+            // 
+            // btnAllUsers
+            // 
+            this.btnAllUsers.Location = new System.Drawing.Point(12, 12);
+            this.btnAllUsers.Name = "btnAllUsers";
+            this.btnAllUsers.Size = new System.Drawing.Size(108, 62);
+            this.btnAllUsers.TabIndex = 8;
+            this.btnAllUsers.Text = "Alle gebruikers";
+            this.btnAllUsers.UseVisualStyleBackColor = true;
+            this.btnAllUsers.Click += new System.EventHandler(this.btnAllUsers_Click);
             // 
             // Scanform
             // 
@@ -208,6 +221,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnScan);
             this.Controls.Add(this.tbRFID_Input);
+            this.Controls.Add(this.btnAllUsers);
             this.Name = "Scanform";
             this.Text = "Scanform";
             this.panel1.ResumeLayout(false);
@@ -236,5 +250,6 @@
         private System.Windows.Forms.Panel pnAllUsers;
         private System.Windows.Forms.Button btnReturn;
         private System.Windows.Forms.ListBox lbxAllUsers;
+        private System.Windows.Forms.Button btnAllUsers;
     }
 }

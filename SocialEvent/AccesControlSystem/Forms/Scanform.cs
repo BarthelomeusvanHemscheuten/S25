@@ -84,5 +84,34 @@ namespace AccesControlSystem.Forms
                 MessageBox.Show("Uitchecken gefaald!");
             }
         }
+
+        private void btnAllUsers_Click(object sender, EventArgs e)
+        {
+            int i = 0;
+            string adding = "";
+            pnAllUsers.Visible = true;
+            lbxAllUsers.Items.Clear();
+            foreach (string s in c.GetAllPresentUsers())
+            {
+                switch (i)
+                {
+                    case 0:
+                        i = 1;
+                        adding = s + "\t\t";
+                        break;
+                    case 2:
+                        i = 0;
+                        adding = adding + s;
+                        lbxAllUsers.Items.Add(adding);
+                        adding = "";
+                        break;
+                }
+            }
+        }
+
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+            pnAllUsers.Visible = false;
+        }
     }
 }
