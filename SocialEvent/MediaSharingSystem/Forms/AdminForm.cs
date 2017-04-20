@@ -20,6 +20,7 @@ namespace MediaSharingSystem.Forms
             InitializeComponent();
             controller = new Controller();
             login = f;
+            lbFilterwoorden.Items.Add(controller.)
             tbctrlMain.Appearance = TabAppearance.FlatButtons;
             tbctrlMain.ItemSize = new Size(0, 1);
             tbctrlMain.SizeMode = TabSizeMode.Fixed;
@@ -55,11 +56,8 @@ namespace MediaSharingSystem.Forms
             login.Show();
             this.Close();
         }
-        /// <summary>
-        /// Changes user  
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
+        //Changes Name
+ 
         private void btnWijzigenNaam_Click(object sender, EventArgs e)
         {
             if (controller.ChangeUsername(tbNaam.Text))
@@ -68,11 +66,11 @@ namespace MediaSharingSystem.Forms
             }
             else
             {
-                throw new NotImplementedException();
+                MessageBox.Show("Naam niet verandert");
             }
 
         }
-
+        //Changes Email
         private void btnWijzigenEmail_Click(object sender, EventArgs e)
         {
             if (controller.ChangeEmail(tbEmail.Text))
@@ -81,10 +79,10 @@ namespace MediaSharingSystem.Forms
             }
             else
             {
-                throw new NotImplementedException();
+                MessageBox.Show("Email niet verandert");
             }
         }
-
+        //Changes Password
         private void btnWijzigenWachtwoord_Click(object sender, EventArgs e)
         {
             if (controller.ChangePassword(tbWachtwoord.Text, tbWachtwoord2.Text))
@@ -93,22 +91,22 @@ namespace MediaSharingSystem.Forms
             }
             else
             {
-                throw new NotImplementedException();
+                MessageBox.Show("Wachtwoord niet verandert");
             }
         }
-
+        //Changes TelefoonNummer
         private void btnWijzigenTelefoonNr_Click(object sender, EventArgs e)
         {
-            if(controller.ChangeTelnr(tbTelefoonNr.Text))
+            if (controller.ChangeTelnr(tbTelefoonNr.Text))
             {
                 MessageBox.Show("Telefoonnummer verandert");
             }
             else
             {
-                throw new NotImplementedException();
+                MessageBox.Show("Telefoonnummer niet verandert");
             }
         }
-
+        //Change Image
         private void btnWijzigenFoto_Click(object sender, EventArgs e)
         {
             Image picture;
@@ -119,7 +117,31 @@ namespace MediaSharingSystem.Forms
             }
             else
             {
-                throw new NotImplementedException();
+                MessageBox.Show("Foto niet verandert");
+            }
+        }
+        //Adds Material
+        private void btnAddMaterial_Click(object sender, EventArgs e)
+        {
+            if (controller.AddMaterial(tbNaamMateriaal.Text, tbOmschrijvingMateriaal.Text, Convert.ToDouble(tbHuurprijs.Text), Convert.ToInt32(tbHoeveelheidMateriaal.Text)) != null)
+            {
+                MessageBox.Show("Materiaal toegevoegd");
+            }
+            else
+            {
+                MessageBox.Show("Materiaal niet toegevoegd");
+            }
+        }
+        //Adds Swearword
+        private void btnAddFilterwoord_Click(object sender, EventArgs e)
+        {
+           if(controller.AddSwearWord(tbNaamFilterwoord.Text))
+            {
+                MessageBox.Show("Filterwoord toegevoegd");
+            }
+           else
+            {
+                MessageBox.Show("Filterwoord niet toegevoegd");
             }
         }
     }

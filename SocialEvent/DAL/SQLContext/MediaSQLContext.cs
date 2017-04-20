@@ -219,5 +219,11 @@ namespace DAL.SQLContext
             query = query.Replace("@id", commentid.ToString());
             return databaseConnection.executeReaderInt(query);
         }
+        public List<string> GetAllSwearword()
+        {
+            string query = @"SELECT [Word] FROM [Swearword]";
+            string query_amount = @"SELECT COUNT(*) FROM [Swearword]";
+            return databaseConnection.executeReaderStringList(query, databaseConnection.executeReaderInt(query_amount));
+        }
     }
 }
