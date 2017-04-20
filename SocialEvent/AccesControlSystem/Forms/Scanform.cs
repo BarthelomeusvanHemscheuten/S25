@@ -31,6 +31,14 @@ namespace AccesControlSystem.Forms
 
                 lbname.Text = c.GetUsername(tbRFID_Input.Text);
                 pnlName.Visible = true;
+                if (c.hasPayed(tbRFID_Input.Text))
+                {
+                    lbPayed.Text = "Ja";
+                }
+                else
+                {
+                    lbPayed.Text = "Nee";
+                }
             }
             else
             {
@@ -45,6 +53,7 @@ namespace AccesControlSystem.Forms
             tbRFID_Input.ReadOnly = false;
             tbRFID_Input.ReadOnly = false;
             lbname.Text = "Error";
+            lbPayed.Text = "Error";
             pnlName.Visible = false;
             btnCheckIn.Visible = false;
             btnCheckOut.Visible = false;

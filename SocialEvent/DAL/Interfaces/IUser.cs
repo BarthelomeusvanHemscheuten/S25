@@ -33,6 +33,7 @@ namespace DAL.Interfaces
 
         bool CheckLogin(string username, string password);
 
+        bool CheckRFIDExists(string RFID);
         bool GetPayedFromRFID(string RFID);
         string GetUsernameFromRFID(string RFID);
         bool CheckOutOrIn(string RFID, int inOrOut);

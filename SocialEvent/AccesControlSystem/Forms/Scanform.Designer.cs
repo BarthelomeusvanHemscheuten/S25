@@ -38,8 +38,14 @@
             this.pnlName = new System.Windows.Forms.Panel();
             this.lbname = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lbPayed = new System.Windows.Forms.Label();
+            this.pnAllUsers = new System.Windows.Forms.Panel();
+            this.lbxAllUsers = new System.Windows.Forms.ListBox();
+            this.btnReturn = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.pnlName.SuspendLayout();
+            this.pnAllUsers.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbRFID_Input
@@ -111,6 +117,8 @@
             // 
             // pnlName
             // 
+            this.pnlName.Controls.Add(this.lbPayed);
+            this.pnlName.Controls.Add(this.label3);
             this.pnlName.Controls.Add(this.lbname);
             this.pnlName.Controls.Add(this.label4);
             this.pnlName.Location = new System.Drawing.Point(328, 215);
@@ -122,22 +130,69 @@
             // lbname
             // 
             this.lbname.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lbname.Location = new System.Drawing.Point(3, 49);
+            this.lbname.Location = new System.Drawing.Point(175, 4);
             this.lbname.Name = "lbname";
-            this.lbname.Size = new System.Drawing.Size(333, 25);
+            this.lbname.Size = new System.Drawing.Size(161, 25);
             this.lbname.TabIndex = 1;
             this.lbname.Text = "Error";
-            this.lbname.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lbname.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label4.Location = new System.Drawing.Point(119, 21);
+            this.label4.Location = new System.Drawing.Point(13, 4);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(108, 25);
+            this.label4.Size = new System.Drawing.Size(162, 25);
             this.label4.TabIndex = 0;
-            this.label4.Text = "Username:";
+            this.label4.Text = "Gebruikersnaam:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label3.Location = new System.Drawing.Point(13, 53);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(84, 25);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Betaald:";
+            // 
+            // lbPayed
+            // 
+            this.lbPayed.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lbPayed.Location = new System.Drawing.Point(101, 53);
+            this.lbPayed.Name = "lbPayed";
+            this.lbPayed.Size = new System.Drawing.Size(161, 25);
+            this.lbPayed.TabIndex = 3;
+            this.lbPayed.Text = "Error";
+            this.lbPayed.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // pnAllUsers
+            // 
+            this.pnAllUsers.Controls.Add(this.btnReturn);
+            this.pnAllUsers.Controls.Add(this.lbxAllUsers);
+            this.pnAllUsers.Location = new System.Drawing.Point(0, 2);
+            this.pnAllUsers.Name = "pnAllUsers";
+            this.pnAllUsers.Size = new System.Drawing.Size(1055, 573);
+            this.pnAllUsers.TabIndex = 7;
+            // 
+            // lbxAllUsers
+            // 
+            this.lbxAllUsers.FormattingEnabled = true;
+            this.lbxAllUsers.ItemHeight = 16;
+            this.lbxAllUsers.Location = new System.Drawing.Point(13, 79);
+            this.lbxAllUsers.Name = "lbxAllUsers";
+            this.lbxAllUsers.Size = new System.Drawing.Size(1028, 484);
+            this.lbxAllUsers.TabIndex = 0;
+            // 
+            // btnReturn
+            // 
+            this.btnReturn.Location = new System.Drawing.Point(13, 11);
+            this.btnReturn.Name = "btnReturn";
+            this.btnReturn.Size = new System.Drawing.Size(108, 62);
+            this.btnReturn.TabIndex = 1;
+            this.btnReturn.Text = "Terug";
+            this.btnReturn.UseVisualStyleBackColor = true;
             // 
             // Scanform
             // 
@@ -145,6 +200,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(1053, 571);
+            this.Controls.Add(this.pnAllUsers);
             this.Controls.Add(this.pnlName);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnCheckOut);
@@ -157,6 +213,7 @@
             this.panel1.ResumeLayout(false);
             this.pnlName.ResumeLayout(false);
             this.pnlName.PerformLayout();
+            this.pnAllUsers.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -174,5 +231,10 @@
         private System.Windows.Forms.Panel pnlName;
         private System.Windows.Forms.Label lbname;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lbPayed;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Panel pnAllUsers;
+        private System.Windows.Forms.Button btnReturn;
+        private System.Windows.Forms.ListBox lbxAllUsers;
     }
 }

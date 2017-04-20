@@ -223,6 +223,13 @@ namespace DAL.SQLContext
             return databaseConnection.executeReaderString(query);
         }
 
+        public bool CheckRFIDExists(string RFID)
+        {
+            string query = @"SELECT u1.username FROM [user] as u1 WHERE u1.RFID = '@RFID'";
+            query = query.Replace("@RFID", RFID);
+            return databaseConnection.executeNonQuery(query);
+        }
+
 
 
         // nog niet nodig
