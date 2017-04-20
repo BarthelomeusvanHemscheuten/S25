@@ -37,7 +37,7 @@ namespace MediaSharingSystem.Forms
                     this.Hide();
                     break;
                 case 3:
-                    AdminForm adminform = new AdminForm(this);
+                    AdminForm adminform = new AdminForm(this, controller);
                     adminform.Show();
                     this.Hide();
                     break;

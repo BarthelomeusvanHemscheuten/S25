@@ -18,7 +18,7 @@ namespace MediaSharingSystem.Forms
     {
         Form login;
         Controller controller;
-       
+
         public EmployeeForm(Form f)
         {
             InitializeComponent();
@@ -27,6 +27,26 @@ namespace MediaSharingSystem.Forms
             tbctrlMain.Appearance = TabAppearance.FlatButtons;
             tbctrlMain.ItemSize = new Size(0, 1);
             tbctrlMain.SizeMode = TabSizeMode.Fixed;
+        }
+
+        public void GetVisitors(int num)
+        {
+            foreach (Visitor v in controller.GetVisitors())
+            {
+                if (num == 0)
+                {
+                    lbVisitors.Items.Add(v);
+                }
+                else lbGebruikers.Items.Add(v);
+            }
+        }
+
+        public void GetMaterials()
+        {
+            foreach (Material m in controller.GetMaterials())
+            {
+                lbMaterialen.Items.Add(m);
+            }
         }
 
         private void btnAccountInstellingenMedewerker_Click(object sender, EventArgs e)
@@ -46,11 +66,14 @@ namespace MediaSharingSystem.Forms
 
         private void btnVerhuurItemMedewerker_Click(object sender, EventArgs e)
         {
+            GetMaterials();
+            GetVisitors(0);
             tbctrlMain.SelectedTab = tbctrlMain.TabPages[2];
         }
 
         private void btnGebruikersBeherenMedewerker_Click(object sender, EventArgs e)
         {
+            GetVisitors(1);
             tbctrlMain.SelectedTab = tbctrlMain.TabPages[3];
         }
 
@@ -76,7 +99,7 @@ namespace MediaSharingSystem.Forms
 
         private void btnWijzigenNaam_Click(object sender, EventArgs e)
         {
-            if(controller.ChangeUsername(tbNaam.Text))
+            if (controller.ChangeUsername(tbNaam.Text))
             {
                 MessageBox.Show("Naam veranderd");
             }
@@ -124,37 +147,43 @@ namespace MediaSharingSystem.Forms
 
         private void btnVerhuurMateriaal_Click(object sender, EventArgs e)
         {
-            foreach (Visitor visitor in controller.Event.Visitors)
+            if (lbVisitors.SelectedItem != null && lbMaterialen.SelectedItem != null && !string.IsNullOrEmpty(tbHoeveelheidMateriaal.Text))
             {
-                if (lbVisitors.SelectedItem != null && lbMaterialen.SelectedItem != null && !string.IsNullOrEmpty(tbHoeveelheidMateriaal.Text))
-                {
-                    if (visitor.Name == lbVisitors.SelectedItem.ToString())
-                    {
-                        foreach (Material material in controller.Event.Material)
-                        {
-                            if (material.Name == lbMaterialen.SelectedItem.ToString())
-                            {
-                                controller.RentMaterial(visitor, material, DateTime.Now.ToString(), dtEindDatum.ToString(), Convert.ToInt32(tbHoeveelheidMateriaal));
-                            }
-                        }
-                    }
-                }
-                else MessageBox.Show("Voer eerst de benodigde waardes in!");
+                controller.VerhuurItem(lbVisitors.SelectedItem.ToString(), lbMaterialen.SelectedItem.ToString(), dtEindDatum.ToString(), Convert.ToInt32(tbHoeveelheidMateriaal));
             }
+            else MessageBox.Show("Voer eerst de benodigde waardes in!");
         }
 
         private void btnVerwijderGebruiker_Click(object sender, EventArgs e)
         {
             if (lbGebruikers.SelectedItem != null)
             {
-                foreach (Models.Users.Visitor visitor in controller.Event.Visitors)
+                if (controller.DeleteGebruiker(lbGebruikers.SelectedItem.ToString()))
                 {
-                    if (visitor.Name == lbGebruikers.SelectedItem.ToString())
-                    {
-                        controller.DeleteVisitor(visitor);
-                    }
+                    MessageBox.Show("Gebruiker verwijderd.");
                 }
+                else MessageBox.Show("Er is iets fout gegaan.");
             }
+        }
+
+        private void lbMaterialen_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string[] info = controller.GetMaterialInfo(lbVisitors.SelectedItem.ToString());
+            tbMateriaalPrijsPerDag.Text = info[0];
+            tbMateriaalOmschrijving.Text = info[1];
+        }
+
+        private void lbGebruikers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string[] info = controller.GetGebruikersInfo(lbGebruikers.SelectedItem.ToString());
+            tbEmailGebruikersBeheren.Text = info[0];
+            tbTelefoonNrGebruikersBeheren.Text = info[1];
+        }
+
+        private void tbHoeveelheidMateriaal_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            const char Delete = (char)8;
+            e.Handled = !Char.IsDigit(e.KeyChar) && e.KeyChar != Delete;
         }
     }
 }
