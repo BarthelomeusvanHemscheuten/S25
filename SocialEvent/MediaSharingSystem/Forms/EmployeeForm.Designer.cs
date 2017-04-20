@@ -87,6 +87,28 @@
             this.lbGebruikers = new System.Windows.Forms.ListBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.PanelInfoMenu = new System.Windows.Forms.Panel();
+            this.dtmHoofdreserveerder = new System.Windows.Forms.DateTimePicker();
+            this.dtmAanhangsel2 = new System.Windows.Forms.DateTimePicker();
+            this.lbGeboorteDatum = new System.Windows.Forms.Label();
+            this.dtmAanhangsel1 = new System.Windows.Forms.DateTimePicker();
+            this.btnMoreAanhangsels2 = new System.Windows.Forms.Button();
+            this.tbAddressHoofdreserveerder = new System.Windows.Forms.TextBox();
+            this.tbEmailHoofdreserveerder = new System.Windows.Forms.TextBox();
+            this.tbUserNaamHoofdreserveerder = new System.Windows.Forms.TextBox();
+            this.lbHoofdreserveerder = new System.Windows.Forms.Label();
+            this.tbAddressAanhangsel2 = new System.Windows.Forms.TextBox();
+            this.tbAddressAanhangsel1 = new System.Windows.Forms.TextBox();
+            this.lbAddress = new System.Windows.Forms.Label();
+            this.lbEmail = new System.Windows.Forms.Label();
+            this.tbEmailAanhangsel2 = new System.Windows.Forms.TextBox();
+            this.tbEmailAanhangsel1 = new System.Windows.Forms.TextBox();
+            this.tbUserNameAanhangsel2 = new System.Windows.Forms.TextBox();
+            this.tbUserNameAanhangsel1 = new System.Windows.Forms.TextBox();
+            this.lbUserNaam = new System.Windows.Forms.Label();
+            this.lbUsername = new System.Windows.Forms.Label();
+            this.tbAanhangselLocatie2 = new System.Windows.Forms.TextBox();
+            this.tbAanhangselLocatie1 = new System.Windows.Forms.TextBox();
+            this.lbLocatie = new System.Windows.Forms.Label();
             this.btnReserverenLocatie = new System.Windows.Forms.Button();
             this.btnMoreAanhangsels1 = new System.Windows.Forms.Button();
             this.tbTelefoonNrAanhangsel2 = new System.Windows.Forms.TextBox();
@@ -110,28 +132,6 @@
             this.rbtnStaCaravans = new System.Windows.Forms.RadioButton();
             this.rbtnBungalows = new System.Windows.Forms.RadioButton();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.lbLocatie = new System.Windows.Forms.Label();
-            this.tbAanhangselLocatie1 = new System.Windows.Forms.TextBox();
-            this.tbAanhangselLocatie2 = new System.Windows.Forms.TextBox();
-            this.lbUsername = new System.Windows.Forms.Label();
-            this.lbUserNaam = new System.Windows.Forms.Label();
-            this.tbUserNameAanhangsel1 = new System.Windows.Forms.TextBox();
-            this.tbUserNameAanhangsel2 = new System.Windows.Forms.TextBox();
-            this.tbEmailAanhangsel1 = new System.Windows.Forms.TextBox();
-            this.tbEmailAanhangsel2 = new System.Windows.Forms.TextBox();
-            this.lbEmail = new System.Windows.Forms.Label();
-            this.lbAddress = new System.Windows.Forms.Label();
-            this.tbAddressAanhangsel1 = new System.Windows.Forms.TextBox();
-            this.tbAddressAanhangsel2 = new System.Windows.Forms.TextBox();
-            this.lbHoofdreserveerder = new System.Windows.Forms.Label();
-            this.tbUserNaamHoofdreserveerder = new System.Windows.Forms.TextBox();
-            this.tbEmailHoofdreserveerder = new System.Windows.Forms.TextBox();
-            this.tbAddressHoofdreserveerder = new System.Windows.Forms.TextBox();
-            this.btnMoreAanhangsels2 = new System.Windows.Forms.Button();
-            this.dtmAanhangsel1 = new System.Windows.Forms.DateTimePicker();
-            this.lbGeboorteDatum = new System.Windows.Forms.Label();
-            this.dtmAanhangsel2 = new System.Windows.Forms.DateTimePicker();
-            this.dtmHoofdreserveerder = new System.Windows.Forms.DateTimePicker();
             this.panelMedewerker.SuspendLayout();
             this.tbctrlMain.SuspendLayout();
             this.tabAccountInstellingen.SuspendLayout();
@@ -814,6 +814,201 @@
             this.PanelInfoMenu.Size = new System.Drawing.Size(664, 576);
             this.PanelInfoMenu.TabIndex = 21;
             // 
+            // dtmHoofdreserveerder
+            // 
+            this.dtmHoofdreserveerder.AccessibleDescription = "";
+            this.dtmHoofdreserveerder.Location = new System.Drawing.Point(460, 504);
+            this.dtmHoofdreserveerder.Name = "dtmHoofdreserveerder";
+            this.dtmHoofdreserveerder.Size = new System.Drawing.Size(157, 22);
+            this.dtmHoofdreserveerder.TabIndex = 56;
+            // 
+            // dtmAanhangsel2
+            // 
+            this.dtmAanhangsel2.AccessibleDescription = "";
+            this.dtmAanhangsel2.Location = new System.Drawing.Point(295, 504);
+            this.dtmAanhangsel2.Name = "dtmAanhangsel2";
+            this.dtmAanhangsel2.Size = new System.Drawing.Size(152, 22);
+            this.dtmAanhangsel2.TabIndex = 55;
+            // 
+            // lbGeboorteDatum
+            // 
+            this.lbGeboorteDatum.AutoSize = true;
+            this.lbGeboorteDatum.Location = new System.Drawing.Point(-4, 509);
+            this.lbGeboorteDatum.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbGeboorteDatum.Name = "lbGeboorteDatum";
+            this.lbGeboorteDatum.Size = new System.Drawing.Size(113, 17);
+            this.lbGeboorteDatum.TabIndex = 54;
+            this.lbGeboorteDatum.Text = "GeboorteDatum:";
+            // 
+            // dtmAanhangsel1
+            // 
+            this.dtmAanhangsel1.AccessibleDescription = "";
+            this.dtmAanhangsel1.Location = new System.Drawing.Point(116, 504);
+            this.dtmAanhangsel1.Name = "dtmAanhangsel1";
+            this.dtmAanhangsel1.Size = new System.Drawing.Size(152, 22);
+            this.dtmAanhangsel1.TabIndex = 53;
+            // 
+            // btnMoreAanhangsels2
+            // 
+            this.btnMoreAanhangsels2.BackColor = System.Drawing.Color.LimeGreen;
+            this.btnMoreAanhangsels2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMoreAanhangsels2.Location = new System.Drawing.Point(342, 529);
+            this.btnMoreAanhangsels2.Margin = new System.Windows.Forms.Padding(4);
+            this.btnMoreAanhangsels2.Name = "btnMoreAanhangsels2";
+            this.btnMoreAanhangsels2.Size = new System.Drawing.Size(49, 39);
+            this.btnMoreAanhangsels2.TabIndex = 52;
+            this.btnMoreAanhangsels2.Text = "+";
+            this.btnMoreAanhangsels2.UseVisualStyleBackColor = false;
+            this.btnMoreAanhangsels2.Click += new System.EventHandler(this.btnMoreAanhangsels2_Click);
+            // 
+            // tbAddressHoofdreserveerder
+            // 
+            this.tbAddressHoofdreserveerder.Location = new System.Drawing.Point(460, 473);
+            this.tbAddressHoofdreserveerder.Margin = new System.Windows.Forms.Padding(4);
+            this.tbAddressHoofdreserveerder.Name = "tbAddressHoofdreserveerder";
+            this.tbAddressHoofdreserveerder.Size = new System.Drawing.Size(157, 22);
+            this.tbAddressHoofdreserveerder.TabIndex = 51;
+            // 
+            // tbEmailHoofdreserveerder
+            // 
+            this.tbEmailHoofdreserveerder.Location = new System.Drawing.Point(460, 413);
+            this.tbEmailHoofdreserveerder.Margin = new System.Windows.Forms.Padding(4);
+            this.tbEmailHoofdreserveerder.Name = "tbEmailHoofdreserveerder";
+            this.tbEmailHoofdreserveerder.Size = new System.Drawing.Size(157, 22);
+            this.tbEmailHoofdreserveerder.TabIndex = 50;
+            // 
+            // tbUserNaamHoofdreserveerder
+            // 
+            this.tbUserNaamHoofdreserveerder.Location = new System.Drawing.Point(460, 343);
+            this.tbUserNaamHoofdreserveerder.Margin = new System.Windows.Forms.Padding(4);
+            this.tbUserNaamHoofdreserveerder.Name = "tbUserNaamHoofdreserveerder";
+            this.tbUserNaamHoofdreserveerder.Size = new System.Drawing.Size(157, 22);
+            this.tbUserNaamHoofdreserveerder.TabIndex = 49;
+            // 
+            // lbHoofdreserveerder
+            // 
+            this.lbHoofdreserveerder.AutoSize = true;
+            this.lbHoofdreserveerder.Location = new System.Drawing.Point(489, 284);
+            this.lbHoofdreserveerder.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbHoofdreserveerder.Name = "lbHoofdreserveerder";
+            this.lbHoofdreserveerder.Size = new System.Drawing.Size(128, 17);
+            this.lbHoofdreserveerder.TabIndex = 48;
+            this.lbHoofdreserveerder.Text = "Hoofdreserveerder";
+            // 
+            // tbAddressAanhangsel2
+            // 
+            this.tbAddressAanhangsel2.Location = new System.Drawing.Point(295, 473);
+            this.tbAddressAanhangsel2.Margin = new System.Windows.Forms.Padding(4);
+            this.tbAddressAanhangsel2.Name = "tbAddressAanhangsel2";
+            this.tbAddressAanhangsel2.Size = new System.Drawing.Size(152, 22);
+            this.tbAddressAanhangsel2.TabIndex = 47;
+            // 
+            // tbAddressAanhangsel1
+            // 
+            this.tbAddressAanhangsel1.Location = new System.Drawing.Point(116, 473);
+            this.tbAddressAanhangsel1.Margin = new System.Windows.Forms.Padding(4);
+            this.tbAddressAanhangsel1.Name = "tbAddressAanhangsel1";
+            this.tbAddressAanhangsel1.Size = new System.Drawing.Size(152, 22);
+            this.tbAddressAanhangsel1.TabIndex = 46;
+            // 
+            // lbAddress
+            // 
+            this.lbAddress.AutoSize = true;
+            this.lbAddress.Location = new System.Drawing.Point(14, 473);
+            this.lbAddress.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbAddress.Name = "lbAddress";
+            this.lbAddress.Size = new System.Drawing.Size(64, 17);
+            this.lbAddress.TabIndex = 45;
+            this.lbAddress.Text = "Address:";
+            // 
+            // lbEmail
+            // 
+            this.lbEmail.AutoSize = true;
+            this.lbEmail.Location = new System.Drawing.Point(14, 416);
+            this.lbEmail.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbEmail.Name = "lbEmail";
+            this.lbEmail.Size = new System.Drawing.Size(46, 17);
+            this.lbEmail.TabIndex = 44;
+            this.lbEmail.Text = "Email:";
+            // 
+            // tbEmailAanhangsel2
+            // 
+            this.tbEmailAanhangsel2.Location = new System.Drawing.Point(295, 413);
+            this.tbEmailAanhangsel2.Margin = new System.Windows.Forms.Padding(4);
+            this.tbEmailAanhangsel2.Name = "tbEmailAanhangsel2";
+            this.tbEmailAanhangsel2.Size = new System.Drawing.Size(152, 22);
+            this.tbEmailAanhangsel2.TabIndex = 43;
+            // 
+            // tbEmailAanhangsel1
+            // 
+            this.tbEmailAanhangsel1.Location = new System.Drawing.Point(116, 413);
+            this.tbEmailAanhangsel1.Margin = new System.Windows.Forms.Padding(4);
+            this.tbEmailAanhangsel1.Name = "tbEmailAanhangsel1";
+            this.tbEmailAanhangsel1.Size = new System.Drawing.Size(152, 22);
+            this.tbEmailAanhangsel1.TabIndex = 42;
+            // 
+            // tbUserNameAanhangsel2
+            // 
+            this.tbUserNameAanhangsel2.Location = new System.Drawing.Point(295, 343);
+            this.tbUserNameAanhangsel2.Margin = new System.Windows.Forms.Padding(4);
+            this.tbUserNameAanhangsel2.Name = "tbUserNameAanhangsel2";
+            this.tbUserNameAanhangsel2.Size = new System.Drawing.Size(152, 22);
+            this.tbUserNameAanhangsel2.TabIndex = 41;
+            // 
+            // tbUserNameAanhangsel1
+            // 
+            this.tbUserNameAanhangsel1.Location = new System.Drawing.Point(116, 343);
+            this.tbUserNameAanhangsel1.Margin = new System.Windows.Forms.Padding(4);
+            this.tbUserNameAanhangsel1.Name = "tbUserNameAanhangsel1";
+            this.tbUserNameAanhangsel1.Size = new System.Drawing.Size(152, 22);
+            this.tbUserNameAanhangsel1.TabIndex = 40;
+            // 
+            // lbUserNaam
+            // 
+            this.lbUserNaam.AutoSize = true;
+            this.lbUserNaam.Location = new System.Drawing.Point(11, 346);
+            this.lbUserNaam.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbUserNaam.Name = "lbUserNaam";
+            this.lbUserNaam.Size = new System.Drawing.Size(79, 17);
+            this.lbUserNaam.TabIndex = 39;
+            this.lbUserNaam.Text = "UserNaam:";
+            // 
+            // lbUsername
+            // 
+            this.lbUsername.AutoSize = true;
+            this.lbUsername.Location = new System.Drawing.Point(11, 313);
+            this.lbUsername.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbUsername.Name = "lbUsername";
+            this.lbUsername.Size = new System.Drawing.Size(49, 17);
+            this.lbUsername.TabIndex = 38;
+            this.lbUsername.Text = "Naam:";
+            // 
+            // tbAanhangselLocatie2
+            // 
+            this.tbAanhangselLocatie2.Location = new System.Drawing.Point(295, 443);
+            this.tbAanhangselLocatie2.Margin = new System.Windows.Forms.Padding(4);
+            this.tbAanhangselLocatie2.Name = "tbAanhangselLocatie2";
+            this.tbAanhangselLocatie2.Size = new System.Drawing.Size(152, 22);
+            this.tbAanhangselLocatie2.TabIndex = 37;
+            // 
+            // tbAanhangselLocatie1
+            // 
+            this.tbAanhangselLocatie1.Location = new System.Drawing.Point(116, 443);
+            this.tbAanhangselLocatie1.Margin = new System.Windows.Forms.Padding(4);
+            this.tbAanhangselLocatie1.Name = "tbAanhangselLocatie1";
+            this.tbAanhangselLocatie1.Size = new System.Drawing.Size(152, 22);
+            this.tbAanhangselLocatie1.TabIndex = 36;
+            // 
+            // lbLocatie
+            // 
+            this.lbLocatie.AutoSize = true;
+            this.lbLocatie.Location = new System.Drawing.Point(14, 446);
+            this.lbLocatie.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lbLocatie.Name = "lbLocatie";
+            this.lbLocatie.Size = new System.Drawing.Size(77, 17);
+            this.lbLocatie.TabIndex = 34;
+            this.lbLocatie.Text = "LocatieNr.:";
+            // 
             // btnReserverenLocatie
             // 
             this.btnReserverenLocatie.Location = new System.Drawing.Point(550, 530);
@@ -1052,201 +1247,6 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // lbLocatie
-            // 
-            this.lbLocatie.AutoSize = true;
-            this.lbLocatie.Location = new System.Drawing.Point(14, 446);
-            this.lbLocatie.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbLocatie.Name = "lbLocatie";
-            this.lbLocatie.Size = new System.Drawing.Size(77, 17);
-            this.lbLocatie.TabIndex = 34;
-            this.lbLocatie.Text = "LocatieNr.:";
-            // 
-            // tbAanhangselLocatie1
-            // 
-            this.tbAanhangselLocatie1.Location = new System.Drawing.Point(116, 443);
-            this.tbAanhangselLocatie1.Margin = new System.Windows.Forms.Padding(4);
-            this.tbAanhangselLocatie1.Name = "tbAanhangselLocatie1";
-            this.tbAanhangselLocatie1.Size = new System.Drawing.Size(152, 22);
-            this.tbAanhangselLocatie1.TabIndex = 36;
-            // 
-            // tbAanhangselLocatie2
-            // 
-            this.tbAanhangselLocatie2.Location = new System.Drawing.Point(295, 443);
-            this.tbAanhangselLocatie2.Margin = new System.Windows.Forms.Padding(4);
-            this.tbAanhangselLocatie2.Name = "tbAanhangselLocatie2";
-            this.tbAanhangselLocatie2.Size = new System.Drawing.Size(152, 22);
-            this.tbAanhangselLocatie2.TabIndex = 37;
-            // 
-            // lbUsername
-            // 
-            this.lbUsername.AutoSize = true;
-            this.lbUsername.Location = new System.Drawing.Point(11, 313);
-            this.lbUsername.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbUsername.Name = "lbUsername";
-            this.lbUsername.Size = new System.Drawing.Size(49, 17);
-            this.lbUsername.TabIndex = 38;
-            this.lbUsername.Text = "Naam:";
-            // 
-            // lbUserNaam
-            // 
-            this.lbUserNaam.AutoSize = true;
-            this.lbUserNaam.Location = new System.Drawing.Point(11, 346);
-            this.lbUserNaam.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbUserNaam.Name = "lbUserNaam";
-            this.lbUserNaam.Size = new System.Drawing.Size(79, 17);
-            this.lbUserNaam.TabIndex = 39;
-            this.lbUserNaam.Text = "UserNaam:";
-            // 
-            // tbUserNameAanhangsel1
-            // 
-            this.tbUserNameAanhangsel1.Location = new System.Drawing.Point(116, 343);
-            this.tbUserNameAanhangsel1.Margin = new System.Windows.Forms.Padding(4);
-            this.tbUserNameAanhangsel1.Name = "tbUserNameAanhangsel1";
-            this.tbUserNameAanhangsel1.Size = new System.Drawing.Size(152, 22);
-            this.tbUserNameAanhangsel1.TabIndex = 40;
-            // 
-            // tbUserNameAanhangsel2
-            // 
-            this.tbUserNameAanhangsel2.Location = new System.Drawing.Point(295, 343);
-            this.tbUserNameAanhangsel2.Margin = new System.Windows.Forms.Padding(4);
-            this.tbUserNameAanhangsel2.Name = "tbUserNameAanhangsel2";
-            this.tbUserNameAanhangsel2.Size = new System.Drawing.Size(152, 22);
-            this.tbUserNameAanhangsel2.TabIndex = 41;
-            // 
-            // tbEmailAanhangsel1
-            // 
-            this.tbEmailAanhangsel1.Location = new System.Drawing.Point(116, 413);
-            this.tbEmailAanhangsel1.Margin = new System.Windows.Forms.Padding(4);
-            this.tbEmailAanhangsel1.Name = "tbEmailAanhangsel1";
-            this.tbEmailAanhangsel1.Size = new System.Drawing.Size(152, 22);
-            this.tbEmailAanhangsel1.TabIndex = 42;
-            // 
-            // tbEmailAanhangsel2
-            // 
-            this.tbEmailAanhangsel2.Location = new System.Drawing.Point(295, 413);
-            this.tbEmailAanhangsel2.Margin = new System.Windows.Forms.Padding(4);
-            this.tbEmailAanhangsel2.Name = "tbEmailAanhangsel2";
-            this.tbEmailAanhangsel2.Size = new System.Drawing.Size(152, 22);
-            this.tbEmailAanhangsel2.TabIndex = 43;
-            // 
-            // lbEmail
-            // 
-            this.lbEmail.AutoSize = true;
-            this.lbEmail.Location = new System.Drawing.Point(14, 416);
-            this.lbEmail.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbEmail.Name = "lbEmail";
-            this.lbEmail.Size = new System.Drawing.Size(46, 17);
-            this.lbEmail.TabIndex = 44;
-            this.lbEmail.Text = "Email:";
-            // 
-            // lbAddress
-            // 
-            this.lbAddress.AutoSize = true;
-            this.lbAddress.Location = new System.Drawing.Point(14, 473);
-            this.lbAddress.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbAddress.Name = "lbAddress";
-            this.lbAddress.Size = new System.Drawing.Size(64, 17);
-            this.lbAddress.TabIndex = 45;
-            this.lbAddress.Text = "Address:";
-            // 
-            // tbAddressAanhangsel1
-            // 
-            this.tbAddressAanhangsel1.Location = new System.Drawing.Point(116, 473);
-            this.tbAddressAanhangsel1.Margin = new System.Windows.Forms.Padding(4);
-            this.tbAddressAanhangsel1.Name = "tbAddressAanhangsel1";
-            this.tbAddressAanhangsel1.Size = new System.Drawing.Size(152, 22);
-            this.tbAddressAanhangsel1.TabIndex = 46;
-            // 
-            // tbAddressAanhangsel2
-            // 
-            this.tbAddressAanhangsel2.Location = new System.Drawing.Point(295, 473);
-            this.tbAddressAanhangsel2.Margin = new System.Windows.Forms.Padding(4);
-            this.tbAddressAanhangsel2.Name = "tbAddressAanhangsel2";
-            this.tbAddressAanhangsel2.Size = new System.Drawing.Size(152, 22);
-            this.tbAddressAanhangsel2.TabIndex = 47;
-            // 
-            // lbHoofdreserveerder
-            // 
-            this.lbHoofdreserveerder.AutoSize = true;
-            this.lbHoofdreserveerder.Location = new System.Drawing.Point(489, 284);
-            this.lbHoofdreserveerder.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbHoofdreserveerder.Name = "lbHoofdreserveerder";
-            this.lbHoofdreserveerder.Size = new System.Drawing.Size(128, 17);
-            this.lbHoofdreserveerder.TabIndex = 48;
-            this.lbHoofdreserveerder.Text = "Hoofdreserveerder";
-            // 
-            // tbUserNaamHoofdreserveerder
-            // 
-            this.tbUserNaamHoofdreserveerder.Location = new System.Drawing.Point(460, 343);
-            this.tbUserNaamHoofdreserveerder.Margin = new System.Windows.Forms.Padding(4);
-            this.tbUserNaamHoofdreserveerder.Name = "tbUserNaamHoofdreserveerder";
-            this.tbUserNaamHoofdreserveerder.Size = new System.Drawing.Size(157, 22);
-            this.tbUserNaamHoofdreserveerder.TabIndex = 49;
-            // 
-            // tbEmailHoofdreserveerder
-            // 
-            this.tbEmailHoofdreserveerder.Location = new System.Drawing.Point(460, 413);
-            this.tbEmailHoofdreserveerder.Margin = new System.Windows.Forms.Padding(4);
-            this.tbEmailHoofdreserveerder.Name = "tbEmailHoofdreserveerder";
-            this.tbEmailHoofdreserveerder.Size = new System.Drawing.Size(157, 22);
-            this.tbEmailHoofdreserveerder.TabIndex = 50;
-            // 
-            // tbAddressHoofdreserveerder
-            // 
-            this.tbAddressHoofdreserveerder.Location = new System.Drawing.Point(460, 473);
-            this.tbAddressHoofdreserveerder.Margin = new System.Windows.Forms.Padding(4);
-            this.tbAddressHoofdreserveerder.Name = "tbAddressHoofdreserveerder";
-            this.tbAddressHoofdreserveerder.Size = new System.Drawing.Size(157, 22);
-            this.tbAddressHoofdreserveerder.TabIndex = 51;
-            // 
-            // btnMoreAanhangsels2
-            // 
-            this.btnMoreAanhangsels2.BackColor = System.Drawing.Color.LimeGreen;
-            this.btnMoreAanhangsels2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMoreAanhangsels2.Location = new System.Drawing.Point(342, 529);
-            this.btnMoreAanhangsels2.Margin = new System.Windows.Forms.Padding(4);
-            this.btnMoreAanhangsels2.Name = "btnMoreAanhangsels2";
-            this.btnMoreAanhangsels2.Size = new System.Drawing.Size(49, 39);
-            this.btnMoreAanhangsels2.TabIndex = 52;
-            this.btnMoreAanhangsels2.Text = "+";
-            this.btnMoreAanhangsels2.UseVisualStyleBackColor = false;
-            this.btnMoreAanhangsels2.Click += new System.EventHandler(this.btnMoreAanhangsels2_Click);
-            // 
-            // dtmAanhangsel1
-            // 
-            this.dtmAanhangsel1.AccessibleDescription = "";
-            this.dtmAanhangsel1.Location = new System.Drawing.Point(116, 504);
-            this.dtmAanhangsel1.Name = "dtmAanhangsel1";
-            this.dtmAanhangsel1.Size = new System.Drawing.Size(152, 22);
-            this.dtmAanhangsel1.TabIndex = 53;
-            // 
-            // lbGeboorteDatum
-            // 
-            this.lbGeboorteDatum.AutoSize = true;
-            this.lbGeboorteDatum.Location = new System.Drawing.Point(-4, 509);
-            this.lbGeboorteDatum.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lbGeboorteDatum.Name = "lbGeboorteDatum";
-            this.lbGeboorteDatum.Size = new System.Drawing.Size(113, 17);
-            this.lbGeboorteDatum.TabIndex = 54;
-            this.lbGeboorteDatum.Text = "GeboorteDatum:";
-            // 
-            // dtmAanhangsel2
-            // 
-            this.dtmAanhangsel2.AccessibleDescription = "";
-            this.dtmAanhangsel2.Location = new System.Drawing.Point(295, 504);
-            this.dtmAanhangsel2.Name = "dtmAanhangsel2";
-            this.dtmAanhangsel2.Size = new System.Drawing.Size(152, 22);
-            this.dtmAanhangsel2.TabIndex = 55;
-            // 
-            // dtmHoofdreserveerder
-            // 
-            this.dtmHoofdreserveerder.AccessibleDescription = "";
-            this.dtmHoofdreserveerder.Location = new System.Drawing.Point(460, 504);
-            this.dtmHoofdreserveerder.Name = "dtmHoofdreserveerder";
-            this.dtmHoofdreserveerder.Size = new System.Drawing.Size(157, 22);
-            this.dtmHoofdreserveerder.TabIndex = 56;
             // 
             // EmployeeForm
             // 
