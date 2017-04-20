@@ -449,25 +449,22 @@ namespace MediaSharingSystem.Controllers
         public List<Visitor> GetAndShowVisitorsFromDatabase()
         {
             List<Visitor> result = new List<Visitor>();
-
-            int quantityVisitors = userRepo.CountAllVisitors();
-
-            for (int i = 0; i < quantityVisitors; i++)
+            List<int> Visitor_id = userRepo.GetAllVisitorID();
+            foreach(int id in Visitor_id)
             {
-                DateTime? dateTime = userRepo.GetUserDataDateTime(i);
-                List<int> userDataInt = userRepo.GetUserDataInt(i);
-                List<string> userDataString = userRepo.GetUserDataString(i);
-
-                if (dateTime != null)
+                DateTime? dateTime = userRepo.GetUserDataDateTime(id);
+                List<int> userDataInt = userRepo.GetUserDataInt(id);
+                List<string> userDataString = userRepo.GetUserDataString(id);
+                if(dateTime != null)
                 {
-                    result.Add(new Visitor(userDataString[0], userDataString[1], userDataString[3], userDataString[4], userDataString[6], dateTime, userDataInt[0], userDataInt[1]));
-
+                    result.Add(new Visitor(userDataString[0], userDataString[1], userDataString[2], userDataString[3], userDataString[4], dateTime, userDataInt[0], userDataInt[1]));
                 }
                 else
                 {
-                    result.Add(new Visitor(userDataString[0], userDataString[1], userDataString[2], userDataInt[0], userDataInt[1]));
+                    result.Add(new Visitor(userDataString[0], userDataString[1], userDataString[4], userDataInt[0], userDataInt[1]));
                 }
             }
+
             return result;
         }
 

@@ -153,6 +153,10 @@ namespace DAL.Repositories
         {
             return context.GetUsernameFromRFID(RFID);
         }
+        public List<int> GetAllVisitorID()
+        {
+            return context.GetAllVisitorID();
+        }
 
 
 

@@ -23,7 +23,7 @@ namespace DAL.Interfaces
         List<int> GetUserDataInt(int id);
         DateTime? GetUserDataDateTime(int id);
         int CountAllVisitors();
-
+        List<int> GetAllVisitorID();
 
         bool UpdatePassword(string username, string password);
         bool UpdateUsername(string oldUsername, string newUsername);

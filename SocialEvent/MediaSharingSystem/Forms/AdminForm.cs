@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MediaSharingSystem.Controllers;
+using Models.Users;
 
 namespace MediaSharingSystem.Forms
 {
@@ -23,6 +24,11 @@ namespace MediaSharingSystem.Forms
             foreach (string word in controller.GetAllSwearwords())
             {
                 lbFilterwoorden.Items.Add(word);
+            }
+            lbGebruikers.DisplayMember = "UserName";
+            foreach(User user in controller.GetAndShowVisitorsFromDatabase())
+            {
+                lbGebruikers.Items.Add(user);
             }
             tbctrlMain.Appearance = TabAppearance.FlatButtons;
             tbctrlMain.ItemSize = new Size(0, 1);
@@ -150,6 +156,20 @@ namespace MediaSharingSystem.Forms
             {
                 MessageBox.Show("Filterwoord niet toegevoegd");
             }
+        }
+
+        private void btnVerwijderGebruiker_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbGebruikers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Visitor visitor = (Visitor)lbGebruikers.SelectedItem;
+            tbNaamGebruikersBeheren.Text = visitor.Name;
+            tbEmailGebruikersBeheren.Text = visitor.EmailAddress;
+            tbTelefoonNrGebruikersBeheren.Text = visitor.Telnr;
+            
         }
     }
 }

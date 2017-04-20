@@ -111,9 +111,9 @@ namespace DAL.SQLContext
 
         public List<string> GetUserDataString(int id)
         {
-            string query = @"SELECT [UserName], [Name], [Password], [Email], [Telnr], [Addres] FROM [User] WHERE UserID = @id";
+            string query = @"SELECT [UserName], [Name], [Email], [Telnr], [Address] FROM [User] WHERE UserID = @id";
             query = query.Replace("@id", id.ToString());
-            return databaseConnection.executeReaderStringList(query, 6);
+            return databaseConnection.executeReaderStringList(query, 5);
         }
 
         public List<int> GetUserDataInt(int id)
@@ -221,6 +221,11 @@ namespace DAL.SQLContext
             query = query.Replace("@RFID", RFID);
 
             return databaseConnection.executeReaderString(query);
+        }
+        public List<int> GetAllVisitorID()
+        {
+            string query = @"SELECT [UserID] FROM [User] WHERE [UserGroup] = 1 ";
+            return databaseConnection.executeReaderIntList(query, 1);
         }
 
 
