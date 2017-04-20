@@ -29,7 +29,6 @@ namespace MediaSharingSystem.Forms
                     VisitorForm visitorform = new VisitorForm(this, controller);
                     visitorform.Show();
                     this.Hide();
-
                     break;
                 case 2:
                     EmployeeForm employeeform = new EmployeeForm(this);
