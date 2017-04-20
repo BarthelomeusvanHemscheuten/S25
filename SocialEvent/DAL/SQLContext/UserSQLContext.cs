@@ -182,7 +182,36 @@ namespace DAL.SQLContext
             return false;
         }
 
+        public bool CheckOutOrIn(string RFID, int inOrOut)
+        {
+            string query = @"UPDATE [User] SET [user].IsPresent = @inOrOut";
+            query = query.Replace("@inOrOut", Convert.ToString(inOrOut));
+            return databaseConnection.executeNonQuery(query);
+        }
 
+        public bool GetPayedFromRFID(string RFID)
+        {
+            string query = @"SELECT r1.Payed FROM [User] as u1 INNER JOIN Reservation r1 ON u1.ReservationID = r1.ReservationID WHERE u1.RFID = '@RFID'";
+            query = query.Replace("@RFID", RFID);
+
+            if (databaseConnection.executeReaderInt(query) == 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
+        public string GetUsernameFromRFID(string RFID)
+        {
+            string query = @"SELECT u1.username FROM [User] as u1 WHERE u1.RFID = '@RFID'";
+            query = query.Replace("@RFID", RFID);
+
+            return databaseConnection.executeReaderString(query);
+        }
 
 
 

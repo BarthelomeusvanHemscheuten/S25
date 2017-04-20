@@ -70,7 +70,7 @@ namespace MediaSharingSystem.Forms
             }
             else
             {
-                throw new NotImplementedException();
+                MessageBox.Show("Kon foto niet veranderen.");
             }
         }
 
@@ -78,11 +78,11 @@ namespace MediaSharingSystem.Forms
         {
             if(controller.ChangeUsername(tbNaam.Text))
             {
-                MessageBox.Show("Naam verandert");
+                MessageBox.Show("Naam veranderd");
             }
             else
             {
-                throw new NotImplementedException();
+                MessageBox.Show("Kon naam niet veranderen.");
             }
         }
 
@@ -90,11 +90,11 @@ namespace MediaSharingSystem.Forms
         {
             if (controller.ChangeEmail(tbEmail.Text))
             {
-                MessageBox.Show("Email verandert");
+                MessageBox.Show("Email veranderd");
             }
             else
             {
-                throw new NotImplementedException();
+                MessageBox.Show("Kon naam niet veranderen.");
             }
         }
 
@@ -102,7 +102,7 @@ namespace MediaSharingSystem.Forms
         {
             if (controller.ChangePassword(tbWachtwoord.Text, tbWachtwoord2.Text))
             {
-                MessageBox.Show("Wachtwoord verandert");
+                MessageBox.Show("Wachtwoord veranderd");
             }
             else
             {
@@ -114,7 +114,7 @@ namespace MediaSharingSystem.Forms
         {
             if (controller.ChangeTelnr(tbTelefoonNr.Text))
             {
-                MessageBox.Show("Telefoonnummer verandert");
+                MessageBox.Show("Telefoonnummer veranderd");
             }
             else
             {
