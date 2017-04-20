@@ -27,6 +27,7 @@ namespace Models.ReservationSystem
             this.Name = name;
             this.Description = description;
             Visitors = new List<Visitor>();
+            Material = new List<Material>();
         }
 
         // constructor om event aan te maken die al bestaat in database
@@ -38,6 +39,7 @@ namespace Models.ReservationSystem
 
             //Deze moet eigenlijk ipv een nieuwe lijst maken een lijst pakken met alle visitors uit de database die bij dit event horen
             Visitors = new List<Visitor>();
+            Material = new List<Material>();
         }
 
         public Location AddLocation(int number, string features, string type)
