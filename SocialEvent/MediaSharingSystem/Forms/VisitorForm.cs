@@ -98,16 +98,16 @@ namespace MediaSharingSystem.Forms
         /// Changes image of user
         private void btnWijzigenFoto_Click(object sender, EventArgs e)
         {
-            Image picture;
-            if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                picture = Image.FromFile(openFileDialog1.FileName);
-                pbPicture.Image = controller.ChangePicture(picture);
-            }
-            else
-            {
-                throw new NotImplementedException();
-            }
+            //Image picture;
+            //if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            //{
+            //    picture = Image.FromFile(openFileDialog1.FileName);
+            //    pbPicture.Image = controller.ChangePicture(picture);
+            //}
+            //else
+            //{
+            //    throw new NotImplementedException();
+            //}
         }
     }
 }
