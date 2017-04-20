@@ -31,6 +31,7 @@
             this.tbRFID_Input = new System.Windows.Forms.TextBox();
             this.btnScan = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnCheckIn = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -60,14 +61,25 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "RFID";
             // 
+            // btnCheckIn
+            // 
+            this.btnCheckIn.Location = new System.Drawing.Point(296, 324);
+            this.btnCheckIn.Name = "btnCheckIn";
+            this.btnCheckIn.Size = new System.Drawing.Size(103, 87);
+            this.btnCheckIn.TabIndex = 3;
+            this.btnCheckIn.Text = "Check in!";
+            this.btnCheckIn.UseVisualStyleBackColor = true;
+            this.btnCheckIn.Visible = false;
+            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(188, 310);
+            this.button1.Location = new System.Drawing.Point(681, 324);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(103, 87);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "button1";
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Check uit!";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
             // 
             // Scanform
             // 
@@ -76,6 +88,7 @@
             this.BackColor = System.Drawing.Color.LightSteelBlue;
             this.ClientSize = new System.Drawing.Size(1053, 571);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnCheckIn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnScan);
             this.Controls.Add(this.tbRFID_Input);
@@ -91,6 +104,7 @@
         private System.Windows.Forms.TextBox tbRFID_Input;
         private System.Windows.Forms.Button btnScan;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnCheckIn;
         private System.Windows.Forms.Button button1;
     }
 }
