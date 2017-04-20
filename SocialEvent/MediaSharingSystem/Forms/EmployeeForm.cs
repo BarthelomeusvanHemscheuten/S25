@@ -19,11 +19,11 @@ namespace MediaSharingSystem.Forms
         Form login;
         Controller controller;
        
-        public EmployeeForm(Form f)
+        public EmployeeForm(Form f, Controller controller)
         {
             InitializeComponent();
             login = f;
-            controller = new Controller();
+            this.controller = controller;
             tbctrlMain.Appearance = TabAppearance.FlatButtons;
             tbctrlMain.ItemSize = new Size(0, 1);
             tbctrlMain.SizeMode = TabSizeMode.Fixed;
@@ -155,6 +155,22 @@ namespace MediaSharingSystem.Forms
                     }
                 }
             }
+        }
+
+        private void btnReserverenLocatie_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void btnMoreAanhangsels1_Click(object sender, EventArgs e)
+        {
+            Visitor visitor = new Visitor(tbUserNameAanhangsel1.Text, tbNaamAanhangsel1.Text, tbEmailAanhangsel1.Text, tbTelefoonNrAanhangsel1.Text, tbAddressAanhangsel1.Text, dtmAanhangsel1.Value, controller.Event.ID, 1);
+        }
+
+        private void btnMoreAanhangsels2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

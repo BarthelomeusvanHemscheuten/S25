@@ -31,7 +31,7 @@ namespace MediaSharingSystem.Forms
                     this.Hide();
                     break;
                 case 2:
-                    EmployeeForm employeeform = new EmployeeForm(this);
+                    EmployeeForm employeeform = new EmployeeForm(this, controller);
                     employeeform.Show();
                     this.Hide();
                     break;
