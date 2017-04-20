@@ -22,7 +22,7 @@ namespace Models.Users
 
         public override string ToString()
         {
-            return "Username: " + this.Username + ", name: " + this.Name + ", Telnr: " + this.Telnr;
+            return "Username: " + this.Username;
         }
     }
 }

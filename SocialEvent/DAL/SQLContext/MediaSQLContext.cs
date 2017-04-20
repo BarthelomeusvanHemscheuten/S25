@@ -173,44 +173,38 @@ namespace DAL.SQLContext
         public List<int> GetReportedPostsId()
         {
             string query = @"SELECT [PostID] FROM [Report]";
-            string query_amount = @"SELECT COUNT(PostID) FROM [Report]";
-            return databaseConnection.executeReaderIntList(query, databaseConnection.executeReaderInt(query_amount));
+            return databaseConnection.executeReaderIntList(query, -1);
         }
 
         public List<int> GetReportedCommentsId()
         {
             string query = @"SELECT [CommentID] FROM [Report]";
-            string query_amount = @"SELECT COUNT(CommentID) FROM [Report]";
-            return databaseConnection.executeReaderIntList(query, databaseConnection.executeReaderInt(query_amount));
+            return databaseConnection.executeReaderIntList(query, -1);
         }
 
         public List<int> GetPostsID()
         {
             string query = @"SELECT [PostID] FROM [Post]";
-            string query_amount = @"SELECT COUNT(PostID) FROM [Post]";
-            return databaseConnection.executeReaderIntList(query, databaseConnection.executeReaderInt(query_amount));
+            return databaseConnection.executeReaderIntList(query, 1);
         }
 
         public List<int> GetCommentsID()
         {
             string query = @"SELECT [CommentID] FROM [Comment]";
-            string query_amount = @"SELECT COUNT(Comment-ID) FROM [Comment]";
-            return databaseConnection.executeReaderIntList(query, databaseConnection.executeReaderInt(query_amount));
+            return databaseConnection.executeReaderIntList(query, -1);
         }
 
 
         public List<int> GetReportedPostsID()
         {
             string query = @"SELECT [PostID] FROM [Report]";
-            string query_amount = @"SELECT COUNT(PostID) FROM [Report]";
-            return databaseConnection.executeReaderIntList(query, databaseConnection.executeReaderInt(query_amount));
+            return databaseConnection.executeReaderIntList(query, -1);
         }
 
         public List<int> GetReportedCommentsID()
         {
             string query = @"SELECT [CommentID] FROM [Report]";
-            string query_amount = @"SELECT COUNT(CommentID) FROM [Report]";
-            return databaseConnection.executeReaderIntList(query, databaseConnection.executeReaderInt(query_amount));
+            return databaseConnection.executeReaderIntList(query, -1);
         }
 
         public int GetPostIdFromComment(int commentid)
@@ -222,8 +216,7 @@ namespace DAL.SQLContext
         public List<string> GetAllSwearword()
         {
             string query = @"SELECT [Word] FROM [Swearword]";
-            string query_amount = @"SELECT COUNT(*) FROM [Swearword]";
-            return databaseConnection.executeReaderStringList(query, databaseConnection.executeReaderInt(query_amount));
+            return databaseConnection.executeReaderStringList(query, 1);
         }
     }
 }

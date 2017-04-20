@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MediaSharingSystem.Controllers;
+using Models.Users;
 
 namespace MediaSharingSystem.Forms
 {
@@ -15,12 +16,20 @@ namespace MediaSharingSystem.Forms
     {
         Form login;
         Controller controller;
-        public AdminForm(Form f)
+        public AdminForm(Form f, Controller controller)
         {
             InitializeComponent();
-            controller = new Controller();
+            this.controller = controller;
             login = f;
-            //lbFilterwoorden.Items.Add(controller.)
+            foreach (string word in controller.GetAllSwearwords())
+            {
+                lbFilterwoorden.Items.Add(word);
+            }
+            lbGebruikers.DisplayMember = "UserName";
+            foreach(User user in controller.GetAndShowVisitorsFromDatabase())
+            {
+                lbGebruikers.Items.Add(user);
+            }
             tbctrlMain.Appearance = TabAppearance.FlatButtons;
             tbctrlMain.ItemSize = new Size(0, 1);
             tbctrlMain.SizeMode = TabSizeMode.Fixed;
@@ -138,11 +147,42 @@ namespace MediaSharingSystem.Forms
            if(controller.AddSwearWord(tbNaamFilterwoord.Text))
             {
                 MessageBox.Show("Filterwoord toegevoegd");
+                foreach (string word in controller.GetAllSwearwords())
+                {
+                    lbFilterwoorden.Items.Add(word);
+                }
             }
            else
             {
                 MessageBox.Show("Filterwoord niet toegevoegd");
             }
+        }
+
+        private void btnVerwijderGebruiker_Click(object sender, EventArgs e)
+        {
+            Visitor visitor = (Visitor)lbGebruikers.SelectedItem;
+            if (controller.DeleteVisitor(visitor))
+            {
+                MessageBox.Show("User Deleted");
+                lbGebruikers.Items.Clear();
+                foreach (User user in controller.GetAndShowVisitorsFromDatabase())
+                {
+                    lbGebruikers.Items.Add(user);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Something went wrong");
+            }
+        }
+
+        private void lbGebruikers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Visitor visitor = (Visitor)lbGebruikers.SelectedItem;
+            tbNaamGebruikersBeheren.Text = visitor.Name;
+            tbEmailGebruikersBeheren.Text = visitor.EmailAddress;
+            tbTelefoonNrGebruikersBeheren.Text = visitor.Telnr;
+            
         }
     }
 }
