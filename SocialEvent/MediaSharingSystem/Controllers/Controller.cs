@@ -139,7 +139,7 @@ namespace MediaSharingSystem.Controllers
         {
             switch (userGroup)
             {
-                case 3:
+                case 1:
                     Post post1 = visitor.PlacePost(0, text, path);
                     mediaRepo.InsertPost(post1.ID, text, path);
                     return post1;
@@ -148,7 +148,7 @@ namespace MediaSharingSystem.Controllers
                     mediaRepo.InsertPost(post2.ID, text, path);
                     return post2;
 
-                case 1:
+                case 3:
                     Post post3 = admin.PlacePost(0, text, path);
                     mediaRepo.InsertPost(post3.ID, text, path);
                     return post3;
@@ -160,7 +160,7 @@ namespace MediaSharingSystem.Controllers
         {
             switch (userGroup)
             {
-                case 3:
+                case 1:
                     Post post1 = visitor.PlacePost(0, text, path, tags);
                     mediaRepo.InsertPost(post1.ID, text, path);
                     for (int i = 0; i < tags.Count; i++)
@@ -176,7 +176,7 @@ namespace MediaSharingSystem.Controllers
                         mediaRepo.InsertTag(post2.ID, tags[i]);
                     }
                     return post2;
-                case 1:
+                case 3:
                     Post post3 = employee.PlacePost(0, text, path, tags);
                     mediaRepo.InsertPost(post3.ID, text, path);
                     for (int i = 0; i < tags.Count; i++)
@@ -192,7 +192,7 @@ namespace MediaSharingSystem.Controllers
         {
             switch (userGroup)
             {
-                case 3:
+                case 1:
                     Comment comment1 = visitor.PlaceComment(0, text, post);
                     mediaRepo.InsertComment(comment1.ID, post.ID, text);
                     return comment1;
@@ -200,7 +200,7 @@ namespace MediaSharingSystem.Controllers
                     Comment comment2 = employee.PlaceComment(0, text, post);
                     mediaRepo.InsertComment(comment2.ID, post.ID, text);
                     return comment2;
-                case 1:
+                case 3:
                     Comment comment3 = admin.PlaceComment(0, text, post);
                     mediaRepo.InsertComment(comment3.ID, post.ID, text);
                     return comment3;
@@ -223,7 +223,7 @@ namespace MediaSharingSystem.Controllers
         {
             switch (userGroup)
             {
-                case 3:
+                case 1:
                     comment.ReportComment(0, visitor, reason);
                     mediaRepo.InsertReportComment(visitor.ID, comment.ID, reason);
                     return true;
@@ -231,7 +231,7 @@ namespace MediaSharingSystem.Controllers
                     comment.ReportComment(0, employee, reason);
                     mediaRepo.InsertReportComment(employee.ID, comment.ID, reason);
                     return true;
-                case 1:
+                case 3:
                     comment.ReportComment(0, admin, reason);
                     mediaRepo.InsertReportComment(admin.ID, comment.ID, reason);
                     return true;
@@ -263,13 +263,13 @@ namespace MediaSharingSystem.Controllers
         {
             switch (userGroup)
             {
-                case 3:
+                case 1:
                     visitor.ChangePassword(password1, password2);
                     return true;
                 case 2:
                     employee.ChangePassword(password1, password2);
                     return true;
-                case 1:
+                case 3:
                     admin.ChangePassword(password1, password2);
                     return true;
             }
@@ -280,13 +280,13 @@ namespace MediaSharingSystem.Controllers
         {
             switch (userGroup)
             {
-                case 3:
+                case 1:
                     visitor.ChangeUsername(newUsername);
                     return true;
                 case 2:
                     employee.ChangeUsername(newUsername);
                     return true;
-                case 1:
+                case 3:
                     admin.ChangeUsername(newUsername);
                     return true;
             }
@@ -297,13 +297,13 @@ namespace MediaSharingSystem.Controllers
         {
             switch (userGroup)
             {
-                case 3:
+                case 1:
                     visitor.ChangeName(newName);
                     return true;
                 case 2:
                     employee.ChangeName(newName);
                     return true;
-                case 1:
+                case 3:
                     admin.ChangeName(newName);
                     return true;
             }
@@ -314,11 +314,11 @@ namespace MediaSharingSystem.Controllers
         {
             switch (userGroup)
             {
-                case 3:
+                case 1:
                     return visitor.ChangePicture(image);
                 case 2:
                     return employee.ChangePicture(image);
-                case 1:
+                case 3:
                     return admin.ChangePicture(image);
             }
             return null;
@@ -327,13 +327,13 @@ namespace MediaSharingSystem.Controllers
         {
             switch(userGroup)
             {
-                case 3:
+                case 1:
                     visitor.ChangeEmail(email);
                     return true;
                 case 2:
                     employee.ChangeEmail(email);
                     return true;
-                case 1:
+                case 3:
                     admin.ChangeEmail(email);
                     return true;
             }
@@ -343,13 +343,13 @@ namespace MediaSharingSystem.Controllers
         {
             switch(userGroup)
             {
-                case 3:
+                case 1:
                     visitor.ChangeTelnr(telnr);
                     return true;
                 case 2:
                     visitor.ChangeTelnr(telnr);
                     return true;
-                case 1:
+                case 3:
                     visitor.ChangeTelnr(telnr);
                     return true;
             }

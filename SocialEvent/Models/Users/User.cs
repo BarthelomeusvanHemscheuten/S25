@@ -167,7 +167,7 @@ namespace Models.Users
 
         public bool ChangeUsername(string newUsername)
         {
-            if (userRepo.CheckLogin(this.Username, this.Password) == true)
+            if (newUsername != null)
             {
                 userRepo.UpdateUsername(this.Username, newUsername);
                 return true;
@@ -178,7 +178,7 @@ namespace Models.Users
 
         public bool ChangeName(string newName)
         {
-            if (userRepo.CheckLogin(this.Username, this.Password) == true)
+            if (newName != null)
             {
                 userRepo.UpdateName(this.Username, newName);
                 return true;
@@ -189,16 +189,17 @@ namespace Models.Users
 
         public bool ChangeEmail(string email)
         {
-            if(userRepo.CheckLogin(this.Username, this.Password) == true)
+            if(email != null)
             {
                 userRepo.UpdateEmail(email, this.Username);
                 return true;
             }
             return false;
         }
+
         public bool ChangeTelnr(string telnr)
         {
-            if(userRepo.CheckLogin(this.Username,this.Password) == true)
+            if(telnr != null)
             {
                 userRepo.UpdateTelnr(telnr, this.Username);
                 return true;
