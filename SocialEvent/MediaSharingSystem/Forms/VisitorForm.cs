@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Windows.Forms;
 using MediaSharingSystem.Controllers;
+using Models.MediaSharingSystem;
 
 namespace MediaSharingSystem.Forms
 {
@@ -35,6 +36,24 @@ namespace MediaSharingSystem.Forms
         private void btnInfoMenuGebruiker_Click(object sender, EventArgs e)
         {
             tbctrlMain.SelectedTab = tbctrlMain.TabPages[1];
+            List<Post> posts = controller.GetAndShowPostComments();
+            
+            Label naam = new Label();
+            Label contentText = new Label();
+            Label contentPath = new Label();
+
+            naam.Text = posts[0].User.ToString();
+            contentText.Text = posts[0].Text;
+            contentPath.Text = posts[0].Path;
+
+            naam.Location = new Point(10, 10);
+            contentText.Location = new Point(10, 60);
+            contentPath.Location = new Point(10, 110);
+            
+            panelNewsFeed.Controls.Add(naam);
+            panelNewsFeed.Controls.Add(contentText);
+            panelNewsFeed.Controls.Add(contentPath);
+
         }
 
         private void btnUitloggenGebruiker_Click(object sender, EventArgs e)
