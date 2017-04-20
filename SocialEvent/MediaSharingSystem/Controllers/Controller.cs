@@ -325,7 +325,7 @@ namespace MediaSharingSystem.Controllers
         }
         public bool ChangeEmail(string email)
         {
-            switch(userGroup)
+            switch (userGroup)
             {
                 case 1:
                     visitor.ChangeEmail(email);
@@ -341,7 +341,7 @@ namespace MediaSharingSystem.Controllers
         }
         public bool ChangeTelnr(string telnr)
         {
-            switch(userGroup)
+            switch (userGroup)
             {
                 case 1:
                     visitor.ChangeTelnr(telnr);
@@ -578,6 +578,10 @@ namespace MediaSharingSystem.Controllers
                 }
             }
             return output;
+        }
+        public List<string> GetAllSwearwords()
+        {
+            return mediaRepo.GetAllSwearwords();
         }
     }
 }
