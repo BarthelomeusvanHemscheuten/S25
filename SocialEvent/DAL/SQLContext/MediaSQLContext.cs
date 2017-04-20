@@ -100,7 +100,7 @@ namespace DAL.SQLContext
         public List<string> GetTextPathPost(int id)
         {
             string query = @"SELECT [Text], [Path] FROM [Post] WHERE UserID = @id";
-            query.Replace("@id", Convert.ToString(id));
+            query.Replace("@id", id.ToString());
 
             return databaseConnection.executeReaderStringList(query, 2);
         }
