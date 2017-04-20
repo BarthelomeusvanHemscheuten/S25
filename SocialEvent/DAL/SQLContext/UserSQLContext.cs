@@ -157,8 +157,8 @@ namespace DAL.SQLContext
         public bool UpdateName(string oldUsername, string newName)
         {
             string query = @"UPDATE [User] SET [name] = '@NEWNAME' WHERE [username] = '@OLDUSERNAME'";
-            query = query.Replace("@NEWNAME", oldUsername);
-            query = query.Replace("@OLDUSERNAME", newName);
+            query = query.Replace("@NEWNAME", newName);
+            query = query.Replace("@OLDUSERNAME", oldUsername);
 
             return databaseConnection.executeNonQuery(query);
         }

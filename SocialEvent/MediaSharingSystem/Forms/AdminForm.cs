@@ -20,7 +20,7 @@ namespace MediaSharingSystem.Forms
             InitializeComponent();
             controller = new Controller();
             login = f;
-            lbFilterwoorden.Items.Add(controller.)
+            //lbFilterwoorden.Items.Add(controller.)
             tbctrlMain.Appearance = TabAppearance.FlatButtons;
             tbctrlMain.ItemSize = new Size(0, 1);
             tbctrlMain.SizeMode = TabSizeMode.Fixed;
