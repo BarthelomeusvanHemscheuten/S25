@@ -22,5 +22,19 @@ namespace AccesControlSystem.Controllers
             return userRepo.GetPayedFromRFID(RFID);
         }
 
+        public string GetUsername(string RFID)
+        {
+            return userRepo.GetUsernameFromRFID(RFID);
+        }
+
+        public bool CheckIn(string RFID)
+        {
+            return userRepo.CheckOutOrIn(RFID, 1);
+        }
+
+        public bool CheckOut(string RFID)
+        {
+            return userRepo.CheckOutOrIn(RFID, 0);
+        }
     }
 }

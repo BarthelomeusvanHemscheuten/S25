@@ -23,9 +23,19 @@ namespace AccesControlSystem.Forms
 
         private void btnScan_Click(object sender, EventArgs e)
         {
-            if(c.ScanNew(tbRFID_Input.Text));
+            if(c.ScanNew(tbRFID_Input.Text))
             {
                 tbRFID_Input.ReadOnly = true;
+                btnCheckIn.Visible = true;
+                btnCheckOut.Visible = true;
+
+                lbname.Text = c.GetUsername(tbRFID_Input.Text);
+                pnlName.Visible = true;
+            }
+            else
+            {
+                resetForm();
+                MessageBox.Show("RFID niet gevonden!");
             }
         }
 
@@ -33,6 +43,37 @@ namespace AccesControlSystem.Forms
         {
             tbRFID_Input.Clear();
             tbRFID_Input.ReadOnly = false;
+            tbRFID_Input.ReadOnly = false;
+            lbname.Text = "Error";
+            pnlName.Visible = false;
+            btnCheckIn.Visible = false;
+            btnCheckOut.Visible = false;
+        }
+
+        private void btnCheckIn_Click(object sender, EventArgs e)
+        {
+            if (c.CheckIn(tbRFID_Input.Text))
+            {
+                MessageBox.Show("Inchecken succesvol!");
+                resetForm();
+            }
+            else
+            {
+                MessageBox.Show("Inchecken gefaald!");
+            }
+        }
+
+        private void btnCheckOut_Click(object sender, EventArgs e)
+        {
+            if (c.CheckOut(tbRFID_Input.Text))
+            {
+                MessageBox.Show("Uitchecken succesvol!");
+                resetForm();
+            }
+            else
+            {
+                MessageBox.Show("Uitchecken gefaald!");
+            }
         }
     }
 }
