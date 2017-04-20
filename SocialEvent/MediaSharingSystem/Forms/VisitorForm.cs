@@ -48,7 +48,7 @@ namespace MediaSharingSystem.Forms
         {
             if (controller.ChangeUsername(tbNaam.Text))
             {
-                MessageBox.Show("Naam verandert");
+                MessageBox.Show("Naam is gewzijzigd");
             }
             else
             {
@@ -61,7 +61,7 @@ namespace MediaSharingSystem.Forms
         {
             if(controller.ChangeEmail(tbEmail.Text))
             {
-                MessageBox.Show("Email verandert");
+                MessageBox.Show("Email is gewzijzigd");
             }
             else
             {
@@ -74,7 +74,7 @@ namespace MediaSharingSystem.Forms
         {
             if(controller.ChangePassword(tbWachtwoord.Text, tbWachtwoord2.Text))
             {
-                MessageBox.Show("Wachtwoord verandert");
+                MessageBox.Show("Wachtwoord is gewijzigd");
             }
             else
             {

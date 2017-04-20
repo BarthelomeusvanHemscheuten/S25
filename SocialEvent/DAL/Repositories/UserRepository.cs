@@ -107,6 +107,12 @@ namespace DAL.Repositories
         {
             return context.UpdateUsername(oldUsername, newUsername);
         }
+
+        public bool UpdateName(string oldUsername, string newName)
+        {
+            return context.UpdateName(oldUsername, newName);
+        }
+
         public bool UpdateEmail(string email, string username)
         {
             return context.UpdateEmail(email, username);
