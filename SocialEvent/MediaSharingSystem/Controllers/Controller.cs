@@ -461,7 +461,7 @@ namespace MediaSharingSystem.Controllers
                 }
                 else
                 {
-                    result.Add(new Visitor(userDataString[0], userDataString[1], userDataString[2], userDataInt[0], userDataInt[1]));
+                    result.Add(new Visitor(userDataString[0], userDataString[1], userDataString[4], userDataInt[0], userDataInt[1]));
                 }
             }
 

@@ -959,6 +959,7 @@
             this.lbGebruikers.Name = "lbGebruikers";
             this.lbGebruikers.Size = new System.Drawing.Size(224, 340);
             this.lbGebruikers.TabIndex = 0;
+            this.lbGebruikers.SelectedIndexChanged += new System.EventHandler(this.lbGebruikers_SelectedIndexChanged);
             // 
             // tabGereserveerdeBerichten
             // 
