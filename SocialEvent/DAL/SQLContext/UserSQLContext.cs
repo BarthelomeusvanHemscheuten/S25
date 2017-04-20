@@ -139,7 +139,7 @@ namespace DAL.SQLContext
 
         public bool UpdatePassword(string username, string password)
         {
-            string query = @"UPDATE [User] SET [Password] = @password WHERE  [Username] = @username";
+            string query = @"UPDATE [User] SET [Password] = '@password' WHERE  [Username] = '@username'";
             query = query.Replace("@password", password).Replace("@username", username);
 
             return databaseConnection.executeNonQuery(query);
