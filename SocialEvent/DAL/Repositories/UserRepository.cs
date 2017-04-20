@@ -131,13 +131,34 @@ namespace DAL.Repositories
             return false;
         }
 
+        public bool GetPayedFromRFID(string RFID)
+        {
+            if (context.GetPayedFromRFID(RFID))
+            {
+                return true;
+            }
+            return false;
+        }
 
+        public bool CheckOutOrIn(string RFID, int inOrOut)
+        {
+            if (context.CheckOutOrIn(RFID, inOrOut))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public string GetUsernameFromRFID(string RFID)
+        {
+            return context.GetUsernameFromRFID(RFID);
+        }
 
 
 
 
         // CONTROLEREN!!
-        
+
         //public bool getIsPresent(string username)
         //{
         //    if (context.getIsPresent(username))

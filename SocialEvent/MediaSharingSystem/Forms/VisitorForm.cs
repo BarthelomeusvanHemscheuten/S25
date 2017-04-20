@@ -17,10 +17,10 @@ namespace MediaSharingSystem.Forms
         private Form login;
         private Controller controller;
 
-        public VisitorForm(Form f)
+        public VisitorForm(Form f, Controller controller)
         {
             InitializeComponent();
-            controller = new Controller();
+            this.controller = controller;
             this.login = f;
             tbctrlMain.Appearance = TabAppearance.FlatButtons;
             tbctrlMain.ItemSize = new Size(0, 1);
@@ -43,10 +43,10 @@ namespace MediaSharingSystem.Forms
             this.Close();
         }
         
-        /// Changes Name of visitor
+        /// Changes Name of user
         private void btnWijzigenNaam_Click(object sender, EventArgs e)
         {
-            if (controller.ChangeUsername(tbNaam.Text))
+            if (controller.ChangeName(tbNaam.Text))
             {
                 MessageBox.Show("Naam is gewzijzigd");
             }
@@ -56,7 +56,7 @@ namespace MediaSharingSystem.Forms
             }
         }
 
-        /// Changes Email of visitor
+        /// Changes Email of user
         private void btnWijzigenEmail_Click(object sender, EventArgs e)
         {
             if(controller.ChangeEmail(tbEmail.Text))
@@ -69,7 +69,7 @@ namespace MediaSharingSystem.Forms
             }
         }
         
-        /// Changes Wachtwoord of visitor
+        /// Changes Wachtwoord of user
         private void btnWijzigenWachtwoord_Click(object sender, EventArgs e)
         {
             if(controller.ChangePassword(tbWachtwoord.Text, tbWachtwoord2.Text))
@@ -82,7 +82,7 @@ namespace MediaSharingSystem.Forms
             }
         }
 
-        /// Changes Telefoonnummer of visitor
+        /// Changes Telefoonnummer of user
         private void btnWijzigenTelefoonNr_Click(object sender, EventArgs e)
         {
             if(controller.ChangeTelnr(tbTelefoonNr.Text))
@@ -95,19 +95,19 @@ namespace MediaSharingSystem.Forms
             }
         }
 
-        /// Changes image of visitor
+        /// Changes image of user
         private void btnWijzigenFoto_Click(object sender, EventArgs e)
         {
-            //Image picture;
-            //if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            //{
-            //    picture = Image.FromFile(openFileDialog1.FileName);
-            //    pbPicture.Image = controller.ChangePicture(picture);
-            //}
-            //else
-            //{
-            //    throw new NotImplementedException();
-            //}
+            Image picture;
+            if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                picture = Image.FromFile(openFileDialog1.FileName);
+                pbPicture.Image = controller.ChangePicture(picture);
+            }
+            else
+            {
+                throw new NotImplementedException();
+            }
         }
     }
 }
