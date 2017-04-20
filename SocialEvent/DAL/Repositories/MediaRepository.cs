@@ -158,7 +158,7 @@ namespace DAL.Repositories
         }
         public List<string> GetAllSwearwords()
         {
-            return context.GetAllSwearword();
+            return GetAllSwearwords();
         }
 
 
