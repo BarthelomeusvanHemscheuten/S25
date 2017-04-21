@@ -18,17 +18,24 @@ namespace MediaSharingSystem.Forms
     {
         Form login;
         Controller controller;
-
+        Random random;
+        //Used for locally storing UserData and the locations they want to have, used for reserve mehod
         List<List<string>> userData = new List<List<string>>();
-       
+        List<Location> locations = new List<Location>();
+
         public EmployeeForm(Form f, Controller controller)
         {
             InitializeComponent();
             login = f;
+            random = new Random();
             this.controller = controller;
             tbctrlMain.Appearance = TabAppearance.FlatButtons;
             tbctrlMain.ItemSize = new Size(0, 1);
             tbctrlMain.SizeMode = TabSizeMode.Fixed;
+            for(int i = 0; i < 7; i++)
+            {
+                userData.Add(new List<string>());
+            }
         }
 
         private void btnAccountInstellingenMedewerker_Click(object sender, EventArgs e)
@@ -72,19 +79,19 @@ namespace MediaSharingSystem.Forms
             }
             else
             {
-                MessageBox.Show("Kon foto niet veranderen.");
+                MessageBox.Show("Foto niet gewijzigd");
             }
         }
 
         private void btnWijzigenNaam_Click(object sender, EventArgs e)
         {
-            if(controller.ChangeUsername(tbNaam.Text))
+            if (controller.ChangeUsername(tbNaam.Text))
             {
-                MessageBox.Show("Naam veranderd");
+                MessageBox.Show("Naam is gewijzigd");
             }
             else
             {
-                MessageBox.Show("Kon naam niet veranderen.");
+                MessageBox.Show("Naam niet gewijzigd");
             }
         }
 
@@ -92,11 +99,11 @@ namespace MediaSharingSystem.Forms
         {
             if (controller.ChangeEmail(tbEmail.Text))
             {
-                MessageBox.Show("Email veranderd");
+                MessageBox.Show("Email is gewijzigd");
             }
             else
             {
-                MessageBox.Show("Kon naam niet veranderen.");
+                MessageBox.Show("Email niet gewijzigd");
             }
         }
 
@@ -104,11 +111,11 @@ namespace MediaSharingSystem.Forms
         {
             if (controller.ChangePassword(tbWachtwoord.Text, tbWachtwoord2.Text))
             {
-                MessageBox.Show("Wachtwoord veranderd");
+                MessageBox.Show("Wachtwoord is gewijzigd");
             }
             else
             {
-                throw new NotImplementedException();
+                MessageBox.Show("Wachtwoord niet gewijzigd");
             }
         }
 
@@ -116,11 +123,11 @@ namespace MediaSharingSystem.Forms
         {
             if (controller.ChangeTelnr(tbTelefoonNr.Text))
             {
-                MessageBox.Show("Telefoonnummer veranderd");
+                MessageBox.Show("Telefoonnummer is gewijzigd");
             }
             else
             {
-                throw new NotImplementedException();
+                MessageBox.Show("Telefoonnummer niet gewijzigd");
             }
         }
 
@@ -161,32 +168,68 @@ namespace MediaSharingSystem.Forms
 
         private void btnReserverenLocatie_Click(object sender, EventArgs e)
         {
-            Visitor visitor = new Visitor(tbUserNaamHoofdreserveerder.Text, tbNaamHoofdreserveerder.Text, tbTelefoonNrHoofdreserveerder.Text, controller.Event.ID, 1);   
+            int locationnr = Convert.ToInt32(tbLocatieNrHoofdreserveerder.Text);
+            userData[0].Insert(0, tbUserNaamHoofdreserveerder.Text);
+            userData[1].Insert(0, tbNaamHoofdreserveerder.Text);
+            userData[2].Insert(0, RandomString(8));
+            userData[3].Insert(0, tbEmailHoofdreserveerder.Text);
+            userData[4].Insert(0, tbTelefoonNrHoofdreserveerder.Text);
+            userData[5].Insert(0, tbAddressHoofdreserveerder.Text);
+            userData[6].Insert(0, dtmHoofdreserveerder.ToString());
+            locations.Insert(0, new Location(locationnr, controller.GetAllLocationFeatures(locationnr), controller.GetAllLocationType(locationnr)));
+            if (controller.Reserve(locations, userData[0].Count, locations.Count, userData[0], userData[1], userData[2], userData[3], userData[4], userData[5], userData[6]))
+            {
+                MessageBox.Show("Location Reserved");
+                for (int i = 0; i < 7; i++)
+                {
+                    userData[i].Clear();
+                }
+                locations.Clear();
+            }
+            else
+            {
+                MessageBox.Show("Something went wrong");
+            }
         }
 
 
         private void btnMoreAanhangsels1_Click(object sender, EventArgs e)
         {
-            if(userData == null)
+            AddUserLocation(tbUserNameAanhangsel1.Text, tbNaamAanhangsel1.Text, tbEmailAanhangsel1.Text, tbTelefoonNrAanhangsel1.Text, tbAddressAanhangsel1.Text, dtmAanhangsel1.ToString(), Convert.ToInt32(tbAanhangselLocatie1.Text));
+            MessageBox.Show("User added");
+            lbReserveringVisitors.Items.Clear();
+            foreach (string name in userData[1])
             {
-                List<string> username = new List<string>();
-                List<string> name = new List<string>();
-                List<string> email = new List<string>();
-                List<string> telnr = new List<string>();
-                List<string> address = new List<string>();
-                userData.Add(username);
+                lbReserveringVisitors.Items.Add(name);
             }
-            int locationNr = Convert.ToInt32(tbAanhangselLocatie1.Text);
-            Visitor visitor = new Visitor(tbUserNameAanhangsel1.Text, tbNaamAanhangsel1.Text, tbEmailAanhangsel1.Text, tbTelefoonNrAanhangsel1.Text, tbAddressAanhangsel1.Text, dtmAanhangsel1.Value, controller.Event.ID, 1);
-            Location location = new Location(locationNr, controller.GetAllLocationFeatures(locationNr), controller.GetAllLocationType(locationNr));
-
         }
 
         private void btnMoreAanhangsels2_Click(object sender, EventArgs e)
         {
-            int locationNr = Convert.ToInt32(tbAanhangselLocatie2.Text);
-            Visitor visitor = new Visitor(tbAddressAanhangsel2.Text, tbNaamAanhangsel2.Text, tbEmailAanhangsel2.Text, tbTelefoonNrAanhangsel2.Text, tbAddressAanhangsel2.Text, dtmAanhangsel2.Value, controller.Event.ID, 1);
-            Location location = new Location(locationNr, controller.GetAllLocationFeatures(locationNr), controller.GetAllLocationType(locationNr));
+            AddUserLocation(tbUserNameAanhangsel2.Text, tbNaamAanhangsel2.Text, tbEmailAanhangsel2.Text, tbTelefoonNrAanhangsel2.Text, tbAddressAanhangsel2.Text, dtmAanhangsel2.ToString(), Convert.ToInt32(tbAanhangselLocatie2.Text));
+            MessageBox.Show("User added");
+            lbReserveringVisitors.Items.Clear();
+            foreach (string name in userData[1])
+            {
+                lbReserveringVisitors.Items.Add(name);
+            }
+        }
+        private void AddUserLocation(string username, string name, string email, string telnr, string address, string date, int locationnr)
+        {
+            userData[0].Add(username);
+            userData[1].Add(name);
+            userData[2].Add(RandomString(8));
+            userData[3].Add(email);
+            userData[4].Add(telnr);
+            userData[5].Add(address);
+            userData[6].Add(date);
+            locations.Add(new Location(locationnr, controller.GetAllLocationFeatures(locationnr), controller.GetAllLocationType(locationnr)));
+        }
+        private string RandomString(int length)
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
         }
     }
 }
