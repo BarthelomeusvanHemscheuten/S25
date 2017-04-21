@@ -18,8 +18,8 @@ namespace Models.MediaSharingSystem
         public List<string> Tags { get; private set; }
         public List<User> Likes { get; private set; }
 
-        public List<Report> Reports { get; private set; }
-        public List<Comment> Comments { get; private set; }
+        public List<Report> Reports { get; private set; } = new List<Report>();
+        public List<Comment> Comments { get; private set; } = new List<Comment>();
         public User User { get; set; }
 
         // constructor om nieuwe post aan te maken

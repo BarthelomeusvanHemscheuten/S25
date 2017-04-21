@@ -56,7 +56,7 @@ namespace Models.Users
             return false;
         }
 
-        public bool Reserve(Event eventt, List<Location> locations, int quantityVisitors, int quantityLocations, List<string> username, List<string> name, List<string> password, List<string> emailAddress, List<string> telnr, List<string> address, List<string> dateOfBirth)
+        public bool Reserve(Event eventt, List<Location> locations, int quantityVisitors, int quantityLocations, List<string> username, List<string> name, List<string> password, string emailAddress, List<string> telnr, string address, DateTime dateofbirth)
         {
             if (eventt != null)
             {
@@ -65,11 +65,11 @@ namespace Models.Users
 
                 // voor de eerste locatie. 
                 List<Visitor> visitors = new List<Visitor>();
-                Visitor mainVisitor = AddVisitor(username[0], name[0], password[0], emailAddress[0], telnr[0], address[0], DateTime.ParseExact(dateOfBirth[0], "yyyy/MM/dd", CultureInfo.InvariantCulture), eventt, locations[0], eventt.ID, reservationId);
-                userRepo.InsertUser(eventt.ID, reservationId, 3, 0, DateTime.ParseExact(dateOfBirth[0], "yyyy/MM/dd", CultureInfo.InvariantCulture), emailAddress[0], address[0], name[0], username[0], password[0], telnr[0], rfid);
+                Visitor mainVisitor = AddVisitor(username[0], name[0], password[0], emailAddress, telnr[0], address, dateofbirth, eventt, locations[0], eventt.ID, reservationId);
+                userRepo.InsertUser(eventt.ID, reservationId, 3, 0, dateofbirth, emailAddress, address, name[0], username[0], password[0], telnr[0], rfid);
                 
 
-                for (int i = 1; i <= quantityVisitors; i++)
+                for (int i = 0; i < quantityVisitors; i++)
                 {
                     Visitor visitor = AddVisitor(username[i], name[i], password[i], telnr[i], eventt, locations[0], eventt.ID, reservationId);
                     userRepo.InsertUser(eventt.ID, reservationId, 3, 0, name[i], username[i], password[i], telnr[i], rfid);
@@ -78,9 +78,9 @@ namespace Models.Users
 
                 // extra for loop indien er meerdere locaties gekoppeld moeten worden aan de visitors. for loop is los van de eerste locatie aangezien er dan voor de tweede locatie OPNIEUW visitors worden aangemaakt via de AddVisitor
                 // method. dit zou problemen veroorzaken in de database omdat de visitors al zijn aangemaakt.
-                for (int i = 1; i <= quantityLocations; i++)
+                for (int i = 0; i < quantityLocations; i++)
                 {
-                    for (int j = 1; j <= quantityVisitors; j++)
+                    for (int j = 0; j < quantityVisitors; j++)
                     {
                         locations[i].Visitors.Add(visitors[j]);
                         reservationRepo.UpdateLocation(locations[i].ID, reservationId);

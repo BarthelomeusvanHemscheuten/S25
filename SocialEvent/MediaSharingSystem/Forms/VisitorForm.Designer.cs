@@ -34,6 +34,9 @@
             this.btnInfoMenuGebruiker = new System.Windows.Forms.Button();
             this.btnAccountInstellingenGebruik = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.panelNewsFeed = new System.Windows.Forms.Panel();
+            this.btnNextPost = new System.Windows.Forms.Button();
+            this.btnPrevPost = new System.Windows.Forms.Button();
             this.tabAccountInstellingen = new System.Windows.Forms.TabPage();
             this.panelAccountInstellingen = new System.Windows.Forms.Panel();
             this.tbWachtwoord2 = new System.Windows.Forms.TextBox();
@@ -53,9 +56,9 @@
             this.tbNaam = new System.Windows.Forms.TextBox();
             this.tbctrlMain = new System.Windows.Forms.TabControl();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.panelNewsFeed = new System.Windows.Forms.Panel();
             this.panelGebruiker.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.panelNewsFeed.SuspendLayout();
             this.tabAccountInstellingen.SuspendLayout();
             this.panelAccountInstellingen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPicture)).BeginInit();
@@ -112,18 +115,49 @@
             this.tabPage2.Controls.Add(this.panelNewsFeed);
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(736, 596);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabNieuwsoverzicht";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // panelNewsFeed
+            // 
+            this.panelNewsFeed.BackColor = System.Drawing.Color.Lavender;
+            this.panelNewsFeed.Controls.Add(this.btnNextPost);
+            this.panelNewsFeed.Controls.Add(this.btnPrevPost);
+            this.panelNewsFeed.Location = new System.Drawing.Point(-4, 0);
+            this.panelNewsFeed.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panelNewsFeed.Name = "panelNewsFeed";
+            this.panelNewsFeed.Size = new System.Drawing.Size(744, 600);
+            this.panelNewsFeed.TabIndex = 23;
+            // 
+            // btnNextPost
+            // 
+            this.btnNextPost.Location = new System.Drawing.Point(603, 524);
+            this.btnNextPost.Name = "btnNextPost";
+            this.btnNextPost.Size = new System.Drawing.Size(117, 54);
+            this.btnNextPost.TabIndex = 24;
+            this.btnNextPost.Text = "Volgende";
+            this.btnNextPost.UseVisualStyleBackColor = true;
+            this.btnNextPost.Click += new System.EventHandler(this.btnNextPost_Click);
+            // 
+            // btnPrevPost
+            // 
+            this.btnPrevPost.Location = new System.Drawing.Point(21, 524);
+            this.btnPrevPost.Name = "btnPrevPost";
+            this.btnPrevPost.Size = new System.Drawing.Size(117, 54);
+            this.btnPrevPost.TabIndex = 25;
+            this.btnPrevPost.Text = "Vorige";
+            this.btnPrevPost.UseVisualStyleBackColor = true;
+            this.btnPrevPost.Click += new System.EventHandler(this.btnPrevPost_Click);
             // 
             // tabAccountInstellingen
             // 
             this.tabAccountInstellingen.Controls.Add(this.panelAccountInstellingen);
             this.tabAccountInstellingen.Location = new System.Drawing.Point(4, 29);
             this.tabAccountInstellingen.Name = "tabAccountInstellingen";
-            this.tabAccountInstellingen.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabAccountInstellingen.Padding = new System.Windows.Forms.Padding(3);
             this.tabAccountInstellingen.Size = new System.Drawing.Size(736, 596);
             this.tabAccountInstellingen.TabIndex = 0;
             this.tabAccountInstellingen.Text = "tabAccountInstellingen";
@@ -312,15 +346,6 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // panelNewsFeed
-            // 
-            this.panelNewsFeed.BackColor = System.Drawing.Color.Lavender;
-            this.panelNewsFeed.Location = new System.Drawing.Point(-4, 0);
-            this.panelNewsFeed.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.panelNewsFeed.Name = "panelNewsFeed";
-            this.panelNewsFeed.Size = new System.Drawing.Size(744, 600);
-            this.panelNewsFeed.TabIndex = 23;
-            // 
             // VisitorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -333,6 +358,7 @@
             this.Text = "Visitor";
             this.panelGebruiker.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
+            this.panelNewsFeed.ResumeLayout(false);
             this.tabAccountInstellingen.ResumeLayout(false);
             this.panelAccountInstellingen.ResumeLayout(false);
             this.panelAccountInstellingen.PerformLayout();
@@ -369,5 +395,7 @@
         private System.Windows.Forms.TextBox tbWachtwoord2;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Panel panelNewsFeed;
+        private System.Windows.Forms.Button btnNextPost;
+        private System.Windows.Forms.Button btnPrevPost;
     }
 }

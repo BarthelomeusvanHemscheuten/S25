@@ -27,10 +27,10 @@ namespace Models.Users
         public string Address { get; private set; }
         public DateTime? DateOfBirth { get; private set; }
 
-        public List<Material> Materials { get; private set; }
-        public List<Comment> Comments { get; private set; }
-        public List<Post> Posts { get; private set; }
-        public List<Report> Reports { get; private set; }
+        public List<Material> Materials { get; private set; } = new List<Material>();
+        public List<Comment> Comments { get; private set; } = new List<Comment>();
+        public List<Post> Posts { get; private set; } = new List<Post>();
+        public List<Report> Reports { get; private set; } = new List<Report>();
 
         public User(string username, string name, string emailAddress, string telnr, string address, DateTime? dateOfBirth, int eventID, int reservationID)
         {

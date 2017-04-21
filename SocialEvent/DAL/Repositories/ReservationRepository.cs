@@ -80,6 +80,14 @@ namespace DAL.Repositories
         {
             return context.GetLocationID(number);
         }
+        public string GetLocationFeatures(int number)
+        {
+            return context.GetLocationFeatures(number);
+        }
+        public string GetLocationType(int number)
+        {
+            return context.GetLocationType(number);
+        }
 
         public int CountMaterials()
         {

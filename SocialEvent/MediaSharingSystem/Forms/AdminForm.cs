@@ -69,13 +69,13 @@ namespace MediaSharingSystem.Forms
  
         private void btnWijzigenNaam_Click(object sender, EventArgs e)
         {
-            if (controller.ChangeUsername(tbNaam.Text))
+            if (controller.ChangeName(tbNaam.Text))
             {
-                MessageBox.Show("Naam Verandert");
+                MessageBox.Show("Naam is gewijzigd");
             }
             else
             {
-                MessageBox.Show("Naam niet verandert");
+                MessageBox.Show("Naam is niet gewijzigd");
             }
 
         }
@@ -84,11 +84,11 @@ namespace MediaSharingSystem.Forms
         {
             if (controller.ChangeEmail(tbEmail.Text))
             {
-                MessageBox.Show("Email Verandert");
+                MessageBox.Show("Email is gewijzigd");
             }
             else
             {
-                MessageBox.Show("Email niet verandert");
+                MessageBox.Show("Email is niet gewijzigd");
             }
         }
         //Changes Password
@@ -96,11 +96,11 @@ namespace MediaSharingSystem.Forms
         {
             if (controller.ChangePassword(tbWachtwoord.Text, tbWachtwoord2.Text))
             {
-                MessageBox.Show("Wachtwoord Verandert");
+                MessageBox.Show("Wachtwoord is gewijzigd");
             }
             else
             {
-                MessageBox.Show("Wachtwoord niet verandert");
+                MessageBox.Show("Wachtwoord is niet gewijzigd");
             }
         }
         //Changes TelefoonNummer
@@ -108,11 +108,11 @@ namespace MediaSharingSystem.Forms
         {
             if (controller.ChangeTelnr(tbTelefoonNr.Text))
             {
-                MessageBox.Show("Telefoonnummer verandert");
+                MessageBox.Show("Telefoonnummer is gewijzigd");
             }
             else
             {
-                MessageBox.Show("Telefoonnummer niet verandert");
+                MessageBox.Show("Telefoonnummer is niet gewijzigd");
             }
         }
         //Change Image
@@ -123,10 +123,11 @@ namespace MediaSharingSystem.Forms
             {
                 picture = Image.FromFile(openFileDialog1.FileName);
                 pbPicture.Image = controller.ChangePicture(picture);
+                MessageBox.Show("Foto is gewijzigd");
             }
             else
             {
-                MessageBox.Show("Foto niet verandert");
+                MessageBox.Show("Foto is niet gewijzigd");
             }
         }
         //Adds Material

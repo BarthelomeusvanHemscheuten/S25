@@ -376,7 +376,7 @@ namespace MediaSharingSystem.Controllers
 
 
         // EMPLOYEE
-        public bool Reserve(List<Location> locations, int quantityVisitors, int quantityLocations, List<string> username, List<string> name, List<string> password, List<string> emailAddress, List<string> telnr, List<string> address, List<string> dateOfBirth)
+        public bool Reserve(List<Location> locations, int quantityVisitors, int quantityLocations, List<string> username, List<string> name, List<string> password, string emailAddress, List<string> telnr, string address, DateTime dateOfBirth)
         {
             if (locations != null && quantityVisitors > 0 && quantityLocations > 0 && username != null && name != null && password != null && emailAddress != null && telnr != null && address != null && dateOfBirth != null)
             {
@@ -544,11 +544,11 @@ namespace MediaSharingSystem.Controllers
 
                     if (dateTime != null)
                     {
-                        comment.User = new Visitor(userDataString[0], userDataString[1], userDataString[3], userDataString[4], userDataString[6], dateTime, userDataInt[0], userDataInt[1]);
+                        comment.User = new Visitor(userDataString[0], userDataString[1], userDataString[2], userDataString[3], userDataString[4], dateTime, userDataInt[0], userDataInt[1]);
                     }
                     else
                     {
-                        comment.User = new Visitor(userDataString[0], userDataString[1], userDataString[2], userDataInt[0], userDataInt[1]);
+                        comment.User = new Visitor(userDataString[0], userDataString[1], userDataString[3], userDataInt[0], userDataInt[1]);
                     }
 
                     if (dateTime != null)
@@ -557,7 +557,7 @@ namespace MediaSharingSystem.Controllers
                         {
                             if (post.ID == postID)
                             {
-                                post.User = new Visitor(userDataString[0], userDataString[1], userDataString[3], userDataString[4], userDataString[6], dateTime, userDataInt[0], userDataInt[1]);
+                                post.User = new Visitor(userDataString[0], userDataString[1], userDataString[2], userDataString[3], userDataString[4], dateTime, userDataInt[0], userDataInt[1]);
                             }
                         }
                     }
@@ -567,7 +567,7 @@ namespace MediaSharingSystem.Controllers
                         {
                             if (post.ID == postID)
                             {
-                                post.User = new Visitor(userDataString[0], userDataString[1], userDataString[2], userDataInt[0], userDataInt[1]);
+                                post.User = new Visitor(userDataString[0], userDataString[1], userDataString[3], userDataInt[0], userDataInt[1]);
                             }
                         }
                     }
@@ -659,6 +659,14 @@ namespace MediaSharingSystem.Controllers
                 }
             }
             return false;
+        }
+        public string GetLocationFeatures(int locationnr)
+        {
+            return reservationRepo.GetLocationFeatures(locationnr);
+        }
+        public string GetLocationType(int locationnr)
+        {
+            return reservationRepo.GetLocationType(locationnr);
         }
     }
 }
