@@ -25,6 +25,7 @@ namespace Models.ReservationSystem
             this.Number = number;
             this.Features = features;
             this.Type = type;
+            this.Visitors = new List<Visitor>();
         }
     }
 }
