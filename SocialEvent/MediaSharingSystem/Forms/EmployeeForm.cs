@@ -18,34 +18,23 @@ namespace MediaSharingSystem.Forms
     {
         Form login;
         Controller controller;
+        Random random;
+        //Used for locally storing UserData and the locations they want to have, used for reserve mehod
+        List<List<string>> userData = new List<List<string>>();
+        List<Location> locations = new List<Location>();
 
-        public EmployeeForm(Form f)
+        public EmployeeForm(Form f, Controller controller)
         {
             InitializeComponent();
             login = f;
-            controller = new Controller();
+            random = new Random();
+            this.controller = controller;
             tbctrlMain.Appearance = TabAppearance.FlatButtons;
             tbctrlMain.ItemSize = new Size(0, 1);
             tbctrlMain.SizeMode = TabSizeMode.Fixed;
-        }
-
-        public void GetVisitors(int num)
-        {
-            foreach (Visitor v in controller.GetVisitors())
+            for(int i = 0; i < 7; i++)
             {
-                if (num == 0)
-                {
-                    lbVisitors.Items.Add(v);
-                }
-                else lbGebruikers.Items.Add(v);
-            }
-        }
-
-        public void GetMaterials()
-        {
-            foreach (Material m in controller.GetMaterials())
-            {
-                lbMaterialen.Items.Add(m);
+                userData.Add(new List<string>());
             }
         }
 
@@ -66,14 +55,11 @@ namespace MediaSharingSystem.Forms
 
         private void btnVerhuurItemMedewerker_Click(object sender, EventArgs e)
         {
-            GetMaterials();
-            GetVisitors(0);
             tbctrlMain.SelectedTab = tbctrlMain.TabPages[2];
         }
 
         private void btnGebruikersBeherenMedewerker_Click(object sender, EventArgs e)
         {
-            GetVisitors(1);
             tbctrlMain.SelectedTab = tbctrlMain.TabPages[3];
         }
 
@@ -93,7 +79,7 @@ namespace MediaSharingSystem.Forms
             }
             else
             {
-                MessageBox.Show("Kon foto niet veranderen.");
+                MessageBox.Show("Foto niet gewijzigd");
             }
         }
 
@@ -101,11 +87,11 @@ namespace MediaSharingSystem.Forms
         {
             if (controller.ChangeUsername(tbNaam.Text))
             {
-                MessageBox.Show("Naam veranderd");
+                MessageBox.Show("Naam is gewijzigd");
             }
             else
             {
-                MessageBox.Show("Kon naam niet veranderen.");
+                MessageBox.Show("Naam niet gewijzigd");
             }
         }
 
@@ -113,11 +99,11 @@ namespace MediaSharingSystem.Forms
         {
             if (controller.ChangeEmail(tbEmail.Text))
             {
-                MessageBox.Show("Email veranderd");
+                MessageBox.Show("Email is gewijzigd");
             }
             else
             {
-                MessageBox.Show("Kon naam niet veranderen.");
+                MessageBox.Show("Email niet gewijzigd");
             }
         }
 
@@ -125,11 +111,11 @@ namespace MediaSharingSystem.Forms
         {
             if (controller.ChangePassword(tbWachtwoord.Text, tbWachtwoord2.Text))
             {
-                MessageBox.Show("Wachtwoord veranderd");
+                MessageBox.Show("Wachtwoord is gewijzigd");
             }
             else
             {
-                throw new NotImplementedException();
+                MessageBox.Show("Wachtwoord niet gewijzigd");
             }
         }
 
@@ -137,53 +123,113 @@ namespace MediaSharingSystem.Forms
         {
             if (controller.ChangeTelnr(tbTelefoonNr.Text))
             {
-                MessageBox.Show("Telefoonnummer veranderd");
+                MessageBox.Show("Telefoonnummer is gewijzigd");
             }
             else
             {
-                throw new NotImplementedException();
+                MessageBox.Show("Telefoonnummer niet gewijzigd");
             }
         }
 
         private void btnVerhuurMateriaal_Click(object sender, EventArgs e)
         {
-            if (lbVisitors.SelectedItem != null && lbMaterialen.SelectedItem != null && !string.IsNullOrEmpty(tbHoeveelheidMateriaal.Text))
+            foreach (Visitor visitor in controller.Event.Visitors)
             {
-                controller.VerhuurItem(lbVisitors.SelectedItem.ToString(), lbMaterialen.SelectedItem.ToString(), dtEindDatum.ToString(), Convert.ToInt32(tbHoeveelheidMateriaal));
+                if (lbVisitors.SelectedItem != null && lbMaterialen.SelectedItem != null && !string.IsNullOrEmpty(tbHoeveelheidMateriaal.Text))
+                {
+                    if (visitor.Name == lbVisitors.SelectedItem.ToString())
+                    {
+                        foreach (Material material in controller.Event.Material)
+                        {
+                            if (material.Name == lbMaterialen.SelectedItem.ToString())
+                            {
+                                controller.RentMaterial(visitor, material, DateTime.Now.ToString(), dtEindDatum.ToString(), Convert.ToInt32(tbHoeveelheidMateriaal));
+                            }
+                        }
+                    }
+                }
+                else MessageBox.Show("Voer eerst de benodigde waardes in!");
             }
-            else MessageBox.Show("Voer eerst de benodigde waardes in!");
         }
 
         private void btnVerwijderGebruiker_Click(object sender, EventArgs e)
         {
             if (lbGebruikers.SelectedItem != null)
             {
-                if (controller.DeleteGebruiker(lbGebruikers.SelectedItem.ToString()))
+                foreach (Models.Users.Visitor visitor in controller.Event.Visitors)
                 {
-                    MessageBox.Show("Gebruiker verwijderd.");
+                    if (visitor.Name == lbGebruikers.SelectedItem.ToString())
+                    {
+                        controller.DeleteVisitor(visitor);
+                    }
                 }
-                else MessageBox.Show("Er is iets fout gegaan.");
             }
         }
 
-        private void lbMaterialen_SelectedIndexChanged(object sender, EventArgs e)
+        private void btnReserverenLocatie_Click(object sender, EventArgs e)
         {
-            string[] info = controller.GetMaterialInfo(lbVisitors.SelectedItem.ToString());
-            tbMateriaalPrijsPerDag.Text = info[0];
-            tbMateriaalOmschrijving.Text = info[1];
+            int locationnr = Convert.ToInt32(tbLocatieNrHoofdreserveerder.Text);
+            userData[0].Insert(0, tbUserNaamHoofdreserveerder.Text);
+            userData[1].Insert(0, tbNaamHoofdreserveerder.Text);
+            userData[2].Insert(0, RandomString(8));
+            userData[3].Insert(0, tbEmailHoofdreserveerder.Text);
+            userData[4].Insert(0, tbTelefoonNrHoofdreserveerder.Text);
+            userData[5].Insert(0, tbAddressHoofdreserveerder.Text);
+            userData[6].Insert(0, dtmHoofdreserveerder.ToString());
+            locations.Insert(0, new Location(locationnr, controller.GetLocationFeatures(locationnr), controller.GetLocationType(locationnr)));
+            if (controller.Reserve(locations, userData[0].Count, locations.Count, userData[0], userData[1], userData[2], userData[3], userData[4], userData[5], userData[6]))
+            {
+                MessageBox.Show("Location Reserved");
+                for (int i = 0; i < 7; i++)
+                {
+                    userData[i].Clear();
+                }
+                locations.Clear();
+            }
+            else
+            {
+                MessageBox.Show("Something went wrong");
+            }
         }
 
-        private void lbGebruikers_SelectedIndexChanged(object sender, EventArgs e)
+
+        private void btnMoreAanhangsels1_Click(object sender, EventArgs e)
         {
-            string[] info = controller.GetGebruikersInfo(lbGebruikers.SelectedItem.ToString());
-            tbEmailGebruikersBeheren.Text = info[0];
-            tbTelefoonNrGebruikersBeheren.Text = info[1];
+            AddUserLocation( tbNaamAanhangsel1.Text, tbEmailAanhangsel1.Text, tbTelefoonNrAanhangsel1.Text, tbAddressAanhangsel1.Text, dtmAanhangsel1.ToString(), Convert.ToInt32(tbAanhangselLocatie1.Text));
+            MessageBox.Show("User added");
+            lbReserveringVisitors.Items.Clear();
+            foreach (string name in userData[1])
+            {
+                lbReserveringVisitors.Items.Add(name);
+            }
         }
 
-        private void tbHoeveelheidMateriaal_KeyPress(object sender, KeyPressEventArgs e)
+        private void btnMoreAanhangsels2_Click(object sender, EventArgs e)
         {
-            const char Delete = (char)8;
-            e.Handled = !Char.IsDigit(e.KeyChar) && e.KeyChar != Delete;
+            AddUserLocation(tbUserNameAanhangsel2.Text, tbNaamAanhangsel2.Text, tbEmailAanhangsel2.Text, tbTelefoonNrAanhangsel2.Text, tbAddressAanhangsel2.Text, dtmAanhangsel2.ToString(), Convert.ToInt32(tbAanhangselLocatie2.Text));
+            MessageBox.Show("User added");
+            lbReserveringVisitors.Items.Clear();
+            foreach (string name in userData[1])
+            {
+                lbReserveringVisitors.Items.Add(name);
+            }
+        }
+        private void AddUserLocation(string username, string name, string email, string telnr, string address, string date, int locationnr)
+        {
+            userData[0].Add(username);
+            userData[1].Add(name);
+            userData[2].Add(RandomString(8));
+            userData[3].Add(email);
+            userData[4].Add(telnr);
+            userData[5].Add(address);
+            userData[6].Add(date);
+            locations.Add(new Location(locationnr, controller.GetLocationFeatures(locationnr), controller.GetLocationType(locationnr)));
+        }
+        private string RandomString(int length)
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
         }
     }
 }

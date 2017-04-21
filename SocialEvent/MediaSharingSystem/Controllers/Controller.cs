@@ -660,5 +660,13 @@ namespace MediaSharingSystem.Controllers
             }
             return false;
         }
+        public string GetLocationFeatures(int locationnr)
+        {
+            return reservationRepo.GetLocationFeatures(locationnr);
+        }
+        public string GetLocationType(int locationnr)
+        {
+            return reservationRepo.GetLocationType(locationnr);
+        }
     }
 }
