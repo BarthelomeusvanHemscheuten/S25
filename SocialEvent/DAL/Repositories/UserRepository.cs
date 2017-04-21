@@ -167,6 +167,10 @@ namespace DAL.Repositories
             return context.GetAllVisitorID();
         }
 
+        public List<string> GetAllPresentUsers()
+        {
+            return context.GetAllPresentUsers();
+        }
 
 
 

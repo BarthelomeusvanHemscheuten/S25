@@ -350,7 +350,7 @@ namespace MediaSharingSystem.Controllers
                     visitor.ChangeTelnr(telnr);
                     return true;
                 case 3:
-                    admin.ChangeTelnr(telnr);
+                    visitor.ChangeTelnr(telnr);
                     return true;
             }
             return false;
@@ -450,12 +450,12 @@ namespace MediaSharingSystem.Controllers
         {
             List<Visitor> result = new List<Visitor>();
             List<int> Visitor_id = userRepo.GetAllVisitorID();
-            foreach(int id in Visitor_id)
+            foreach (int id in Visitor_id)
             {
                 DateTime? dateTime = userRepo.GetUserDataDateTime(id);
                 List<int> userDataInt = userRepo.GetUserDataInt(id);
                 List<string> userDataString = userRepo.GetUserDataString(id);
-                if(dateTime != null)
+                if (dateTime != null)
                 {
                     result.Add(new Visitor(userDataString[0], userDataString[1], userDataString[2], userDataString[3], userDataString[4], dateTime, userDataInt[0], userDataInt[1]));
                 }
@@ -544,11 +544,11 @@ namespace MediaSharingSystem.Controllers
 
                     if (dateTime != null)
                     {
-                        comment.User = new Visitor(userDataString[0], userDataString[1], userDataString[3], userDataString[4], userDataString[6], dateTime, userDataInt[0], userDataInt[1]);
+                        comment.User = new Visitor(userDataString[0], userDataString[1], userDataString[2], userDataString[3], userDataString[4], dateTime, userDataInt[0], userDataInt[1]);
                     }
                     else
                     {
-                        comment.User = new Visitor(userDataString[0], userDataString[1], userDataString[2], userDataInt[0], userDataInt[1]);
+                        comment.User = new Visitor(userDataString[0], userDataString[1], userDataString[3], userDataInt[0], userDataInt[1]);
                     }
 
                     if (dateTime != null)
@@ -557,7 +557,7 @@ namespace MediaSharingSystem.Controllers
                         {
                             if (post.ID == postID)
                             {
-                                post.User = new Visitor(userDataString[0], userDataString[1], userDataString[3], userDataString[4], userDataString[6], dateTime, userDataInt[0], userDataInt[1]);
+                                post.User = new Visitor(userDataString[0], userDataString[1], userDataString[2], userDataString[3], userDataString[4], dateTime, userDataInt[0], userDataInt[1]);
                             }
                         }
                     }
@@ -567,7 +567,7 @@ namespace MediaSharingSystem.Controllers
                         {
                             if (post.ID == postID)
                             {
-                                post.User = new Visitor(userDataString[0], userDataString[1], userDataString[2], userDataInt[0], userDataInt[1]);
+                                post.User = new Visitor(userDataString[0], userDataString[1], userDataString[3], userDataInt[0], userDataInt[1]);
                             }
                         }
                     }
@@ -576,19 +576,89 @@ namespace MediaSharingSystem.Controllers
             }
             return output;
         }
-        //SWEARWORDS
         public List<string> GetAllSwearwords()
         {
             return mediaRepo.GetAllSwearwords();
         }
-        //LOCATION
-        public string GetAllLocationFeatures(int number)
+
+        public List<Visitor> GetVisitors()
         {
-            return reservationRepo.GetLocationFeatures(number);
+            List<Visitor> visitors = new List<Visitor>();
+            foreach (Visitor v in Event.Visitors)
+            {
+                visitors.Add(v);
+            }
+            return visitors;
         }
-        public string GetAllLocationType(int number)
+
+        public List<Material> GetMaterials()
         {
-            return reservationRepo.GetLocationType(number);
+            List<Material> materials = new List<Material>();
+            foreach (Material m in Event.Material)
+            {
+                materials.Add(m);
+            }
+            return materials;
+        }
+
+        public string[] GetMaterialInfo(string name)
+        {
+            string[] info = null;
+            foreach (Material m in Event.Material)
+            {
+                if (m.Name == name)
+                {
+                    info[0] = (Convert.ToString(m.Price));
+                    info[1] = (m.Description);
+                }
+            }
+            return info;
+        }
+
+        public string[] GetGebruikersInfo(string name)
+        {
+            string[] info = null;
+            foreach (Visitor v in Event.Visitors)
+            {
+                if (v.Name == name)
+                {
+                    info[0] = (v.EmailAddress);
+                    info[1] = (v.Telnr);
+                }
+            }
+            return info;
+        }
+
+        public bool DeleteGebruiker(string name)
+        {
+            foreach (Visitor visitor in Event.Visitors)
+            {
+                if (visitor.Name == name)
+                {
+                    DeleteVisitor(visitor);
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        public bool VerhuurItem(string visitor, string material, string eindDatum, int hoeveelheid)
+        {
+            foreach (Visitor v in Event.Visitors)
+            {
+                if (v.Name == visitor)
+                {
+                    foreach (Material m in Event.Material)
+                    {
+                        if (m.Name == material)
+                        {
+                            RentMaterial(v, m, DateTime.Now.ToString(), eindDatum, hoeveelheid);
+                            return true;
+                        }
+                    }
+                }
+            }
+            return false;
         }
     }
 }

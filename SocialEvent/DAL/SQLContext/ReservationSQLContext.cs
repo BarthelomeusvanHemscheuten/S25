@@ -127,7 +127,7 @@ namespace DAL.SQLContext
         }
 
         public List<string> GetAllMaterialsName()
-        {  // zie opmerking hierboven
+        {   // zie opmerking hierboven
             string query = @"SELECT Name FROM [Material] WHERE StartDate IS NULL AND EndDate IS NULL GROUP BY Name";
 
             return databaseConnection.executeReaderStringList(query, 1);

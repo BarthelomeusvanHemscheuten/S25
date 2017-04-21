@@ -235,6 +235,11 @@ namespace DAL.SQLContext
             return databaseConnection.executeNonQuery(query);
         }
 
+        public List<string> GetAllPresentUsers()
+        {
+            string query = @"SELECT u1.name, u1.Email, u1.Telnr FROM [user] u1 WHERE u1.IsPresent = 1";
+            return databaseConnection.executeReaderStringList(query, 3);
+        }
 
 
         // nog niet nodig

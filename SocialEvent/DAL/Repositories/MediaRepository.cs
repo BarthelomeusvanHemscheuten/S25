@@ -154,7 +154,7 @@ namespace DAL.Repositories
 
         public int GetPostIdFromComment(int commentid)
         {
-            return GetPostIdFromComment(commentid);
+            return context.GetPostIdFromComment(commentid);
         }
         public List<string> GetAllSwearwords()
         {
