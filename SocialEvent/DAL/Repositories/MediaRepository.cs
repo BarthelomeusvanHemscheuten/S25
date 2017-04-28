@@ -70,6 +70,15 @@ namespace DAL.Repositories
             return false;
         }
 
+        public bool DeleteLike(int userId)
+        {
+            if (context.DeleteLike(userId))
+            {
+                return true;
+            }
+            return false;
+        }
+
         public bool UpdatePicture(int userId, Image image)
         {
             if(context.UpdatePicture(userId, image))
@@ -77,6 +86,16 @@ namespace DAL.Repositories
                 return true;
             }
             return false;
+        }
+
+        public int CountLikes(int postId)
+        {
+            return context.CountLikes(postId);
+        }
+
+        public int CheckLike(int userId)
+        {
+            return context.CheckLike(userId);
         }
 
         public int CountPosts()
@@ -113,7 +132,12 @@ namespace DAL.Repositories
         {
             return context.GetTextComment(id);
         }
-        
+
+        public int GetUserIdComment(int id)
+        {
+            return context.GetUserIdComment(id);
+        }
+
         public bool DeletePost(int id)
         {
             if (context.DeletePost(id))
@@ -147,9 +171,9 @@ namespace DAL.Repositories
             return context.GetPostsID();
         }
 
-        public List<int> GetCommentsID()
+        public List<int> GetCommentsID(int postId)
         {
-            return context.GetCommentsID();
+            return context.GetCommentsID(postId);
         }
 
         public int GetPostIdFromComment(int commentid)

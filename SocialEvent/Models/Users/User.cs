@@ -78,7 +78,7 @@ namespace Models.Users
 
         public Post PlacePost(int id, string text, string path, List<string> tags)
         {
-            if (text != null && path != null && tags != null && id != 0)
+            if (text != null && path != null && tags != null)
             {
                 Post post = new Post(text, path, tags);
                 this.Posts.Add(post);
@@ -99,7 +99,7 @@ namespace Models.Users
 
         public Comment PlaceComment(int id, string text, Post post)
         {
-            if (text != null && post != null && id != 0)
+            if (text != null && post != null)
             {
                 Comment comment = new Comment(text);
                 this.Comments.Add(comment);
@@ -205,6 +205,11 @@ namespace Models.Users
                 return true;
             }
             return false;
+        }
+
+        public override string ToString()
+        {
+            return this.Name;
         }
     }
 }

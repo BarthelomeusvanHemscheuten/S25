@@ -10,7 +10,8 @@ using Models.ReservationSystem;
 using Models.MediaSharingSystem;
 using DAL.Repositories;
 using DAL.SQLContext;
-
+using System.Net;
+using System.IO;
 
 namespace MediaSharingSystem.Controllers
 {
@@ -24,6 +25,9 @@ namespace MediaSharingSystem.Controllers
         private Visitor visitor;
         private Employee employee;
         private Admin admin;
+
+        private int currentPostId;
+        public int currentPostForm;
 
         public Controller()
         {
@@ -141,16 +145,16 @@ namespace MediaSharingSystem.Controllers
             {
                 case 1:
                     Post post1 = visitor.PlacePost(0, text, path);
-                    mediaRepo.InsertPost(post1.ID, text, path);
+                    mediaRepo.InsertPost(post1.User.ID, text, path);
                     return post1;
                 case 2:
                     Post post2 = employee.PlacePost(0, text, path);
-                    mediaRepo.InsertPost(post2.ID, text, path);
+                    mediaRepo.InsertPost(post2.User.ID, text, path);
                     return post2;
 
                 case 3:
                     Post post3 = admin.PlacePost(0, text, path);
-                    mediaRepo.InsertPost(post3.ID, text, path);
+                    mediaRepo.InsertPost(post3.User.ID, text, path);
                     return post3;
             }
             return null;
@@ -194,15 +198,15 @@ namespace MediaSharingSystem.Controllers
             {
                 case 1:
                     Comment comment1 = visitor.PlaceComment(0, text, post);
-                    mediaRepo.InsertComment(comment1.ID, post.ID, text);
+                    mediaRepo.InsertComment(comment1.User.ID, post.ID, text);
                     return comment1;
                 case 2:
                     Comment comment2 = employee.PlaceComment(0, text, post);
-                    mediaRepo.InsertComment(comment2.ID, post.ID, text);
+                    mediaRepo.InsertComment(comment2.User.ID, post.ID, text);
                     return comment2;
                 case 3:
                     Comment comment3 = admin.PlaceComment(0, text, post);
-                    mediaRepo.InsertComment(comment3.ID, post.ID, text);
+                    mediaRepo.InsertComment(comment3.User.ID, post.ID, text);
                     return comment3;
             }
             return null;
@@ -508,74 +512,125 @@ namespace MediaSharingSystem.Controllers
             return result;
         }
 
-        public List<Post> GetAndShowPostComments()
+        public int GetAndShowLikes(Post post)
         {
-            List<Post> output = new List<Post>();
-            List<int> postsID = mediaRepo.GetPostsID();
-            List<int> commentsID = mediaRepo.GetCommentsID();
+            return mediaRepo.CountLikes(post.ID);
+        }
 
-            for (int i = 0; i < postsID.Count; i++)
+        public Post GetAndShowPostComments(int i, int next)
+        {
+            Post output;
+
+            // Get all postsID
+            List<int> postsID = mediaRepo.GetPostsID();
+
+            // Get current post
+            if (next == 1)
             {
-                List<string> postTextPath = mediaRepo.GetTextPathPost(postsID[i]);
-                Post post = new Post(postsID[i], postTextPath[0], postTextPath[1]);
-                output.Add(post);
+                if (currentPostForm == 0)
+                {
+                    currentPostForm = postsID.Count() - 1;
+                    currentPostId = postsID[currentPostForm];
+                }
+                else
+                {
+                    currentPostForm--;
+                    currentPostId = postsID[currentPostForm];
+                }
+            }
+            else if (next == -1)
+            {
+                if (currentPostForm == postsID.Count() - 1)
+                {
+                    currentPostForm = 0;
+                    currentPostId = postsID[currentPostForm];
+                }
+                else
+                {
+                    currentPostForm++;
+                    currentPostId = postsID[currentPostForm];
+                }
+            } else
+            {
+                currentPostForm = postsID.Count() - 1;
+                currentPostId = postsID[currentPostForm];
             }
 
-            for (int i = 0; i < commentsID.Count; i++)
+            List<string> postTextPath = mediaRepo.GetTextPathPost(currentPostId);
+            Post post = new Post(currentPostId, postTextPath[0], postTextPath[1]);
+            output = post;
+
+            // Link post to user
+            int userIDPost = mediaRepo.GetUserIdPost(currentPostId);
+
+            DateTime? dateTimeP = userRepo.GetUserDataDateTime(userIDPost);
+            List<int> userDataIntP = userRepo.GetUserDataInt(userIDPost);
+            List<string> userDataStringP = userRepo.GetUserDataString(userIDPost);
+
+            if (dateTimeP != null)
             {
-                string textComment = mediaRepo.GetTextComment(commentsID[i]);
-                Comment comment = new Comment(commentsID[i], textComment);
-                int postID = mediaRepo.GetPostIdFromComment(commentsID[i]);
+                post.User = new Visitor(userDataStringP[0], userDataStringP[1], userDataStringP[2], userDataStringP[3], userDataStringP[4], dateTimeP, userDataIntP[0], userDataIntP[1]);
+            }
+            else
+            {
+                post.User = new Visitor(userDataStringP[0], userDataStringP[1], userDataStringP[3], userDataIntP[0], userDataIntP[1]);    
+            }
 
-                foreach (Post post in output)
+            // Get commentsID from post
+            List<int> commentsID = mediaRepo.GetCommentsID(currentPostId);
+            for (int j = 0; j < commentsID.Count; j++)
+            {
+                string textComment = mediaRepo.GetTextComment(commentsID[j]);
+                Comment comment = new Comment(commentsID[j], textComment);
+                
+                output.Comments.Add(comment);
+
+                // Link comments to user
+                int userIDComment = mediaRepo.GetUserIdComment(comment.ID);
+
+                DateTime? dateTimeC = userRepo.GetUserDataDateTime(userIDComment);
+                List<int> userDataIntC = userRepo.GetUserDataInt(userIDComment);
+                List<string> userDataStringC = userRepo.GetUserDataString(userIDComment);
+
+                if (dateTimeC != null)
                 {
-                    if (post.ID == postID)
-                    {
-                        post.Comments.Add(comment);
-                    }
+                    comment.User = new Visitor(userDataStringC[0], userDataStringC[1], userDataStringC[2], userDataStringC[3], userDataStringC[4], dateTimeC, userDataIntC[0], userDataIntC[1]);
                 }
-                for (int j = 0; j < postsID.Count; j++)
+                else
                 {
-                    int userID = mediaRepo.GetUserIdPost(postsID[i]);
-
-                    DateTime? dateTime = userRepo.GetUserDataDateTime(userID);
-                    List<int> userDataInt = userRepo.GetUserDataInt(userID);
-                    List<string> userDataString = userRepo.GetUserDataString(userID);
-
-                    if (dateTime != null)
-                    {
-                        comment.User = new Visitor(userDataString[0], userDataString[1], userDataString[2], userDataString[3], userDataString[4], dateTime, userDataInt[0], userDataInt[1]);
-                    }
-                    else
-                    {
-                        comment.User = new Visitor(userDataString[0], userDataString[1], userDataString[3], userDataInt[0], userDataInt[1]);
-                    }
-
-                    if (dateTime != null)
-                    {
-                        foreach (Post post in output)
-                        {
-                            if (post.ID == postID)
-                            {
-                                post.User = new Visitor(userDataString[0], userDataString[1], userDataString[2], userDataString[3], userDataString[4], dateTime, userDataInt[0], userDataInt[1]);
-                            }
-                        }
-                    }
-                    else
-                    {
-                        foreach (Post post in output)
-                        {
-                            if (post.ID == postID)
-                            {
-                                post.User = new Visitor(userDataString[0], userDataString[1], userDataString[3], userDataInt[0], userDataInt[1]);
-                            }
-                        }
-                    }
-
+                    comment.User = new Visitor(userDataStringC[0], userDataStringC[1], userDataStringC[3], userDataIntC[0], userDataIntC[1]);
                 }
             }
             return output;
         }
+        
+
+        // ?????????????????????
+        //public void UploadFilestoFTPServer()
+        //{ 
+        //    FtpWebRequest request = (FtpWebRequest)WebRequest.Create("192.168.20.18");
+        //    request.Method = WebRequestMethods.Ftp.UploadFile;
+            
+        //    request.Credentials = new NetworkCredential("anonymous", "janeDoe@contoso.com");
+
+        //    // Copy the contents of the file to the request stream.  
+        //    StreamReader sourceStream = new StreamReader("testfile.txt");
+        //    byte[] fileContents = Encoding.UTF8.GetBytes(sourceStream.ReadToEnd());
+        //    sourceStream.Close();
+        //    request.ContentLength = fileContents.Length;
+
+        //    Stream requestStream = request.GetRequestStream();
+        //    requestStream.Write(fileContents, 0, fileContents.Length);
+        //    requestStream.Close();
+
+        //    FtpWebResponse response = (FtpWebResponse)request.GetResponse();
+
+        //    Console.WriteLine("Upload File Complete, status {0}", response.StatusDescription);
+
+        //    response.Close();
+
+        //}
+
         public List<string> GetAllSwearwords()
         {
             return mediaRepo.GetAllSwearwords();

@@ -14,7 +14,7 @@ namespace DAL.SQLContext
 
         public bool InsertPost(int userId, string text, string path)
         {
-            string query = @"INSERT INTO [Post] ([UserID], [Text], [Path]) VALUES(@ID, @text, @path)";
+            string query = @"INSERT INTO [Post] ([UserID], [Text], [Path]) VALUES(@ID, '@text', '@path')";
             query = query.Replace("@ID", userId.ToString()).Replace("@text", text).Replace("@path", path);
             return databaseConnection.executeNonQuery(query);
         }
@@ -29,10 +29,9 @@ namespace DAL.SQLContext
 
         public bool InsertComment(int userId, int postId, string text)
         {
-            string query = @"INSERT INTO [Comment] ([UserID], [PostID], [Text]) VALUES (@userID, @postID, @text)";
+            string query = @"INSERT INTO [Comment] ([UserID], [PostID], [Text]) VALUES (@userID, @postID, '@text')";
             query = query.Replace("@userID", userId.ToString()).Replace("@postID", postId.ToString()).Replace("@text", text);
-
-
+            
             return databaseConnection.executeNonQuery(query);
         }
 
@@ -60,7 +59,16 @@ namespace DAL.SQLContext
 
             return databaseConnection.executeNonQuery(query);
         }
-        
+
+        public bool DeleteLike(int userId)
+        {
+            string query = @"DELETE FROM [Like] WHERE [UserID] = @userId";
+            query = query.Replace("@userId", userId.ToString());
+
+            return databaseConnection.executeNonQuery(query);
+        }
+
+
         public bool UpdatePicture(int userID, Image image)
         {
             string query = @"UPDATE USER SET(Picture) = (@Image) WHERE USERID = @UserID";
@@ -68,6 +76,22 @@ namespace DAL.SQLContext
           //  query.Replace("@Image", image);
 
             return databaseConnection.executeNonQuery(query);
+        }
+
+        public int CountLikes(int postId)
+        {
+            string query = @"SELECT COUNT(*) FROM [Like] WHERE [PostID] = @postId";
+            query = query.Replace("@postId", postId.ToString());
+
+            return databaseConnection.executeReaderInt(query);
+        }
+
+        public int CheckLike(int userId)
+        {
+            string query = @"SELECT COUNT(*) FROM [Like] WHERE [UserID] = @userId";
+            query = query.Replace("@userId", userId.ToString());
+
+            return databaseConnection.executeReaderInt(query);
         }
 
         public int CountPosts()
@@ -189,9 +213,10 @@ namespace DAL.SQLContext
             return databaseConnection.executeReaderIntList(query, 1);
         }
 
-        public List<int> GetCommentsID()
+        public List<int> GetCommentsID(int postId)
         {
-            string query = @"SELECT [CommentID] FROM [Comment]";
+            string query = @"SELECT [CommentID] FROM [Comment] WHERE [PostID] = @postId";
+            query = query.Replace("@postId", postId.ToString());
             return databaseConnection.executeReaderIntList(query, 1);
         }
 

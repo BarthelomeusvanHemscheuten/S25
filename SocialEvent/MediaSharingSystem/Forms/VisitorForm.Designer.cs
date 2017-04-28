@@ -35,6 +35,18 @@
             this.btnAccountInstellingenGebruik = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panelNewsFeed = new System.Windows.Forms.Panel();
+            this.lblLikes = new System.Windows.Forms.Label();
+            this.btnNextComment = new System.Windows.Forms.Button();
+            this.btnPrevComment = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnLikePost = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.btnPlacePost = new System.Windows.Forms.Button();
+            this.btnPlaceComment = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textComment = new System.Windows.Forms.RichTextBox();
+            this.textPost = new System.Windows.Forms.RichTextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnNextPost = new System.Windows.Forms.Button();
             this.btnPrevPost = new System.Windows.Forms.Button();
             this.tabAccountInstellingen = new System.Windows.Forms.TabPage();
@@ -124,6 +136,18 @@
             // panelNewsFeed
             // 
             this.panelNewsFeed.BackColor = System.Drawing.Color.Lavender;
+            this.panelNewsFeed.Controls.Add(this.lblLikes);
+            this.panelNewsFeed.Controls.Add(this.btnNextComment);
+            this.panelNewsFeed.Controls.Add(this.btnPrevComment);
+            this.panelNewsFeed.Controls.Add(this.label2);
+            this.panelNewsFeed.Controls.Add(this.btnLikePost);
+            this.panelNewsFeed.Controls.Add(this.button3);
+            this.panelNewsFeed.Controls.Add(this.btnPlacePost);
+            this.panelNewsFeed.Controls.Add(this.btnPlaceComment);
+            this.panelNewsFeed.Controls.Add(this.label3);
+            this.panelNewsFeed.Controls.Add(this.textComment);
+            this.panelNewsFeed.Controls.Add(this.textPost);
+            this.panelNewsFeed.Controls.Add(this.label1);
             this.panelNewsFeed.Controls.Add(this.btnNextPost);
             this.panelNewsFeed.Controls.Add(this.btnPrevPost);
             this.panelNewsFeed.Location = new System.Drawing.Point(-4, 0);
@@ -132,11 +156,123 @@
             this.panelNewsFeed.Size = new System.Drawing.Size(744, 600);
             this.panelNewsFeed.TabIndex = 23;
             // 
+            // lblLikes
+            // 
+            this.lblLikes.AutoSize = true;
+            this.lblLikes.Location = new System.Drawing.Point(23, 304);
+            this.lblLikes.Name = "lblLikes";
+            this.lblLikes.Size = new System.Drawing.Size(0, 20);
+            this.lblLikes.TabIndex = 35;
+            // 
+            // btnNextComment
+            // 
+            this.btnNextComment.Location = new System.Drawing.Point(618, 412);
+            this.btnNextComment.Name = "btnNextComment";
+            this.btnNextComment.Size = new System.Drawing.Size(102, 38);
+            this.btnNextComment.TabIndex = 34;
+            this.btnNextComment.Text = "Volgende";
+            this.btnNextComment.UseVisualStyleBackColor = true;
+            this.btnNextComment.Click += new System.EventHandler(this.btnNextComment_Click);
+            // 
+            // btnPrevComment
+            // 
+            this.btnPrevComment.Location = new System.Drawing.Point(441, 412);
+            this.btnPrevComment.Name = "btnPrevComment";
+            this.btnPrevComment.Size = new System.Drawing.Size(102, 38);
+            this.btnPrevComment.TabIndex = 33;
+            this.btnPrevComment.Text = "Vorige";
+            this.btnPrevComment.UseVisualStyleBackColor = true;
+            this.btnPrevComment.Click += new System.EventHandler(this.btnPrevComment_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label2.Location = new System.Drawing.Point(436, 25);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(107, 29);
+            this.label2.TabIndex = 26;
+            this.label2.Text = "Reacties";
+            // 
+            // btnLikePost
+            // 
+            this.btnLikePost.Location = new System.Drawing.Point(21, 341);
+            this.btnLikePost.Name = "btnLikePost";
+            this.btnLikePost.Size = new System.Drawing.Size(261, 46);
+            this.btnLikePost.TabIndex = 32;
+            this.btnLikePost.Text = "Vind ik (niet meer) leuk";
+            this.btnLikePost.UseVisualStyleBackColor = true;
+            this.btnLikePost.Click += new System.EventHandler(this.btnLikePost_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(300, 462);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(107, 56);
+            this.button3.TabIndex = 31;
+            this.button3.Text = "Bestand toevoegen";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // btnPlacePost
+            // 
+            this.btnPlacePost.Location = new System.Drawing.Point(300, 524);
+            this.btnPlacePost.Name = "btnPlacePost";
+            this.btnPlacePost.Size = new System.Drawing.Size(107, 54);
+            this.btnPlacePost.TabIndex = 30;
+            this.btnPlacePost.Text = "Bericht plaatsen";
+            this.btnPlacePost.UseVisualStyleBackColor = true;
+            this.btnPlacePost.Click += new System.EventHandler(this.btnPlacePost_Click);
+            // 
+            // btnPlaceComment
+            // 
+            this.btnPlaceComment.Location = new System.Drawing.Point(603, 524);
+            this.btnPlaceComment.Name = "btnPlaceComment";
+            this.btnPlaceComment.Size = new System.Drawing.Size(117, 54);
+            this.btnPlaceComment.TabIndex = 29;
+            this.btnPlaceComment.Text = "Reactie plaatsen";
+            this.btnPlaceComment.UseVisualStyleBackColor = true;
+            this.btnPlaceComment.Click += new System.EventHandler(this.btnPlaceComment_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(23, 482);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(199, 20);
+            this.label3.TabIndex = 28;
+            this.label3.Text = "Geen bestand toegevoegd";
+            // 
+            // textComment
+            // 
+            this.textComment.Location = new System.Drawing.Point(441, 524);
+            this.textComment.Name = "textComment";
+            this.textComment.Size = new System.Drawing.Size(155, 54);
+            this.textComment.TabIndex = 27;
+            this.textComment.Text = "";
+            // 
+            // textPost
+            // 
+            this.textPost.Location = new System.Drawing.Point(21, 524);
+            this.textPost.Name = "textPost";
+            this.textPost.Size = new System.Drawing.Size(261, 54);
+            this.textPost.TabIndex = 27;
+            this.textPost.Text = "";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label1.Location = new System.Drawing.Point(10, 14);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(88, 29);
+            this.label1.TabIndex = 26;
+            this.label1.Text = "Bericht";
+            // 
             // btnNextPost
             // 
-            this.btnNextPost.Location = new System.Drawing.Point(603, 524);
+            this.btnNextPost.Location = new System.Drawing.Point(182, 412);
             this.btnNextPost.Name = "btnNextPost";
-            this.btnNextPost.Size = new System.Drawing.Size(117, 54);
+            this.btnNextPost.Size = new System.Drawing.Size(100, 38);
             this.btnNextPost.TabIndex = 24;
             this.btnNextPost.Text = "Volgende";
             this.btnNextPost.UseVisualStyleBackColor = true;
@@ -144,9 +280,9 @@
             // 
             // btnPrevPost
             // 
-            this.btnPrevPost.Location = new System.Drawing.Point(21, 524);
+            this.btnPrevPost.Location = new System.Drawing.Point(21, 412);
             this.btnPrevPost.Name = "btnPrevPost";
-            this.btnPrevPost.Size = new System.Drawing.Size(117, 54);
+            this.btnPrevPost.Size = new System.Drawing.Size(102, 38);
             this.btnPrevPost.TabIndex = 25;
             this.btnPrevPost.Text = "Vorige";
             this.btnPrevPost.UseVisualStyleBackColor = true;
@@ -359,6 +495,7 @@
             this.panelGebruiker.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.panelNewsFeed.ResumeLayout(false);
+            this.panelNewsFeed.PerformLayout();
             this.tabAccountInstellingen.ResumeLayout(false);
             this.panelAccountInstellingen.ResumeLayout(false);
             this.panelAccountInstellingen.PerformLayout();
@@ -397,5 +534,17 @@
         private System.Windows.Forms.Panel panelNewsFeed;
         private System.Windows.Forms.Button btnNextPost;
         private System.Windows.Forms.Button btnPrevPost;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.RichTextBox textComment;
+        private System.Windows.Forms.RichTextBox textPost;
+        private System.Windows.Forms.Button btnLikePost;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnPlacePost;
+        private System.Windows.Forms.Button btnPlaceComment;
+        private System.Windows.Forms.Button btnNextComment;
+        private System.Windows.Forms.Button btnPrevComment;
+        private System.Windows.Forms.Label lblLikes;
     }
 }

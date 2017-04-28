@@ -16,7 +16,7 @@ namespace Models.MediaSharingSystem
         public string Text { get; private set; }
         public string Path { get; private set; }
         public List<string> Tags { get; private set; }
-        public List<User> Likes { get; private set; }
+        public List<User> Likes { get; private set; } = new List<User>();
 
         public List<Report> Reports { get; private set; } = new List<Report>();
         public List<Comment> Comments { get; private set; } = new List<Comment>();
@@ -60,9 +60,15 @@ namespace Models.MediaSharingSystem
         {
             if(user != null)
             {
-                this.Likes.Add(user);
-                mediaRepo.InsertLike(user.ID, this.ID);
-
+                if(mediaRepo.CheckLike(user.ID) == 1)
+                {
+                    mediaRepo.DeleteLike(user.ID);
+                }
+                else
+                {
+                    this.Likes.Add(user);
+                    mediaRepo.InsertLike(user.ID, this.ID);
+                }
                 return true;
             }
             return false;

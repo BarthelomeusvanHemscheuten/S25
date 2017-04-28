@@ -15,9 +15,12 @@ namespace DAL.Interfaces
         bool InsertReportPost(int userId, int postId, string reason);
         bool InsertReportComment(int userId, int commentId, string reason);
         bool InsertLike(int userId, int postId);
+        bool DeleteLike(int userId);
 
         bool UpdatePicture(int userId, Image image);
 
+        int CountLikes(int postId);
+        int CheckLike(int userId);
         int CountPosts();
         int CountComments();
         int CountReportedPosts();
@@ -31,7 +34,7 @@ namespace DAL.Interfaces
         List<int> GetReportedPostsID();
         List<int> GetReportedCommentsID();
         List<int> GetPostsID();
-        List<int> GetCommentsID();
+        List<int> GetCommentsID(int postId);
         List<string> GetAllSwearword();
         int GetPostIdFromComment(int commentid);
 

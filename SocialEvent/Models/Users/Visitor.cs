@@ -19,10 +19,5 @@ namespace Models.Users
         {
 
         }
-
-        public override string ToString()
-        {
-            return this.Username;
-        }
     }
 }
