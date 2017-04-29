@@ -110,6 +110,12 @@ namespace DAL.SQLContext
 
             return databaseConnection.executeReaderInt(query);
         }
+        public int GetCountMaterial(string name)
+        {
+            string query = @"SELECT COUNT(MaterialID) FROM [Material] WHERE [Name] = '@NAME'";
+            query = query.Replace("@NAME", name);
+            return databaseConnection.executeReaderInt(query);
+        }
 
         public List<decimal> GetAllMaterialsPrice()
         {   // zorg ervoor dat de namen die met elkaar overeenkomen samengevoegd worden dmv SQL aangezien het materiaal per 1x in database wordt toegevoegd

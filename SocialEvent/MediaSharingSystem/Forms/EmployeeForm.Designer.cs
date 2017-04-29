@@ -496,7 +496,6 @@
             this.lbVisitors.Name = "lbVisitors";
             this.lbVisitors.Size = new System.Drawing.Size(151, 180);
             this.lbVisitors.TabIndex = 18;
-            this.lbVisitors.SelectedIndexChanged += new System.EventHandler(this.lbVisitors_SelectedIndexChanged);
             // 
             // btnVerhuurMateriaal
             // 

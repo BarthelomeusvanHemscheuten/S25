@@ -93,6 +93,10 @@ namespace DAL.Repositories
         {
             return context.CountMaterials();
         }
+        public int GetCountMaterial(string name)
+        {
+            return context.GetCountMaterial(name);
+        }
 
         public List<decimal> GetAllMaterialsPrice()
         {

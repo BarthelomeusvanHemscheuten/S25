@@ -87,6 +87,10 @@ namespace MediaSharingSystem.Controllers
 
             return result;
         }
+        public int GetCountMaterial(Material material)
+        {
+            return reservationRepo.GetCountMaterial(material.Name);
+        }
 
         // VISITOR, EMPLOYEE AND ADMIN
         public int Login(string username, string password)

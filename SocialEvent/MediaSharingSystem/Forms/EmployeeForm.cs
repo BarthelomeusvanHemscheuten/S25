@@ -241,24 +241,20 @@ namespace MediaSharingSystem.Forms
         private void lbMaterialen_SelectedIndexChanged(object sender, EventArgs e)
         {
             Material material = (Material)lbMaterialen.SelectedItem;
+            decimal price = material.Price;
             tbMateriaalPrijsPerDag.Text = material.Price.ToString();
             tbMateriaalOmschrijving.Text = material.Description;
-            if(material.StartDate == null)
-            {
-                tbMateriaalBeschikbaar.Text = "Ja";
-            }
-            else
+            tbHoeveelheidMateriaal.Text = controller.GetCountMaterial(material).ToString();
+            tbTypeMaterial.Text = material.Name;
+            if(material.StartDate != null)
             {
                 tbMateriaalBeschikbaar.Text = "Nee";
             }
+            else
+            {
+                tbMateriaalBeschikbaar.Text = "Ja";
+            }
         }
 
-        private void lbVisitors_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            Visitor visitor = (Visitor)lbGebruikers.SelectedItem;
-            tbNaamGebruikersBeheren.Text = visitor.Name;
-            tbEmailGebruikersBeheren.Text = visitor.EmailAddress;
-            tbTelefoonNrGebruikersBeheren.Text = visitor.Telnr;
-        }
     }
 }
