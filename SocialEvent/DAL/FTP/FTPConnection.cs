@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DAL.FTP
 {
-    class FTPConnection
+    public class FTPConnection
     {
         private string webserver = @"ftp://192.168.20.18/";
         private string username = "Administrator";
@@ -26,7 +26,7 @@ namespace DAL.FTP
         /// </summary>
         /// <param name="uploadFromPath">Path van het bestand op de gebruikerscomputer. Bv: @"C:\testfile.txt" </param>
         /// <param name="uploadToPath">Path waar je het geupload wil hebben op de server. Bv: @"users\thomasj10\files\testfile.txt"</param>
-        private void UploadFile(string uploadFromPath, string uploadToPath)
+        public void UploadFile(string uploadFromPath, string uploadToPath)
         {
             //Geef aan waar we de file naar willen uploaden. De FTP server + in welke subfolder
             FtpWebRequest request = (FtpWebRequest)WebRequest.Create(webserver + uploadToPath);
@@ -64,7 +64,7 @@ namespace DAL.FTP
         /// </summary>
         /// <param name="downloadFromPath">Path van het bestand op de FTP server. Bv: @"users\thomasj10\files\testfile.txt" </param>
         /// <param name="downloadToPath">Path waar het bestand naar opgeslagen moet worden. Bv: @"C:\testfile.txt" </param>
-        private void DownloadFileToFolder(string downloadFromPath, string downloadToPath)
+        public void DownloadFileToFolder(string downloadFromPath, string downloadToPath)
         {
             //Geeft aan waar we de file vanaf willen downloaden. De FTP server + welke subfolder  
             FtpWebRequest request = (FtpWebRequest)WebRequest.Create(webserver + downloadFromPath);
@@ -98,7 +98,7 @@ namespace DAL.FTP
         /// <para>- Het opgegeven bestand geen image is.</para>
         /// </summary>
         /// <param name="downloadFromPath">Path van het bestand op de FTP server. Bv: @"users\thomasj10\files\testfile.txt" </param>
-        private Image GetImageFromFTP(string downloadFromPath)
+        public Image GetImageFromFTP(string downloadFromPath)
         {
             //Geeft aan waar we de file vanaf willen downloaden. De FTP server + welke subfolder  
             FtpWebRequest request = (FtpWebRequest)WebRequest.Create(webserver + downloadFromPath);
