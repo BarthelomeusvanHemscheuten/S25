@@ -54,7 +54,7 @@ namespace Models.ReservationSystem
             return null;
         }
 
-        public Material AddMaterial(string name, string description, double price)
+        public Material AddMaterial(string name, string description, decimal price)
         {
             if (name != null && description != null && price >= 0)
             {

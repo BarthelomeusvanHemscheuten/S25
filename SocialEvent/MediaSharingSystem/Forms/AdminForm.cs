@@ -133,7 +133,7 @@ namespace MediaSharingSystem.Forms
         //Adds Material
         private void btnAddMaterial_Click(object sender, EventArgs e)
         {
-            if (controller.AddMaterial(tbNaamMateriaal.Text, tbOmschrijvingMateriaal.Text, Convert.ToDouble(tbHuurprijs.Text), Convert.ToInt32(tbHoeveelheidMateriaal.Text)) != null)
+            if (controller.AddMaterial(tbNaamMateriaal.Text, tbOmschrijvingMateriaal.Text, Convert.ToDecimal(tbHuurprijs.Text), Convert.ToInt32(tbHoeveelheidMateriaal.Text)) != null)
             {
                 MessageBox.Show("Materiaal toegevoegd");
             }

@@ -188,5 +188,28 @@ namespace DAL.SQLContext
             }
             return null;
         }
+        internal List<decimal> executereaderDecimalList(string query)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    List<decimal> list = new List<decimal>();
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(query, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        list.Add(reader.GetDecimal(0));
+                    }
+                    return list;
+                }
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine("Error: " + exception.Message);
+            }
+            return null;
+        }
     }
 }

@@ -39,7 +39,7 @@ namespace DAL.Repositories
             return false;
         }
 
-        public bool InsertMaterial(string name, string description, double price)
+        public bool InsertMaterial(string name, string description, decimal price)
         {
             if(context.InsertMaterial(name, description, price))
             {
@@ -94,7 +94,7 @@ namespace DAL.Repositories
             return context.CountMaterials();
         }
 
-        public List<double> GetAllMaterialsPrice()
+        public List<decimal> GetAllMaterialsPrice()
         {
             return context.GetAllMaterialsPrice();
         }

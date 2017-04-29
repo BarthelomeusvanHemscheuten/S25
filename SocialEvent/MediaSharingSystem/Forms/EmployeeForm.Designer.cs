@@ -98,22 +98,17 @@
             this.lbReserveringVisitors = new System.Windows.Forms.ListBox();
             this.dtmHoofdreserveerder = new System.Windows.Forms.DateTimePicker();
             this.lbGeboorteDatum = new System.Windows.Forms.Label();
-            this.btnMoreAanhangsels2 = new System.Windows.Forms.Button();
             this.tbAddressHoofdreserveerder = new System.Windows.Forms.TextBox();
             this.tbEmailHoofdreserveerder = new System.Windows.Forms.TextBox();
             this.lbHoofdreserveerder = new System.Windows.Forms.Label();
             this.lbAddress = new System.Windows.Forms.Label();
             this.lbEmail = new System.Windows.Forms.Label();
             this.lbUsername = new System.Windows.Forms.Label();
-            this.tbAanhangselLocatie2 = new System.Windows.Forms.TextBox();
             this.tbAanhangselLocatie1 = new System.Windows.Forms.TextBox();
             this.lbLocatie = new System.Windows.Forms.Label();
             this.btnReserverenLocatie = new System.Windows.Forms.Button();
             this.btnMoreAanhangsels1 = new System.Windows.Forms.Button();
-            this.tbTelefoonNrAanhangsel2 = new System.Windows.Forms.TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.lblAanhangsel2 = new System.Windows.Forms.Label();
-            this.tbNaamAanhangsel2 = new System.Windows.Forms.TextBox();
             this.tbTelefoonNrAanhangsel1 = new System.Windows.Forms.TextBox();
             this.lblTelefoonNr1 = new System.Windows.Forms.Label();
             this.lblAanhangsel1 = new System.Windows.Forms.Label();
@@ -122,6 +117,9 @@
             this.tbLocatieNrHoofdreserveerder = new System.Windows.Forms.TextBox();
             this.tbNaamHoofdreserveerder = new System.Windows.Forms.TextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.panelMedewerker.SuspendLayout();
             this.tbctrlMain.SuspendLayout();
             this.tabAccountInstellingen.SuspendLayout();
@@ -498,6 +496,7 @@
             this.lbVisitors.Name = "lbVisitors";
             this.lbVisitors.Size = new System.Drawing.Size(151, 180);
             this.lbVisitors.TabIndex = 18;
+            this.lbVisitors.SelectedIndexChanged += new System.EventHandler(this.lbVisitors_SelectedIndexChanged);
             // 
             // btnVerhuurMateriaal
             // 
@@ -615,6 +614,7 @@
             this.lbMaterialen.Name = "lbMaterialen";
             this.lbMaterialen.Size = new System.Drawing.Size(136, 180);
             this.lbMaterialen.TabIndex = 0;
+            this.lbMaterialen.SelectedIndexChanged += new System.EventHandler(this.lbMaterialen_SelectedIndexChanged);
             // 
             // tabPage3
             // 
@@ -745,6 +745,7 @@
             this.lbGebruikers.Name = "lbGebruikers";
             this.lbGebruikers.Size = new System.Drawing.Size(224, 340);
             this.lbGebruikers.TabIndex = 0;
+            this.lbGebruikers.SelectedIndexChanged += new System.EventHandler(this.lbGebruikers_SelectedIndexChanged);
             // 
             // tabPage4
             // 
@@ -761,6 +762,9 @@
             // PanelInfoMenu
             // 
             this.PanelInfoMenu.BackColor = System.Drawing.Color.Lavender;
+            this.PanelInfoMenu.Controls.Add(this.label4);
+            this.PanelInfoMenu.Controls.Add(this.label3);
+            this.PanelInfoMenu.Controls.Add(this.label2);
             this.PanelInfoMenu.Controls.Add(this.lbBungalows);
             this.PanelInfoMenu.Controls.Add(this.lbEigenTentjes);
             this.PanelInfoMenu.Controls.Add(this.lbBungalinos);
@@ -772,22 +776,17 @@
             this.PanelInfoMenu.Controls.Add(this.lbReserveringVisitors);
             this.PanelInfoMenu.Controls.Add(this.dtmHoofdreserveerder);
             this.PanelInfoMenu.Controls.Add(this.lbGeboorteDatum);
-            this.PanelInfoMenu.Controls.Add(this.btnMoreAanhangsels2);
             this.PanelInfoMenu.Controls.Add(this.tbAddressHoofdreserveerder);
             this.PanelInfoMenu.Controls.Add(this.tbEmailHoofdreserveerder);
             this.PanelInfoMenu.Controls.Add(this.lbHoofdreserveerder);
             this.PanelInfoMenu.Controls.Add(this.lbAddress);
             this.PanelInfoMenu.Controls.Add(this.lbEmail);
             this.PanelInfoMenu.Controls.Add(this.lbUsername);
-            this.PanelInfoMenu.Controls.Add(this.tbAanhangselLocatie2);
             this.PanelInfoMenu.Controls.Add(this.tbAanhangselLocatie1);
             this.PanelInfoMenu.Controls.Add(this.lbLocatie);
             this.PanelInfoMenu.Controls.Add(this.btnReserverenLocatie);
             this.PanelInfoMenu.Controls.Add(this.btnMoreAanhangsels1);
-            this.PanelInfoMenu.Controls.Add(this.tbTelefoonNrAanhangsel2);
             this.PanelInfoMenu.Controls.Add(this.pictureBox2);
-            this.PanelInfoMenu.Controls.Add(this.lblAanhangsel2);
-            this.PanelInfoMenu.Controls.Add(this.tbNaamAanhangsel2);
             this.PanelInfoMenu.Controls.Add(this.tbTelefoonNrAanhangsel1);
             this.PanelInfoMenu.Controls.Add(this.lblTelefoonNr1);
             this.PanelInfoMenu.Controls.Add(this.lblAanhangsel1);
@@ -893,25 +892,12 @@
             // lbGeboorteDatum
             // 
             this.lbGeboorteDatum.AutoSize = true;
-            this.lbGeboorteDatum.Location = new System.Drawing.Point(334, 477);
+            this.lbGeboorteDatum.Location = new System.Drawing.Point(316, 477);
             this.lbGeboorteDatum.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbGeboorteDatum.Name = "lbGeboorteDatum";
             this.lbGeboorteDatum.Size = new System.Drawing.Size(113, 17);
             this.lbGeboorteDatum.TabIndex = 54;
             this.lbGeboorteDatum.Text = "GeboorteDatum:";
-            // 
-            // btnMoreAanhangsels2
-            // 
-            this.btnMoreAanhangsels2.BackColor = System.Drawing.Color.LimeGreen;
-            this.btnMoreAanhangsels2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMoreAanhangsels2.Location = new System.Drawing.Point(326, 418);
-            this.btnMoreAanhangsels2.Margin = new System.Windows.Forms.Padding(4);
-            this.btnMoreAanhangsels2.Name = "btnMoreAanhangsels2";
-            this.btnMoreAanhangsels2.Size = new System.Drawing.Size(49, 39);
-            this.btnMoreAanhangsels2.TabIndex = 52;
-            this.btnMoreAanhangsels2.Text = "+";
-            this.btnMoreAanhangsels2.UseVisualStyleBackColor = false;
-            this.btnMoreAanhangsels2.Click += new System.EventHandler(this.btnMoreAanhangsels2_Click);
             // 
             // tbAddressHoofdreserveerder
             // 
@@ -942,7 +928,7 @@
             // lbAddress
             // 
             this.lbAddress.AutoSize = true;
-            this.lbAddress.Location = new System.Drawing.Point(383, 448);
+            this.lbAddress.Location = new System.Drawing.Point(365, 448);
             this.lbAddress.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbAddress.Name = "lbAddress";
             this.lbAddress.Size = new System.Drawing.Size(64, 17);
@@ -952,7 +938,7 @@
             // lbEmail
             // 
             this.lbEmail.AutoSize = true;
-            this.lbEmail.Location = new System.Drawing.Point(383, 418);
+            this.lbEmail.Location = new System.Drawing.Point(383, 416);
             this.lbEmail.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbEmail.Name = "lbEmail";
             this.lbEmail.Size = new System.Drawing.Size(46, 17);
@@ -968,14 +954,6 @@
             this.lbUsername.Size = new System.Drawing.Size(49, 17);
             this.lbUsername.TabIndex = 38;
             this.lbUsername.Text = "Naam:";
-            // 
-            // tbAanhangselLocatie2
-            // 
-            this.tbAanhangselLocatie2.Location = new System.Drawing.Point(295, 378);
-            this.tbAanhangselLocatie2.Margin = new System.Windows.Forms.Padding(4);
-            this.tbAanhangselLocatie2.Name = "tbAanhangselLocatie2";
-            this.tbAanhangselLocatie2.Size = new System.Drawing.Size(152, 22);
-            this.tbAanhangselLocatie2.TabIndex = 37;
             // 
             // tbAanhangselLocatie1
             // 
@@ -1019,14 +997,6 @@
             this.btnMoreAanhangsels1.UseVisualStyleBackColor = false;
             this.btnMoreAanhangsels1.Click += new System.EventHandler(this.btnMoreAanhangsels1_Click);
             // 
-            // tbTelefoonNrAanhangsel2
-            // 
-            this.tbTelefoonNrAanhangsel2.Location = new System.Drawing.Point(295, 344);
-            this.tbTelefoonNrAanhangsel2.Margin = new System.Windows.Forms.Padding(4);
-            this.tbTelefoonNrAanhangsel2.Name = "tbTelefoonNrAanhangsel2";
-            this.tbTelefoonNrAanhangsel2.Size = new System.Drawing.Size(152, 22);
-            this.tbTelefoonNrAanhangsel2.TabIndex = 31;
-            // 
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
@@ -1037,24 +1007,6 @@
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
-            // 
-            // lblAanhangsel2
-            // 
-            this.lblAanhangsel2.AutoSize = true;
-            this.lblAanhangsel2.Location = new System.Drawing.Point(292, 284);
-            this.lblAanhangsel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblAanhangsel2.Name = "lblAanhangsel2";
-            this.lblAanhangsel2.Size = new System.Drawing.Size(99, 17);
-            this.lblAanhangsel2.TabIndex = 29;
-            this.lblAanhangsel2.Text = "Aanhangsel 2:";
-            // 
-            // tbNaamAanhangsel2
-            // 
-            this.tbNaamAanhangsel2.Location = new System.Drawing.Point(295, 313);
-            this.tbNaamAanhangsel2.Margin = new System.Windows.Forms.Padding(4);
-            this.tbNaamAanhangsel2.Name = "tbNaamAanhangsel2";
-            this.tbNaamAanhangsel2.Size = new System.Drawing.Size(152, 22);
-            this.tbNaamAanhangsel2.TabIndex = 28;
             // 
             // tbTelefoonNrAanhangsel1
             // 
@@ -1119,6 +1071,36 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(380, 316);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(49, 17);
+            this.label2.TabIndex = 66;
+            this.label2.Text = "Naam:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(342, 349);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(87, 17);
+            this.label3.TabIndex = 67;
+            this.label3.Text = "TelefoonNr.:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(352, 381);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(77, 17);
+            this.label4.TabIndex = 68;
+            this.label4.Text = "LocatieNr.:";
             // 
             // EmployeeForm
             // 
@@ -1210,10 +1192,7 @@
         private System.Windows.Forms.Panel PanelInfoMenu;
         private System.Windows.Forms.Button btnReserverenLocatie;
         private System.Windows.Forms.Button btnMoreAanhangsels1;
-        private System.Windows.Forms.TextBox tbTelefoonNrAanhangsel2;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Label lblAanhangsel2;
-        private System.Windows.Forms.TextBox tbNaamAanhangsel2;
         private System.Windows.Forms.TextBox tbTelefoonNrAanhangsel1;
         private System.Windows.Forms.Label lblTelefoonNr1;
         private System.Windows.Forms.Label lblAanhangsel1;
@@ -1227,7 +1206,6 @@
         private System.Windows.Forms.MonthCalendar dtEindDatum;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tbHoeveelheidMateriaal;
-        private System.Windows.Forms.TextBox tbAanhangselLocatie2;
         private System.Windows.Forms.TextBox tbAanhangselLocatie1;
         private System.Windows.Forms.Label lbLocatie;
         private System.Windows.Forms.Label lbUsername;
@@ -1236,7 +1214,6 @@
         private System.Windows.Forms.Label lbHoofdreserveerder;
         private System.Windows.Forms.TextBox tbAddressHoofdreserveerder;
         private System.Windows.Forms.TextBox tbEmailHoofdreserveerder;
-        private System.Windows.Forms.Button btnMoreAanhangsels2;
         private System.Windows.Forms.DateTimePicker dtmHoofdreserveerder;
         private System.Windows.Forms.Label lbGeboorteDatum;
         private System.Windows.Forms.ListBox lbReserveringVisitors;
@@ -1248,5 +1225,8 @@
         private System.Windows.Forms.Label lbStaCaravans;
         private System.Windows.Forms.Label lbHuurTentjes;
         private System.Windows.Forms.Label lbComfortplaatsen;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
     }
 }

@@ -17,10 +17,10 @@ namespace Models.ReservationSystem
         public string Description { get; private set; }
         public DateTime StartDate { get; private set; }
         public DateTime EndDate { get; private set; }
-        public double Price { get; private set; }
+        public Decimal Price { get; private set; }
 
         // constructor om nieuwe material aan te maken 
-        public Material(string name, string description, double price)
+        public Material(string name, string description, decimal price)
         {
             this.ID = reservationRepo.CountMaterials() + 1;
             this.Name = name;
@@ -29,7 +29,7 @@ namespace Models.ReservationSystem
         }
 
         // constructor om material aan te maken die al bestaat in database
-        public Material(int id, string name, string description, double price)
+        public Material(int id, string name, string description, decimal price)
         {
             this.ID = id;
             this.Name = name;

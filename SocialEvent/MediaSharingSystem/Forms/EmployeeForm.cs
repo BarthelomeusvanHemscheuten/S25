@@ -34,9 +34,22 @@ namespace MediaSharingSystem.Forms
             tbctrlMain.Appearance = TabAppearance.FlatButtons;
             tbctrlMain.ItemSize = new Size(0, 1);
             tbctrlMain.SizeMode = TabSizeMode.Fixed;
+            lbMaterialen.DisplayMember = "Name";
+            lbVisitors.DisplayMember = "UserName";
+            lbGebruikers.DisplayMember = "UserName";
             for (int i = 0; i <= 3; i++)
             {
                 userData.Add(new List<string>());
+            }
+            foreach(User user in controller.GetAndShowVisitorsFromDatabase())
+            {
+                lbGebruikers.Items.Add(user);
+                lbVisitors.Items.Add(user);
+            }
+
+            foreach(Material material in controller.GetAndShowMaterialFromDatabase())
+            {
+                lbMaterialen.Items.Add(material);
             }
         }
 
@@ -156,15 +169,19 @@ namespace MediaSharingSystem.Forms
 
         private void btnVerwijderGebruiker_Click(object sender, EventArgs e)
         {
-            if (lbGebruikers.SelectedItem != null)
+            Visitor visitor = (Visitor)lbGebruikers.SelectedItem;
+            if (controller.DeleteVisitor(visitor))
             {
-                foreach (Models.Users.Visitor visitor in controller.Event.Visitors)
+                MessageBox.Show("User Deleted");
+                lbGebruikers.Items.Clear();
+                foreach (User user in controller.GetAndShowVisitorsFromDatabase())
                 {
-                    if (visitor.Name == lbGebruikers.SelectedItem.ToString())
-                    {
-                        controller.DeleteVisitor(visitor);
-                    }
+                    lbGebruikers.Items.Add(user);
                 }
+            }
+            else
+            {
+                MessageBox.Show("Something went wrong");
             }
         }
 
@@ -203,16 +220,7 @@ namespace MediaSharingSystem.Forms
             }
         }
 
-        private void btnMoreAanhangsels2_Click(object sender, EventArgs e)
-        {
-            AddUserLocation(tbNaamAanhangsel2.Text, tbTelefoonNrAanhangsel2.Text, Convert.ToInt32(tbAanhangselLocatie2.Text));
-            MessageBox.Show("User added");
-            lbReserveringVisitors.Items.Clear();
-            foreach (string name in userData[1])
-            {
-                lbReserveringVisitors.Items.Add(name);
-            }
-        }
+
         private void AddUserLocation(string name, string telnr, int locationnr)
         {
             userData[0].Add(controller.RandomString(8));
@@ -220,6 +228,37 @@ namespace MediaSharingSystem.Forms
             userData[2].Add(controller.RandomString(8));
             userData[3].Add(telnr);
             locations.Add(new Location(locationnr, controller.GetLocationFeatures(locationnr), controller.GetLocationType(locationnr)));
+        }
+
+        private void lbGebruikers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Visitor visitor = (Visitor)lbGebruikers.SelectedItem;
+            tbNaamGebruikersBeheren.Text = visitor.Name;
+            tbEmailGebruikersBeheren.Text = visitor.EmailAddress;
+            tbTelefoonNrGebruikersBeheren.Text = visitor.Telnr;
+        }
+
+        private void lbMaterialen_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Material material = (Material)lbMaterialen.SelectedItem;
+            tbMateriaalPrijsPerDag.Text = material.Price.ToString();
+            tbMateriaalOmschrijving.Text = material.Description;
+            if(material.StartDate == null)
+            {
+                tbMateriaalBeschikbaar.Text = "Ja";
+            }
+            else
+            {
+                tbMateriaalBeschikbaar.Text = "Nee";
+            }
+        }
+
+        private void lbVisitors_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Visitor visitor = (Visitor)lbGebruikers.SelectedItem;
+            tbNaamGebruikersBeheren.Text = visitor.Name;
+            tbEmailGebruikersBeheren.Text = visitor.EmailAddress;
+            tbTelefoonNrGebruikersBeheren.Text = visitor.Telnr;
         }
     }
 }

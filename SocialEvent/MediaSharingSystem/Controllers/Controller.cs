@@ -49,7 +49,7 @@ namespace MediaSharingSystem.Controllers
             return false;
         }
 
-        public List<Material> AddMaterial(string name, string description, double price, int quantity)
+        public List<Material> AddMaterial(string name, string description, decimal price, int quantity)
         {
             List<Material> result = new List<Material>();
 
@@ -70,7 +70,7 @@ namespace MediaSharingSystem.Controllers
         {
             List<Material> result = new List<Material>();
 
-            List<double> price = new List<double>();
+            List<decimal> price = new List<decimal>();
             List<string> name = new List<string>();
             List<string> description = new List<string>();
 
