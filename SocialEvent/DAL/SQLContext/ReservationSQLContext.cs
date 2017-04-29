@@ -23,7 +23,7 @@ namespace DAL.SQLContext
         public int InsertGetReservation(int paymentTrueOrFalse)
         {
             string queryInsert = @"INSERT INTO [Reservation]([payed]) VALUES ('@PAYED')";
-            string queryGet = @"SELECT [reservationid] FROM [reservation] ORDER BY [reservationid] DESC LIMIT 1;";
+            string queryGet = @"SELECT TOP 1 [reservationid] FROM [reservation] ORDER BY [reservationid] DESC;";
 
             queryInsert = queryInsert.Replace("@PAYED", paymentTrueOrFalse.ToString());
 

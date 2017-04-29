@@ -22,6 +22,7 @@ namespace DAL.SQLContext
             query = query.Replace("@DATEOFBIRTH", dateOfBirth.ToString());
             query = query.Replace("@EMAIL", emailAddress);
             query = query.Replace("@ADDRESS", address);
+            query = query.Replace("@NAME", name);
             query = query.Replace("@USERNAME", username);
             query = query.Replace("@PASSWORD", password);
             query = query.Replace("@TELNR", telnr);
@@ -37,6 +38,7 @@ namespace DAL.SQLContext
             query = query.Replace("@RESERVATIONID", reservationId.ToString());
             query = query.Replace("@USERGROUP", userGroup.ToString());
             query = query.Replace("@ISPRESENT", isPresent.ToString());
+            query = query.Replace("@NAME", name);
             query = query.Replace("@USERNAME", username);
             query = query.Replace("@PASSWORD", password);
             query = query.Replace("@TELNR", telnr);

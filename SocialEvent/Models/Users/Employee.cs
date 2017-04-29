@@ -65,14 +65,15 @@ namespace Models.Users
 
                 // voor de eerste locatie. 
                 List<Visitor> visitors = new List<Visitor>();
-                Visitor mainVisitor = AddVisitor(username[0], name[0], password[0], emailAddress, telnr[0], address, dateofbirth, eventt, locations[0], eventt.ID, reservationId);
                 userRepo.InsertUser(eventt.ID, reservationId, 3, 0, dateofbirth, emailAddress, address, name[0], username[0], password[0], telnr[0], rfid);
+                Visitor mainVisitor = AddVisitor(username[0], name[0], password[0], emailAddress, telnr[0], address, dateofbirth, eventt, locations[0], eventt.ID, reservationId);
+                
                 
 
-                for (int i = 0; i < quantityVisitors; i++)
+                for (int i = 1; i < quantityVisitors; i++)
                 {
-                    Visitor visitor = AddVisitor(username[i], name[i], password[i], telnr[i], eventt, locations[0], eventt.ID, reservationId);
                     userRepo.InsertUser(eventt.ID, reservationId, 3, 0, name[i], username[i], password[i], telnr[i], rfid);
+                    Visitor visitor = AddVisitor(username[i], name[i], password[i], telnr[i], eventt, locations[0], eventt.ID, reservationId);
                     visitors.Add(visitor);
                 }
 

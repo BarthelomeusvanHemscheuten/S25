@@ -171,9 +171,9 @@ namespace MediaSharingSystem.Forms
         private void btnReserverenLocatie_Click(object sender, EventArgs e)
         {
             int locationnr = Convert.ToInt32(tbLocatieNrHoofdreserveerder.Text);
-            userData[0].Insert(0, RandomString(8));
+            userData[0].Insert(0, controller.RandomString(8));
             userData[1].Insert(0, tbNaamHoofdreserveerder.Text);
-            userData[2].Insert(0, RandomString(8));
+            userData[2].Insert(0, controller.RandomString(8));
             userData[3].Insert(0, tbTelefoonNrHoofdreserveerder.Text);
             locations.Insert(0, new Location(locationnr, controller.GetLocationFeatures(locationnr), controller.GetLocationType(locationnr)));
             if (controller.Reserve(locations, userData[0].Count, locations.Count, userData[0], userData[1], userData[2], tbEmailHoofdreserveerder.Text, userData[3], tbAddressHoofdreserveerder.Text, dtmHoofdreserveerder.Value))
@@ -215,17 +215,11 @@ namespace MediaSharingSystem.Forms
         }
         private void AddUserLocation(string name, string telnr, int locationnr)
         {
-            userData[0].Add(RandomString(8));
+            userData[0].Add(controller.RandomString(8));
             userData[1].Add(name);
-            userData[2].Add(RandomString(8));
+            userData[2].Add(controller.RandomString(8));
             userData[3].Add(telnr);
             locations.Add(new Location(locationnr, controller.GetLocationFeatures(locationnr), controller.GetLocationType(locationnr)));
-        }
-        private string RandomString(int length)
-        {
-            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            return new string(Enumerable.Repeat(chars, length)
-              .Select(s => s[random.Next(s.Length)]).ToArray());
         }
     }
 }
