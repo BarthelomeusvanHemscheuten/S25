@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MediaSharingSystem.Controllers;
 using Models.Users;
+using Models.MediaSharingSystem;
 
 namespace MediaSharingSystem.Forms
 {
@@ -26,10 +27,23 @@ namespace MediaSharingSystem.Forms
                 lbFilterwoorden.Items.Add(word);
             }
             lbGebruikers.DisplayMember = "UserName";
+            lbReportedPosts.DisplayMember = "ID";
+            lbReportedComments.DisplayMember = "ID";
             foreach(User user in controller.GetAndShowVisitorsFromDatabase())
             {
                 lbGebruikers.Items.Add(user);
             }
+            foreach(Post post in controller.GetAndShowReportedPostsFromDatabase())
+            {
+                lbReportedPosts.Items.Add(post);
+            }
+            foreach(Comment comment in controller.GetAndShowReportedCommentsFromDatabase())
+            {
+                lbReportedComments.Items.Add(comment);
+            }
+            tbNaam.Text = controller.Admin.Name;
+            tbEmail.Text = controller.Admin.EmailAddress;
+            tbTelefoonNr.Text = controller.Admin.Telnr;
             tbctrlMain.Appearance = TabAppearance.FlatButtons;
             tbctrlMain.ItemSize = new Size(0, 1);
             tbctrlMain.SizeMode = TabSizeMode.Fixed;

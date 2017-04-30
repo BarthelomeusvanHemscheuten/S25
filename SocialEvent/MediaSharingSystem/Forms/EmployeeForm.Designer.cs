@@ -51,12 +51,13 @@
             this.lblEmail = new System.Windows.Forms.Label();
             this.tbEmail = new System.Windows.Forms.TextBox();
             this.tbWachtwoord = new System.Windows.Forms.TextBox();
-            this.tbTelefoonNr = new System.Windows.Forms.TextBox();
             this.lblNaam = new System.Windows.Forms.Label();
             this.tbNaam = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panelVerhuurItem = new System.Windows.Forms.Panel();
+            this.tbAantalMaterialen = new System.Windows.Forms.TextBox();
+            this.dtmEinddatum = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.tbHoeveelheidMateriaal = new System.Windows.Forms.TextBox();
             this.lbVisitors = new System.Windows.Forms.ListBox();
@@ -119,8 +120,7 @@
             this.tbLocatieNrHoofdreserveerder = new System.Windows.Forms.TextBox();
             this.tbNaamHoofdreserveerder = new System.Windows.Forms.TextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.dtmEinddatum = new System.Windows.Forms.DateTimePicker();
-            this.tbAantalMaterialen = new System.Windows.Forms.TextBox();
+            this.tbTelefoonNr = new System.Windows.Forms.TextBox();
             this.panelMedewerker.SuspendLayout();
             this.tbctrlMain.SuspendLayout();
             this.tabAccountInstellingen.SuspendLayout();
@@ -247,6 +247,7 @@
             // panelAccountInstellingen
             // 
             this.panelAccountInstellingen.BackColor = System.Drawing.Color.Lavender;
+            this.panelAccountInstellingen.Controls.Add(this.tbTelefoonNr);
             this.panelAccountInstellingen.Controls.Add(this.tbWachtwoord2);
             this.panelAccountInstellingen.Controls.Add(this.btnWijzigenFoto);
             this.panelAccountInstellingen.Controls.Add(this.pbPicture);
@@ -259,7 +260,6 @@
             this.panelAccountInstellingen.Controls.Add(this.lblEmail);
             this.panelAccountInstellingen.Controls.Add(this.tbEmail);
             this.panelAccountInstellingen.Controls.Add(this.tbWachtwoord);
-            this.panelAccountInstellingen.Controls.Add(this.tbTelefoonNr);
             this.panelAccountInstellingen.Controls.Add(this.lblNaam);
             this.panelAccountInstellingen.Controls.Add(this.tbNaam);
             this.panelAccountInstellingen.Location = new System.Drawing.Point(-20, -11);
@@ -270,15 +270,16 @@
             // 
             // tbWachtwoord2
             // 
-            this.tbWachtwoord2.Location = new System.Drawing.Point(281, 300);
+            this.tbWachtwoord2.Location = new System.Drawing.Point(314, 300);
             this.tbWachtwoord2.Margin = new System.Windows.Forms.Padding(4);
             this.tbWachtwoord2.Name = "tbWachtwoord2";
-            this.tbWachtwoord2.Size = new System.Drawing.Size(145, 22);
+            this.tbWachtwoord2.Size = new System.Drawing.Size(181, 22);
             this.tbWachtwoord2.TabIndex = 15;
+            this.tbWachtwoord2.Text = "Herhaal het wachtwoord hier";
             // 
             // btnWijzigenFoto
             // 
-            this.btnWijzigenFoto.Location = new System.Drawing.Point(436, 197);
+            this.btnWijzigenFoto.Location = new System.Drawing.Point(544, 198);
             this.btnWijzigenFoto.Margin = new System.Windows.Forms.Padding(4);
             this.btnWijzigenFoto.Name = "btnWijzigenFoto";
             this.btnWijzigenFoto.Size = new System.Drawing.Size(100, 28);
@@ -300,7 +301,7 @@
             // 
             // btnWijzigenEmail
             // 
-            this.btnWijzigenEmail.Location = new System.Drawing.Point(436, 265);
+            this.btnWijzigenEmail.Location = new System.Drawing.Point(544, 265);
             this.btnWijzigenEmail.Margin = new System.Windows.Forms.Padding(4);
             this.btnWijzigenEmail.Name = "btnWijzigenEmail";
             this.btnWijzigenEmail.Size = new System.Drawing.Size(100, 28);
@@ -311,7 +312,7 @@
             // 
             // btnWijzigenWachtwoord
             // 
-            this.btnWijzigenWachtwoord.Location = new System.Drawing.Point(436, 300);
+            this.btnWijzigenWachtwoord.Location = new System.Drawing.Point(544, 297);
             this.btnWijzigenWachtwoord.Margin = new System.Windows.Forms.Padding(4);
             this.btnWijzigenWachtwoord.Name = "btnWijzigenWachtwoord";
             this.btnWijzigenWachtwoord.Size = new System.Drawing.Size(100, 28);
@@ -322,7 +323,7 @@
             // 
             // btnWijzigenTelefoonNr
             // 
-            this.btnWijzigenTelefoonNr.Location = new System.Drawing.Point(436, 335);
+            this.btnWijzigenTelefoonNr.Location = new System.Drawing.Point(544, 329);
             this.btnWijzigenTelefoonNr.Margin = new System.Windows.Forms.Padding(4);
             this.btnWijzigenTelefoonNr.Name = "btnWijzigenTelefoonNr";
             this.btnWijzigenTelefoonNr.Size = new System.Drawing.Size(100, 28);
@@ -333,7 +334,7 @@
             // 
             // btnWijzigenNaam
             // 
-            this.btnWijzigenNaam.Location = new System.Drawing.Point(436, 233);
+            this.btnWijzigenNaam.Location = new System.Drawing.Point(544, 233);
             this.btnWijzigenNaam.Margin = new System.Windows.Forms.Padding(4);
             this.btnWijzigenNaam.Name = "btnWijzigenNaam";
             this.btnWijzigenNaam.Size = new System.Drawing.Size(100, 28);
@@ -377,7 +378,7 @@
             this.tbEmail.Location = new System.Drawing.Point(140, 267);
             this.tbEmail.Margin = new System.Windows.Forms.Padding(4);
             this.tbEmail.Name = "tbEmail";
-            this.tbEmail.Size = new System.Drawing.Size(287, 22);
+            this.tbEmail.Size = new System.Drawing.Size(355, 22);
             this.tbEmail.TabIndex = 5;
             // 
             // tbWachtwoord
@@ -385,16 +386,9 @@
             this.tbWachtwoord.Location = new System.Drawing.Point(140, 300);
             this.tbWachtwoord.Margin = new System.Windows.Forms.Padding(4);
             this.tbWachtwoord.Name = "tbWachtwoord";
-            this.tbWachtwoord.Size = new System.Drawing.Size(133, 22);
+            this.tbWachtwoord.Size = new System.Drawing.Size(166, 22);
             this.tbWachtwoord.TabIndex = 4;
-            // 
-            // tbTelefoonNr
-            // 
-            this.tbTelefoonNr.Location = new System.Drawing.Point(140, 332);
-            this.tbTelefoonNr.Margin = new System.Windows.Forms.Padding(4);
-            this.tbTelefoonNr.Name = "tbTelefoonNr";
-            this.tbTelefoonNr.Size = new System.Drawing.Size(287, 22);
-            this.tbTelefoonNr.TabIndex = 3;
+            this.tbWachtwoord.Text = "Plaats nieuw wachtwoord hier";
             // 
             // lblNaam
             // 
@@ -411,7 +405,7 @@
             this.tbNaam.Location = new System.Drawing.Point(140, 235);
             this.tbNaam.Margin = new System.Windows.Forms.Padding(4);
             this.tbNaam.Name = "tbNaam";
-            this.tbNaam.Size = new System.Drawing.Size(287, 22);
+            this.tbNaam.Size = new System.Drawing.Size(355, 22);
             this.tbNaam.TabIndex = 0;
             // 
             // tabPage2
@@ -462,6 +456,20 @@
             this.panelVerhuurItem.Name = "panelVerhuurItem";
             this.panelVerhuurItem.Size = new System.Drawing.Size(661, 500);
             this.panelVerhuurItem.TabIndex = 17;
+            // 
+            // tbAantalMaterialen
+            // 
+            this.tbAantalMaterialen.Location = new System.Drawing.Point(350, 285);
+            this.tbAantalMaterialen.Name = "tbAantalMaterialen";
+            this.tbAantalMaterialen.Size = new System.Drawing.Size(100, 22);
+            this.tbAantalMaterialen.TabIndex = 23;
+            // 
+            // dtmEinddatum
+            // 
+            this.dtmEinddatum.Location = new System.Drawing.Point(350, 256);
+            this.dtmEinddatum.Name = "dtmEinddatum";
+            this.dtmEinddatum.Size = new System.Drawing.Size(200, 22);
+            this.dtmEinddatum.TabIndex = 22;
             // 
             // label1
             // 
@@ -1096,19 +1104,13 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // dtmEinddatum
+            // tbTelefoonNr
             // 
-            this.dtmEinddatum.Location = new System.Drawing.Point(350, 256);
-            this.dtmEinddatum.Name = "dtmEinddatum";
-            this.dtmEinddatum.Size = new System.Drawing.Size(200, 22);
-            this.dtmEinddatum.TabIndex = 22;
-            // 
-            // tbAantalMaterialen
-            // 
-            this.tbAantalMaterialen.Location = new System.Drawing.Point(350, 285);
-            this.tbAantalMaterialen.Name = "tbAantalMaterialen";
-            this.tbAantalMaterialen.Size = new System.Drawing.Size(100, 22);
-            this.tbAantalMaterialen.TabIndex = 23;
+            this.tbTelefoonNr.Location = new System.Drawing.Point(139, 335);
+            this.tbTelefoonNr.Margin = new System.Windows.Forms.Padding(4);
+            this.tbTelefoonNr.Name = "tbTelefoonNr";
+            this.tbTelefoonNr.Size = new System.Drawing.Size(356, 22);
+            this.tbTelefoonNr.TabIndex = 16;
             // 
             // EmployeeForm
             // 
@@ -1165,7 +1167,6 @@
         private System.Windows.Forms.Label lblEmail;
         private System.Windows.Forms.TextBox tbEmail;
         private System.Windows.Forms.TextBox tbWachtwoord;
-        private System.Windows.Forms.TextBox tbTelefoonNr;
         private System.Windows.Forms.Label lblNaam;
         private System.Windows.Forms.TextBox tbNaam;
         private System.Windows.Forms.TabPage tabPage2;
@@ -1237,5 +1238,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dtmEinddatum;
         private System.Windows.Forms.TextBox tbAantalMaterialen;
+        private System.Windows.Forms.TextBox tbTelefoonNr;
     }
 }

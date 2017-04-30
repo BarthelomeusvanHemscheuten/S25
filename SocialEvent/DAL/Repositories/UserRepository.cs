@@ -29,7 +29,7 @@ namespace DAL.Repositories
 
         public bool DeleteUser(int Id)
         {
-            return DeleteUser(Id);
+            return context.DeleteUser(Id);
         }
 
         public bool InsertSwearWord(string swearWord)
@@ -108,22 +108,22 @@ namespace DAL.Repositories
 
         public bool CheckLogin(string username, string password)
         {
-            return CheckLogin(username, password);
+            return context.CheckLogin(username, password);
         }
 
         public bool GetPayedFromRFID(string RFID)
         {
-            return GetPayedFromRFID(RFID);
+            return context.GetPayedFromRFID(RFID);
         }
 
         public bool CheckOutOrIn(string RFID, int inOrOut)
         {
-            return CheckOutOrIn(RFID, inOrOut);
+            return context.CheckOutOrIn(RFID, inOrOut);
         }
 
         public bool CheckRFIDExists(string RFID)
         {
-            return CheckRFIDExists(RFID);
+            return context.CheckRFIDExists(RFID);
         }
 
         public string GetUsernameFromRFID(string RFID)

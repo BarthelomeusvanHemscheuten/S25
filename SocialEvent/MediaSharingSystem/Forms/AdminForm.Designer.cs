@@ -109,6 +109,8 @@
             this.lbGebruikers = new System.Windows.Forms.ListBox();
             this.tabGereserveerdeBerichten = new System.Windows.Forms.TabPage();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.lbReportedPosts = new System.Windows.Forms.ListBox();
+            this.lbReportedComments = new System.Windows.Forms.ListBox();
             this.PanelBeheerder.SuspendLayout();
             this.tbctrlMain.SuspendLayout();
             this.tabAccountInstellingen.SuspendLayout();
@@ -127,6 +129,7 @@
             this.tabPage3.SuspendLayout();
             this.panelGebruikersBeheren.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPictureGebruikersBeheren)).BeginInit();
+            this.tabGereserveerdeBerichten.SuspendLayout();
             this.SuspendLayout();
             // 
             // PanelBeheerder
@@ -262,11 +265,12 @@
             // 
             // tbWachtwoord2
             // 
-            this.tbWachtwoord2.Location = new System.Drawing.Point(325, 300);
+            this.tbWachtwoord2.Location = new System.Drawing.Point(283, 300);
             this.tbWachtwoord2.Margin = new System.Windows.Forms.Padding(4);
             this.tbWachtwoord2.Name = "tbWachtwoord2";
-            this.tbWachtwoord2.Size = new System.Drawing.Size(101, 22);
+            this.tbWachtwoord2.Size = new System.Drawing.Size(143, 22);
             this.tbWachtwoord2.TabIndex = 15;
+            this.tbWachtwoord2.Text = "Herhaal het nieuwe wachtwoord hier";
             // 
             // btnWijzigenFoto
             // 
@@ -379,6 +383,7 @@
             this.tbWachtwoord.Name = "tbWachtwoord";
             this.tbWachtwoord.Size = new System.Drawing.Size(135, 22);
             this.tbWachtwoord.TabIndex = 4;
+            this.tbWachtwoord.Text = "Plaats het nieuwe wachtwoord hier";
             // 
             // tbTelefoonNr
             // 
@@ -963,6 +968,8 @@
             // 
             // tabGereserveerdeBerichten
             // 
+            this.tabGereserveerdeBerichten.Controls.Add(this.lbReportedComments);
+            this.tabGereserveerdeBerichten.Controls.Add(this.lbReportedPosts);
             this.tabGereserveerdeBerichten.Location = new System.Drawing.Point(4, 25);
             this.tabGereserveerdeBerichten.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabGereserveerdeBerichten.Name = "tabGereserveerdeBerichten";
@@ -975,6 +982,24 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // lbReportedPosts
+            // 
+            this.lbReportedPosts.FormattingEnabled = true;
+            this.lbReportedPosts.ItemHeight = 16;
+            this.lbReportedPosts.Location = new System.Drawing.Point(6, 5);
+            this.lbReportedPosts.Name = "lbReportedPosts";
+            this.lbReportedPosts.Size = new System.Drawing.Size(185, 180);
+            this.lbReportedPosts.TabIndex = 0;
+            // 
+            // lbReportedComments
+            // 
+            this.lbReportedComments.FormattingEnabled = true;
+            this.lbReportedComments.ItemHeight = 16;
+            this.lbReportedComments.Location = new System.Drawing.Point(6, 191);
+            this.lbReportedComments.Name = "lbReportedComments";
+            this.lbReportedComments.Size = new System.Drawing.Size(185, 212);
+            this.lbReportedComments.TabIndex = 1;
             // 
             // AdminForm
             // 
@@ -1010,6 +1035,7 @@
             this.panelGebruikersBeheren.ResumeLayout(false);
             this.panelGebruikersBeheren.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPictureGebruikersBeheren)).EndInit();
+            this.tabGereserveerdeBerichten.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1096,5 +1122,7 @@
         private System.Windows.Forms.TextBox tbWachtwoord2;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button btnAddMaterial;
+        private System.Windows.Forms.ListBox lbReportedComments;
+        private System.Windows.Forms.ListBox lbReportedPosts;
     }
 }

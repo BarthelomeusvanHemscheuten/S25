@@ -28,7 +28,7 @@ namespace DAL.Repositories
 
         public bool InsertLocation(int number, string features, string type)
         {
-            return InsertLocation(number, features, type);
+            return context.InsertLocation(number, features, type);
         }
 
         public bool InsertMaterial(string name, string description, decimal price)

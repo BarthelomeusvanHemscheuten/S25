@@ -29,32 +29,32 @@ namespace DAL.Repositories
 
         public bool InsertComment(int userId, int postId, string text)
         {
-            return InsertComment(userId, postId, text);
+            return context.InsertComment(userId, postId, text);
         }
 
         public bool InsertReportPost(int userId, int postId, string reason)
         {
-            return InsertReportPost(userId, postId, reason);
+            return context.InsertReportPost(userId, postId, reason);
         }
 
         public bool InsertReportComment(int userId, int commentId, string reason)
         {
-            return InsertReportComment(userId, commentId, reason);
+            return context.InsertReportComment(userId, commentId, reason);
         }
 
         public bool InsertLike(int userId, int postId)
         {
-            return InsertLike(userId, postId);
+            return context.InsertLike(userId, postId);
         }
 
         public bool DeleteLike(int userId)
         {
-            return DeleteLike(userId);
+            return context.DeleteLike(userId);
         }
 
         public bool UpdatePicture(int userId, Image image)
         {
-            return UpdatePicture(userId, image);
+            return context.UpdatePicture(userId, image);
         }
 
         public int CountLikes(int postId)
@@ -109,12 +109,12 @@ namespace DAL.Repositories
 
         public bool DeletePost(int id)
         {
-            return DeletePost(id);
+            return context.DeletePost(id);
         }
 
         public bool DeleteComment(int id)
         {
-            return DeleteComment(id);
+            return context.DeleteComment(id);
         }
 
         public List<int> GetReportedPostsId()
