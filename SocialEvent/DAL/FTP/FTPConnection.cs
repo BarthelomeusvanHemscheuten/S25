@@ -44,14 +44,29 @@ namespace DAL.FTP
             request.ContentLength = fileContents.Length;
 
             //Bestand wegschrijven naar de server
-            Stream requestStream = request.GetRequestStream();
-            requestStream.Write(fileContents, 0, fileContents.Length);
-            requestStream.Close();
+            try
+            {
+                Stream requestStream = request.GetRequestStream();
+                requestStream.Write(fileContents, 0, fileContents.Length);
+                requestStream.Close();
+            }
+            catch (WebException e)
+            {
+                string status = ((FtpWebResponse)e.Response).StatusDescription;
+                Console.WriteLine(status);
+            }
 
             //Response opvangen en in de console zetten
-            FtpWebResponse response = (FtpWebResponse)request.GetResponse();
-            Console.WriteLine("Upload File Complete, status {0}", response.StatusDescription);
-            response.Close();
+            try
+            {
+                FtpWebResponse response = (FtpWebResponse)request.GetResponse();
+                Console.WriteLine("Upload File Complete, status {0}", response.StatusDescription);
+                response.Close();
+            } catch(WebException e)
+            {
+                string status = ((FtpWebResponse)e.Response).StatusDescription;
+                Console.WriteLine(status);
+            }
         }
 
         /// <summary>

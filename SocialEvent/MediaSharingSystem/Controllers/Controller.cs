@@ -12,6 +12,8 @@ using DAL.Repositories;
 using DAL.SQLContext;
 using System.Net;
 using System.IO;
+using System.Windows.Forms;
+using DAL.FTP;
 
 namespace MediaSharingSystem.Controllers
 {
@@ -20,6 +22,8 @@ namespace MediaSharingSystem.Controllers
         private UserRepository userRepo;
         private MediaRepository mediaRepo;
         private ReservationRepository reservationRepo;
+        private FTPConnection ftp;
+
         public Event Event { get; private set; }
         private int userGroup;
         private Visitor visitor;
@@ -35,9 +39,11 @@ namespace MediaSharingSystem.Controllers
 
         public Controller()
         {
+
             userRepo = new UserRepository(new UserSQLContext());
             mediaRepo = new MediaRepository(new MediaSQLContext());
             reservationRepo = new ReservationRepository(new ReservationSQLContext());
+            ftp = new FTPConnection();
             Event = new Event("Social Event");
         }
 
@@ -105,7 +111,7 @@ namespace MediaSharingSystem.Controllers
             List<int> userDataInt = userRepo.GetUserDataInt(username);
             DateTime? userDate = userRepo.GetUserDataDateTime(username);
 
-            if (userGroup == 1)
+            if (userGroup == 3)
             {
                 if (userRepo.CheckLogin(username, password) == true)
                 {
@@ -134,7 +140,7 @@ namespace MediaSharingSystem.Controllers
                     return 2;
                 }
             }
-            else if (userGroup == 3)
+            else if (userGroup == 1)
             {
                 if (userRepo.CheckLogin(username, password) == true)
                 {
@@ -151,7 +157,7 @@ namespace MediaSharingSystem.Controllers
         {
             switch (userGroup)
             {
-                case 1:
+                case 3:
                     Post post1 = visitor.PlacePost(0, text, path);
                     mediaRepo.InsertPost(post1.User.ID, text, path);
                     return post1;
@@ -160,7 +166,7 @@ namespace MediaSharingSystem.Controllers
                     mediaRepo.InsertPost(post2.User.ID, text, path);
                     return post2;
 
-                case 3:
+                case 1:
                     Post post3 = admin.PlacePost(0, text, path);
                     mediaRepo.InsertPost(post3.User.ID, text, path);
                     return post3;
@@ -172,7 +178,7 @@ namespace MediaSharingSystem.Controllers
         {
             switch (userGroup)
             {
-                case 1:
+                case 3:
                     Post post1 = visitor.PlacePost(0, text, path, tags);
                     mediaRepo.InsertPost(post1.ID, text, path);
                     for (int i = 0; i < tags.Count; i++)
@@ -188,7 +194,7 @@ namespace MediaSharingSystem.Controllers
                         mediaRepo.InsertTag(post2.ID, tags[i]);
                     }
                     return post2;
-                case 3:
+                case 1:
                     Post post3 = employee.PlacePost(0, text, path, tags);
                     mediaRepo.InsertPost(post3.ID, text, path);
                     for (int i = 0; i < tags.Count; i++)
@@ -204,7 +210,7 @@ namespace MediaSharingSystem.Controllers
         {
             switch (userGroup)
             {
-                case 1:
+                case 3:
                     Comment comment1 = visitor.PlaceComment(0, text, post);
                     mediaRepo.InsertComment(comment1.User.ID, post.ID, text);
                     return comment1;
@@ -212,7 +218,7 @@ namespace MediaSharingSystem.Controllers
                     Comment comment2 = employee.PlaceComment(0, text, post);
                     mediaRepo.InsertComment(comment2.User.ID, post.ID, text);
                     return comment2;
-                case 3:
+                case 1:
                     Comment comment3 = admin.PlaceComment(0, text, post);
                     mediaRepo.InsertComment(comment3.User.ID, post.ID, text);
                     return comment3;
@@ -235,7 +241,7 @@ namespace MediaSharingSystem.Controllers
         {
             switch (userGroup)
             {
-                case 1:
+                case 3:
                     comment.ReportComment(0, visitor, reason);
                     mediaRepo.InsertReportComment(visitor.ID, comment.ID, reason);
                     return true;
@@ -243,7 +249,7 @@ namespace MediaSharingSystem.Controllers
                     comment.ReportComment(0, employee, reason);
                     mediaRepo.InsertReportComment(employee.ID, comment.ID, reason);
                     return true;
-                case 3:
+                case 1:
                     comment.ReportComment(0, admin, reason);
                     mediaRepo.InsertReportComment(admin.ID, comment.ID, reason);
                     return true;
@@ -275,13 +281,13 @@ namespace MediaSharingSystem.Controllers
         {
             switch (userGroup)
             {
-                case 1:
+                case 3:
                     visitor.ChangePassword(password1, password2);
                     return true;
                 case 2:
                     employee.ChangePassword(password1, password2);
                     return true;
-                case 3:
+                case 1:
                     admin.ChangePassword(password1, password2);
                     return true;
             }
@@ -292,13 +298,13 @@ namespace MediaSharingSystem.Controllers
         {
             switch (userGroup)
             {
-                case 1:
+                case 3:
                     visitor.ChangeUsername(newUsername);
                     return true;
                 case 2:
                     employee.ChangeUsername(newUsername);
                     return true;
-                case 3:
+                case 1:
                     admin.ChangeUsername(newUsername);
                     return true;
             }
@@ -309,13 +315,13 @@ namespace MediaSharingSystem.Controllers
         {
             switch (userGroup)
             {
-                case 1:
+                case 3:
                     visitor.ChangeName(newName);
                     return true;
                 case 2:
                     employee.ChangeName(newName);
                     return true;
-                case 3:
+                case 1:
                     admin.ChangeName(newName);
                     return true;
             }
@@ -326,11 +332,11 @@ namespace MediaSharingSystem.Controllers
         {
             switch (userGroup)
             {
-                case 1:
+                case 3:
                     return visitor.ChangePicture(image);
                 case 2:
                     return employee.ChangePicture(image);
-                case 3:
+                case 1:
                     return admin.ChangePicture(image);
             }
             return null;
@@ -339,13 +345,13 @@ namespace MediaSharingSystem.Controllers
         {
             switch (userGroup)
             {
-                case 1:
+                case 3:
                     visitor.ChangeEmail(email);
                     return true;
                 case 2:
                     employee.ChangeEmail(email);
                     return true;
-                case 3:
+                case 1:
                     admin.ChangeEmail(email);
                     return true;
             }
@@ -355,13 +361,13 @@ namespace MediaSharingSystem.Controllers
         {
             switch (userGroup)
             {
-                case 1:
+                case 3:
                     visitor.ChangeTelnr(telnr);
                     return true;
                 case 2:
                     visitor.ChangeTelnr(telnr);
                     return true;
-                case 3:
+                case 1:
                     visitor.ChangeTelnr(telnr);
                     return true;
             }
@@ -378,7 +384,7 @@ namespace MediaSharingSystem.Controllers
                     case 2:
                         employee.DeleteVisitor(visitor);
                         return true;
-                    case 3:
+                    case 15:
                         admin.DeleteVisitor(visitor);
                         return true;
                 }
@@ -525,6 +531,23 @@ namespace MediaSharingSystem.Controllers
             return mediaRepo.CountLikes(post.ID);
         }
 
+        public string ChooseFile()
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            openFileDialog1.InitialDirectory = "c:\\";
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                string filename = openFileDialog1.FileName;
+                return filename;
+            }
+            return null;
+        }
+
+        public void UploadFile(string filePath)
+        {
+            ftp.UploadFile(filePath, @"C:\Users\Public\Pictures");
+        }
+
         public Post GetAndShowPostComments(int i, int next)
         {
             Post output;
@@ -611,33 +634,6 @@ namespace MediaSharingSystem.Controllers
             }
             return output;
         }
-        
-
-        // ?????????????????????
-        //public void UploadFilestoFTPServer()
-        //{ 
-        //    FtpWebRequest request = (FtpWebRequest)WebRequest.Create("192.168.20.18");
-        //    request.Method = WebRequestMethods.Ftp.UploadFile;
-            
-        //    request.Credentials = new NetworkCredential("anonymous", "janeDoe@contoso.com");
-
-        //    // Copy the contents of the file to the request stream.  
-        //    StreamReader sourceStream = new StreamReader("testfile.txt");
-        //    byte[] fileContents = Encoding.UTF8.GetBytes(sourceStream.ReadToEnd());
-        //    sourceStream.Close();
-        //    request.ContentLength = fileContents.Length;
-
-        //    Stream requestStream = request.GetRequestStream();
-        //    requestStream.Write(fileContents, 0, fileContents.Length);
-        //    requestStream.Close();
-
-        //    FtpWebResponse response = (FtpWebResponse)request.GetResponse();
-
-        //    Console.WriteLine("Upload File Complete, status {0}", response.StatusDescription);
-
-        //    response.Close();
-
-        //}
 
         public List<string> GetAllSwearwords()
         {

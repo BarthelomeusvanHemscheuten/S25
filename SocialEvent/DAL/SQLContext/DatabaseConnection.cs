@@ -155,7 +155,7 @@ namespace DAL.SQLContext
                     output = reader.GetDateTime(0);
                     Console.WriteLine("Execute reader executed");
 
-                    return output;
+                    return DateTime.Today;
                 }
             }
             catch (Exception e)
