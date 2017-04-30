@@ -21,7 +21,7 @@ namespace Models.ReservationSystem
 
         public Location(int number, string features, string type)
         {
-            this.ID = reservationRepo.GetLocationID(this.Number);
+            this.ID = reservationRepo.GetLocationID(number);
             this.Number = number;
             this.Features = features;
             this.Type = type;

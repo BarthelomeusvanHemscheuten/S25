@@ -11,7 +11,7 @@ namespace DAL.Interfaces
         bool InsertEvent(string name, string description);
         int InsertGetReservation(int paymentTrueOrFalse);
         bool InsertLocation(int number, string features, string type);
-        bool InsertMaterial(string name, string description, double price);
+        bool InsertMaterial(string name, string description, decimal price);
 
         bool UpdateLocation(int id, int reservationId);
         bool UpdateMaterial(int visitorId, DateTime startDate, DateTime endDate);
@@ -22,7 +22,8 @@ namespace DAL.Interfaces
         string GetLocationFeatures(int number);
         string GetLocationType(int number);
         int CountMaterials();
-        List<double> GetAllMaterialsPrice();
+        int GetCountMaterial(string name);
+        List<decimal> GetAllMaterialsPrice();
         List<string> GetAllMaterialsDescription();
         List<string> GetAllMaterialsName();
 

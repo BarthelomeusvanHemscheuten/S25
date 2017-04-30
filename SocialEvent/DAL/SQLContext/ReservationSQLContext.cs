@@ -23,7 +23,7 @@ namespace DAL.SQLContext
         public int InsertGetReservation(int paymentTrueOrFalse)
         {
             string queryInsert = @"INSERT INTO [Reservation]([payed]) VALUES ('@PAYED')";
-            string queryGet = @"SELECT [reservationid] FROM [reservation] ORDER BY [reservationid] DESC LIMIT 1;";
+            string queryGet = @"SELECT TOP 1 [reservationid] FROM [reservation] ORDER BY [reservationid] DESC;";
 
             queryInsert = queryInsert.Replace("@PAYED", paymentTrueOrFalse.ToString());
 
@@ -42,7 +42,7 @@ namespace DAL.SQLContext
             return databaseConnection.executeNonQuery(query);
         }
 
-        public bool InsertMaterial(string name, string description, double price)
+        public bool InsertMaterial(string name, string description, decimal price)
         {
             string query = @"INSERT INTO [Material]([name], [description], [price]) VALUES ('@NAME', '@DESCRIPTION', '@PRICE')";
             query = query.Replace("@NAME", name);
@@ -110,18 +110,24 @@ namespace DAL.SQLContext
 
             return databaseConnection.executeReaderInt(query);
         }
+        public int GetCountMaterial(string name)
+        {
+            string query = @"SELECT COUNT(MaterialID) FROM [Material] WHERE [Name] = '@NAME'";
+            query = query.Replace("@NAME", name);
+            return databaseConnection.executeReaderInt(query);
+        }
 
-        public List<double> GetAllMaterialsPrice()
+        public List<decimal> GetAllMaterialsPrice()
         {   // zorg ervoor dat de namen die met elkaar overeenkomen samengevoegd worden dmv SQL aangezien het materiaal per 1x in database wordt toegevoegd
             // EN alleen het materiaal selecteren als startdate en enddate NULL is, aangezien je dit materiaal niet opnieuw wilt laten verhuren terwijl ze al verhuurd zijn.
-            string query = @"SELECT Price, Name FROM [Material] WHERE StartDate IS NULL AND EndDate IS NULL GROUP BY Name";
+            string query = @"SELECT Price, Name FROM [Material] WHERE StartDate IS NULL AND EndDate IS NULL GROUP BY Name, Price";
 
-            return databaseConnection.executeReaderDoubleList(query);
+            return databaseConnection.executereaderDecimalList(query);
         }
 
         public List<string> GetAllMaterialsDescription()
         {   // zie opmerking hierboven
-            string query = @"SELECT Materials, Name FROM [Material] WHERE StartDate IS NULL AND EndDate IS NULL GROUP BY Name";
+            string query = @"SELECT Description, Name FROM [Material] WHERE StartDate IS NULL AND EndDate IS NULL GROUP BY Name, Description";
 
             return databaseConnection.executeReaderStringList(query, 2);
         }

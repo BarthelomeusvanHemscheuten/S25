@@ -12,8 +12,7 @@ namespace DAL.SQLContext
         // LUCAS: Data Source=DESKTOP-6R0TNPL;Initial Catalog=Proftaak;Integrated Security=True
         // THOMAS: Data Source=THOMAS-LAPTOP\SQLEXPRESS;Initial Catalog=Proftaakje;Integrated Security=True
         // BART: Data Source=DESKTOP-6RQU3QV\SQLEXPRESS;Initial Catalog = Proftaak; Integrated Security = True
-        // S25C SYSTEEM: Data Source="192.168.20.18, 1433";Initial Catalog=Proftaak;Persist Security Info=True;User ID=sa;Password=Welkom10!
-        private const string connectionString = @"Data Source=""192.168.20.18, 1433"";Initial Catalog=Proftaak;Persist Security Info=True;User ID=sa;Password=Welkom10!";
+        private const string connectionString = @"Data Source=DESKTOP-6RQU3QV\SQLEXPRESS;Initial Catalog = Proftaak; Integrated Security = True";
 
         internal bool executeNonQuery(string query)
         {
@@ -179,6 +178,29 @@ namespace DAL.SQLContext
                     while (reader.Read())
                     {
                         list.Add(reader.GetDouble(0));
+                    }
+                    return list;
+                }
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine("Error: " + exception.Message);
+            }
+            return null;
+        }
+        internal List<decimal> executereaderDecimalList(string query)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    List<decimal> list = new List<decimal>();
+                    connection.Open();
+                    SqlCommand command = new SqlCommand(query, connection);
+                    SqlDataReader reader = command.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        list.Add(reader.GetDecimal(0));
                     }
                     return list;
                 }
