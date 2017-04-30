@@ -28,6 +28,7 @@ namespace MediaSharingSystem.Controllers
 
         private int currentPostId;
         public int currentPostForm;
+        Random random;
 
         public Controller()
         {
@@ -395,9 +396,9 @@ namespace MediaSharingSystem.Controllers
             return false;
         }
 
-        public bool RentMaterial(Visitor visitor, Material material, string startDate, string endDate, int quantity)
+        public bool RentMaterial(Visitor visitor, Material material, DateTime startDate, DateTime endDate, int quantity)
         {
-            if (visitor != null && material != null && startDate != null && endDate != null && quantity > 0)
+            if (visitor != null && material != null && quantity > 0)
             {
                 for (int i = 0; i < quantity; i++)
                 {
@@ -701,24 +702,24 @@ namespace MediaSharingSystem.Controllers
             return false;
         }
 
-        public bool VerhuurItem(string visitor, string material, string eindDatum, int hoeveelheid)
-        {
-            foreach (Visitor v in Event.Visitors)
-            {
-                if (v.Name == visitor)
-                {
-                    foreach (Material m in Event.Material)
-                    {
-                        if (m.Name == material)
-                        {
-                            RentMaterial(v, m, DateTime.Now.ToString(), eindDatum, hoeveelheid);
-                            return true;
-                        }
-                    }
-                }
-            }
-            return false;
-        }
+        //public bool VerhuurItem(string visitor, string material, string eindDatum, int hoeveelheid)
+        //{
+        //    foreach (Visitor v in Event.Visitors)
+        //    {
+        //        if (v.Name == visitor)
+        //        {
+        //            foreach (Material m in Event.Material)
+        //            {
+        //                if (m.Name == material)
+        //                {
+        //                    RentMaterial(v, m, DateTime.Now.ToString(), eindDatum, hoeveelheid);
+        //                    return true;
+        //                }
+        //            }
+        //        }
+        //    }
+        //    return false;
+        //}
         public string GetLocationFeatures(int locationnr)
         {
             return reservationRepo.GetLocationFeatures(locationnr);
@@ -729,7 +730,7 @@ namespace MediaSharingSystem.Controllers
         }
         public string RandomString(int length)
         {
-            Random random = new Random();
+            random = new Random();
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
             return new string(Enumerable.Repeat(chars, length)
               .Select(s => s[random.Next(s.Length)]).ToArray());

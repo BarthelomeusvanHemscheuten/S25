@@ -57,9 +57,9 @@ namespace DAL.Repositories
             return false;
         }
 
-        public bool UpdateMaterial(int visitorId, DateTime startDate, DateTime endDate)
+        public bool UpdateMaterial(int visitorId, DateTime startDate, DateTime endDate, string materialName)
         {
-            if(context.UpdateMaterial(visitorId, startDate, endDate))
+            if(context.UpdateMaterial(visitorId, startDate, endDate, materialName))
             {
                 return true;
             }

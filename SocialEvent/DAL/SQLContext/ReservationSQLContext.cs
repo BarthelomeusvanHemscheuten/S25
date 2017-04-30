@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -48,7 +49,7 @@ namespace DAL.SQLContext
             query = query.Replace("@NAME", name);
             query = query.Replace("@DESCRIPTION", description);
             query = query.Replace("@PRICE", price.ToString());
-
+ 
             return databaseConnection.executeNonQuery(query);
         }
 
@@ -61,10 +62,10 @@ namespace DAL.SQLContext
             return databaseConnection.executeNonQuery(query);
         }
 
-        public bool UpdateMaterial(int visitorId, DateTime startDate, DateTime endDate)
+        public bool UpdateMaterial(int visitorId, DateTime startDate, DateTime endDate, string materialName)
         {
-            string query = @"UPDATE [Material] SET StartDate = @startdate, EndDate = @enddate WHERE UserID = @id";
-            query = query.Replace("@startdate", startDate.ToString()).Replace("@enddate", endDate.ToString()).Replace("@id", visitorId.ToString());
+            string query = @"UPDATE TOP(1) [Material] SET StartDate = '@startdate', EndDate = '@enddate', UserID = '@id' WHERE Name = '@name' AND UserID IS NULL";
+            query = query.Replace("@startdate", startDate.ToString()).Replace("@enddate", endDate.ToString()).Replace("@id", visitorId.ToString()).Replace("@name", materialName);
             return databaseConnection.executeNonQuery(query);
         }
 

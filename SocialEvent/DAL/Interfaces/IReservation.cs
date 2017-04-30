@@ -14,7 +14,7 @@ namespace DAL.Interfaces
         bool InsertMaterial(string name, string description, decimal price);
 
         bool UpdateLocation(int id, int reservationId);
-        bool UpdateMaterial(int visitorId, DateTime startDate, DateTime endDate);
+        bool UpdateMaterial(int visitorId, DateTime startDate, DateTime endDate, string materialName);
 
         int GetEventID(string name);
         string GetEventDescription(int id);

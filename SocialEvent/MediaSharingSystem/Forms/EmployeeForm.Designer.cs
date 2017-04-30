@@ -59,7 +59,6 @@
             this.panelVerhuurItem = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.tbHoeveelheidMateriaal = new System.Windows.Forms.TextBox();
-            this.dtEindDatum = new System.Windows.Forms.MonthCalendar();
             this.lbVisitors = new System.Windows.Forms.ListBox();
             this.btnVerhuurMateriaal = new System.Windows.Forms.Button();
             this.tbTypeMaterial = new System.Windows.Forms.TextBox();
@@ -87,6 +86,9 @@
             this.lbGebruikers = new System.Windows.Forms.ListBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.PanelInfoMenu = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.lbBungalows = new System.Windows.Forms.Label();
             this.lbEigenTentjes = new System.Windows.Forms.Label();
             this.lbBungalinos = new System.Windows.Forms.Label();
@@ -117,9 +119,8 @@
             this.tbLocatieNrHoofdreserveerder = new System.Windows.Forms.TextBox();
             this.tbNaamHoofdreserveerder = new System.Windows.Forms.TextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.dtmEinddatum = new System.Windows.Forms.DateTimePicker();
+            this.tbAantalMaterialen = new System.Windows.Forms.TextBox();
             this.panelMedewerker.SuspendLayout();
             this.tbctrlMain.SuspendLayout();
             this.tabAccountInstellingen.SuspendLayout();
@@ -439,9 +440,10 @@
             // panelVerhuurItem
             // 
             this.panelVerhuurItem.BackColor = System.Drawing.Color.Lavender;
+            this.panelVerhuurItem.Controls.Add(this.tbAantalMaterialen);
+            this.panelVerhuurItem.Controls.Add(this.dtmEinddatum);
             this.panelVerhuurItem.Controls.Add(this.label1);
             this.panelVerhuurItem.Controls.Add(this.tbHoeveelheidMateriaal);
-            this.panelVerhuurItem.Controls.Add(this.dtEindDatum);
             this.panelVerhuurItem.Controls.Add(this.lbVisitors);
             this.panelVerhuurItem.Controls.Add(this.btnVerhuurMateriaal);
             this.panelVerhuurItem.Controls.Add(this.tbTypeMaterial);
@@ -479,13 +481,6 @@
             this.tbHoeveelheidMateriaal.Name = "tbHoeveelheidMateriaal";
             this.tbHoeveelheidMateriaal.Size = new System.Drawing.Size(195, 22);
             this.tbHoeveelheidMateriaal.TabIndex = 20;
-            // 
-            // dtEindDatum
-            // 
-            this.dtEindDatum.Location = new System.Drawing.Point(320, 258);
-            this.dtEindDatum.Margin = new System.Windows.Forms.Padding(12, 11, 12, 11);
-            this.dtEindDatum.Name = "dtEindDatum";
-            this.dtEindDatum.TabIndex = 19;
             // 
             // lbVisitors
             // 
@@ -799,6 +794,36 @@
             this.PanelInfoMenu.Size = new System.Drawing.Size(664, 576);
             this.PanelInfoMenu.TabIndex = 21;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(352, 381);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(77, 17);
+            this.label4.TabIndex = 68;
+            this.label4.Text = "LocatieNr.:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(342, 349);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(87, 17);
+            this.label3.TabIndex = 67;
+            this.label3.Text = "TelefoonNr.:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(380, 316);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(49, 17);
+            this.label2.TabIndex = 66;
+            this.label2.Text = "Naam:";
+            // 
             // lbBungalows
             // 
             this.lbBungalows.AutoSize = true;
@@ -1071,35 +1096,19 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // label2
+            // dtmEinddatum
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(380, 316);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 17);
-            this.label2.TabIndex = 66;
-            this.label2.Text = "Naam:";
+            this.dtmEinddatum.Location = new System.Drawing.Point(350, 256);
+            this.dtmEinddatum.Name = "dtmEinddatum";
+            this.dtmEinddatum.Size = new System.Drawing.Size(200, 22);
+            this.dtmEinddatum.TabIndex = 22;
             // 
-            // label3
+            // tbAantalMaterialen
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(342, 349);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(87, 17);
-            this.label3.TabIndex = 67;
-            this.label3.Text = "TelefoonNr.:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(352, 381);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(77, 17);
-            this.label4.TabIndex = 68;
-            this.label4.Text = "LocatieNr.:";
+            this.tbAantalMaterialen.Location = new System.Drawing.Point(350, 285);
+            this.tbAantalMaterialen.Name = "tbAantalMaterialen";
+            this.tbAantalMaterialen.Size = new System.Drawing.Size(100, 22);
+            this.tbAantalMaterialen.TabIndex = 23;
             // 
             // EmployeeForm
             // 
@@ -1202,7 +1211,6 @@
         private System.Windows.Forms.TextBox tbWachtwoord2;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.ListBox lbVisitors;
-        private System.Windows.Forms.MonthCalendar dtEindDatum;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tbHoeveelheidMateriaal;
         private System.Windows.Forms.TextBox tbAanhangselLocatie1;
@@ -1227,5 +1235,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DateTimePicker dtmEinddatum;
+        private System.Windows.Forms.TextBox tbAantalMaterialen;
     }
 }

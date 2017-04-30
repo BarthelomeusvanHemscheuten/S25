@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Globalization;
+using System.Data.SqlTypes;
 using Models.ReservationSystem;
 using DAL.Repositories;
 using DAL.SQLContext;
@@ -96,12 +97,12 @@ namespace Models.Users
             return false;
         }
 
-        public bool RentMaterial(Visitor visitor, Material material, string startDate, string endDate)
+        public bool RentMaterial(Visitor visitor, Material material, DateTime startDate, DateTime endDate)
         {
             if (visitor != null && material != null)
             {
                 visitor.Materials.Add(material);
-                reservationRepo.UpdateMaterial(visitor.ID, DateTime.ParseExact(startDate, "yyyy/MM/dd", CultureInfo.InvariantCulture), DateTime.ParseExact(endDate, "yyyy/MM/dd", CultureInfo.InvariantCulture));
+                reservationRepo.UpdateMaterial(visitor.ID, startDate, endDate, material.Name);
 
                 return true;
             }

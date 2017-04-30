@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,7 +19,6 @@ namespace MediaSharingSystem.Forms
     {
         Form login;
         Controller controller;
-        Random random;
         //Used for locally storing UserData and the locations they want to have, used for reserve mehod
         List<List<string>> userData;
         List<Location> locations;
@@ -27,7 +27,6 @@ namespace MediaSharingSystem.Forms
         {
             InitializeComponent();
             login = f;
-            random = new Random();
             locations = new List<Location>();
             userData = new List<List<string>>();
             this.controller = controller;
@@ -41,13 +40,13 @@ namespace MediaSharingSystem.Forms
             {
                 userData.Add(new List<string>());
             }
-            foreach(User user in controller.GetAndShowVisitorsFromDatabase())
+            foreach (User user in controller.GetAndShowVisitorsFromDatabase())
             {
                 lbGebruikers.Items.Add(user);
                 lbVisitors.Items.Add(user);
             }
 
-            foreach(Material material in controller.GetAndShowMaterialFromDatabase())
+            foreach (Material material in controller.GetAndShowMaterialFromDatabase())
             {
                 lbMaterialen.Items.Add(material);
             }
@@ -148,23 +147,18 @@ namespace MediaSharingSystem.Forms
 
         private void btnVerhuurMateriaal_Click(object sender, EventArgs e)
         {
-            foreach (Visitor visitor in controller.Event.Visitors)
+            Visitor visitor = (Visitor)lbVisitors.SelectedItem;
+            Material material = (Material)lbMaterialen.SelectedItem;
+            if (controller.RentMaterial(visitor, material, DateTime.Now, dtmEinddatum.Value, Convert.ToInt32(tbAantalMaterialen.Text)))
             {
-                if (lbVisitors.SelectedItem != null && lbMaterialen.SelectedItem != null && !string.IsNullOrEmpty(tbHoeveelheidMateriaal.Text))
-                {
-                    if (visitor.Name == lbVisitors.SelectedItem.ToString())
-                    {
-                        foreach (Material material in controller.Event.Material)
-                        {
-                            if (material.Name == lbMaterialen.SelectedItem.ToString())
-                            {
-                                controller.RentMaterial(visitor, material, DateTime.Now.ToString(), dtEindDatum.ToString(), Convert.ToInt32(tbHoeveelheidMateriaal));
-                            }
-                        }
-                    }
-                }
-                else MessageBox.Show("Voer eerst de benodigde waardes in!");
+                MessageBox.Show("Materiaal verhuurd");
             }
+            else
+            {
+                MessageBox.Show("Materiaal niet verhuurd, probeer opnieuw");
+            }
+
+
         }
 
         private void btnVerwijderGebruiker_Click(object sender, EventArgs e)
@@ -196,7 +190,7 @@ namespace MediaSharingSystem.Forms
             if (controller.Reserve(locations, userData[0].Count, locations.Count, userData[0], userData[1], userData[2], tbEmailHoofdreserveerder.Text, userData[3], tbAddressHoofdreserveerder.Text, dtmHoofdreserveerder.Value))
             {
                 MessageBox.Show("Location Reserved");
-                for (int i = 0; i <=3; i++)
+                for (int i = 0; i <= 3; i++)
                 {
                     userData[i].Clear();
                 }
@@ -241,12 +235,11 @@ namespace MediaSharingSystem.Forms
         private void lbMaterialen_SelectedIndexChanged(object sender, EventArgs e)
         {
             Material material = (Material)lbMaterialen.SelectedItem;
-            decimal price = material.Price;
             tbMateriaalPrijsPerDag.Text = material.Price.ToString();
             tbMateriaalOmschrijving.Text = material.Description;
             tbHoeveelheidMateriaal.Text = controller.GetCountMaterial(material).ToString();
             tbTypeMaterial.Text = material.Name;
-            if(material.StartDate != null)
+            if (material.StartDate != null)
             {
                 tbMateriaalBeschikbaar.Text = "Nee";
             }
