@@ -45,11 +45,15 @@ namespace MediaSharingSystem.Forms
                 lbGebruikers.Items.Add(user);
                 lbVisitors.Items.Add(user);
             }
-
             foreach (Material material in controller.GetAndShowMaterialFromDatabase())
             {
                 lbMaterialen.Items.Add(material);
             }
+            tbNaam.Text = controller.Employee.Name;
+            tbEmail.Text = controller.Employee.EmailAddress;
+            tbTelefoonNr.Text = controller.Employee.Telnr;
+            tbWachtwoord.Text = controller.Employee.Password;
+            tbWachtwoord2.Text = controller.Employee.Password;
         }
 
         private void btnAccountInstellingenMedewerker_Click(object sender, EventArgs e)

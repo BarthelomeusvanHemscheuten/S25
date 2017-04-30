@@ -25,6 +25,9 @@ namespace MediaSharingSystem.Controllers
         private Visitor visitor;
         private Employee employee;
         private Admin admin;
+        public Visitor Visitor { get { return visitor; } }
+        public Employee Employee { get { return employee; } }
+        public Admin Admin { get { return admin; } }
 
         private int currentPostId;
         public int currentPostForm;

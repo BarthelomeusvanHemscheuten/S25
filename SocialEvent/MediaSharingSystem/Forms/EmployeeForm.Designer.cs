@@ -57,6 +57,8 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panelVerhuurItem = new System.Windows.Forms.Panel();
+            this.tbAantalMaterialen = new System.Windows.Forms.TextBox();
+            this.dtmEinddatum = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.tbHoeveelheidMateriaal = new System.Windows.Forms.TextBox();
             this.lbVisitors = new System.Windows.Forms.ListBox();
@@ -119,8 +121,6 @@
             this.tbLocatieNrHoofdreserveerder = new System.Windows.Forms.TextBox();
             this.tbNaamHoofdreserveerder = new System.Windows.Forms.TextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.dtmEinddatum = new System.Windows.Forms.DateTimePicker();
-            this.tbAantalMaterialen = new System.Windows.Forms.TextBox();
             this.panelMedewerker.SuspendLayout();
             this.tbctrlMain.SuspendLayout();
             this.tabAccountInstellingen.SuspendLayout();
@@ -273,6 +273,7 @@
             this.tbWachtwoord2.Location = new System.Drawing.Point(281, 300);
             this.tbWachtwoord2.Margin = new System.Windows.Forms.Padding(4);
             this.tbWachtwoord2.Name = "tbWachtwoord2";
+            this.tbWachtwoord2.PasswordChar = '*';
             this.tbWachtwoord2.Size = new System.Drawing.Size(145, 22);
             this.tbWachtwoord2.TabIndex = 15;
             // 
@@ -385,6 +386,7 @@
             this.tbWachtwoord.Location = new System.Drawing.Point(140, 300);
             this.tbWachtwoord.Margin = new System.Windows.Forms.Padding(4);
             this.tbWachtwoord.Name = "tbWachtwoord";
+            this.tbWachtwoord.PasswordChar = '*';
             this.tbWachtwoord.Size = new System.Drawing.Size(133, 22);
             this.tbWachtwoord.TabIndex = 4;
             // 
@@ -462,6 +464,20 @@
             this.panelVerhuurItem.Name = "panelVerhuurItem";
             this.panelVerhuurItem.Size = new System.Drawing.Size(661, 500);
             this.panelVerhuurItem.TabIndex = 17;
+            // 
+            // tbAantalMaterialen
+            // 
+            this.tbAantalMaterialen.Location = new System.Drawing.Point(350, 285);
+            this.tbAantalMaterialen.Name = "tbAantalMaterialen";
+            this.tbAantalMaterialen.Size = new System.Drawing.Size(100, 22);
+            this.tbAantalMaterialen.TabIndex = 23;
+            // 
+            // dtmEinddatum
+            // 
+            this.dtmEinddatum.Location = new System.Drawing.Point(350, 256);
+            this.dtmEinddatum.Name = "dtmEinddatum";
+            this.dtmEinddatum.Size = new System.Drawing.Size(200, 22);
+            this.dtmEinddatum.TabIndex = 22;
             // 
             // label1
             // 
@@ -1095,20 +1111,6 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // dtmEinddatum
-            // 
-            this.dtmEinddatum.Location = new System.Drawing.Point(350, 256);
-            this.dtmEinddatum.Name = "dtmEinddatum";
-            this.dtmEinddatum.Size = new System.Drawing.Size(200, 22);
-            this.dtmEinddatum.TabIndex = 22;
-            // 
-            // tbAantalMaterialen
-            // 
-            this.tbAantalMaterialen.Location = new System.Drawing.Point(350, 285);
-            this.tbAantalMaterialen.Name = "tbAantalMaterialen";
-            this.tbAantalMaterialen.Size = new System.Drawing.Size(100, 22);
-            this.tbAantalMaterialen.TabIndex = 23;
             // 
             // EmployeeForm
             // 
