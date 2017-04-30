@@ -12,7 +12,8 @@ namespace DAL.SQLContext
         // LUCAS: Data Source=DESKTOP-6R0TNPL;Initial Catalog=Proftaak;Integrated Security=True
         // THOMAS: Data Source=THOMAS-LAPTOP\SQLEXPRESS;Initial Catalog=Proftaakje;Integrated Security=True
         // BART: Data Source=DESKTOP-6RQU3QV\SQLEXPRESS;Initial Catalog = Proftaak; Integrated Security = True
-        private const string connectionString = @"Data Source=DESKTOP-6R0TNPL;Initial Catalog=Proftaak;Integrated Security=True";
+        // S25C SYSTEEM: Data Source="192.168.20.18, 1433";Initial Catalog=Proftaak;Persist Security Info=True;User ID=sa;Password=Welkom10!
+        private const string connectionString = @"Data Source=""192.168.20.18, 1433"";Initial Catalog=Proftaak;Persist Security Info=True;User ID=sa;Password=Welkom10!";
 
         internal bool executeNonQuery(string query)
         {
