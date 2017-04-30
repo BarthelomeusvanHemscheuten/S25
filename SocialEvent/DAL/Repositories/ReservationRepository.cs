@@ -18,11 +18,7 @@ namespace DAL.Repositories
 
         public bool InsertEvent(string name, string description)
         {
-            if(context.InsertEvent(name, description))
-            {
-                return true;
-            }
-            return false;
+            return context.InsertEvent(name, description);
         }
 
         public int InsertGetReservation(int paymentTrueOrFalse)
@@ -32,38 +28,22 @@ namespace DAL.Repositories
 
         public bool InsertLocation(int number, string features, string type)
         {
-            if(context.InsertLocation(number, features, type))
-            {
-                return true;
-            }
-            return false;
+            return InsertLocation(number, features, type);
         }
 
         public bool InsertMaterial(string name, string description, decimal price)
         {
-            if(context.InsertMaterial(name, description, price))
-            {
-                return true;
-            }
-            return false;
+            return context.InsertMaterial(name, description, price);
         }
 
         public bool UpdateLocation(int id, int reservationID)
         {
-            if(context.UpdateLocation(id, reservationID))
-            {
-                return true;
-            }
-            return false;
+            return context.UpdateLocation(id, reservationID);
         }
 
         public bool UpdateMaterial(int visitorId, DateTime startDate, DateTime endDate, string materialName)
         {
-            if(context.UpdateMaterial(visitorId, startDate, endDate, materialName))
-            {
-                return true;
-            }
-            return false;
+            return context.UpdateMaterial(visitorId, startDate, endDate, materialName);
         }
 
         public int GetEventID(string name)

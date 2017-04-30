@@ -19,73 +19,42 @@ namespace DAL.Repositories
 
         public bool InsertPost(int userId, string text, string path)
         {
-            if(context.InsertPost(userId, text, path)){
-                return true;
-            }
-            return false;
+            return context.InsertPost(userId, text, path);
         }
 
         public bool InsertTag(int postId, string text)
         {
-            if(context.InsertTag(postId, text))
-            {
-                return true;
-            }
-            return false;
+            return context.InsertTag(postId, text);
         }
 
         public bool InsertComment(int userId, int postId, string text)
         {
-            if(context.InsertComment(userId, postId, text))
-            {
-                return true;
-            }
-            return false;
+            return InsertComment(userId, postId, text);
         }
 
         public bool InsertReportPost(int userId, int postId, string reason)
         {
-            if(context.InsertReportComment(userId, postId, reason))
-            {
-                return true;
-            }
-            return false;
+            return InsertReportPost(userId, postId, reason);
         }
 
         public bool InsertReportComment(int userId, int commentId, string reason)
         {
-            if(context.InsertReportComment(userId, commentId, reason))
-            {
-                return true;
-            }
-            return false;
+            return InsertReportComment(userId, commentId, reason);
         }
 
         public bool InsertLike(int userId, int postId)
         {
-            if(context.InsertLike(userId, postId))
-            {
-                return true;
-            }
-            return false;
+            return InsertLike(userId, postId);
         }
 
         public bool DeleteLike(int userId)
         {
-            if (context.DeleteLike(userId))
-            {
-                return true;
-            }
-            return false;
+            return DeleteLike(userId);
         }
 
         public bool UpdatePicture(int userId, Image image)
         {
-            if(context.UpdatePicture(userId, image))
-            {
-                return true;
-            }
-            return false;
+            return UpdatePicture(userId, image);
         }
 
         public int CountLikes(int postId)
@@ -140,20 +109,12 @@ namespace DAL.Repositories
 
         public bool DeletePost(int id)
         {
-            if (context.DeletePost(id))
-            {
-                return true;
-            }
-            return false;
+            return DeletePost(id);
         }
 
         public bool DeleteComment(int id)
         {
-            if (context.DeleteComment(id))
-            {
-                return true;
-            }
-            return false;
+            return DeleteComment(id);
         }
 
         public List<int> GetReportedPostsId()

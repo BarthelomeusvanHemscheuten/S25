@@ -426,7 +426,7 @@ namespace MediaSharingSystem.Controllers
         {
             if (swearWord != null)
             {
-                userRepo.InsertSwearWord(swearWord);
+                return userRepo.InsertSwearWord(swearWord);
             }
             return false;
         }
