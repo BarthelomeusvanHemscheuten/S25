@@ -254,12 +254,33 @@ namespace MediaSharingSystem.Forms
 
         private void btnPlacePost_Click(object sender, EventArgs e)
         {
-            controller.AddAndShowPost(textPost.Text, "");
+            controller.AddAndShowPost(textPost.Text, lblFilePath.Text);
             post = controller.GetAndShowPostComments(controller.currentPostForm, 0);
 
             naamP.Text = post.User.ToString();
             contentTextP.Text = post.Text;
             contentPathP.Text = post.Path;
+
+            currentComment = post.Comments.Count() - 1;
+
+            if (post.Comments.Count() == 0)
+            {
+                btnNextComment.Enabled = false;
+                btnPrevComment.Enabled = false;
+
+                naamC.Text = "";
+                contentTextC.Text = "";
+            }
+            else
+            {
+                btnNextComment.Enabled = true;
+                btnPrevComment.Enabled = true;
+
+                naamC.Text = post.Comments[currentComment].User.ToString();
+                contentTextC.Text = post.Comments[currentComment].Text;
+            }
+
+            controller.UploadFile(lblFilePath.Text);
         }
 
         private void btnPlaceComment_Click(object sender, EventArgs e)
@@ -280,6 +301,11 @@ namespace MediaSharingSystem.Forms
             controller.AddAndShowLike(post);
             int likes = controller.GetAndShowLikes(post);
             lblLikes.Text = likes + " mensen vinden dit leuk";
+        }
+
+        private void UploadFile_Click(object sender, EventArgs e)
+        {
+            lblFilePath.Text = controller.ChooseFile();
         }
     }
 }

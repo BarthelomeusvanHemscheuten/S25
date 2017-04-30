@@ -40,10 +40,10 @@
             this.btnPrevComment = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.btnLikePost = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.btnUploadFile = new System.Windows.Forms.Button();
             this.btnPlacePost = new System.Windows.Forms.Button();
             this.btnPlaceComment = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblFilePath = new System.Windows.Forms.Label();
             this.textComment = new System.Windows.Forms.RichTextBox();
             this.textPost = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -141,10 +141,10 @@
             this.panelNewsFeed.Controls.Add(this.btnPrevComment);
             this.panelNewsFeed.Controls.Add(this.label2);
             this.panelNewsFeed.Controls.Add(this.btnLikePost);
-            this.panelNewsFeed.Controls.Add(this.button3);
+            this.panelNewsFeed.Controls.Add(this.btnUploadFile);
             this.panelNewsFeed.Controls.Add(this.btnPlacePost);
             this.panelNewsFeed.Controls.Add(this.btnPlaceComment);
-            this.panelNewsFeed.Controls.Add(this.label3);
+            this.panelNewsFeed.Controls.Add(this.lblFilePath);
             this.panelNewsFeed.Controls.Add(this.textComment);
             this.panelNewsFeed.Controls.Add(this.textPost);
             this.panelNewsFeed.Controls.Add(this.label1);
@@ -204,14 +204,15 @@
             this.btnLikePost.UseVisualStyleBackColor = true;
             this.btnLikePost.Click += new System.EventHandler(this.btnLikePost_Click);
             // 
-            // button3
+            // btnUploadFile
             // 
-            this.button3.Location = new System.Drawing.Point(300, 462);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(107, 56);
-            this.button3.TabIndex = 31;
-            this.button3.Text = "Bestand toevoegen";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnUploadFile.Location = new System.Drawing.Point(300, 462);
+            this.btnUploadFile.Name = "btnUploadFile";
+            this.btnUploadFile.Size = new System.Drawing.Size(107, 56);
+            this.btnUploadFile.TabIndex = 31;
+            this.btnUploadFile.Text = "Bestand toevoegen";
+            this.btnUploadFile.UseVisualStyleBackColor = true;
+            this.btnUploadFile.Click += new System.EventHandler(this.UploadFile_Click);
             // 
             // btnPlacePost
             // 
@@ -233,14 +234,14 @@
             this.btnPlaceComment.UseVisualStyleBackColor = true;
             this.btnPlaceComment.Click += new System.EventHandler(this.btnPlaceComment_Click);
             // 
-            // label3
+            // lblFilePath
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(23, 482);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(199, 20);
-            this.label3.TabIndex = 28;
-            this.label3.Text = "Geen bestand toegevoegd";
+            this.lblFilePath.AutoSize = true;
+            this.lblFilePath.Location = new System.Drawing.Point(23, 482);
+            this.lblFilePath.Name = "lblFilePath";
+            this.lblFilePath.Size = new System.Drawing.Size(199, 20);
+            this.lblFilePath.TabIndex = 28;
+            this.lblFilePath.Text = "Geen bestand toegevoegd";
             // 
             // textComment
             // 
@@ -536,11 +537,11 @@
         private System.Windows.Forms.Button btnPrevPost;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblFilePath;
         private System.Windows.Forms.RichTextBox textComment;
         private System.Windows.Forms.RichTextBox textPost;
         private System.Windows.Forms.Button btnLikePost;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnUploadFile;
         private System.Windows.Forms.Button btnPlacePost;
         private System.Windows.Forms.Button btnPlaceComment;
         private System.Windows.Forms.Button btnNextComment;
