@@ -25,7 +25,7 @@ namespace MediaSharingSystem.Forms
         {
             switch (controller.Login(tbUsername.Text, tbPassword.Text))
             {
-                case 1:
+                case 3:
                     VisitorForm visitorform = new VisitorForm(this, controller);
                     visitorform.Show();
                     this.Hide();
@@ -35,7 +35,7 @@ namespace MediaSharingSystem.Forms
                     employeeform.Show();
                     this.Hide();
                     break;
-                case 3:
+                case 1:
                     AdminForm adminform = new AdminForm(this, controller);
                     adminform.Show();
                     this.Hide();
