@@ -52,8 +52,6 @@ namespace MediaSharingSystem.Forms
             tbNaam.Text = controller.Employee.Name;
             tbEmail.Text = controller.Employee.EmailAddress;
             tbTelefoonNr.Text = controller.Employee.Telnr;
-            tbWachtwoord.Text = controller.Employee.Password;
-            tbWachtwoord2.Text = controller.Employee.Password;
         }
 
         private void btnAccountInstellingenMedewerker_Click(object sender, EventArgs e)
@@ -103,7 +101,7 @@ namespace MediaSharingSystem.Forms
 
         private void btnWijzigenNaam_Click(object sender, EventArgs e)
         {
-            if (controller.ChangeUsername(tbNaam.Text))
+            if (controller.ChangeName(tbNaam.Text))
             {
                 MessageBox.Show("Naam is gewijzigd");
             }
@@ -139,6 +137,7 @@ namespace MediaSharingSystem.Forms
 
         private void btnWijzigenTelefoonNr_Click(object sender, EventArgs e)
         {
+            string telnr = tbTelefoonNr.Text;
             if (controller.ChangeTelnr(tbTelefoonNr.Text))
             {
                 MessageBox.Show("Telefoonnummer is gewijzigd");
@@ -252,6 +251,5 @@ namespace MediaSharingSystem.Forms
                 tbMateriaalBeschikbaar.Text = "Ja";
             }
         }
-
     }
 }

@@ -282,13 +282,13 @@ namespace MediaSharingSystem.Controllers
             switch (userGroup)
             {
                 case 3:
-                    visitor.ChangePassword(password1, password2);
+                    admin.ChangePassword(password1, password2);
                     return true;
                 case 2:
                     employee.ChangePassword(password1, password2);
                     return true;
                 case 1:
-                    admin.ChangePassword(password1, password2);
+                    visitor.ChangePassword(password1, password2);
                     return true;
             }
             return false;
@@ -299,13 +299,13 @@ namespace MediaSharingSystem.Controllers
             switch (userGroup)
             {
                 case 3:
-                    visitor.ChangeUsername(newUsername);
+                    admin.ChangeUsername(newUsername);
                     return true;
                 case 2:
                     employee.ChangeUsername(newUsername);
                     return true;
                 case 1:
-                    admin.ChangeUsername(newUsername);
+                    visitor.ChangeUsername(newUsername);
                     return true;
             }
             return false;
@@ -316,13 +316,13 @@ namespace MediaSharingSystem.Controllers
             switch (userGroup)
             {
                 case 3:
-                    visitor.ChangeName(newName);
+                    admin.ChangeName(newName);
                     return true;
                 case 2:
                     employee.ChangeName(newName);
                     return true;
                 case 1:
-                    admin.ChangeName(newName);
+                    visitor.ChangeName(newName);
                     return true;
             }
             return false;
@@ -333,11 +333,11 @@ namespace MediaSharingSystem.Controllers
             switch (userGroup)
             {
                 case 3:
-                    return visitor.ChangePicture(image);
+                    return admin.ChangePicture(image);
                 case 2:
                     return employee.ChangePicture(image);
                 case 1:
-                    return admin.ChangePicture(image);
+                    return visitor.ChangePicture(image);
             }
             return null;
         }
@@ -346,13 +346,13 @@ namespace MediaSharingSystem.Controllers
             switch (userGroup)
             {
                 case 3:
-                    visitor.ChangeEmail(email);
+                    admin.ChangeEmail(email);
                     return true;
                 case 2:
                     employee.ChangeEmail(email);
                     return true;
                 case 1:
-                    admin.ChangeEmail(email);
+                    visitor.ChangeEmail(email);
                     return true;
             }
             return false;
@@ -362,10 +362,10 @@ namespace MediaSharingSystem.Controllers
             switch (userGroup)
             {
                 case 3:
-                    visitor.ChangeTelnr(telnr);
+                    admin.ChangeTelnr(telnr);
                     return true;
                 case 2:
-                    visitor.ChangeTelnr(telnr);
+                    employee.ChangeTelnr(telnr);
                     return true;
                 case 1:
                     visitor.ChangeTelnr(telnr);
