@@ -226,7 +226,7 @@ namespace DAL.SQLContext
         }
         public List<int> GetAllVisitorID()
         {
-            string query = @"SELECT [UserID] FROM [User] WHERE [UserGroup] = 1 ";
+            string query = @"SELECT [UserID] FROM [User] WHERE [UserGroup] = 3 ";
             return databaseConnection.executeReaderIntList(query, 1);
         }
 

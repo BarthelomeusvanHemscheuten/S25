@@ -19,38 +19,22 @@ namespace DAL.Repositories
 
         public bool InsertUser(int eventId, int reservationId, int userGroup, int isPresent, DateTime? dateOfBirth, string emailAddress, string address, string name, string username, string password, string telnr, string rfid)
         {
-            if (context.InsertUser(eventId, reservationId, userGroup, isPresent, dateOfBirth, emailAddress, address, name, username, password, telnr, rfid))
-            {
-                return true;
-            }
-            return false;
+            return context.InsertUser(eventId, reservationId, userGroup, isPresent, dateOfBirth, emailAddress, address, name, username, password, telnr, rfid);
         }
 
         public bool InsertUser(int eventId, int reservationId, int userGroup, int isPresent, string name, string username, string password, string telnr, string rfid)
         {
-            if (context.InsertUser(eventId, reservationId, userGroup, isPresent, name, username, password, telnr, rfid))
-            {
-                return true;
-            }
-            return false;
+            return context.InsertUser(eventId, reservationId, userGroup, isPresent, name, username, password, telnr, rfid);
         }
 
         public bool DeleteUser(int Id)
         {
-            if (context.DeleteUser(Id))
-            {
-                return true;
-            }
-            return false;
+            return DeleteUser(Id);
         }
 
         public bool InsertSwearWord(string swearWord)
         {
-            if (context.InsertSwearWord(swearWord))
-            {
-                return true;
-            }
-            return false;
+            return context.InsertSwearWord(swearWord);
         }
 
         public int GetUserGroup(string username)
@@ -124,38 +108,22 @@ namespace DAL.Repositories
 
         public bool CheckLogin(string username, string password)
         {
-            if (context.CheckLogin(username, password))
-            {
-                return true;
-            }
-            return false;
+            return CheckLogin(username, password);
         }
 
         public bool GetPayedFromRFID(string RFID)
         {
-            if (context.GetPayedFromRFID(RFID))
-            {
-                return true;
-            }
-            return false;
+            return GetPayedFromRFID(RFID);
         }
 
         public bool CheckOutOrIn(string RFID, int inOrOut)
         {
-            if (context.CheckOutOrIn(RFID, inOrOut))
-            {
-                return true;
-            }
-            return false;
+            return CheckOutOrIn(RFID, inOrOut);
         }
 
         public bool CheckRFIDExists(string RFID)
         {
-            if (context.CheckRFIDExists(RFID))
-            {
-                return true;
-            }
-            return false;
+            return CheckRFIDExists(RFID);
         }
 
         public string GetUsernameFromRFID(string RFID)

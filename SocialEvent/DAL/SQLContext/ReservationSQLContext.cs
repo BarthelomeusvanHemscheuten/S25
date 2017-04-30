@@ -113,7 +113,7 @@ namespace DAL.SQLContext
         }
         public int GetCountMaterial(string name)
         {
-            string query = @"SELECT COUNT(MaterialID) FROM [Material] WHERE [Name] = '@NAME'";
+            string query = @"SELECT COUNT(MaterialID) FROM [Material] WHERE [Name] = '@NAME' AND UserID IS NULL";
             query = query.Replace("@NAME", name);
             return databaseConnection.executeReaderInt(query);
         }
