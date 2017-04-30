@@ -545,7 +545,8 @@ namespace MediaSharingSystem.Controllers
 
         public void UploadFile(string filePath)
         {
-            ftp.UploadFile(filePath, @"C:\Users\Public\Pictures");
+            string filepathServer = @"Users\" + visitor.Username;
+            ftp.UploadFile(filePath, @"Users\ThomasJ10");
         }
 
         public Post GetAndShowPostComments(int i, int next)
