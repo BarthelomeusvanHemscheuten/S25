@@ -551,9 +551,25 @@ namespace MediaSharingSystem.Controllers
             return null;
         }
 
-        public void UploadFile(string filePath)
+        public string UploadFile(string filePath)
         {
-            ftp.UploadFile(filePath, @"C:\Users\Public\Pictures");
+            string[] splitFilePath = new string[10];
+            splitFilePath = filePath.Split('\\');
+            string filepathServer = @"Users\" + visitor.Username + @"\" + splitFilePath.Last();
+            ftp.UploadFile(filePath, filepathServer);
+            return filepathServer;
+        }
+
+        public void DownloadFile(string filePath)
+        {
+            string[] splitFilePath = new string[10];
+            splitFilePath = filePath.Split('\\');
+            ftp.DownloadFileToFolder(filePath, AppDomain.CurrentDomain.BaseDirectory + splitFilePath.Last());
+        }
+
+        public Image GetImage(string filePath)
+        {
+            return ftp.GetImageFromFTP(filePath);
         }
 
         public Post GetAndShowPostComments(int i, int next)

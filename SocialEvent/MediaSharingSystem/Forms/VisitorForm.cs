@@ -21,7 +21,6 @@ namespace MediaSharingSystem.Forms
         Post post;
         Label naamP = new Label();
         Label contentTextP = new Label();
-        Label contentPathP = new Label();
         Label naamC = new Label();
         Label contentTextC = new Label();
         int currentComment;
@@ -49,14 +48,12 @@ namespace MediaSharingSystem.Forms
 
             naamP.Location = new Point(10, 50);
             contentTextP.Location = new Point(10, 80);
-            contentPathP.Location = new Point(10, 120);
 
             naamC.Location = new Point(292, 50);
             contentTextC.Location = new Point(292, 80);
 
             naamP.Text = post.User.ToString();
             contentTextP.Text = post.Text;
-            contentPathP.Text = post.Path;
 
             currentComment = post.Comments.Count() - 1;
             
@@ -82,11 +79,18 @@ namespace MediaSharingSystem.Forms
 
             panelNewsFeed.Controls.Add(naamP);
             panelNewsFeed.Controls.Add(contentTextP);
-            panelNewsFeed.Controls.Add(contentPathP);
 
             panelNewsFeed.Controls.Add(naamC);
             panelNewsFeed.Controls.Add(contentTextC);
 
+            if (post.Path != "")
+            {
+                pictureBox1.Image = controller.GetImage(post.Path);
+            }
+            else
+            {
+                pictureBox1.Image = null;
+            }
         }
 
         private void btnNextPost_Click(object sender, EventArgs e)
@@ -95,7 +99,6 @@ namespace MediaSharingSystem.Forms
 
             naamP.Text = post.User.ToString();
             contentTextP.Text = post.Text;
-            contentPathP.Text = post.Path;
 
             currentComment = post.Comments.Count() - 1;
             if (post.Comments.Count() == 0)
@@ -117,6 +120,15 @@ namespace MediaSharingSystem.Forms
 
             int likes = controller.GetAndShowLikes(post);
             lblLikes.Text = likes + " mensen vinden dit leuk";
+
+            if (post.Path != "")
+            {
+                pictureBox1.Image = controller.GetImage(post.Path);
+            }
+            else
+            {
+                pictureBox1.Image = null;
+            }
         }
 
         private void btnPrevPost_Click(object sender, EventArgs e)
@@ -125,7 +137,6 @@ namespace MediaSharingSystem.Forms
             
             naamP.Text = post.User.ToString();
             contentTextP.Text = post.Text;
-            contentPathP.Text = post.Path;
 
             currentComment = post.Comments.Count() - 1;
             if (post.Comments.Count() == 0)
@@ -147,6 +158,15 @@ namespace MediaSharingSystem.Forms
 
             int likes = controller.GetAndShowLikes(post);
             lblLikes.Text = likes + " mensen vinden dit leuk";
+
+            if (post.Path != "")
+            {
+                pictureBox1.Image = controller.GetImage(post.Path);
+            }
+            else
+            {
+                pictureBox1.Image = null;
+            }
         }
 
         private void btnNextComment_Click(object sender, EventArgs e)
@@ -254,12 +274,12 @@ namespace MediaSharingSystem.Forms
 
         private void btnPlacePost_Click(object sender, EventArgs e)
         {
-            controller.AddAndShowPost(textPost.Text, lblFilePath.Text);
+            string filePath = controller.UploadFile(lblFilePath.Text);
+            controller.AddAndShowPost(textPost.Text, filePath);
             post = controller.GetAndShowPostComments(controller.currentPostForm, 0);
 
             naamP.Text = post.User.ToString();
             contentTextP.Text = post.Text;
-            contentPathP.Text = post.Path;
 
             currentComment = post.Comments.Count() - 1;
 
@@ -280,7 +300,14 @@ namespace MediaSharingSystem.Forms
                 contentTextC.Text = post.Comments[currentComment].Text;
             }
 
-            controller.UploadFile(lblFilePath.Text);
+            if (post.Path != "")
+            {
+                pictureBox1.Image = controller.GetImage(post.Path);
+            }
+            else
+            {
+                pictureBox1.Image = null;
+            }
         }
 
         private void btnPlaceComment_Click(object sender, EventArgs e)
@@ -306,6 +333,11 @@ namespace MediaSharingSystem.Forms
         private void UploadFile_Click(object sender, EventArgs e)
         {
             lblFilePath.Text = controller.ChooseFile();
+        }
+
+        private void btnDownload_Click(object sender, EventArgs e)
+        {
+            controller.DownloadFile(post.Path);
         }
     }
 }
