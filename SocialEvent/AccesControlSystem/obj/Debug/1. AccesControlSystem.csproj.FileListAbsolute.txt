@@ -9,3 +9,14 @@ C:\Users\thoma\Source\Repos\S25\SocialEvent\AccesControlSystem\bin\Debug\DAL.pdb
 C:\Users\thoma\Source\Repos\S25\SocialEvent\AccesControlSystem\obj\Debug\AccesControlSystem.Forms.Scanform.resources
 C:\Users\thoma\Source\Repos\S25\SocialEvent\AccesControlSystem\obj\Debug\AccesControlSystem.exe
 C:\Users\thoma\Source\Repos\S25\SocialEvent\AccesControlSystem\obj\Debug\AccesControlSystem.pdb
+C:\Users\Lucas Scheepers\Desktop\Lucas\School\Jaar 1\Semester 2\5. Proftaak\- Applicatie\SocialEvent\AccesControlSystem\bin\Debug\AccesControlSystem.exe.config
+C:\Users\Lucas Scheepers\Desktop\Lucas\School\Jaar 1\Semester 2\5. Proftaak\- Applicatie\SocialEvent\AccesControlSystem\bin\Debug\AccesControlSystem.exe
+C:\Users\Lucas Scheepers\Desktop\Lucas\School\Jaar 1\Semester 2\5. Proftaak\- Applicatie\SocialEvent\AccesControlSystem\bin\Debug\AccesControlSystem.pdb
+C:\Users\Lucas Scheepers\Desktop\Lucas\School\Jaar 1\Semester 2\5. Proftaak\- Applicatie\SocialEvent\AccesControlSystem\bin\Debug\DAL.dll
+C:\Users\Lucas Scheepers\Desktop\Lucas\School\Jaar 1\Semester 2\5. Proftaak\- Applicatie\SocialEvent\AccesControlSystem\bin\Debug\DAL.pdb
+C:\Users\Lucas Scheepers\Desktop\Lucas\School\Jaar 1\Semester 2\5. Proftaak\- Applicatie\SocialEvent\AccesControlSystem\obj\Debug\1. AccesControlSystem.csprojResolveAssemblyReference.cache
+C:\Users\Lucas Scheepers\Desktop\Lucas\School\Jaar 1\Semester 2\5. Proftaak\- Applicatie\SocialEvent\AccesControlSystem\obj\Debug\AccesControlSystem.Forms.Scanform.resources
+C:\Users\Lucas Scheepers\Desktop\Lucas\School\Jaar 1\Semester 2\5. Proftaak\- Applicatie\SocialEvent\AccesControlSystem\obj\Debug\AccesControlSystem.Properties.Resources.resources
+C:\Users\Lucas Scheepers\Desktop\Lucas\School\Jaar 1\Semester 2\5. Proftaak\- Applicatie\SocialEvent\AccesControlSystem\obj\Debug\1. AccesControlSystem.csproj.GenerateResource.Cache
+C:\Users\Lucas Scheepers\Desktop\Lucas\School\Jaar 1\Semester 2\5. Proftaak\- Applicatie\SocialEvent\AccesControlSystem\obj\Debug\AccesControlSystem.exe
+C:\Users\Lucas Scheepers\Desktop\Lucas\School\Jaar 1\Semester 2\5. Proftaak\- Applicatie\SocialEvent\AccesControlSystem\obj\Debug\AccesControlSystem.pdb

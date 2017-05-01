@@ -35,6 +35,7 @@
             this.btnAccountInstellingenGebruik = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panelNewsFeed = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnDownload = new System.Windows.Forms.Button();
             this.lblLikes = new System.Windows.Forms.Label();
             this.btnNextComment = new System.Windows.Forms.Button();
@@ -69,15 +70,15 @@
             this.tbNaam = new System.Windows.Forms.TextBox();
             this.tbctrlMain = new System.Windows.Forms.TabControl();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblLikesPost = new System.Windows.Forms.Label();
             this.panelGebruiker.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.panelNewsFeed.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabAccountInstellingen.SuspendLayout();
             this.panelAccountInstellingen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPicture)).BeginInit();
             this.tbctrlMain.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelGebruiker
@@ -139,6 +140,7 @@
             // panelNewsFeed
             // 
             this.panelNewsFeed.BackColor = System.Drawing.Color.Lavender;
+            this.panelNewsFeed.Controls.Add(this.lblLikesPost);
             this.panelNewsFeed.Controls.Add(this.pictureBox1);
             this.panelNewsFeed.Controls.Add(this.btnDownload);
             this.panelNewsFeed.Controls.Add(this.lblLikes);
@@ -160,6 +162,15 @@
             this.panelNewsFeed.Name = "panelNewsFeed";
             this.panelNewsFeed.Size = new System.Drawing.Size(744, 600);
             this.panelNewsFeed.TabIndex = 23;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(27, 122);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(380, 168);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 24;
+            this.pictureBox1.TabStop = false;
             // 
             // btnDownload
             // 
@@ -498,14 +509,14 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // pictureBox1
+            // lblLikesPost
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(27, 175);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(380, 149);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 24;
-            this.pictureBox1.TabStop = false;
+            this.lblLikesPost.AutoSize = true;
+            this.lblLikesPost.Location = new System.Drawing.Point(23, 307);
+            this.lblLikesPost.Name = "lblLikesPost";
+            this.lblLikesPost.Size = new System.Drawing.Size(93, 20);
+            this.lblLikesPost.TabIndex = 36;
+            this.lblLikesPost.Text = "lblLikesPost";
             // 
             // VisitorForm
             // 
@@ -521,12 +532,12 @@
             this.tabPage2.ResumeLayout(false);
             this.panelNewsFeed.ResumeLayout(false);
             this.panelNewsFeed.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabAccountInstellingen.ResumeLayout(false);
             this.panelAccountInstellingen.ResumeLayout(false);
             this.panelAccountInstellingen.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPicture)).EndInit();
             this.tbctrlMain.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -574,5 +585,6 @@
         private System.Windows.Forms.Label lblLikes;
         private System.Windows.Forms.Button btnDownload;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label lblLikesPost;
     }
 }
