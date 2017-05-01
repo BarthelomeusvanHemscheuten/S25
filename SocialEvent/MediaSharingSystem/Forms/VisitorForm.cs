@@ -30,6 +30,10 @@ namespace MediaSharingSystem.Forms
             InitializeComponent();
             this.controller = controller;
             this.login = f;
+
+            tbNaam.Text = controller.Visitor.Name;
+            tbEmail.Text = controller.Visitor.EmailAddress;
+            tbTelefoonNr.Text = controller.Visitor.Telnr;
             tbctrlMain.Appearance = TabAppearance.FlatButtons;
             tbctrlMain.ItemSize = new Size(0, 1);
             tbctrlMain.SizeMode = TabSizeMode.Fixed;
@@ -205,71 +209,69 @@ namespace MediaSharingSystem.Forms
             this.Close();
         }
         
-        /// Changes Name of user
+        //Changes Name
         private void btnWijzigenNaam_Click(object sender, EventArgs e)
         {
             if (controller.ChangeName(tbNaam.Text))
             {
-                MessageBox.Show("Naam is gewzijzigd");
+                MessageBox.Show("Naam is gewijzigd");
             }
             else
             {
-                throw new NotImplementedException();
+                MessageBox.Show("Naam is niet gewijzigd");
             }
-        }
 
-        /// Changes Email of user
+        }
+        //Changes Email
         private void btnWijzigenEmail_Click(object sender, EventArgs e)
         {
-            if(controller.ChangeEmail(tbEmail.Text))
+            if (controller.ChangeEmail(tbEmail.Text))
             {
-                MessageBox.Show("Email is gewzijzigd");
+                MessageBox.Show("Email is gewijzigd");
             }
             else
             {
-                throw new NotImplementedException();
+                MessageBox.Show("Email is niet gewijzigd");
             }
         }
-        
-        /// Changes Wachtwoord of user
+        //Changes Password
         private void btnWijzigenWachtwoord_Click(object sender, EventArgs e)
         {
-            if(controller.ChangePassword(tbWachtwoord.Text, tbWachtwoord2.Text))
+            if (controller.ChangePassword(tbWachtwoord.Text, tbWachtwoord2.Text))
             {
                 MessageBox.Show("Wachtwoord is gewijzigd");
             }
             else
             {
-                throw new NotImplementedException();
+                MessageBox.Show("Wachtwoord is niet gewijzigd");
             }
         }
-
-        /// Changes Telefoonnummer of user
+        //Changes TelefoonNummer
         private void btnWijzigenTelefoonNr_Click(object sender, EventArgs e)
         {
-            if(controller.ChangeTelnr(tbTelefoonNr.Text))
+            if (controller.ChangeTelnr(tbTelefoonNr.Text))
             {
                 MessageBox.Show("Telefoonnummer is gewijzigd");
             }
             else
             {
-                throw new NotImplementedException();
+                MessageBox.Show("Telefoonnummer is niet gewijzigd");
             }
         }
-
-        /// Changes image of user
+        //Change Image
         private void btnWijzigenFoto_Click(object sender, EventArgs e)
         {
-            //Image picture;
-            //if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            //{
-            //    picture = Image.FromFile(openFileDialog1.FileName);
-            //    pbPicture.Image = controller.ChangePicture(picture);
-            //}
-            //else
-            //{
-            //    throw new NotImplementedException();
-            //}
+            Image picture;
+            if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                picture = Image.FromFile(openFileDialog1.FileName);
+                pbPicture.Image = controller.ChangePicture(picture);
+                MessageBox.Show("Foto is gewijzigd");
+            }
+            else
+            {
+                MessageBox.Show("Foto is niet gewijzigd");
+            }
         }
 
         private void btnPlacePost_Click(object sender, EventArgs e)
