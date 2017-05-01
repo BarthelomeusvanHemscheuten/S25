@@ -187,7 +187,6 @@
             this.panelMedewerker.Name = "panelMedewerker";
             this.panelMedewerker.Size = new System.Drawing.Size(203, 532);
             this.panelMedewerker.TabIndex = 9;
-            this.btnInfoMenuMedewerker.Click += new System.EventHandler(this.btnNieuwsOverzicht_Click);
             // 
             // btnMateriaalInleveren
             // 
@@ -330,9 +329,10 @@
             this.tbWachtwoord2.Location = new System.Drawing.Point(314, 300);
             this.tbWachtwoord2.Margin = new System.Windows.Forms.Padding(4);
             this.tbWachtwoord2.Name = "tbWachtwoord2";
+            this.tbWachtwoord2.PasswordChar = '•';
             this.tbWachtwoord2.Size = new System.Drawing.Size(181, 22);
             this.tbWachtwoord2.TabIndex = 15;
-            this.tbWachtwoord2.Text = "Herhaal het wachtwoord hier";
+            this.tbWachtwoord2.Text = "blublablu";
             // 
             // btnWijzigenFoto
             // 
@@ -443,9 +443,10 @@
             this.tbWachtwoord.Location = new System.Drawing.Point(140, 300);
             this.tbWachtwoord.Margin = new System.Windows.Forms.Padding(4);
             this.tbWachtwoord.Name = "tbWachtwoord";
+            this.tbWachtwoord.PasswordChar = '•';
             this.tbWachtwoord.Size = new System.Drawing.Size(166, 22);
             this.tbWachtwoord.TabIndex = 4;
-            this.tbWachtwoord.Text = "Plaats nieuw wachtwoord hier";
+            this.tbWachtwoord.Text = "blablabla";
             // 
             // lblNaam
             // 

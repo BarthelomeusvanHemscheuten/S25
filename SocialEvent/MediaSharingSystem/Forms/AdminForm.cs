@@ -204,6 +204,7 @@ namespace MediaSharingSystem.Forms
             if (controller.AddSwearWord(tbNaamFilterwoord.Text))
             {
                 MessageBox.Show("Filterwoord toegevoegd");
+                lbFilterwoorden.Items.Clear();
                 foreach (string word in controller.GetAllSwearwords())
                 {
                     lbFilterwoorden.Items.Add(word);

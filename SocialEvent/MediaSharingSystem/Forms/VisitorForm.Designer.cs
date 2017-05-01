@@ -35,8 +35,12 @@
             this.btnAccountInstellingenGebruik = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panelNewsFeed = new System.Windows.Forms.Panel();
+            this.lbComment = new System.Windows.Forms.Label();
+            this.lbPost = new System.Windows.Forms.Label();
             this.lblLikesPost = new System.Windows.Forms.Label();
+            this.lbPostUsername = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lbCommentUsername = new System.Windows.Forms.Label();
             this.btnDownload = new System.Windows.Forms.Button();
             this.lblLikes = new System.Windows.Forms.Label();
             this.btnNextComment = new System.Windows.Forms.Button();
@@ -71,10 +75,6 @@
             this.tbNaam = new System.Windows.Forms.TextBox();
             this.tbctrlMain = new System.Windows.Forms.TabControl();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.lbComment = new System.Windows.Forms.Label();
-            this.lbPost = new System.Windows.Forms.Label();
-            this.lbPostUsername = new System.Windows.Forms.Label();
-            this.lbCommentUsername = new System.Windows.Forms.Label();
             this.panelGebruiker.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.panelNewsFeed.SuspendLayout();
@@ -172,6 +172,22 @@
             this.panelNewsFeed.Size = new System.Drawing.Size(661, 480);
             this.panelNewsFeed.TabIndex = 23;
             // 
+            // lbComment
+            // 
+            this.lbComment.Location = new System.Drawing.Point(389, 54);
+            this.lbComment.Name = "lbComment";
+            this.lbComment.Size = new System.Drawing.Size(262, 250);
+            this.lbComment.TabIndex = 44;
+            this.lbComment.Text = "label6";
+            // 
+            // lbPost
+            // 
+            this.lbPost.Location = new System.Drawing.Point(11, 54);
+            this.lbPost.Name = "lbPost";
+            this.lbPost.Size = new System.Drawing.Size(346, 35);
+            this.lbPost.TabIndex = 43;
+            this.lbPost.Text = "label5";
+            // 
             // lblLikesPost
             // 
             this.lblLikesPost.AutoSize = true;
@@ -180,6 +196,14 @@
             this.lblLikesPost.Size = new System.Drawing.Size(83, 17);
             this.lblLikesPost.TabIndex = 36;
             this.lblLikesPost.Text = "lblLikesPost";
+            // 
+            // lbPostUsername
+            // 
+            this.lbPostUsername.Location = new System.Drawing.Point(11, 37);
+            this.lbPostUsername.Name = "lbPostUsername";
+            this.lbPostUsername.Size = new System.Drawing.Size(181, 16);
+            this.lbPostUsername.TabIndex = 42;
+            this.lbPostUsername.Text = "label4";
             // 
             // pictureBox1
             // 
@@ -190,6 +214,14 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 24;
             this.pictureBox1.TabStop = false;
+            // 
+            // lbCommentUsername
+            // 
+            this.lbCommentUsername.Location = new System.Drawing.Point(389, 37);
+            this.lbCommentUsername.Name = "lbCommentUsername";
+            this.lbCommentUsername.Size = new System.Drawing.Size(262, 16);
+            this.lbCommentUsername.TabIndex = 41;
+            this.lbCommentUsername.Text = "label3";
             // 
             // btnDownload
             // 
@@ -383,11 +415,13 @@
             // 
             // tbWachtwoord2
             // 
-            this.tbWachtwoord2.Location = new System.Drawing.Point(306, 299);
+            this.tbWachtwoord2.Location = new System.Drawing.Point(266, 299);
             this.tbWachtwoord2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbWachtwoord2.Name = "tbWachtwoord2";
-            this.tbWachtwoord2.Size = new System.Drawing.Size(121, 22);
+            this.tbWachtwoord2.PasswordChar = '•';
+            this.tbWachtwoord2.Size = new System.Drawing.Size(161, 22);
             this.tbWachtwoord2.TabIndex = 15;
+            this.tbWachtwoord2.Text = "blublabla";
             // 
             // btnWijzigenFoto
             // 
@@ -498,8 +532,10 @@
             this.tbWachtwoord.Location = new System.Drawing.Point(140, 299);
             this.tbWachtwoord.Margin = new System.Windows.Forms.Padding(4);
             this.tbWachtwoord.Name = "tbWachtwoord";
+            this.tbWachtwoord.PasswordChar = '•';
             this.tbWachtwoord.Size = new System.Drawing.Size(119, 22);
             this.tbWachtwoord.TabIndex = 4;
+            this.tbWachtwoord.Text = "blablabla";
             // 
             // tbTelefoonNr
             // 
@@ -541,38 +577,6 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // lbComment
-            // 
-            this.lbComment.Location = new System.Drawing.Point(389, 54);
-            this.lbComment.Name = "lbComment";
-            this.lbComment.Size = new System.Drawing.Size(262, 250);
-            this.lbComment.TabIndex = 44;
-            this.lbComment.Text = "label6";
-            // 
-            // lbPost
-            // 
-            this.lbPost.Location = new System.Drawing.Point(11, 54);
-            this.lbPost.Name = "lbPost";
-            this.lbPost.Size = new System.Drawing.Size(346, 35);
-            this.lbPost.TabIndex = 43;
-            this.lbPost.Text = "label5";
-            // 
-            // lbPostUsername
-            // 
-            this.lbPostUsername.Location = new System.Drawing.Point(11, 37);
-            this.lbPostUsername.Name = "lbPostUsername";
-            this.lbPostUsername.Size = new System.Drawing.Size(181, 16);
-            this.lbPostUsername.TabIndex = 42;
-            this.lbPostUsername.Text = "label4";
-            // 
-            // lbCommentUsername
-            // 
-            this.lbCommentUsername.Location = new System.Drawing.Point(389, 37);
-            this.lbCommentUsername.Name = "lbCommentUsername";
-            this.lbCommentUsername.Size = new System.Drawing.Size(262, 16);
-            this.lbCommentUsername.TabIndex = 41;
-            this.lbCommentUsername.Text = "label3";
             // 
             // VisitorForm
             // 

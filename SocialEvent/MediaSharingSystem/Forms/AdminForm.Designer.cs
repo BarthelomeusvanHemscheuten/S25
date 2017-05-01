@@ -59,22 +59,6 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panelAddNew = new System.Windows.Forms.Panel();
             this.tabctrlAddable = new System.Windows.Forms.TabControl();
-            this.tabEvent = new System.Windows.Forms.TabPage();
-            this.panelAddEvenement = new System.Windows.Forms.Panel();
-            this.lblNaamEvenement = new System.Windows.Forms.Label();
-            this.lblOmschrijvingEvenement = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.lblEindTijd = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.lblBeginTijd = new System.Windows.Forms.Label();
-            this.lblLocatie = new System.Windows.Forms.Label();
-            this.lblEindDatum = new System.Windows.Forms.Label();
-            this.tbBeginTijd = new System.Windows.Forms.TextBox();
-            this.lblBeginDatum = new System.Windows.Forms.Label();
-            this.tbBeginDatum = new System.Windows.Forms.TextBox();
-            this.tbOmschrijvingEvenement = new System.Windows.Forms.TextBox();
-            this.tbEindTijd = new System.Windows.Forms.TextBox();
-            this.tbEindDatum = new System.Windows.Forms.TextBox();
             this.tabItem = new System.Windows.Forms.TabPage();
             this.panelAddMateriaal = new System.Windows.Forms.Panel();
             this.btnAddMaterial = new System.Windows.Forms.Button();
@@ -98,6 +82,10 @@
             this.tbNaamFilterwoord = new System.Windows.Forms.TextBox();
             this.tabNieuwsoverzicht = new System.Windows.Forms.TabPage();
             this.panelNewsFeed = new System.Windows.Forms.Panel();
+            this.lbComment = new System.Windows.Forms.Label();
+            this.lbPost = new System.Windows.Forms.Label();
+            this.lbPostUsername = new System.Windows.Forms.Label();
+            this.lbCommentUsername = new System.Windows.Forms.Label();
             this.lblLikesPost = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnDownload = new System.Windows.Forms.Button();
@@ -133,10 +121,6 @@
             this.lblNaam = new System.Windows.Forms.Label();
             this.tbNaam = new System.Windows.Forms.TextBox();
             this.tbctrlMain = new System.Windows.Forms.TabControl();
-            this.lbCommentUsername = new System.Windows.Forms.Label();
-            this.lbPostUsername = new System.Windows.Forms.Label();
-            this.lbPost = new System.Windows.Forms.Label();
-            this.lbComment = new System.Windows.Forms.Label();
             this.PanelBeheerder.SuspendLayout();
             this.tabGereserveerdeBerichten.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -145,8 +129,6 @@
             this.tabPage1.SuspendLayout();
             this.panelAddNew.SuspendLayout();
             this.tabctrlAddable.SuspendLayout();
-            this.tabEvent.SuspendLayout();
-            this.panelAddEvenement.SuspendLayout();
             this.tabItem.SuspendLayout();
             this.panelAddMateriaal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPictureMaterial)).BeginInit();
@@ -472,7 +454,6 @@
             // 
             // tabctrlAddable
             // 
-            this.tabctrlAddable.Controls.Add(this.tabEvent);
             this.tabctrlAddable.Controls.Add(this.tabItem);
             this.tabctrlAddable.Controls.Add(this.tabSwearword);
             this.tabctrlAddable.Location = new System.Drawing.Point(11, 14);
@@ -481,167 +462,6 @@
             this.tabctrlAddable.SelectedIndex = 0;
             this.tabctrlAddable.Size = new System.Drawing.Size(647, 491);
             this.tabctrlAddable.TabIndex = 0;
-            // 
-            // tabEvent
-            // 
-            this.tabEvent.Controls.Add(this.panelAddEvenement);
-            this.tabEvent.Location = new System.Drawing.Point(4, 25);
-            this.tabEvent.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabEvent.Name = "tabEvent";
-            this.tabEvent.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tabEvent.Size = new System.Drawing.Size(639, 462);
-            this.tabEvent.TabIndex = 0;
-            this.tabEvent.Text = "Evenement";
-            this.tabEvent.UseVisualStyleBackColor = true;
-            // 
-            // panelAddEvenement
-            // 
-            this.panelAddEvenement.Controls.Add(this.lblNaamEvenement);
-            this.panelAddEvenement.Controls.Add(this.lblOmschrijvingEvenement);
-            this.panelAddEvenement.Controls.Add(this.textBox2);
-            this.panelAddEvenement.Controls.Add(this.lblEindTijd);
-            this.panelAddEvenement.Controls.Add(this.textBox6);
-            this.panelAddEvenement.Controls.Add(this.lblBeginTijd);
-            this.panelAddEvenement.Controls.Add(this.lblLocatie);
-            this.panelAddEvenement.Controls.Add(this.lblEindDatum);
-            this.panelAddEvenement.Controls.Add(this.tbBeginTijd);
-            this.panelAddEvenement.Controls.Add(this.lblBeginDatum);
-            this.panelAddEvenement.Controls.Add(this.tbBeginDatum);
-            this.panelAddEvenement.Controls.Add(this.tbOmschrijvingEvenement);
-            this.panelAddEvenement.Controls.Add(this.tbEindTijd);
-            this.panelAddEvenement.Controls.Add(this.tbEindDatum);
-            this.panelAddEvenement.Location = new System.Drawing.Point(7, 7);
-            this.panelAddEvenement.Margin = new System.Windows.Forms.Padding(4);
-            this.panelAddEvenement.Name = "panelAddEvenement";
-            this.panelAddEvenement.Size = new System.Drawing.Size(557, 415);
-            this.panelAddEvenement.TabIndex = 19;
-            // 
-            // lblNaamEvenement
-            // 
-            this.lblNaamEvenement.AutoSize = true;
-            this.lblNaamEvenement.Location = new System.Drawing.Point(4, 12);
-            this.lblNaamEvenement.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblNaamEvenement.Name = "lblNaamEvenement";
-            this.lblNaamEvenement.Size = new System.Drawing.Size(123, 17);
-            this.lblNaamEvenement.TabIndex = 6;
-            this.lblNaamEvenement.Text = "Naam evenement:";
-            // 
-            // lblOmschrijvingEvenement
-            // 
-            this.lblOmschrijvingEvenement.AutoSize = true;
-            this.lblOmschrijvingEvenement.Location = new System.Drawing.Point(4, 149);
-            this.lblOmschrijvingEvenement.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblOmschrijvingEvenement.Name = "lblOmschrijvingEvenement";
-            this.lblOmschrijvingEvenement.Size = new System.Drawing.Size(93, 17);
-            this.lblOmschrijvingEvenement.TabIndex = 18;
-            this.lblOmschrijvingEvenement.Text = "Omschrijving:";
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(8, 32);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(232, 22);
-            this.textBox2.TabIndex = 4;
-            // 
-            // lblEindTijd
-            // 
-            this.lblEindTijd.AutoSize = true;
-            this.lblEindTijd.Location = new System.Drawing.Point(280, 112);
-            this.lblEindTijd.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblEindTijd.Name = "lblEindTijd";
-            this.lblEindTijd.Size = new System.Drawing.Size(58, 17);
-            this.lblEindTijd.TabIndex = 17;
-            this.lblEindTijd.Text = "Eindtijd:";
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(249, 32);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(232, 22);
-            this.textBox6.TabIndex = 5;
-            // 
-            // lblBeginTijd
-            // 
-            this.lblBeginTijd.AutoSize = true;
-            this.lblBeginTijd.Location = new System.Drawing.Point(33, 112);
-            this.lblBeginTijd.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblBeginTijd.Name = "lblBeginTijd";
-            this.lblBeginTijd.Size = new System.Drawing.Size(66, 17);
-            this.lblBeginTijd.TabIndex = 16;
-            this.lblBeginTijd.Text = "Begintijd:";
-            // 
-            // lblLocatie
-            // 
-            this.lblLocatie.AutoSize = true;
-            this.lblLocatie.Location = new System.Drawing.Point(245, 12);
-            this.lblLocatie.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblLocatie.Name = "lblLocatie";
-            this.lblLocatie.Size = new System.Drawing.Size(58, 17);
-            this.lblLocatie.TabIndex = 7;
-            this.lblLocatie.Text = "Locatie:";
-            // 
-            // lblEindDatum
-            // 
-            this.lblEindDatum.AutoSize = true;
-            this.lblEindDatum.Location = new System.Drawing.Point(263, 80);
-            this.lblEindDatum.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblEindDatum.Name = "lblEindDatum";
-            this.lblEindDatum.Size = new System.Drawing.Size(79, 17);
-            this.lblEindDatum.TabIndex = 15;
-            this.lblEindDatum.Text = "Einddatum:";
-            // 
-            // tbBeginTijd
-            // 
-            this.tbBeginTijd.Location = new System.Drawing.Point(107, 108);
-            this.tbBeginTijd.Margin = new System.Windows.Forms.Padding(4);
-            this.tbBeginTijd.Name = "tbBeginTijd";
-            this.tbBeginTijd.Size = new System.Drawing.Size(133, 22);
-            this.tbBeginTijd.TabIndex = 8;
-            // 
-            // lblBeginDatum
-            // 
-            this.lblBeginDatum.AutoSize = true;
-            this.lblBeginDatum.Location = new System.Drawing.Point(12, 80);
-            this.lblBeginDatum.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblBeginDatum.Name = "lblBeginDatum";
-            this.lblBeginDatum.Size = new System.Drawing.Size(87, 17);
-            this.lblBeginDatum.TabIndex = 14;
-            this.lblBeginDatum.Text = "Begindatum:";
-            // 
-            // tbBeginDatum
-            // 
-            this.tbBeginDatum.Location = new System.Drawing.Point(107, 76);
-            this.tbBeginDatum.Margin = new System.Windows.Forms.Padding(4);
-            this.tbBeginDatum.Name = "tbBeginDatum";
-            this.tbBeginDatum.Size = new System.Drawing.Size(133, 22);
-            this.tbBeginDatum.TabIndex = 9;
-            // 
-            // tbOmschrijvingEvenement
-            // 
-            this.tbOmschrijvingEvenement.Location = new System.Drawing.Point(8, 170);
-            this.tbOmschrijvingEvenement.Margin = new System.Windows.Forms.Padding(4);
-            this.tbOmschrijvingEvenement.Multiline = true;
-            this.tbOmschrijvingEvenement.Name = "tbOmschrijvingEvenement";
-            this.tbOmschrijvingEvenement.Size = new System.Drawing.Size(473, 130);
-            this.tbOmschrijvingEvenement.TabIndex = 12;
-            // 
-            // tbEindTijd
-            // 
-            this.tbEindTijd.Location = new System.Drawing.Point(348, 108);
-            this.tbEindTijd.Margin = new System.Windows.Forms.Padding(4);
-            this.tbEindTijd.Name = "tbEindTijd";
-            this.tbEindTijd.Size = new System.Drawing.Size(133, 22);
-            this.tbEindTijd.TabIndex = 10;
-            // 
-            // tbEindDatum
-            // 
-            this.tbEindDatum.Location = new System.Drawing.Point(348, 76);
-            this.tbEindDatum.Margin = new System.Windows.Forms.Padding(4);
-            this.tbEindDatum.Name = "tbEindDatum";
-            this.tbEindDatum.Size = new System.Drawing.Size(133, 22);
-            this.tbEindDatum.TabIndex = 11;
             // 
             // tabItem
             // 
@@ -903,6 +723,38 @@
             this.panelNewsFeed.Size = new System.Drawing.Size(665, 540);
             this.panelNewsFeed.TabIndex = 24;
             // 
+            // lbComment
+            // 
+            this.lbComment.Location = new System.Drawing.Point(389, 53);
+            this.lbComment.Name = "lbComment";
+            this.lbComment.Size = new System.Drawing.Size(262, 250);
+            this.lbComment.TabIndex = 40;
+            this.lbComment.Text = "label6";
+            // 
+            // lbPost
+            // 
+            this.lbPost.Location = new System.Drawing.Point(16, 53);
+            this.lbPost.Name = "lbPost";
+            this.lbPost.Size = new System.Drawing.Size(346, 52);
+            this.lbPost.TabIndex = 39;
+            this.lbPost.Text = "label5";
+            // 
+            // lbPostUsername
+            // 
+            this.lbPostUsername.Location = new System.Drawing.Point(16, 36);
+            this.lbPostUsername.Name = "lbPostUsername";
+            this.lbPostUsername.Size = new System.Drawing.Size(181, 16);
+            this.lbPostUsername.TabIndex = 38;
+            this.lbPostUsername.Text = "label4";
+            // 
+            // lbCommentUsername
+            // 
+            this.lbCommentUsername.Location = new System.Drawing.Point(389, 36);
+            this.lbCommentUsername.Name = "lbCommentUsername";
+            this.lbCommentUsername.Size = new System.Drawing.Size(262, 16);
+            this.lbCommentUsername.TabIndex = 37;
+            this.lbCommentUsername.Text = "label3";
+            // 
             // lblLikesPost
             // 
             this.lblLikesPost.AutoSize = true;
@@ -1117,9 +969,10 @@
             this.tbWachtwoord2.Location = new System.Drawing.Point(283, 300);
             this.tbWachtwoord2.Margin = new System.Windows.Forms.Padding(4);
             this.tbWachtwoord2.Name = "tbWachtwoord2";
+            this.tbWachtwoord2.PasswordChar = '•';
             this.tbWachtwoord2.Size = new System.Drawing.Size(143, 22);
             this.tbWachtwoord2.TabIndex = 15;
-            this.tbWachtwoord2.Text = "Herhaal het nieuwe wachtwoord hier";
+            this.tbWachtwoord2.Text = "blablubla";
             // 
             // btnWijzigenFoto
             // 
@@ -1230,9 +1083,10 @@
             this.tbWachtwoord.Location = new System.Drawing.Point(140, 299);
             this.tbWachtwoord.Margin = new System.Windows.Forms.Padding(4);
             this.tbWachtwoord.Name = "tbWachtwoord";
+            this.tbWachtwoord.PasswordChar = '•';
             this.tbWachtwoord.Size = new System.Drawing.Size(135, 22);
             this.tbWachtwoord.TabIndex = 4;
-            this.tbWachtwoord.Text = "Plaats het nieuwe wachtwoord hier";
+            this.tbWachtwoord.Text = "blablabla";
             // 
             // tbTelefoonNr
             // 
@@ -1274,38 +1128,6 @@
             this.tbctrlMain.Size = new System.Drawing.Size(661, 532);
             this.tbctrlMain.TabIndex = 13;
             // 
-            // lbCommentUsername
-            // 
-            this.lbCommentUsername.Location = new System.Drawing.Point(389, 36);
-            this.lbCommentUsername.Name = "lbCommentUsername";
-            this.lbCommentUsername.Size = new System.Drawing.Size(262, 16);
-            this.lbCommentUsername.TabIndex = 37;
-            this.lbCommentUsername.Text = "label3";
-            // 
-            // lbPostUsername
-            // 
-            this.lbPostUsername.Location = new System.Drawing.Point(16, 36);
-            this.lbPostUsername.Name = "lbPostUsername";
-            this.lbPostUsername.Size = new System.Drawing.Size(181, 16);
-            this.lbPostUsername.TabIndex = 38;
-            this.lbPostUsername.Text = "label4";
-            // 
-            // lbPost
-            // 
-            this.lbPost.Location = new System.Drawing.Point(16, 53);
-            this.lbPost.Name = "lbPost";
-            this.lbPost.Size = new System.Drawing.Size(346, 52);
-            this.lbPost.TabIndex = 39;
-            this.lbPost.Text = "label5";
-            // 
-            // lbComment
-            // 
-            this.lbComment.Location = new System.Drawing.Point(389, 53);
-            this.lbComment.Name = "lbComment";
-            this.lbComment.Size = new System.Drawing.Size(262, 250);
-            this.lbComment.TabIndex = 40;
-            this.lbComment.Text = "label6";
-            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1327,9 +1149,6 @@
             this.tabPage1.ResumeLayout(false);
             this.panelAddNew.ResumeLayout(false);
             this.tabctrlAddable.ResumeLayout(false);
-            this.tabEvent.ResumeLayout(false);
-            this.panelAddEvenement.ResumeLayout(false);
-            this.panelAddEvenement.PerformLayout();
             this.tabItem.ResumeLayout(false);
             this.panelAddMateriaal.ResumeLayout(false);
             this.panelAddMateriaal.PerformLayout();
@@ -1382,22 +1201,6 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.Panel panelAddNew;
         private System.Windows.Forms.TabControl tabctrlAddable;
-        private System.Windows.Forms.TabPage tabEvent;
-        private System.Windows.Forms.Panel panelAddEvenement;
-        private System.Windows.Forms.Label lblNaamEvenement;
-        private System.Windows.Forms.Label lblOmschrijvingEvenement;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Label lblEindTijd;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.Label lblBeginTijd;
-        private System.Windows.Forms.Label lblLocatie;
-        private System.Windows.Forms.Label lblEindDatum;
-        private System.Windows.Forms.TextBox tbBeginTijd;
-        private System.Windows.Forms.Label lblBeginDatum;
-        private System.Windows.Forms.TextBox tbBeginDatum;
-        private System.Windows.Forms.TextBox tbOmschrijvingEvenement;
-        private System.Windows.Forms.TextBox tbEindTijd;
-        private System.Windows.Forms.TextBox tbEindDatum;
         private System.Windows.Forms.TabPage tabItem;
         private System.Windows.Forms.Panel panelAddMateriaal;
         private System.Windows.Forms.Button btnAddMaterial;
