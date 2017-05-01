@@ -92,7 +92,7 @@ namespace MediaSharingSystem.Controllers
 
             for (int i = 0; i < name.Count; i++)
             {
-                Material material = new Material(name[i], description[i], price[i]);
+                Material material = new Material(id[i], name[i], description[i], price[i]);
                 Event.Material.Add(material);
                 result.Add(material);
             }
@@ -673,15 +673,17 @@ namespace MediaSharingSystem.Controllers
         public List<Material> GetTakenMaterials(int userid)
         {
             List<Material> materials = new List<Material>();
+            List<int> id = new List<int>();
             List<string> name = new List<string>();
             List<decimal> price = new List<decimal>();
             List<string> description = new List<string>();
+            id = reservationRepo.GetMaterialID(userid);
             name = reservationRepo.GetMaterialName(userid);
             price = reservationRepo.GetMaterialPrice(userid);
             description = reservationRepo.GetMaterialDescription(userid);
             for (int i = 0; i < name.Count; i++)
             {
-                Material material = new Material(name[i], description[i], price[i]);
+                Material material = new Material(id[i], name[i], description[i], price[i]);
                 Event.Material.Add(material);
                 materials.Add(material);
             }

@@ -41,16 +41,7 @@ namespace MediaSharingSystem.Forms
             {
                 userData.Add(new List<string>());
             }
-            foreach (User user in controller.GetAndShowVisitorsFromDatabase())
-            {
-                lbGebruikers.Items.Add(user);
-                lbVisitors.Items.Add(user);
-                lbVisitorInleveren.Items.Add(user);
-            }
-            foreach (Material material in controller.GetAndShowMaterialFromDatabase())
-            {
-                lbMaterialen.Items.Add(material);
-            }
+
 
             tbNaam.Text = controller.Employee.Name;
             tbEmail.Text = controller.Employee.EmailAddress;
@@ -75,15 +66,41 @@ namespace MediaSharingSystem.Forms
         private void btnVerhuurItemMedewerker_Click(object sender, EventArgs e)
         {
             tbctrlMain.SelectedTab = tbctrlMain.TabPages[2];
+            lbVisitors.Items.Clear();
+            lbMaterialen.Items.Clear();
+            foreach(User user in controller.GetAndShowVisitorsFromDatabase())
+            {
+                lbVisitors.Items.Add(user);
+            }
+            foreach(Material material in controller.GetAndShowMaterialFromDatabase())
+            {
+                lbMaterialen.Items.Add(material);
+            }
+
         }
 
         private void btnGebruikersBeherenMedewerker_Click(object sender, EventArgs e)
         {
             tbctrlMain.SelectedTab = tbctrlMain.TabPages[3];
+            lbGebruikers.Items.Clear();
+            foreach (User user in controller.GetAndShowVisitorsFromDatabase())
+            {
+                lbGebruikers.Items.Add(user);
+            }
         }
         private void btnMateriaalInleveren_Click(object sender, EventArgs e)
         {
             tbctrlMain.SelectedTab = tbctrlMain.TabPages[5];
+            lbVisitorInleveren.Items.Clear();
+            lbMaterialen.Items.Clear();
+            foreach(User user in controller.GetAndShowVisitorsFromDatabase())
+            {
+                lbVisitorInleveren.Items.Add(user);
+            }
+            foreach (Material material in controller.GetAndShowMaterialFromDatabase())
+            {
+                lbMaterialen.Items.Add(material);
+            }
         }
 
         private void btnUitloggenMedewerker_Click(object sender, EventArgs e)
@@ -284,6 +301,7 @@ namespace MediaSharingSystem.Forms
         private void lbVisitorInleveren_SelectedIndexChanged(object sender, EventArgs e)
         {
             Visitor visitor = (Visitor)lbVisitorInleveren.SelectedItem;
+            lbVerhuurdeMaterialen.Items.Clear();
             foreach(Material material in controller.GetTakenMaterials(visitor.ID))
             {
                 lbVerhuurdeMaterialen.Items.Add(material);

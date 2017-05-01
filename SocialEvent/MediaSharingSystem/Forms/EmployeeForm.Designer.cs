@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EmployeeForm));
             this.panelMedewerker = new System.Windows.Forms.Panel();
+            this.btnMateriaalInleveren = new System.Windows.Forms.Button();
             this.btnReserveren = new System.Windows.Forms.Button();
             this.btnUitloggenMedewerker = new System.Windows.Forms.Button();
             this.btnInfoMenuMedewerker = new System.Windows.Forms.Button();
@@ -60,7 +61,6 @@
             this.tbAantalMaterialen = new System.Windows.Forms.TextBox();
             this.dtmEinddatum = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
-            this.tbHoeveelheidMateriaal = new System.Windows.Forms.TextBox();
             this.lbVisitors = new System.Windows.Forms.ListBox();
             this.btnVerhuurMateriaal = new System.Windows.Forms.Button();
             this.tbTypeMaterial = new System.Windows.Forms.TextBox();
@@ -120,12 +120,16 @@
             this.tbTelefoonNrHoofdreserveerder = new System.Windows.Forms.TextBox();
             this.tbLocatieNrHoofdreserveerder = new System.Windows.Forms.TextBox();
             this.tbNaamHoofdreserveerder = new System.Windows.Forms.TextBox();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.tabInleveren = new System.Windows.Forms.TabPage();
-            this.btnMateriaalInleveren = new System.Windows.Forms.Button();
-            this.lbVisitorInleveren = new System.Windows.Forms.ListBox();
-            this.lbVerhuurdeMaterialen = new System.Windows.Forms.ListBox();
             this.btnInleveren = new System.Windows.Forms.Button();
+            this.lbVerhuurdeMaterialen = new System.Windows.Forms.ListBox();
+            this.lbVisitorInleveren = new System.Windows.Forms.ListBox();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.lblVisitors = new System.Windows.Forms.Label();
+            this.lblMateriaal = new System.Windows.Forms.Label();
+            this.lblHoeveelheid = new System.Windows.Forms.Label();
+            this.lblDatum = new System.Windows.Forms.Label();
+            this.tbHoeveelheidMateriaal = new System.Windows.Forms.TextBox();
             this.panelMedewerker.SuspendLayout();
             this.tbctrlMain.SuspendLayout();
             this.tabAccountInstellingen.SuspendLayout();
@@ -158,6 +162,17 @@
             this.panelMedewerker.Name = "panelMedewerker";
             this.panelMedewerker.Size = new System.Drawing.Size(203, 532);
             this.panelMedewerker.TabIndex = 9;
+            // 
+            // btnMateriaalInleveren
+            // 
+            this.btnMateriaalInleveren.Location = new System.Drawing.Point(17, 317);
+            this.btnMateriaalInleveren.Margin = new System.Windows.Forms.Padding(4);
+            this.btnMateriaalInleveren.Name = "btnMateriaalInleveren";
+            this.btnMateriaalInleveren.Size = new System.Drawing.Size(169, 52);
+            this.btnMateriaalInleveren.TabIndex = 6;
+            this.btnMateriaalInleveren.Text = "Item Inleveren";
+            this.btnMateriaalInleveren.UseVisualStyleBackColor = true;
+            this.btnMateriaalInleveren.Click += new System.EventHandler(this.btnMateriaalInleveren_Click);
             // 
             // btnReserveren
             // 
@@ -450,6 +465,8 @@
             // panelVerhuurItem
             // 
             this.panelVerhuurItem.BackColor = System.Drawing.Color.Lavender;
+            this.panelVerhuurItem.Controls.Add(this.lblDatum);
+            this.panelVerhuurItem.Controls.Add(this.lblHoeveelheid);
             this.panelVerhuurItem.Controls.Add(this.tbAantalMaterialen);
             this.panelVerhuurItem.Controls.Add(this.dtmEinddatum);
             this.panelVerhuurItem.Controls.Add(this.label1);
@@ -475,14 +492,14 @@
             // 
             // tbAantalMaterialen
             // 
-            this.tbAantalMaterialen.Location = new System.Drawing.Point(350, 285);
+            this.tbAantalMaterialen.Location = new System.Drawing.Point(420, 352);
             this.tbAantalMaterialen.Name = "tbAantalMaterialen";
             this.tbAantalMaterialen.Size = new System.Drawing.Size(100, 22);
             this.tbAantalMaterialen.TabIndex = 23;
             // 
             // dtmEinddatum
             // 
-            this.dtmEinddatum.Location = new System.Drawing.Point(350, 256);
+            this.dtmEinddatum.Location = new System.Drawing.Point(420, 319);
             this.dtmEinddatum.Name = "dtmEinddatum";
             this.dtmEinddatum.Size = new System.Drawing.Size(200, 22);
             this.dtmEinddatum.TabIndex = 22;
@@ -490,21 +507,12 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 396);
+            this.label1.Location = new System.Drawing.Point(235, 396);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(91, 17);
+            this.label1.Size = new System.Drawing.Size(173, 17);
             this.label1.TabIndex = 21;
-            this.label1.Text = "Hoeveelheid:";
-            // 
-            // tbHoeveelheidMateriaal
-            // 
-            this.tbHoeveelheidMateriaal.Enabled = false;
-            this.tbHoeveelheidMateriaal.Location = new System.Drawing.Point(116, 393);
-            this.tbHoeveelheidMateriaal.Margin = new System.Windows.Forms.Padding(4);
-            this.tbHoeveelheidMateriaal.Name = "tbHoeveelheidMateriaal";
-            this.tbHoeveelheidMateriaal.Size = new System.Drawing.Size(195, 22);
-            this.tbHoeveelheidMateriaal.TabIndex = 20;
+            this.label1.Text = "Hoeveelheid Beschikbaar:";
             // 
             // lbVisitors
             // 
@@ -1116,12 +1124,10 @@
             this.tbNaamHoofdreserveerder.Size = new System.Drawing.Size(157, 22);
             this.tbNaamHoofdreserveerder.TabIndex = 10;
             // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
             // tabInleveren
             // 
+            this.tabInleveren.Controls.Add(this.lblMateriaal);
+            this.tabInleveren.Controls.Add(this.lblVisitors);
             this.tabInleveren.Controls.Add(this.btnInleveren);
             this.tabInleveren.Controls.Add(this.lbVerhuurdeMaterialen);
             this.tabInleveren.Controls.Add(this.lbVisitorInleveren);
@@ -1133,46 +1139,86 @@
             this.tabInleveren.Text = "tabInleveren";
             this.tabInleveren.UseVisualStyleBackColor = true;
             // 
-            // btnMateriaalInleveren
+            // btnInleveren
             // 
-            this.btnMateriaalInleveren.Location = new System.Drawing.Point(17, 317);
-            this.btnMateriaalInleveren.Margin = new System.Windows.Forms.Padding(4);
-            this.btnMateriaalInleveren.Name = "btnMateriaalInleveren";
-            this.btnMateriaalInleveren.Size = new System.Drawing.Size(169, 52);
-            this.btnMateriaalInleveren.TabIndex = 6;
-            this.btnMateriaalInleveren.Text = "Item Inleveren";
-            this.btnMateriaalInleveren.UseVisualStyleBackColor = true;
-            this.btnMateriaalInleveren.Click += new System.EventHandler(this.btnMateriaalInleveren_Click);
-            // 
-            // lbVisitorInleveren
-            // 
-            this.lbVisitorInleveren.FormattingEnabled = true;
-            this.lbVisitorInleveren.ItemHeight = 16;
-            this.lbVisitorInleveren.Location = new System.Drawing.Point(6, 6);
-            this.lbVisitorInleveren.Name = "lbVisitorInleveren";
-            this.lbVisitorInleveren.Size = new System.Drawing.Size(217, 212);
-            this.lbVisitorInleveren.TabIndex = 0;
-            this.lbVisitorInleveren.SelectedIndexChanged += new System.EventHandler(this.lbVisitorInleveren_SelectedIndexChanged);
+            this.btnInleveren.Location = new System.Drawing.Point(490, 113);
+            this.btnInleveren.Name = "btnInleveren";
+            this.btnInleveren.Size = new System.Drawing.Size(123, 37);
+            this.btnInleveren.TabIndex = 2;
+            this.btnInleveren.Text = "Inleveren";
+            this.btnInleveren.UseVisualStyleBackColor = true;
+            this.btnInleveren.Click += new System.EventHandler(this.btnInleveren_Click);
             // 
             // lbVerhuurdeMaterialen
             // 
             this.lbVerhuurdeMaterialen.FormattingEnabled = true;
             this.lbVerhuurdeMaterialen.ItemHeight = 16;
-            this.lbVerhuurdeMaterialen.Location = new System.Drawing.Point(238, 6);
+            this.lbVerhuurdeMaterialen.Location = new System.Drawing.Point(238, 29);
             this.lbVerhuurdeMaterialen.Name = "lbVerhuurdeMaterialen";
             this.lbVerhuurdeMaterialen.Size = new System.Drawing.Size(187, 212);
             this.lbVerhuurdeMaterialen.TabIndex = 1;
             this.lbVerhuurdeMaterialen.SelectedIndexChanged += new System.EventHandler(this.lbVerhuurdeMaterialen_SelectedIndexChanged);
             // 
-            // btnInleveren
+            // lbVisitorInleveren
             // 
-            this.btnInleveren.Location = new System.Drawing.Point(6, 247);
-            this.btnInleveren.Name = "btnInleveren";
-            this.btnInleveren.Size = new System.Drawing.Size(75, 23);
-            this.btnInleveren.TabIndex = 2;
-            this.btnInleveren.Text = "Inleveren";
-            this.btnInleveren.UseVisualStyleBackColor = true;
-            this.btnInleveren.Click += new System.EventHandler(this.btnInleveren_Click);
+            this.lbVisitorInleveren.FormattingEnabled = true;
+            this.lbVisitorInleveren.ItemHeight = 16;
+            this.lbVisitorInleveren.Location = new System.Drawing.Point(15, 29);
+            this.lbVisitorInleveren.Name = "lbVisitorInleveren";
+            this.lbVisitorInleveren.Size = new System.Drawing.Size(217, 212);
+            this.lbVisitorInleveren.TabIndex = 0;
+            this.lbVisitorInleveren.SelectedIndexChanged += new System.EventHandler(this.lbVisitorInleveren_SelectedIndexChanged);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // lblVisitors
+            // 
+            this.lblVisitors.AutoSize = true;
+            this.lblVisitors.Location = new System.Drawing.Point(12, 6);
+            this.lblVisitors.Name = "lblVisitors";
+            this.lblVisitors.Size = new System.Drawing.Size(72, 17);
+            this.lblVisitors.TabIndex = 3;
+            this.lblVisitors.Text = "Bezoeker:";
+            // 
+            // lblMateriaal
+            // 
+            this.lblMateriaal.AutoSize = true;
+            this.lblMateriaal.Location = new System.Drawing.Point(238, 7);
+            this.lblMateriaal.Name = "lblMateriaal";
+            this.lblMateriaal.Size = new System.Drawing.Size(78, 17);
+            this.lblMateriaal.TabIndex = 4;
+            this.lblMateriaal.Text = "Materialen:";
+            // 
+            // lblHoeveelheid
+            // 
+            this.lblHoeveelheid.AutoSize = true;
+            this.lblHoeveelheid.Location = new System.Drawing.Point(319, 355);
+            this.lblHoeveelheid.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblHoeveelheid.Name = "lblHoeveelheid";
+            this.lblHoeveelheid.Size = new System.Drawing.Size(91, 17);
+            this.lblHoeveelheid.TabIndex = 24;
+            this.lblHoeveelheid.Text = "Hoeveelheid:";
+            // 
+            // lblDatum
+            // 
+            this.lblDatum.AutoSize = true;
+            this.lblDatum.Location = new System.Drawing.Point(355, 324);
+            this.lblDatum.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDatum.Name = "lblDatum";
+            this.lblDatum.Size = new System.Drawing.Size(53, 17);
+            this.lblDatum.TabIndex = 25;
+            this.lblDatum.Text = "Datum:";
+            // 
+            // tbHoeveelheidMateriaal
+            // 
+            this.tbHoeveelheidMateriaal.Enabled = false;
+            this.tbHoeveelheidMateriaal.Location = new System.Drawing.Point(420, 391);
+            this.tbHoeveelheidMateriaal.Margin = new System.Windows.Forms.Padding(4);
+            this.tbHoeveelheidMateriaal.Name = "tbHoeveelheidMateriaal";
+            this.tbHoeveelheidMateriaal.Size = new System.Drawing.Size(195, 22);
+            this.tbHoeveelheidMateriaal.TabIndex = 20;
             // 
             // EmployeeForm
             // 
@@ -1204,6 +1250,7 @@
             this.PanelInfoMenu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.tabInleveren.ResumeLayout(false);
+            this.tabInleveren.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1276,7 +1323,6 @@
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.ListBox lbVisitors;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox tbHoeveelheidMateriaal;
         private System.Windows.Forms.TextBox tbAanhangselLocatie1;
         private System.Windows.Forms.Label lbLocatie;
         private System.Windows.Forms.Label lbUsername;
@@ -1307,5 +1353,10 @@
         private System.Windows.Forms.Button btnInleveren;
         private System.Windows.Forms.ListBox lbVerhuurdeMaterialen;
         private System.Windows.Forms.ListBox lbVisitorInleveren;
+        private System.Windows.Forms.Label lblMateriaal;
+        private System.Windows.Forms.Label lblVisitors;
+        private System.Windows.Forms.Label lblDatum;
+        private System.Windows.Forms.Label lblHoeveelheid;
+        private System.Windows.Forms.TextBox tbHoeveelheidMateriaal;
     }
 }
