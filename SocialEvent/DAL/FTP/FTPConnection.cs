@@ -37,21 +37,28 @@ namespace DAL.FTP
             //Inloggen op de FTP server. (Onveilig. Demo only!!)
             request.Credentials = new NetworkCredential("Administrator", "Welkom10!");
 
-            //Lokaal bestand uitlezen
-            StreamReader sourceStream = new StreamReader(uploadFromPath);
-            byte[] fileContents = File.ReadAllBytes(uploadFromPath);
-            sourceStream.Close();
-            request.ContentLength = fileContents.Length;
+            try
+            {
+                //Lokaal bestand uitlezen
+                StreamReader sourceStream = new StreamReader(uploadFromPath);
+                byte[] fileContents = File.ReadAllBytes(uploadFromPath);
+                sourceStream.Close();
+                request.ContentLength = fileContents.Length;
 
-            //Bestand wegschrijven naar de server
-            Stream requestStream = request.GetRequestStream();
-            requestStream.Write(fileContents, 0, fileContents.Length);
-            requestStream.Close();
+                //Bestand wegschrijven naar de server
+                Stream requestStream = request.GetRequestStream();
+                requestStream.Write(fileContents, 0, fileContents.Length);
+                requestStream.Close();
 
-            //Response opvangen en in de console zetten
-            FtpWebResponse response = (FtpWebResponse)request.GetResponse();
-            Console.WriteLine("Upload File Complete, status {0}", response.StatusDescription);
-            response.Close();
+                //Response opvangen en in de console zetten
+                FtpWebResponse response = (FtpWebResponse)request.GetResponse();
+                Console.WriteLine("Upload File Complete, status {0}", response.StatusDescription);
+                response.Close();
+            } catch(WebException e)
+            {
+                string status = ((FtpWebResponse)e.Response).StatusDescription;
+                Console.WriteLine(status);
+            }
         }
 
         /// <summary>

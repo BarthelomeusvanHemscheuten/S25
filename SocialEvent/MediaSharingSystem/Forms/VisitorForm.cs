@@ -56,7 +56,6 @@ namespace MediaSharingSystem.Forms
 
             naamP.Text = post.User.ToString();
             contentTextP.Text = post.Text;
-            contentPathP.Text = post.Path;
 
             currentComment = post.Comments.Count() - 1;
             
@@ -87,6 +86,7 @@ namespace MediaSharingSystem.Forms
             panelNewsFeed.Controls.Add(naamC);
             panelNewsFeed.Controls.Add(contentTextC);
 
+            pictureBox1.Image = controller.GetImage(post.Path);
         }
 
         private void btnNextPost_Click(object sender, EventArgs e)

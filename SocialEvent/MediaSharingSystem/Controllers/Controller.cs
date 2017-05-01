@@ -558,6 +558,11 @@ namespace MediaSharingSystem.Controllers
             ftp.DownloadFileToFolder(filePath, @"C:\");
         }
 
+        public Image GetImage(string filePath)
+        {
+            return ftp.GetImageFromFTP(filePath);
+        }
+
         public Post GetAndShowPostComments(int i, int next)
         {
             Post output;

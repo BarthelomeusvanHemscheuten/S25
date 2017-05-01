@@ -35,6 +35,7 @@
             this.btnAccountInstellingenGebruik = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panelNewsFeed = new System.Windows.Forms.Panel();
+            this.btnDownload = new System.Windows.Forms.Button();
             this.lblLikes = new System.Windows.Forms.Label();
             this.btnNextComment = new System.Windows.Forms.Button();
             this.btnPrevComment = new System.Windows.Forms.Button();
@@ -68,7 +69,7 @@
             this.tbNaam = new System.Windows.Forms.TextBox();
             this.tbctrlMain = new System.Windows.Forms.TabControl();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.btnDownload = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelGebruiker.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.panelNewsFeed.SuspendLayout();
@@ -76,6 +77,7 @@
             this.panelAccountInstellingen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPicture)).BeginInit();
             this.tbctrlMain.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelGebruiker
@@ -137,6 +139,7 @@
             // panelNewsFeed
             // 
             this.panelNewsFeed.BackColor = System.Drawing.Color.Lavender;
+            this.panelNewsFeed.Controls.Add(this.pictureBox1);
             this.panelNewsFeed.Controls.Add(this.btnDownload);
             this.panelNewsFeed.Controls.Add(this.lblLikes);
             this.panelNewsFeed.Controls.Add(this.btnNextComment);
@@ -157,6 +160,16 @@
             this.panelNewsFeed.Name = "panelNewsFeed";
             this.panelNewsFeed.Size = new System.Drawing.Size(744, 600);
             this.panelNewsFeed.TabIndex = 23;
+            // 
+            // btnDownload
+            // 
+            this.btnDownload.Location = new System.Drawing.Point(300, 341);
+            this.btnDownload.Name = "btnDownload";
+            this.btnDownload.Size = new System.Drawing.Size(107, 109);
+            this.btnDownload.TabIndex = 24;
+            this.btnDownload.Text = "Download media";
+            this.btnDownload.UseVisualStyleBackColor = true;
+            this.btnDownload.Click += new System.EventHandler(this.btnDownload_Click);
             // 
             // lblLikes
             // 
@@ -485,15 +498,14 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // btnDownload
+            // pictureBox1
             // 
-            this.btnDownload.Location = new System.Drawing.Point(300, 341);
-            this.btnDownload.Name = "btnDownload";
-            this.btnDownload.Size = new System.Drawing.Size(107, 109);
-            this.btnDownload.TabIndex = 24;
-            this.btnDownload.Text = "Download media";
-            this.btnDownload.UseVisualStyleBackColor = true;
-            this.btnDownload.Click += new System.EventHandler(this.btnDownload_Click);
+            this.pictureBox1.Location = new System.Drawing.Point(27, 175);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(380, 149);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 24;
+            this.pictureBox1.TabStop = false;
             // 
             // VisitorForm
             // 
@@ -514,6 +526,7 @@
             this.panelAccountInstellingen.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPicture)).EndInit();
             this.tbctrlMain.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -560,5 +573,6 @@
         private System.Windows.Forms.Button btnPrevComment;
         private System.Windows.Forms.Label lblLikes;
         private System.Windows.Forms.Button btnDownload;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
