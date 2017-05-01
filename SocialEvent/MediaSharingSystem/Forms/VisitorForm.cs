@@ -50,11 +50,11 @@ namespace MediaSharingSystem.Forms
 
             post = controller.GetAndShowPostComments(controller.currentPostForm, 0);
 
-            naamP.Location = new Point(10, 40);
+            naamP.Location = new Point(10, 35);
             contentTextP.Location = new Point(10, 60);
 
-            naamC.Location = new Point(292, 50);
-            contentTextC.Location = new Point(292, 80);
+            naamC.Location = new Point(292, 35);
+            contentTextC.Location = new Point(292, 60);
 
             naamP.Text = post.User.ToString();
             contentTextP.Text = post.Text;
@@ -87,7 +87,7 @@ namespace MediaSharingSystem.Forms
             panelNewsFeed.Controls.Add(naamC);
             panelNewsFeed.Controls.Add(contentTextC);
 
-            if (post.Path != "")
+            if (post.Path != "-")
             {
                 pictureBox1.Image = controller.GetImage(post.Path);
             }
@@ -125,7 +125,7 @@ namespace MediaSharingSystem.Forms
             int likes = controller.GetAndShowLikes(post);
             lblLikesPost.Text = likes + " mensen vinden dit leuk";
 
-            if (post.Path != "")
+            if (post.Path != "-")
             {
                 pictureBox1.Image = controller.GetImage(post.Path);
             }
@@ -163,7 +163,7 @@ namespace MediaSharingSystem.Forms
             int likes = controller.GetAndShowLikes(post);
             lblLikesPost.Text = likes + " mensen vinden dit leuk";
 
-            if (post.Path != "")
+            if (post.Path != "-")
             {
                 pictureBox1.Image = controller.GetImage(post.Path);
             }
@@ -302,7 +302,7 @@ namespace MediaSharingSystem.Forms
                 contentTextC.Text = post.Comments[currentComment].Text;
             }
 
-            if (post.Path != "")
+            if (post.Path != "-")
             {
                 pictureBox1.Image = controller.GetImage(post.Path);
             }

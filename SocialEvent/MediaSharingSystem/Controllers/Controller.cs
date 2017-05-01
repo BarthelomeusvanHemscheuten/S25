@@ -557,7 +557,10 @@ namespace MediaSharingSystem.Controllers
         {
             string[] splitFilePath = new string[10];
             splitFilePath = filePath.Split('\\');
-            string filepathServer = @"Users\" + visitor.Username + @"\" + splitFilePath.Last();
+            ftp.CreateDirectoryIfNotExists(@"Users\" + visitor.Username);
+            string[] extension = new string[10];
+            extension = splitFilePath.Last().Split('.');
+            string filepathServer = @"Users\" + visitor.Username + @"\" + RandomString(30) + @"." + extension.Last();
             ftp.UploadFile(filePath, filepathServer);
             return filepathServer;
         }
@@ -667,25 +670,6 @@ namespace MediaSharingSystem.Controllers
             return mediaRepo.GetAllSwearwords();
         }
 
-        //public List<Visitor> GetVisitors()
-        //{
-        //    List<Visitor> visitors = new List<Visitor>();
-        //    foreach (Visitor v in Event.Visitors)
-        //    {
-        //        visitors.Add(v);
-        //    }
-        //    return visitors;
-        //}
-
-        //public List<Material> GetMaterials()
-        //{
-        //    List<Material> materials = new List<Material>();
-        //    foreach (Material m in Event.Material)
-        //    {
-        //        materials.Add(m);
-        //    }
-        //    return materials;
-        //}
         public List<Material> GetTakenMaterials(int userid)
         {
             List<Material> materials = new List<Material>();
@@ -704,66 +688,6 @@ namespace MediaSharingSystem.Controllers
 
             return materials;
         }
-
-        //public string[] GetMaterialInfo(string name)
-        //{
-        //    string[] info = null;
-        //    foreach (Material m in Event.Material)
-        //    {
-        //        if (m.Name == name)
-        //        {
-        //            info[0] = (Convert.ToString(m.Price));
-        //            info[1] = (m.Description);
-        //        }
-        //    }
-        //    return info;
-        //}
-
-        //public string[] GetGebruikersInfo(string name)
-        //{
-        //    string[] info = null;
-        //    foreach (Visitor v in Event.Visitors)
-        //    {
-        //        if (v.Name == name)
-        //        {
-        //            info[0] = (v.EmailAddress);
-        //            info[1] = (v.Telnr);
-        //        }
-        //    }
-        //    return info;
-        //}
-
-        //public bool DeleteGebruiker(string name)
-        //{
-        //    foreach (Visitor visitor in Event.Visitors)
-        //    {
-        //        if (visitor.Name == name)
-        //        {
-        //            DeleteVisitor(visitor);
-        //            return true;
-        //        }
-        //    }
-        //    return false;
-        //}
-
-        //public bool VerhuurItem(string visitor, string material, string eindDatum, int hoeveelheid)
-        //{
-        //    foreach (Visitor v in Event.Visitors)
-        //    {
-        //        if (v.Name == visitor)
-        //        {
-        //            foreach (Material m in Event.Material)
-        //            {
-        //                if (m.Name == material)
-        //                {
-        //                    RentMaterial(v, m, DateTime.Now.ToString(), eindDatum, hoeveelheid);
-        //                    return true;
-        //                }
-        //            }
-        //        }
-        //    }
-        //    return false;
-        //}
         public string GetLocationFeatures(int locationnr)
         {
             return reservationRepo.GetLocationFeatures(locationnr);

@@ -135,5 +135,58 @@ namespace DAL.FTP
 
             return output;
         }
+
+        private bool DirectoryExists(string directory)
+        {
+            bool directoryExists;
+
+            var request = (FtpWebRequest)WebRequest.Create(@"ftp://192.168.20.18/" + directory + "/");
+            request.Method = WebRequestMethods.Ftp.ListDirectory;
+            request.Credentials = new NetworkCredential("Administrator", "Welkom10!");
+
+            try
+            {
+                using (request.GetResponse())
+                {
+                    directoryExists = true;
+                }
+            }
+            catch (WebException)
+            {
+                directoryExists = false;
+            }
+
+            return directoryExists;
+        }
+
+        public void CreateDirectoryIfNotExists(string directory)
+        {
+            if (!DirectoryExists(directory))
+            {
+                //Geeft aan waar we de file vanaf willen downloaden. De FTP server + welke subfolder  
+                FtpWebRequest request = (FtpWebRequest)WebRequest.Create(@"ftp://192.168.20.18/" + directory + "/");
+
+                //Aangeven dat we een map willen aanmaken
+                request.Method = WebRequestMethods.Ftp.MakeDirectory;
+
+                //Inloggen op de FTP server. (Onveilig. Demo only!!)
+                request.Credentials = new NetworkCredential("Administrator", "Welkom10!");
+
+                try
+                {
+                    //Response opvangen en in een stream zetten
+                    FtpWebResponse response = (FtpWebResponse)request.GetResponse();
+
+                    //Response status weergeven in console
+                    Console.WriteLine("Download Complete, status {0}", response.StatusDescription);
+                    response.Close();
+                } catch (WebException e)
+                {
+                    string status = ((FtpWebResponse)e.Response).StatusDescription;
+                    Console.WriteLine(status);
+                }
+            }
+        }
+
     }
 }
