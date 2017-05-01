@@ -19,10 +19,6 @@ namespace MediaSharingSystem.Forms
         private Controller controller;
 
         Post post;
-        Label naamP = new Label();
-        Label contentTextP = new Label();
-        Label naamC = new Label();
-        Label contentTextC = new Label();
         int currentComment;
 
         public VisitorForm(Form f, Controller controller)
@@ -50,14 +46,8 @@ namespace MediaSharingSystem.Forms
 
             post = controller.GetAndShowPostComments(controller.currentPostForm, 0);
 
-            naamP.Location = new Point(10, 35);
-            contentTextP.Location = new Point(10, 60);
-
-            naamC.Location = new Point(292, 35);
-            contentTextC.Location = new Point(292, 60);
-
-            naamP.Text = post.User.ToString();
-            contentTextP.Text = post.Text;
+            lbPostUsername.Text = post.User.ToString();
+            lbPost.Text = post.Text;
 
             currentComment = post.Comments.Count() - 1;
             
@@ -66,26 +56,20 @@ namespace MediaSharingSystem.Forms
                 btnNextComment.Enabled = false;
                 btnPrevComment.Enabled = false;
 
-                naamC.Text = "";
-                contentTextC.Text = "";
+                lbCommentUsername.Text = "";
+                lbComment.Text = "";
             }
             else
             {
                 btnNextComment.Enabled = true;
                 btnPrevComment.Enabled = true;
 
-                naamC.Text = post.Comments[currentComment].User.ToString();
-                contentTextC.Text = post.Comments[currentComment].Text;
+                lbCommentUsername.Text = post.Comments[currentComment].User.ToString();
+                lbComment.Text = post.Comments[currentComment].Text;
             }
 
             int likes = controller.GetAndShowLikes(post);
             lblLikesPost.Text = likes + " mensen vinden dit leuk";
-
-            panelNewsFeed.Controls.Add(naamP);
-            panelNewsFeed.Controls.Add(contentTextP);
-
-            panelNewsFeed.Controls.Add(naamC);
-            panelNewsFeed.Controls.Add(contentTextC);
 
             if (post.Path != "-")
             {
@@ -101,8 +85,8 @@ namespace MediaSharingSystem.Forms
         {
             post = controller.GetAndShowPostComments(controller.currentPostForm, 1);
 
-            naamP.Text = post.User.ToString();
-            contentTextP.Text = post.Text;
+            lbPostUsername.Text = post.User.ToString();
+            lbPost.Text = post.Text;
 
             currentComment = post.Comments.Count() - 1;
             if (post.Comments.Count() == 0)
@@ -110,16 +94,16 @@ namespace MediaSharingSystem.Forms
                 btnNextComment.Enabled = false;
                 btnPrevComment.Enabled = false;
 
-                naamC.Text = "";
-                contentTextC.Text = "";
+                lbCommentUsername.Text = "";
+                lbComment.Text = "";
             }
             else
             {
                 btnNextComment.Enabled = true;
                 btnPrevComment.Enabled = true;
 
-                naamC.Text = post.Comments[currentComment].User.ToString();
-                contentTextC.Text = post.Comments[currentComment].Text;
+                lbCommentUsername.Text = post.Comments[currentComment].User.ToString();
+                lbComment.Text = post.Comments[currentComment].Text;
             }
 
             int likes = controller.GetAndShowLikes(post);
@@ -139,8 +123,8 @@ namespace MediaSharingSystem.Forms
         {
             post = controller.GetAndShowPostComments(controller.currentPostForm, -1);
             
-            naamP.Text = post.User.ToString();
-            contentTextP.Text = post.Text;
+            lbPostUsername.Text = post.User.ToString();
+            lbPost.Text = post.Text;
 
             currentComment = post.Comments.Count() - 1;
             if (post.Comments.Count() == 0)
@@ -148,16 +132,16 @@ namespace MediaSharingSystem.Forms
                 btnNextComment.Enabled = false;
                 btnPrevComment.Enabled = false;
 
-                naamC.Text = "";
-                contentTextC.Text = "";
+                lbCommentUsername.Text = "";
+                lbComment.Text = "";
             }
             else
             {
                 btnNextComment.Enabled = true;
                 btnPrevComment.Enabled = true;
 
-                naamC.Text = post.Comments[currentComment].User.ToString();
-                contentTextC.Text = post.Comments[currentComment].Text;
+                lbCommentUsername.Text = post.Comments[currentComment].User.ToString();
+                lbComment.Text = post.Comments[currentComment].Text;
             }
 
             int likes = controller.GetAndShowLikes(post);
@@ -184,8 +168,8 @@ namespace MediaSharingSystem.Forms
                 currentComment--;
             }
         
-            naamC.Text = post.Comments[currentComment].User.ToString();
-            contentTextC.Text = post.Comments[currentComment].Text;
+            lbCommentUsername.Text = post.Comments[currentComment].User.ToString();
+            lbComment.Text = post.Comments[currentComment].Text;
         }
 
         private void btnPrevComment_Click(object sender, EventArgs e)
@@ -199,8 +183,8 @@ namespace MediaSharingSystem.Forms
                 currentComment++;
             }
 
-            naamC.Text = post.Comments[currentComment].User.ToString();
-            contentTextC.Text = post.Comments[currentComment].Text;
+            lbCommentUsername.Text = post.Comments[currentComment].User.ToString();
+            lbComment.Text = post.Comments[currentComment].Text;
         }
 
         private void btnUitloggenGebruiker_Click(object sender, EventArgs e)
@@ -280,8 +264,8 @@ namespace MediaSharingSystem.Forms
             controller.AddAndShowPost(textPost.Text, filePath);
             post = controller.GetAndShowPostComments(controller.currentPostForm, 0);
 
-            naamP.Text = post.User.ToString();
-            contentTextP.Text = post.Text;
+            lbPostUsername.Text = post.User.ToString();
+            lbPost.Text = post.Text;
 
             currentComment = post.Comments.Count() - 1;
 
@@ -290,16 +274,16 @@ namespace MediaSharingSystem.Forms
                 btnNextComment.Enabled = false;
                 btnPrevComment.Enabled = false;
 
-                naamC.Text = "";
-                contentTextC.Text = "";
+                lbCommentUsername.Text = "";
+                lbComment.Text = "";
             }
             else
             {
                 btnNextComment.Enabled = true;
                 btnPrevComment.Enabled = true;
 
-                naamC.Text = post.Comments[currentComment].User.ToString();
-                contentTextC.Text = post.Comments[currentComment].Text;
+                lbCommentUsername.Text = post.Comments[currentComment].User.ToString();
+                lbComment.Text = post.Comments[currentComment].Text;
             }
 
             if (post.Path != "-")
@@ -321,8 +305,8 @@ namespace MediaSharingSystem.Forms
             btnNextComment.Enabled = true;
             btnPrevComment.Enabled = true;
 
-            naamC.Text = post.Comments[currentComment].User.ToString();
-            contentTextC.Text = post.Comments[currentComment].Text;
+            lbCommentUsername.Text = post.Comments[currentComment].User.ToString();
+            lbComment.Text = post.Comments[currentComment].Text;
         }
 
         private void btnLikePost_Click(object sender, EventArgs e)

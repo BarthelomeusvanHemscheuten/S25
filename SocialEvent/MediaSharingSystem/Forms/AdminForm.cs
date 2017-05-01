@@ -17,6 +17,10 @@ namespace MediaSharingSystem.Forms
     {
         Form login;
         Controller controller;
+
+        Post post;
+        int currentComment;
+
         public AdminForm(Form f, Controller controller)
         {
             InitializeComponent();
@@ -29,15 +33,15 @@ namespace MediaSharingSystem.Forms
             lbGebruikers.DisplayMember = "UserName";
             lbReportedPosts.DisplayMember = "ID";
             lbReportedComments.DisplayMember = "ID";
-            foreach(User user in controller.GetAndShowVisitorsFromDatabase())
+            foreach (User user in controller.GetAndShowVisitorsFromDatabase())
             {
                 lbGebruikers.Items.Add(user);
             }
-            foreach(Post post in controller.GetAndShowReportedPostsFromDatabase())
+            foreach (Post post in controller.GetAndShowReportedPostsFromDatabase())
             {
                 lbReportedPosts.Items.Add(post);
             }
-            foreach(Comment comment in controller.GetAndShowReportedCommentsFromDatabase())
+            foreach (Comment comment in controller.GetAndShowReportedCommentsFromDatabase())
             {
                 lbReportedComments.Items.Add(comment);
             }
@@ -52,6 +56,44 @@ namespace MediaSharingSystem.Forms
         private void btnNieuwsOverzicht_Click(object sender, EventArgs e)
         {
             tbctrlMain.SelectedTab = tbctrlMain.TabPages[1];
+
+            post = controller.GetAndShowPostComments(controller.currentPostForm, 0);
+
+
+
+            lbPostUsername.Text = post.User.ToString();
+            lbPost.Text = post.Text;
+
+            currentComment = post.Comments.Count() - 1;
+
+            if (post.Comments.Count() == 0)
+            {
+                btnNextComment.Enabled = false;
+                btnPrevComment.Enabled = false;
+
+                lbCommentUsername.Text = "";
+                lbComment.Text = "";
+            }
+            else
+            {
+                btnNextComment.Enabled = true;
+                btnPrevComment.Enabled = true;
+
+                lbCommentUsername.Text = post.Comments[currentComment].User.ToString();
+                lbComment.Text = post.Comments[currentComment].Text;
+            }
+
+            int likes = controller.GetAndShowLikes(post);
+            lblLikesPost.Text = likes + " mensen vinden dit leuk";
+
+            if (post.Path != "-")
+            {
+                pictureBox1.Image = controller.GetImage(post.Path);
+            }
+            else
+            {
+                pictureBox1.Image = null;
+            }
         }
 
         private void btnAccountInstellingen_Click(object sender, EventArgs e)
@@ -80,7 +122,7 @@ namespace MediaSharingSystem.Forms
             this.Close();
         }
         //Changes Name
- 
+
         private void btnWijzigenNaam_Click(object sender, EventArgs e)
         {
             if (controller.ChangeName(tbNaam.Text))
@@ -159,7 +201,7 @@ namespace MediaSharingSystem.Forms
         //Adds Swearword
         private void btnAddFilterwoord_Click(object sender, EventArgs e)
         {
-           if(controller.AddSwearWord(tbNaamFilterwoord.Text))
+            if (controller.AddSwearWord(tbNaamFilterwoord.Text))
             {
                 MessageBox.Show("Filterwoord toegevoegd");
                 foreach (string word in controller.GetAllSwearwords())
@@ -167,7 +209,7 @@ namespace MediaSharingSystem.Forms
                     lbFilterwoorden.Items.Add(word);
                 }
             }
-           else
+            else
             {
                 MessageBox.Show("Filterwoord niet toegevoegd");
             }
@@ -197,7 +239,7 @@ namespace MediaSharingSystem.Forms
             tbNaamGebruikersBeheren.Text = visitor.Name;
             tbEmailGebruikersBeheren.Text = visitor.EmailAddress;
             tbTelefoonNrGebruikersBeheren.Text = visitor.Telnr;
-            
+
         }
 
         private void lbReportedPosts_SelectedIndexChanged(object sender, EventArgs e)
@@ -210,6 +252,180 @@ namespace MediaSharingSystem.Forms
         {
             Comment comment = (Comment)lbReportedComments.SelectedItem;
             tbReportedComment.Text = comment.Text;
+        }
+
+        private void btnNextPost_Click(object sender, EventArgs e)
+        {
+            post = controller.GetAndShowPostComments(controller.currentPostForm, 1);
+
+            lbPostUsername.Text = post.User.ToString();
+            lbPost.Text = post.Text;
+
+            currentComment = post.Comments.Count() - 1;
+            if (post.Comments.Count() == 0)
+            {
+                btnNextComment.Enabled = false;
+                btnPrevComment.Enabled = false;
+
+                lbCommentUsername.Text = "";
+                lbComment.Text = "";
+            }
+            else
+            {
+                btnNextComment.Enabled = true;
+                btnPrevComment.Enabled = true;
+
+                lbCommentUsername.Text = post.Comments[currentComment].User.ToString();
+                lbComment.Text = post.Comments[currentComment].Text;
+            }
+
+            int likes = controller.GetAndShowLikes(post);
+            lblLikesPost.Text = likes + " mensen vinden dit leuk";
+
+            if (post.Path != "-")
+            {
+                pictureBox1.Image = controller.GetImage(post.Path);
+            }
+            else
+            {
+                pictureBox1.Image = null;
+            }
+        }
+
+        private void btnPrevPost_Click(object sender, EventArgs e)
+        {
+            post = controller.GetAndShowPostComments(controller.currentPostForm, -1);
+
+            lbPostUsername.Text = post.User.ToString();
+            lbPost.Text = post.Text;
+
+            currentComment = post.Comments.Count() - 1;
+            if (post.Comments.Count() == 0)
+            {
+                btnNextComment.Enabled = false;
+                btnPrevComment.Enabled = false;
+
+                lbCommentUsername.Text = "";
+                lbComment.Text = "";
+            }
+            else
+            {
+                btnNextComment.Enabled = true;
+                btnPrevComment.Enabled = true;
+
+                lbCommentUsername.Text = post.Comments[currentComment].User.ToString();
+                lbComment.Text = post.Comments[currentComment].Text;
+            }
+
+            int likes = controller.GetAndShowLikes(post);
+            lblLikesPost.Text = likes + " mensen vinden dit leuk";
+
+            if (post.Path != "-")
+            {
+                pictureBox1.Image = controller.GetImage(post.Path);
+            }
+            else
+            {
+                pictureBox1.Image = null;
+            }
+        }
+
+        private void btnNextComment_Click(object sender, EventArgs e)
+        {
+            if (currentComment == 0)
+            {
+                currentComment = post.Comments.Count() - 1;
+            }
+            else
+            {
+                currentComment--;
+            }
+
+            lbCommentUsername.Text = post.Comments[currentComment].User.ToString();
+            lbComment.Text = post.Comments[currentComment].Text;
+        }
+
+        private void btnPrevComment_Click(object sender, EventArgs e)
+        {
+            if (currentComment == post.Comments.Count() - 1)
+            {
+                currentComment = 0;
+            }
+            else
+            {
+                currentComment++;
+            }
+
+            lbCommentUsername.Text = post.Comments[currentComment].User.ToString();
+            lbComment.Text = post.Comments[currentComment].Text;
+        }
+
+        private void btnPlacePost_Click(object sender, EventArgs e)
+        {
+            string filePath = controller.UploadFile(lblFilePath.Text);
+            controller.AddAndShowPost(textPost.Text, filePath);
+            post = controller.GetAndShowPostComments(controller.currentPostForm, 0);
+
+            lbPostUsername.Text = post.User.ToString();
+            lbPost.Text = post.Text;
+
+            currentComment = post.Comments.Count() - 1;
+
+            if (post.Comments.Count() == 0)
+            {
+                btnNextComment.Enabled = false;
+                btnPrevComment.Enabled = false;
+
+                lbCommentUsername.Text = "";
+                lbComment.Text = "";
+            }
+            else
+            {
+                btnNextComment.Enabled = true;
+                btnPrevComment.Enabled = true;
+
+                lbCommentUsername.Text = post.Comments[currentComment].User.ToString();
+                lbComment.Text = post.Comments[currentComment].Text;
+            }
+
+            if (post.Path != "-")
+            {
+                pictureBox1.Image = controller.GetImage(post.Path);
+            }
+            else
+            {
+                pictureBox1.Image = null;
+            }
+        }
+
+        private void btnPlaceComment_Click(object sender, EventArgs e)
+        {
+            controller.AddAndShowComment(textComment.Text, post);
+
+            currentComment = post.Comments.Count() - 1;
+
+            btnNextComment.Enabled = true;
+            btnPrevComment.Enabled = true;
+
+            lbCommentUsername.Text = post.Comments[currentComment].User.ToString();
+            lbComment.Text = post.Comments[currentComment].Text;
+        }
+
+        private void btnLikePost_Click(object sender, EventArgs e)
+        {
+            controller.AddAndShowLike(post);
+            int likes = controller.GetAndShowLikes(post);
+            lblLikesPost.Text = likes + " mensen vinden dit leuk";
+        }
+
+        private void btnUploadFile_Click(object sender, EventArgs e)
+        {
+            lblFilePath.Text = controller.ChooseFile();
+        }
+
+        private void btnDownload_Click(object sender, EventArgs e)
+        {
+            controller.DownloadFile(post.Path);
         }
     }
 }

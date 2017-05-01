@@ -56,11 +56,36 @@
             this.lblNaam = new System.Windows.Forms.Label();
             this.tbNaam = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.panelNewsFeed = new System.Windows.Forms.Panel();
+            this.lbComment = new System.Windows.Forms.Label();
+            this.lbPost = new System.Windows.Forms.Label();
+            this.lbPostUsername = new System.Windows.Forms.Label();
+            this.lbCommentUsername = new System.Windows.Forms.Label();
+            this.lblLikesPost = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnDownload = new System.Windows.Forms.Button();
+            this.lblLikes = new System.Windows.Forms.Label();
+            this.btnNextComment = new System.Windows.Forms.Button();
+            this.btnPrevComment = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.btnLikePost = new System.Windows.Forms.Button();
+            this.btnUploadFile = new System.Windows.Forms.Button();
+            this.btnPlacePost = new System.Windows.Forms.Button();
+            this.btnPlaceComment = new System.Windows.Forms.Button();
+            this.lblFilePath = new System.Windows.Forms.Label();
+            this.textComment = new System.Windows.Forms.RichTextBox();
+            this.textPost = new System.Windows.Forms.RichTextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btnNextPost = new System.Windows.Forms.Button();
+            this.btnPrevPost = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panelVerhuurItem = new System.Windows.Forms.Panel();
+            this.lblDatum = new System.Windows.Forms.Label();
+            this.lblHoeveelheid = new System.Windows.Forms.Label();
             this.tbAantalMaterialen = new System.Windows.Forms.TextBox();
             this.dtmEinddatum = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
+            this.tbHoeveelheidMateriaal = new System.Windows.Forms.TextBox();
             this.lbVisitors = new System.Windows.Forms.ListBox();
             this.btnVerhuurMateriaal = new System.Windows.Forms.Button();
             this.tbTypeMaterial = new System.Windows.Forms.TextBox();
@@ -121,20 +146,20 @@
             this.tbLocatieNrHoofdreserveerder = new System.Windows.Forms.TextBox();
             this.tbNaamHoofdreserveerder = new System.Windows.Forms.TextBox();
             this.tabInleveren = new System.Windows.Forms.TabPage();
+            this.lblMateriaal = new System.Windows.Forms.Label();
+            this.lblVisitors = new System.Windows.Forms.Label();
             this.btnInleveren = new System.Windows.Forms.Button();
             this.lbVerhuurdeMaterialen = new System.Windows.Forms.ListBox();
             this.lbVisitorInleveren = new System.Windows.Forms.ListBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.lblVisitors = new System.Windows.Forms.Label();
-            this.lblMateriaal = new System.Windows.Forms.Label();
-            this.lblHoeveelheid = new System.Windows.Forms.Label();
-            this.lblDatum = new System.Windows.Forms.Label();
-            this.tbHoeveelheidMateriaal = new System.Windows.Forms.TextBox();
             this.panelMedewerker.SuspendLayout();
             this.tbctrlMain.SuspendLayout();
             this.tabAccountInstellingen.SuspendLayout();
             this.panelAccountInstellingen.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPicture)).BeginInit();
+            this.tabPage2.SuspendLayout();
+            this.panelNewsFeed.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabPage1.SuspendLayout();
             this.panelVerhuurItem.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbMateriaalFoto)).BeginInit();
@@ -162,6 +187,7 @@
             this.panelMedewerker.Name = "panelMedewerker";
             this.panelMedewerker.Size = new System.Drawing.Size(203, 532);
             this.panelMedewerker.TabIndex = 9;
+            this.btnInfoMenuMedewerker.Click += new System.EventHandler(this.btnNieuwsOverzicht_Click);
             // 
             // btnMateriaalInleveren
             // 
@@ -441,6 +467,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.panelNewsFeed);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tabPage2.Name = "tabPage2";
@@ -449,6 +476,241 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "tabNieuwsoverzicht";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // panelNewsFeed
+            // 
+            this.panelNewsFeed.BackColor = System.Drawing.Color.Lavender;
+            this.panelNewsFeed.Controls.Add(this.lbComment);
+            this.panelNewsFeed.Controls.Add(this.lbPost);
+            this.panelNewsFeed.Controls.Add(this.lbPostUsername);
+            this.panelNewsFeed.Controls.Add(this.lbCommentUsername);
+            this.panelNewsFeed.Controls.Add(this.lblLikesPost);
+            this.panelNewsFeed.Controls.Add(this.pictureBox1);
+            this.panelNewsFeed.Controls.Add(this.btnDownload);
+            this.panelNewsFeed.Controls.Add(this.lblLikes);
+            this.panelNewsFeed.Controls.Add(this.btnNextComment);
+            this.panelNewsFeed.Controls.Add(this.btnPrevComment);
+            this.panelNewsFeed.Controls.Add(this.label5);
+            this.panelNewsFeed.Controls.Add(this.btnLikePost);
+            this.panelNewsFeed.Controls.Add(this.btnUploadFile);
+            this.panelNewsFeed.Controls.Add(this.btnPlacePost);
+            this.panelNewsFeed.Controls.Add(this.btnPlaceComment);
+            this.panelNewsFeed.Controls.Add(this.lblFilePath);
+            this.panelNewsFeed.Controls.Add(this.textComment);
+            this.panelNewsFeed.Controls.Add(this.textPost);
+            this.panelNewsFeed.Controls.Add(this.label6);
+            this.panelNewsFeed.Controls.Add(this.btnNextPost);
+            this.panelNewsFeed.Controls.Add(this.btnPrevPost);
+            this.panelNewsFeed.Location = new System.Drawing.Point(-4, -7);
+            this.panelNewsFeed.Margin = new System.Windows.Forms.Padding(4);
+            this.panelNewsFeed.Name = "panelNewsFeed";
+            this.panelNewsFeed.Size = new System.Drawing.Size(669, 591);
+            this.panelNewsFeed.TabIndex = 25;
+            // 
+            // lbComment
+            // 
+            this.lbComment.Location = new System.Drawing.Point(389, 53);
+            this.lbComment.Name = "lbComment";
+            this.lbComment.Size = new System.Drawing.Size(262, 250);
+            this.lbComment.TabIndex = 40;
+            this.lbComment.Text = "label6";
+            // 
+            // lbPost
+            // 
+            this.lbPost.Location = new System.Drawing.Point(16, 53);
+            this.lbPost.Name = "lbPost";
+            this.lbPost.Size = new System.Drawing.Size(346, 52);
+            this.lbPost.TabIndex = 39;
+            this.lbPost.Text = "label5";
+            // 
+            // lbPostUsername
+            // 
+            this.lbPostUsername.Location = new System.Drawing.Point(16, 36);
+            this.lbPostUsername.Name = "lbPostUsername";
+            this.lbPostUsername.Size = new System.Drawing.Size(181, 16);
+            this.lbPostUsername.TabIndex = 38;
+            this.lbPostUsername.Text = "label4";
+            // 
+            // lbCommentUsername
+            // 
+            this.lbCommentUsername.Location = new System.Drawing.Point(389, 36);
+            this.lbCommentUsername.Name = "lbCommentUsername";
+            this.lbCommentUsername.Size = new System.Drawing.Size(262, 16);
+            this.lbCommentUsername.TabIndex = 37;
+            this.lbCommentUsername.Text = "label3";
+            // 
+            // lblLikesPost
+            // 
+            this.lblLikesPost.AutoSize = true;
+            this.lblLikesPost.Location = new System.Drawing.Point(20, 246);
+            this.lblLikesPost.Name = "lblLikesPost";
+            this.lblLikesPost.Size = new System.Drawing.Size(83, 17);
+            this.lblLikesPost.TabIndex = 36;
+            this.lblLikesPost.Text = "lblLikesPost";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(14, 107);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(348, 120);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 24;
+            this.pictureBox1.TabStop = false;
+            // 
+            // btnDownload
+            // 
+            this.btnDownload.Location = new System.Drawing.Point(267, 273);
+            this.btnDownload.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDownload.Name = "btnDownload";
+            this.btnDownload.Size = new System.Drawing.Size(95, 87);
+            this.btnDownload.TabIndex = 24;
+            this.btnDownload.Text = "Download media";
+            this.btnDownload.UseVisualStyleBackColor = true;
+            this.btnDownload.Click += new System.EventHandler(this.btnDownload_Click);
+            // 
+            // lblLikes
+            // 
+            this.lblLikes.AutoSize = true;
+            this.lblLikes.Location = new System.Drawing.Point(20, 243);
+            this.lblLikes.Name = "lblLikes";
+            this.lblLikes.Size = new System.Drawing.Size(0, 17);
+            this.lblLikes.TabIndex = 35;
+            // 
+            // btnNextComment
+            // 
+            this.btnNextComment.Location = new System.Drawing.Point(549, 330);
+            this.btnNextComment.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnNextComment.Name = "btnNextComment";
+            this.btnNextComment.Size = new System.Drawing.Size(91, 30);
+            this.btnNextComment.TabIndex = 34;
+            this.btnNextComment.Text = "Volgende";
+            this.btnNextComment.UseVisualStyleBackColor = true;
+            this.btnNextComment.Click += new System.EventHandler(this.btnNextComment_Click);
+            // 
+            // btnPrevComment
+            // 
+            this.btnPrevComment.Location = new System.Drawing.Point(392, 330);
+            this.btnPrevComment.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnPrevComment.Name = "btnPrevComment";
+            this.btnPrevComment.Size = new System.Drawing.Size(91, 30);
+            this.btnPrevComment.TabIndex = 33;
+            this.btnPrevComment.Text = "Vorige";
+            this.btnPrevComment.UseVisualStyleBackColor = true;
+            this.btnPrevComment.Click += new System.EventHandler(this.btnPrevComment_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label5.Location = new System.Drawing.Point(387, 11);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(87, 25);
+            this.label5.TabIndex = 26;
+            this.label5.Text = "Reacties";
+            // 
+            // btnLikePost
+            // 
+            this.btnLikePost.Location = new System.Drawing.Point(19, 273);
+            this.btnLikePost.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnLikePost.Name = "btnLikePost";
+            this.btnLikePost.Size = new System.Drawing.Size(232, 37);
+            this.btnLikePost.TabIndex = 32;
+            this.btnLikePost.Text = "Vind ik (niet meer) leuk";
+            this.btnLikePost.UseVisualStyleBackColor = true;
+            this.btnLikePost.Click += new System.EventHandler(this.btnLikePost_Click);
+            // 
+            // btnUploadFile
+            // 
+            this.btnUploadFile.Location = new System.Drawing.Point(267, 370);
+            this.btnUploadFile.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnUploadFile.Name = "btnUploadFile";
+            this.btnUploadFile.Size = new System.Drawing.Size(95, 45);
+            this.btnUploadFile.TabIndex = 31;
+            this.btnUploadFile.Text = "Bestand toevoegen";
+            this.btnUploadFile.UseVisualStyleBackColor = true;
+            this.btnUploadFile.Click += new System.EventHandler(this.btnUploadFile_Click);
+            // 
+            // btnPlacePost
+            // 
+            this.btnPlacePost.Location = new System.Drawing.Point(267, 419);
+            this.btnPlacePost.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnPlacePost.Name = "btnPlacePost";
+            this.btnPlacePost.Size = new System.Drawing.Size(95, 43);
+            this.btnPlacePost.TabIndex = 30;
+            this.btnPlacePost.Text = "Bericht plaatsen";
+            this.btnPlacePost.UseVisualStyleBackColor = true;
+            this.btnPlacePost.Click += new System.EventHandler(this.btnPlacePost_Click);
+            // 
+            // btnPlaceComment
+            // 
+            this.btnPlaceComment.Location = new System.Drawing.Point(536, 419);
+            this.btnPlaceComment.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnPlaceComment.Name = "btnPlaceComment";
+            this.btnPlaceComment.Size = new System.Drawing.Size(104, 43);
+            this.btnPlaceComment.TabIndex = 29;
+            this.btnPlaceComment.Text = "Reactie plaatsen";
+            this.btnPlaceComment.UseVisualStyleBackColor = true;
+            this.btnPlaceComment.Click += new System.EventHandler(this.btnPlaceComment_Click);
+            // 
+            // lblFilePath
+            // 
+            this.lblFilePath.AutoSize = true;
+            this.lblFilePath.Location = new System.Drawing.Point(20, 386);
+            this.lblFilePath.Name = "lblFilePath";
+            this.lblFilePath.Size = new System.Drawing.Size(177, 17);
+            this.lblFilePath.TabIndex = 28;
+            this.lblFilePath.Text = "Geen bestand toegevoegd";
+            // 
+            // textComment
+            // 
+            this.textComment.Location = new System.Drawing.Point(392, 419);
+            this.textComment.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textComment.Name = "textComment";
+            this.textComment.Size = new System.Drawing.Size(138, 44);
+            this.textComment.TabIndex = 27;
+            this.textComment.Text = "";
+            // 
+            // textPost
+            // 
+            this.textPost.Location = new System.Drawing.Point(19, 419);
+            this.textPost.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textPost.Name = "textPost";
+            this.textPost.Size = new System.Drawing.Size(232, 44);
+            this.textPost.TabIndex = 27;
+            this.textPost.Text = "";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label6.Location = new System.Drawing.Point(9, 11);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(72, 25);
+            this.label6.TabIndex = 26;
+            this.label6.Text = "Bericht";
+            // 
+            // btnNextPost
+            // 
+            this.btnNextPost.Location = new System.Drawing.Point(162, 330);
+            this.btnNextPost.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnNextPost.Name = "btnNextPost";
+            this.btnNextPost.Size = new System.Drawing.Size(89, 30);
+            this.btnNextPost.TabIndex = 24;
+            this.btnNextPost.Text = "Volgende";
+            this.btnNextPost.UseVisualStyleBackColor = true;
+            this.btnNextPost.Click += new System.EventHandler(this.btnNextPost_Click);
+            // 
+            // btnPrevPost
+            // 
+            this.btnPrevPost.Location = new System.Drawing.Point(19, 330);
+            this.btnPrevPost.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnPrevPost.Name = "btnPrevPost";
+            this.btnPrevPost.Size = new System.Drawing.Size(91, 30);
+            this.btnPrevPost.TabIndex = 25;
+            this.btnPrevPost.Text = "Vorige";
+            this.btnPrevPost.UseVisualStyleBackColor = true;
+            this.btnPrevPost.Click += new System.EventHandler(this.btnPrevPost_Click);
             // 
             // tabPage1
             // 
@@ -490,6 +752,26 @@
             this.panelVerhuurItem.Size = new System.Drawing.Size(661, 500);
             this.panelVerhuurItem.TabIndex = 17;
             // 
+            // lblDatum
+            // 
+            this.lblDatum.AutoSize = true;
+            this.lblDatum.Location = new System.Drawing.Point(355, 324);
+            this.lblDatum.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblDatum.Name = "lblDatum";
+            this.lblDatum.Size = new System.Drawing.Size(53, 17);
+            this.lblDatum.TabIndex = 25;
+            this.lblDatum.Text = "Datum:";
+            // 
+            // lblHoeveelheid
+            // 
+            this.lblHoeveelheid.AutoSize = true;
+            this.lblHoeveelheid.Location = new System.Drawing.Point(319, 355);
+            this.lblHoeveelheid.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblHoeveelheid.Name = "lblHoeveelheid";
+            this.lblHoeveelheid.Size = new System.Drawing.Size(91, 17);
+            this.lblHoeveelheid.TabIndex = 24;
+            this.lblHoeveelheid.Text = "Hoeveelheid:";
+            // 
             // tbAantalMaterialen
             // 
             this.tbAantalMaterialen.Location = new System.Drawing.Point(420, 352);
@@ -513,6 +795,15 @@
             this.label1.Size = new System.Drawing.Size(173, 17);
             this.label1.TabIndex = 21;
             this.label1.Text = "Hoeveelheid Beschikbaar:";
+            // 
+            // tbHoeveelheidMateriaal
+            // 
+            this.tbHoeveelheidMateriaal.Enabled = false;
+            this.tbHoeveelheidMateriaal.Location = new System.Drawing.Point(420, 391);
+            this.tbHoeveelheidMateriaal.Margin = new System.Windows.Forms.Padding(4);
+            this.tbHoeveelheidMateriaal.Name = "tbHoeveelheidMateriaal";
+            this.tbHoeveelheidMateriaal.Size = new System.Drawing.Size(195, 22);
+            this.tbHoeveelheidMateriaal.TabIndex = 20;
             // 
             // lbVisitors
             // 
@@ -1139,6 +1430,24 @@
             this.tabInleveren.Text = "tabInleveren";
             this.tabInleveren.UseVisualStyleBackColor = true;
             // 
+            // lblMateriaal
+            // 
+            this.lblMateriaal.AutoSize = true;
+            this.lblMateriaal.Location = new System.Drawing.Point(238, 7);
+            this.lblMateriaal.Name = "lblMateriaal";
+            this.lblMateriaal.Size = new System.Drawing.Size(78, 17);
+            this.lblMateriaal.TabIndex = 4;
+            this.lblMateriaal.Text = "Materialen:";
+            // 
+            // lblVisitors
+            // 
+            this.lblVisitors.AutoSize = true;
+            this.lblVisitors.Location = new System.Drawing.Point(12, 6);
+            this.lblVisitors.Name = "lblVisitors";
+            this.lblVisitors.Size = new System.Drawing.Size(72, 17);
+            this.lblVisitors.TabIndex = 3;
+            this.lblVisitors.Text = "Bezoeker:";
+            // 
             // btnInleveren
             // 
             this.btnInleveren.Location = new System.Drawing.Point(490, 113);
@@ -1173,53 +1482,6 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // lblVisitors
-            // 
-            this.lblVisitors.AutoSize = true;
-            this.lblVisitors.Location = new System.Drawing.Point(12, 6);
-            this.lblVisitors.Name = "lblVisitors";
-            this.lblVisitors.Size = new System.Drawing.Size(72, 17);
-            this.lblVisitors.TabIndex = 3;
-            this.lblVisitors.Text = "Bezoeker:";
-            // 
-            // lblMateriaal
-            // 
-            this.lblMateriaal.AutoSize = true;
-            this.lblMateriaal.Location = new System.Drawing.Point(238, 7);
-            this.lblMateriaal.Name = "lblMateriaal";
-            this.lblMateriaal.Size = new System.Drawing.Size(78, 17);
-            this.lblMateriaal.TabIndex = 4;
-            this.lblMateriaal.Text = "Materialen:";
-            // 
-            // lblHoeveelheid
-            // 
-            this.lblHoeveelheid.AutoSize = true;
-            this.lblHoeveelheid.Location = new System.Drawing.Point(319, 355);
-            this.lblHoeveelheid.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblHoeveelheid.Name = "lblHoeveelheid";
-            this.lblHoeveelheid.Size = new System.Drawing.Size(91, 17);
-            this.lblHoeveelheid.TabIndex = 24;
-            this.lblHoeveelheid.Text = "Hoeveelheid:";
-            // 
-            // lblDatum
-            // 
-            this.lblDatum.AutoSize = true;
-            this.lblDatum.Location = new System.Drawing.Point(355, 324);
-            this.lblDatum.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblDatum.Name = "lblDatum";
-            this.lblDatum.Size = new System.Drawing.Size(53, 17);
-            this.lblDatum.TabIndex = 25;
-            this.lblDatum.Text = "Datum:";
-            // 
-            // tbHoeveelheidMateriaal
-            // 
-            this.tbHoeveelheidMateriaal.Enabled = false;
-            this.tbHoeveelheidMateriaal.Location = new System.Drawing.Point(420, 391);
-            this.tbHoeveelheidMateriaal.Margin = new System.Windows.Forms.Padding(4);
-            this.tbHoeveelheidMateriaal.Name = "tbHoeveelheidMateriaal";
-            this.tbHoeveelheidMateriaal.Size = new System.Drawing.Size(195, 22);
-            this.tbHoeveelheidMateriaal.TabIndex = 20;
-            // 
             // EmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1237,6 +1499,10 @@
             this.panelAccountInstellingen.ResumeLayout(false);
             this.panelAccountInstellingen.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPicture)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            this.panelNewsFeed.ResumeLayout(false);
+            this.panelNewsFeed.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.panelVerhuurItem.ResumeLayout(false);
             this.panelVerhuurItem.PerformLayout();
@@ -1358,5 +1624,27 @@
         private System.Windows.Forms.Label lblDatum;
         private System.Windows.Forms.Label lblHoeveelheid;
         private System.Windows.Forms.TextBox tbHoeveelheidMateriaal;
+        private System.Windows.Forms.Panel panelNewsFeed;
+        private System.Windows.Forms.Label lbComment;
+        private System.Windows.Forms.Label lbPost;
+        private System.Windows.Forms.Label lbPostUsername;
+        private System.Windows.Forms.Label lbCommentUsername;
+        private System.Windows.Forms.Label lblLikesPost;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btnDownload;
+        private System.Windows.Forms.Label lblLikes;
+        private System.Windows.Forms.Button btnNextComment;
+        private System.Windows.Forms.Button btnPrevComment;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnLikePost;
+        private System.Windows.Forms.Button btnUploadFile;
+        private System.Windows.Forms.Button btnPlacePost;
+        private System.Windows.Forms.Button btnPlaceComment;
+        private System.Windows.Forms.Label lblFilePath;
+        private System.Windows.Forms.RichTextBox textComment;
+        private System.Windows.Forms.RichTextBox textPost;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnNextPost;
+        private System.Windows.Forms.Button btnPrevPost;
     }
 }

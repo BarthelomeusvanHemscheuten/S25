@@ -11,7 +11,7 @@ using System.Windows.Forms;
 using MediaSharingSystem.Controllers;
 using Models.ReservationSystem;
 using Models.Users;
-using Models;
+using Models.MediaSharingSystem;
 
 namespace MediaSharingSystem.Forms
 {
@@ -22,6 +22,9 @@ namespace MediaSharingSystem.Forms
         //Used for locally storing UserData and the locations they want to have, used for reserve mehod
         List<List<string>> userData;
         List<Location> locations;
+
+        Post post;
+        int currentComment;
 
         public EmployeeForm(Form f, Controller controller)
         {
@@ -53,9 +56,47 @@ namespace MediaSharingSystem.Forms
             tbctrlMain.SelectedTab = tbctrlMain.TabPages[0];
         }
 
-        private void btnInfoMenuMedewerker_Click(object sender, EventArgs e)
+        private void btnNieuwsOverzicht_Click(object sender, EventArgs e)
         {
             tbctrlMain.SelectedTab = tbctrlMain.TabPages[1];
+
+            post = controller.GetAndShowPostComments(controller.currentPostForm, 0);
+
+
+
+            lbPostUsername.Text = post.User.ToString();
+            lbPost.Text = post.Text;
+
+            currentComment = post.Comments.Count() - 1;
+
+            if (post.Comments.Count() == 0)
+            {
+                btnNextComment.Enabled = false;
+                btnPrevComment.Enabled = false;
+
+                lbCommentUsername.Text = "";
+                lbComment.Text = "";
+            }
+            else
+            {
+                btnNextComment.Enabled = true;
+                btnPrevComment.Enabled = true;
+
+                lbCommentUsername.Text = post.Comments[currentComment].User.ToString();
+                lbComment.Text = post.Comments[currentComment].Text;
+            }
+
+            int likes = controller.GetAndShowLikes(post);
+            lblLikesPost.Text = likes + " mensen vinden dit leuk";
+
+            if (post.Path != "-")
+            {
+                pictureBox1.Image = controller.GetImage(post.Path);
+            }
+            else
+            {
+                pictureBox1.Image = null;
+            }
         }
 
         private void btnReserveren_Click(object sender, EventArgs e)
@@ -309,6 +350,185 @@ namespace MediaSharingSystem.Forms
         }
 
         private void lbVerhuurdeMaterialen_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnNextPost_Click(object sender, EventArgs e)
+        {
+            post = controller.GetAndShowPostComments(controller.currentPostForm, 1);
+
+            lbPostUsername.Text = post.User.ToString();
+            lbPost.Text = post.Text;
+
+            currentComment = post.Comments.Count() - 1;
+            if (post.Comments.Count() == 0)
+            {
+                btnNextComment.Enabled = false;
+                btnPrevComment.Enabled = false;
+
+                lbCommentUsername.Text = "";
+                lbComment.Text = "";
+            }
+            else
+            {
+                btnNextComment.Enabled = true;
+                btnPrevComment.Enabled = true;
+
+                lbCommentUsername.Text = post.Comments[currentComment].User.ToString();
+                lbComment.Text = post.Comments[currentComment].Text;
+            }
+
+            int likes = controller.GetAndShowLikes(post);
+            lblLikesPost.Text = likes + " mensen vinden dit leuk";
+
+            if (post.Path != "-")
+            {
+                pictureBox1.Image = controller.GetImage(post.Path);
+            }
+            else
+            {
+                pictureBox1.Image = null;
+            }
+        }
+
+        private void btnPrevPost_Click(object sender, EventArgs e)
+        {
+            post = controller.GetAndShowPostComments(controller.currentPostForm, -1);
+
+            lbPostUsername.Text = post.User.ToString();
+            lbPost.Text = post.Text;
+
+            currentComment = post.Comments.Count() - 1;
+            if (post.Comments.Count() == 0)
+            {
+                btnNextComment.Enabled = false;
+                btnPrevComment.Enabled = false;
+
+                lbCommentUsername.Text = "";
+                lbComment.Text = "";
+            }
+            else
+            {
+                btnNextComment.Enabled = true;
+                btnPrevComment.Enabled = true;
+
+                lbCommentUsername.Text = post.Comments[currentComment].User.ToString();
+                lbComment.Text = post.Comments[currentComment].Text;
+            }
+
+            int likes = controller.GetAndShowLikes(post);
+            lblLikesPost.Text = likes + " mensen vinden dit leuk";
+
+            if (post.Path != "-")
+            {
+                pictureBox1.Image = controller.GetImage(post.Path);
+            }
+            else
+            {
+                pictureBox1.Image = null;
+            }
+        }
+
+        private void btnNextComment_Click(object sender, EventArgs e)
+        {
+            if (currentComment == 0)
+            {
+                currentComment = post.Comments.Count() - 1;
+            }
+            else
+            {
+                currentComment--;
+            }
+
+            lbCommentUsername.Text = post.Comments[currentComment].User.ToString();
+            lbComment.Text = post.Comments[currentComment].Text;
+        }
+
+        private void btnPrevComment_Click(object sender, EventArgs e)
+        {
+            if (currentComment == post.Comments.Count() - 1)
+            {
+                currentComment = 0;
+            }
+            else
+            {
+                currentComment++;
+            }
+
+            lbCommentUsername.Text = post.Comments[currentComment].User.ToString();
+            lbComment.Text = post.Comments[currentComment].Text;
+        }
+
+        private void btnPlacePost_Click(object sender, EventArgs e)
+        {
+            string filePath = controller.UploadFile(lblFilePath.Text);
+            controller.AddAndShowPost(textPost.Text, filePath);
+            post = controller.GetAndShowPostComments(controller.currentPostForm, 0);
+
+            lbPostUsername.Text = post.User.ToString();
+            lbPost.Text = post.Text;
+
+            currentComment = post.Comments.Count() - 1;
+
+            if (post.Comments.Count() == 0)
+            {
+                btnNextComment.Enabled = false;
+                btnPrevComment.Enabled = false;
+
+                lbCommentUsername.Text = "";
+                lbComment.Text = "";
+            }
+            else
+            {
+                btnNextComment.Enabled = true;
+                btnPrevComment.Enabled = true;
+
+                lbCommentUsername.Text = post.Comments[currentComment].User.ToString();
+                lbComment.Text = post.Comments[currentComment].Text;
+            }
+
+            if (post.Path != "-")
+            {
+                pictureBox1.Image = controller.GetImage(post.Path);
+            }
+            else
+            {
+                pictureBox1.Image = null;
+            }
+        }
+
+        private void btnPlaceComment_Click(object sender, EventArgs e)
+        {
+            controller.AddAndShowComment(textComment.Text, post);
+
+            currentComment = post.Comments.Count() - 1;
+
+            btnNextComment.Enabled = true;
+            btnPrevComment.Enabled = true;
+
+            lbCommentUsername.Text = post.Comments[currentComment].User.ToString();
+            lbComment.Text = post.Comments[currentComment].Text;
+        }
+
+        private void btnLikePost_Click(object sender, EventArgs e)
+        {
+            controller.AddAndShowLike(post);
+            int likes = controller.GetAndShowLikes(post);
+            lblLikesPost.Text = likes + " mensen vinden dit leuk";
+        }
+
+        private void btnUploadFile_Click(object sender, EventArgs e)
+        {
+            lblFilePath.Text = controller.ChooseFile();
+        }
+
+        private void btnDownload_Click(object sender, EventArgs e)
+        {
+            controller.DownloadFile(post.Path);
+        }
+
+        private void btnInfoMenuMedewerker_Click(object sender, EventArgs e)
         {
 
         }
