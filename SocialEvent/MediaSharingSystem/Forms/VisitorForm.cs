@@ -21,7 +21,6 @@ namespace MediaSharingSystem.Forms
         Post post;
         Label naamP = new Label();
         Label contentTextP = new Label();
-        Label contentPathP = new Label();
         Label naamC = new Label();
         Label contentTextC = new Label();
         int currentComment;
@@ -49,7 +48,6 @@ namespace MediaSharingSystem.Forms
 
             naamP.Location = new Point(10, 50);
             contentTextP.Location = new Point(10, 80);
-            contentPathP.Location = new Point(10, 120);
 
             naamC.Location = new Point(292, 50);
             contentTextC.Location = new Point(292, 80);
@@ -81,12 +79,18 @@ namespace MediaSharingSystem.Forms
 
             panelNewsFeed.Controls.Add(naamP);
             panelNewsFeed.Controls.Add(contentTextP);
-            panelNewsFeed.Controls.Add(contentPathP);
 
             panelNewsFeed.Controls.Add(naamC);
             panelNewsFeed.Controls.Add(contentTextC);
 
-            pictureBox1.Image = controller.GetImage(post.Path);
+            if (post.Path != "")
+            {
+                pictureBox1.Image = controller.GetImage(post.Path);
+            }
+            else
+            {
+                pictureBox1.Image = null;
+            }
         }
 
         private void btnNextPost_Click(object sender, EventArgs e)
@@ -95,7 +99,6 @@ namespace MediaSharingSystem.Forms
 
             naamP.Text = post.User.ToString();
             contentTextP.Text = post.Text;
-            contentPathP.Text = post.Path;
 
             currentComment = post.Comments.Count() - 1;
             if (post.Comments.Count() == 0)
@@ -117,6 +120,15 @@ namespace MediaSharingSystem.Forms
 
             int likes = controller.GetAndShowLikes(post);
             lblLikes.Text = likes + " mensen vinden dit leuk";
+
+            if (post.Path != "")
+            {
+                pictureBox1.Image = controller.GetImage(post.Path);
+            }
+            else
+            {
+                pictureBox1.Image = null;
+            }
         }
 
         private void btnPrevPost_Click(object sender, EventArgs e)
@@ -125,7 +137,6 @@ namespace MediaSharingSystem.Forms
             
             naamP.Text = post.User.ToString();
             contentTextP.Text = post.Text;
-            contentPathP.Text = post.Path;
 
             currentComment = post.Comments.Count() - 1;
             if (post.Comments.Count() == 0)
@@ -147,6 +158,15 @@ namespace MediaSharingSystem.Forms
 
             int likes = controller.GetAndShowLikes(post);
             lblLikes.Text = likes + " mensen vinden dit leuk";
+
+            if (post.Path != "")
+            {
+                pictureBox1.Image = controller.GetImage(post.Path);
+            }
+            else
+            {
+                pictureBox1.Image = null;
+            }
         }
 
         private void btnNextComment_Click(object sender, EventArgs e)
@@ -260,7 +280,6 @@ namespace MediaSharingSystem.Forms
 
             naamP.Text = post.User.ToString();
             contentTextP.Text = post.Text;
-            contentPathP.Text = post.Path;
 
             currentComment = post.Comments.Count() - 1;
 
@@ -279,6 +298,15 @@ namespace MediaSharingSystem.Forms
 
                 naamC.Text = post.Comments[currentComment].User.ToString();
                 contentTextC.Text = post.Comments[currentComment].Text;
+            }
+
+            if (post.Path != "")
+            {
+                pictureBox1.Image = controller.GetImage(post.Path);
+            }
+            else
+            {
+                pictureBox1.Image = null;
             }
         }
 

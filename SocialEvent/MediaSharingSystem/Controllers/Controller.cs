@@ -554,8 +554,9 @@ namespace MediaSharingSystem.Controllers
 
         public void DownloadFile(string filePath)
         {
-            //Users\Lucas Scheepers\Downloads
-            ftp.DownloadFileToFolder(filePath, @"C:\");
+            string[] splitFilePath = new string[10];
+            splitFilePath = filePath.Split('\\');
+            ftp.DownloadFileToFolder(filePath, AppDomain.CurrentDomain.BaseDirectory + splitFilePath.Last());
         }
 
         public Image GetImage(string filePath)
