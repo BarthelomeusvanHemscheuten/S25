@@ -40,9 +40,7 @@ namespace DAL.FTP
             try
             {
                 //Lokaal bestand uitlezen
-                StreamReader sourceStream = new StreamReader(uploadFromPath);
                 byte[] fileContents = File.ReadAllBytes(uploadFromPath);
-                sourceStream.Close();
                 request.ContentLength = fileContents.Length;
 
                 //Bestand wegschrijven naar de server
@@ -89,7 +87,7 @@ namespace DAL.FTP
                 Stream responseStream = response.GetResponseStream();
 
                 //Opgevangen stream kopieëren naar een lokaal bestand.
-                FileStream fileStream = File.Create(downloadToPath);
+                Stream fileStream = File.Create(downloadToPath);
                 responseStream.CopyTo(fileStream);
                 fileStream.Close();
 
