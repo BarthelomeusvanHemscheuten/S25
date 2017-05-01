@@ -46,8 +46,8 @@ namespace MediaSharingSystem.Forms
 
             post = controller.GetAndShowPostComments(controller.currentPostForm, 0);
 
-            naamP.Location = new Point(10, 50);
-            contentTextP.Location = new Point(10, 80);
+            naamP.Location = new Point(10, 40);
+            contentTextP.Location = new Point(10, 60);
 
             naamC.Location = new Point(292, 50);
             contentTextC.Location = new Point(292, 80);
@@ -75,7 +75,7 @@ namespace MediaSharingSystem.Forms
             }
 
             int likes = controller.GetAndShowLikes(post);
-            lblLikes.Text = likes + " mensen vinden dit leuk";
+            lblLikesPost.Text = likes + " mensen vinden dit leuk";
 
             panelNewsFeed.Controls.Add(naamP);
             panelNewsFeed.Controls.Add(contentTextP);
@@ -119,7 +119,7 @@ namespace MediaSharingSystem.Forms
             }
 
             int likes = controller.GetAndShowLikes(post);
-            lblLikes.Text = likes + " mensen vinden dit leuk";
+            lblLikesPost.Text = likes + " mensen vinden dit leuk";
 
             if (post.Path != "")
             {
@@ -157,7 +157,7 @@ namespace MediaSharingSystem.Forms
             }
 
             int likes = controller.GetAndShowLikes(post);
-            lblLikes.Text = likes + " mensen vinden dit leuk";
+            lblLikesPost.Text = likes + " mensen vinden dit leuk";
 
             if (post.Path != "")
             {
@@ -327,7 +327,7 @@ namespace MediaSharingSystem.Forms
         {
             controller.AddAndShowLike(post);
             int likes = controller.GetAndShowLikes(post);
-            lblLikes.Text = likes + " mensen vinden dit leuk";
+            lblLikesPost.Text = likes + " mensen vinden dit leuk";
         }
 
         private void UploadFile_Click(object sender, EventArgs e)
