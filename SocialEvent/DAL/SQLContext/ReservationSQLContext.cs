@@ -68,6 +68,12 @@ namespace DAL.SQLContext
             query = query.Replace("@startdate", startDate.ToString()).Replace("@enddate", endDate.ToString()).Replace("@id", visitorId.ToString()).Replace("@name", materialName);
             return databaseConnection.executeNonQuery(query);
         }
+        public bool TakeMaterial(int materialId)
+        {
+            string query = @"UPDATE [Material] SET StartDate = NULL, EndDate = NULL, UserID = NULL WHERE MaterialID = @id";
+            query = query.Replace("@id", materialId.ToString());
+            return databaseConnection.executeNonQuery(query);
+        }
 
         public int GetEventID(string name)
         {
@@ -137,6 +143,24 @@ namespace DAL.SQLContext
         {   // zie opmerking hierboven
             string query = @"SELECT Name FROM [Material] WHERE StartDate IS NULL AND EndDate IS NULL GROUP BY Name";
 
+            return databaseConnection.executeReaderStringList(query, 1);
+        }
+        public List<string> GetMaterialName(int userid)
+        {
+            string query = @"SELECT Name FROM [Material] WHERE UserID = @id";
+            query = query.Replace("@id", userid.ToString());
+            return databaseConnection.executeReaderStringList(query, 1);
+        }
+        public List<decimal> GetMaterialPrice(int userid)
+        {
+            string query = @"SELECT Price FROM [Material] WHERE UserID = @id";
+            query = query.Replace("@id", userid.ToString());
+            return databaseConnection.executereaderDecimalList(query);
+        }
+        public List<string> GetMaterialDescription(int userid)
+        {
+            string query = @"SELECT Description FROM [Material] WHERE UserID = @id";
+            query = query.Replace("@id", userid.ToString());
             return databaseConnection.executeReaderStringList(query, 1);
         }
     }

@@ -15,6 +15,7 @@ namespace DAL.Interfaces
 
         bool UpdateLocation(int id, int reservationId);
         bool UpdateMaterial(int visitorId, DateTime startDate, DateTime endDate, string materialName);
+        bool TakeMaterial(int materialiId);
 
         int GetEventID(string name);
         string GetEventDescription(int id);
@@ -26,6 +27,10 @@ namespace DAL.Interfaces
         List<decimal> GetAllMaterialsPrice();
         List<string> GetAllMaterialsDescription();
         List<string> GetAllMaterialsName();
+        List<decimal> GetMaterialPrice(int userid);
+        List<string> GetMaterialDescription(int userid);
+        List<string> GetMaterialName(int userid);
+
 
 
 

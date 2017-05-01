@@ -199,5 +199,17 @@ namespace MediaSharingSystem.Forms
             tbTelefoonNrGebruikersBeheren.Text = visitor.Telnr;
             
         }
+
+        private void lbReportedPosts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Post post = (Post)lbReportedPosts.SelectedItem;
+            tbReportedPost.Text = post.Text;
+        }
+
+        private void lbReportedComments_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Comment comment = (Comment)lbReportedComments.SelectedItem;
+            tbReportedComment.Text = comment.Text;
+        }
     }
 }

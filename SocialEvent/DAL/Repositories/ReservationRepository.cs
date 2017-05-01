@@ -45,6 +45,10 @@ namespace DAL.Repositories
         {
             return context.UpdateMaterial(visitorId, startDate, endDate, materialName);
         }
+        public bool TakeMaterial(int materialid)
+        {
+            return context.TakeMaterial(materialid);
+        }
 
         public int GetEventID(string name)
         {
@@ -91,6 +95,18 @@ namespace DAL.Repositories
         public List<string> GetAllMaterialsName()
         {
             return context.GetAllMaterialsName();
+        }
+        public List<string> GetMaterialName(int userid)
+        {
+            return context.GetMaterialName(userid);
+        }
+        public List<decimal> GetMaterialPrice(int userid)
+        {
+            return context.GetMaterialPrice(userid);
+        }
+        public List<string> GetMaterialDescription(int userid)
+        {
+            return context.GetMaterialDescription(userid);
         }
     }
 }

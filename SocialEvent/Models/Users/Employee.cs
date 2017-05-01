@@ -48,7 +48,7 @@ namespace Models.Users
 
         public bool DeleteVisitor(Visitor visitor)
         {
-            if(visitor != null)
+            if (visitor != null)
             {
                 userRepo.DeleteUser(visitor.ID);
 
@@ -69,8 +69,8 @@ namespace Models.Users
                 userRepo.InsertUser(eventt.ID, reservationId, 3, 0, dateofbirth, emailAddress, address, name[0], username[0], password[0], telnr[0], rfid);
                 Visitor mainVisitor = AddVisitor(username[0], name[0], password[0], emailAddress, telnr[0], address, dateofbirth, eventt, locations[0], eventt.ID, reservationId);
                 eventt.Visitors.Add(mainVisitor);
-                
-                
+
+
 
                 for (int i = 1; i < quantityVisitors; i++)
                 {
@@ -91,7 +91,7 @@ namespace Models.Users
                     }
                 }
 
-                
+
                 return true;
             }
             return false;
@@ -105,6 +105,16 @@ namespace Models.Users
                 reservationRepo.UpdateMaterial(visitor.ID, startDate, endDate, material.Name);
 
                 return true;
+            }
+            return false;
+        }
+        public bool TakeMaterial(Visitor visitor, Material material)
+        {
+            if (material != null)
+            {
+                visitor.Materials.Remove(material);
+                return reservationRepo.TakeMaterial(material.ID);
+
             }
             return false;
         }

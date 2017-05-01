@@ -36,6 +36,7 @@ namespace MediaSharingSystem.Forms
             lbMaterialen.DisplayMember = "Name";
             lbVisitors.DisplayMember = "UserName";
             lbGebruikers.DisplayMember = "UserName";
+            lbVisitorInleveren.DisplayMember = "UserName";
             for (int i = 0; i <= 3; i++)
             {
                 userData.Add(new List<string>());
@@ -44,11 +45,13 @@ namespace MediaSharingSystem.Forms
             {
                 lbGebruikers.Items.Add(user);
                 lbVisitors.Items.Add(user);
+                lbVisitorInleveren.Items.Add(user);
             }
             foreach (Material material in controller.GetAndShowMaterialFromDatabase())
             {
                 lbMaterialen.Items.Add(material);
             }
+
             tbNaam.Text = controller.Employee.Name;
             tbEmail.Text = controller.Employee.EmailAddress;
             tbTelefoonNr.Text = controller.Employee.Telnr;
@@ -77,6 +80,10 @@ namespace MediaSharingSystem.Forms
         private void btnGebruikersBeherenMedewerker_Click(object sender, EventArgs e)
         {
             tbctrlMain.SelectedTab = tbctrlMain.TabPages[3];
+        }
+        private void btnMateriaalInleveren_Click(object sender, EventArgs e)
+        {
+            tbctrlMain.SelectedTab = tbctrlMain.TabPages[5];
         }
 
         private void btnUitloggenMedewerker_Click(object sender, EventArgs e)
@@ -250,6 +257,35 @@ namespace MediaSharingSystem.Forms
             {
                 tbMateriaalBeschikbaar.Text = "Ja";
             }
+        }
+
+
+
+        private void btnInleveren_Click(object sender, EventArgs e)
+        {
+            Material material = (Material)lbMaterialen.SelectedItem;
+            if(controller.TakeMaterial(material))
+            {
+                MessageBox.Show("Materiaal ingeleverd");
+            }
+            else
+            {
+                MessageBox.Show("Materiaal niet ingeleverd, probeer opnieuw");
+            }
+        }
+
+        private void lbVisitorInleveren_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Visitor visitor = (Visitor)lbVisitorInleveren.SelectedItem;
+            foreach(Material material in controller.GetTakenMaterials(visitor.ID))
+            {
+                lbVerhuurdeMaterialen.Items.Add(material);
+            }
+        }
+
+        private void lbVerhuurdeMaterialen_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

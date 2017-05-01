@@ -418,6 +418,14 @@ namespace MediaSharingSystem.Controllers
             }
             return false;
         }
+        public bool TakeMaterial(Visitor visitor, Material material)
+        {
+            if(visitor != null && material != null)
+            {
+              return  employee.TakeMaterial(visitor, material);
+            }
+            return false;
+        }
 
         // ADMIN
         public bool AddEvent(string name, string description)
@@ -640,66 +648,84 @@ namespace MediaSharingSystem.Controllers
             return mediaRepo.GetAllSwearwords();
         }
 
-        public List<Visitor> GetVisitors()
-        {
-            List<Visitor> visitors = new List<Visitor>();
-            foreach (Visitor v in Event.Visitors)
-            {
-                visitors.Add(v);
-            }
-            return visitors;
-        }
+        //public List<Visitor> GetVisitors()
+        //{
+        //    List<Visitor> visitors = new List<Visitor>();
+        //    foreach (Visitor v in Event.Visitors)
+        //    {
+        //        visitors.Add(v);
+        //    }
+        //    return visitors;
+        //}
 
-        public List<Material> GetMaterials()
+        //public List<Material> GetMaterials()
+        //{
+        //    List<Material> materials = new List<Material>();
+        //    foreach (Material m in Event.Material)
+        //    {
+        //        materials.Add(m);
+        //    }
+        //    return materials;
+        //}
+        public List<Material> GetTakenMaterials(int userid)
         {
             List<Material> materials = new List<Material>();
-            foreach (Material m in Event.Material)
+            List<string> name = new List<string>();
+            List<decimal> price = new List<decimal>();
+            List<string> description = new List<string>();
+            name = reservationRepo.GetMaterialName(userid);
+            price = reservationRepo.GetMaterialPrice(userid);
+            description = reservationRepo.GetMaterialDescription(userid);
+            for (int i = 0; i < name.Count; i++)
             {
-                materials.Add(m);
+                Material material = new Material(name[i], description[i], price[i]);
+                Event.Material.Add(material);
+                materials.Add(material);
             }
+
             return materials;
         }
 
-        public string[] GetMaterialInfo(string name)
-        {
-            string[] info = null;
-            foreach (Material m in Event.Material)
-            {
-                if (m.Name == name)
-                {
-                    info[0] = (Convert.ToString(m.Price));
-                    info[1] = (m.Description);
-                }
-            }
-            return info;
-        }
+        //public string[] GetMaterialInfo(string name)
+        //{
+        //    string[] info = null;
+        //    foreach (Material m in Event.Material)
+        //    {
+        //        if (m.Name == name)
+        //        {
+        //            info[0] = (Convert.ToString(m.Price));
+        //            info[1] = (m.Description);
+        //        }
+        //    }
+        //    return info;
+        //}
 
-        public string[] GetGebruikersInfo(string name)
-        {
-            string[] info = null;
-            foreach (Visitor v in Event.Visitors)
-            {
-                if (v.Name == name)
-                {
-                    info[0] = (v.EmailAddress);
-                    info[1] = (v.Telnr);
-                }
-            }
-            return info;
-        }
+        //public string[] GetGebruikersInfo(string name)
+        //{
+        //    string[] info = null;
+        //    foreach (Visitor v in Event.Visitors)
+        //    {
+        //        if (v.Name == name)
+        //        {
+        //            info[0] = (v.EmailAddress);
+        //            info[1] = (v.Telnr);
+        //        }
+        //    }
+        //    return info;
+        //}
 
-        public bool DeleteGebruiker(string name)
-        {
-            foreach (Visitor visitor in Event.Visitors)
-            {
-                if (visitor.Name == name)
-                {
-                    DeleteVisitor(visitor);
-                    return true;
-                }
-            }
-            return false;
-        }
+        //public bool DeleteGebruiker(string name)
+        //{
+        //    foreach (Visitor visitor in Event.Visitors)
+        //    {
+        //        if (visitor.Name == name)
+        //        {
+        //            DeleteVisitor(visitor);
+        //            return true;
+        //        }
+        //    }
+        //    return false;
+        //}
 
         //public bool VerhuurItem(string visitor, string material, string eindDatum, int hoeveelheid)
         //{

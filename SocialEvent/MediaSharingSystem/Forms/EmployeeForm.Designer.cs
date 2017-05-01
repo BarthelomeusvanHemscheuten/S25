@@ -39,6 +39,7 @@
             this.tbctrlMain = new System.Windows.Forms.TabControl();
             this.tabAccountInstellingen = new System.Windows.Forms.TabPage();
             this.panelAccountInstellingen = new System.Windows.Forms.Panel();
+            this.tbTelefoonNr = new System.Windows.Forms.TextBox();
             this.tbWachtwoord2 = new System.Windows.Forms.TextBox();
             this.btnWijzigenFoto = new System.Windows.Forms.Button();
             this.pbPicture = new System.Windows.Forms.PictureBox();
@@ -120,7 +121,11 @@
             this.tbLocatieNrHoofdreserveerder = new System.Windows.Forms.TextBox();
             this.tbNaamHoofdreserveerder = new System.Windows.Forms.TextBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.tbTelefoonNr = new System.Windows.Forms.TextBox();
+            this.tabInleveren = new System.Windows.Forms.TabPage();
+            this.btnMateriaalInleveren = new System.Windows.Forms.Button();
+            this.lbVisitorInleveren = new System.Windows.Forms.ListBox();
+            this.lbVerhuurdeMaterialen = new System.Windows.Forms.ListBox();
+            this.btnInleveren = new System.Windows.Forms.Button();
             this.panelMedewerker.SuspendLayout();
             this.tbctrlMain.SuspendLayout();
             this.tabAccountInstellingen.SuspendLayout();
@@ -135,11 +140,13 @@
             this.tabPage4.SuspendLayout();
             this.PanelInfoMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.tabInleveren.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMedewerker
             // 
             this.panelMedewerker.BackColor = System.Drawing.Color.LightSteelBlue;
+            this.panelMedewerker.Controls.Add(this.btnMateriaalInleveren);
             this.panelMedewerker.Controls.Add(this.btnReserveren);
             this.panelMedewerker.Controls.Add(this.btnUitloggenMedewerker);
             this.panelMedewerker.Controls.Add(this.btnInfoMenuMedewerker);
@@ -165,7 +172,7 @@
             // 
             // btnUitloggenMedewerker
             // 
-            this.btnUitloggenMedewerker.Location = new System.Drawing.Point(17, 316);
+            this.btnUitloggenMedewerker.Location = new System.Drawing.Point(17, 377);
             this.btnUitloggenMedewerker.Margin = new System.Windows.Forms.Padding(4);
             this.btnUitloggenMedewerker.Name = "btnUitloggenMedewerker";
             this.btnUitloggenMedewerker.Size = new System.Drawing.Size(169, 52);
@@ -225,6 +232,7 @@
             this.tbctrlMain.Controls.Add(this.tabPage1);
             this.tbctrlMain.Controls.Add(this.tabPage3);
             this.tbctrlMain.Controls.Add(this.tabPage4);
+            this.tbctrlMain.Controls.Add(this.tabInleveren);
             this.tbctrlMain.Location = new System.Drawing.Point(223, 14);
             this.tbctrlMain.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tbctrlMain.Name = "tbctrlMain";
@@ -267,6 +275,14 @@
             this.panelAccountInstellingen.Name = "panelAccountInstellingen";
             this.panelAccountInstellingen.Size = new System.Drawing.Size(699, 521);
             this.panelAccountInstellingen.TabIndex = 22;
+            // 
+            // tbTelefoonNr
+            // 
+            this.tbTelefoonNr.Location = new System.Drawing.Point(139, 335);
+            this.tbTelefoonNr.Margin = new System.Windows.Forms.Padding(4);
+            this.tbTelefoonNr.Name = "tbTelefoonNr";
+            this.tbTelefoonNr.Size = new System.Drawing.Size(356, 22);
+            this.tbTelefoonNr.TabIndex = 16;
             // 
             // tbWachtwoord2
             // 
@@ -1104,13 +1120,59 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // tbTelefoonNr
+            // tabInleveren
             // 
-            this.tbTelefoonNr.Location = new System.Drawing.Point(139, 335);
-            this.tbTelefoonNr.Margin = new System.Windows.Forms.Padding(4);
-            this.tbTelefoonNr.Name = "tbTelefoonNr";
-            this.tbTelefoonNr.Size = new System.Drawing.Size(356, 22);
-            this.tbTelefoonNr.TabIndex = 16;
+            this.tabInleveren.Controls.Add(this.btnInleveren);
+            this.tabInleveren.Controls.Add(this.lbVerhuurdeMaterialen);
+            this.tabInleveren.Controls.Add(this.lbVisitorInleveren);
+            this.tabInleveren.Location = new System.Drawing.Point(4, 25);
+            this.tabInleveren.Name = "tabInleveren";
+            this.tabInleveren.Padding = new System.Windows.Forms.Padding(3);
+            this.tabInleveren.Size = new System.Drawing.Size(653, 565);
+            this.tabInleveren.TabIndex = 5;
+            this.tabInleveren.Text = "tabInleveren";
+            this.tabInleveren.UseVisualStyleBackColor = true;
+            // 
+            // btnMateriaalInleveren
+            // 
+            this.btnMateriaalInleveren.Location = new System.Drawing.Point(17, 317);
+            this.btnMateriaalInleveren.Margin = new System.Windows.Forms.Padding(4);
+            this.btnMateriaalInleveren.Name = "btnMateriaalInleveren";
+            this.btnMateriaalInleveren.Size = new System.Drawing.Size(169, 52);
+            this.btnMateriaalInleveren.TabIndex = 6;
+            this.btnMateriaalInleveren.Text = "Item Inleveren";
+            this.btnMateriaalInleveren.UseVisualStyleBackColor = true;
+            this.btnMateriaalInleveren.Click += new System.EventHandler(this.btnMateriaalInleveren_Click);
+            // 
+            // lbVisitorInleveren
+            // 
+            this.lbVisitorInleveren.FormattingEnabled = true;
+            this.lbVisitorInleveren.ItemHeight = 16;
+            this.lbVisitorInleveren.Location = new System.Drawing.Point(6, 6);
+            this.lbVisitorInleveren.Name = "lbVisitorInleveren";
+            this.lbVisitorInleveren.Size = new System.Drawing.Size(217, 212);
+            this.lbVisitorInleveren.TabIndex = 0;
+            this.lbVisitorInleveren.SelectedIndexChanged += new System.EventHandler(this.lbVisitorInleveren_SelectedIndexChanged);
+            // 
+            // lbVerhuurdeMaterialen
+            // 
+            this.lbVerhuurdeMaterialen.FormattingEnabled = true;
+            this.lbVerhuurdeMaterialen.ItemHeight = 16;
+            this.lbVerhuurdeMaterialen.Location = new System.Drawing.Point(238, 6);
+            this.lbVerhuurdeMaterialen.Name = "lbVerhuurdeMaterialen";
+            this.lbVerhuurdeMaterialen.Size = new System.Drawing.Size(187, 212);
+            this.lbVerhuurdeMaterialen.TabIndex = 1;
+            this.lbVerhuurdeMaterialen.SelectedIndexChanged += new System.EventHandler(this.lbVerhuurdeMaterialen_SelectedIndexChanged);
+            // 
+            // btnInleveren
+            // 
+            this.btnInleveren.Location = new System.Drawing.Point(6, 247);
+            this.btnInleveren.Name = "btnInleveren";
+            this.btnInleveren.Size = new System.Drawing.Size(75, 23);
+            this.btnInleveren.TabIndex = 2;
+            this.btnInleveren.Text = "Inleveren";
+            this.btnInleveren.UseVisualStyleBackColor = true;
+            this.btnInleveren.Click += new System.EventHandler(this.btnInleveren_Click);
             // 
             // EmployeeForm
             // 
@@ -1141,6 +1203,7 @@
             this.PanelInfoMenu.ResumeLayout(false);
             this.PanelInfoMenu.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.tabInleveren.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -1239,5 +1302,10 @@
         private System.Windows.Forms.DateTimePicker dtmEinddatum;
         private System.Windows.Forms.TextBox tbAantalMaterialen;
         private System.Windows.Forms.TextBox tbTelefoonNr;
+        private System.Windows.Forms.Button btnMateriaalInleveren;
+        private System.Windows.Forms.TabPage tabInleveren;
+        private System.Windows.Forms.Button btnInleveren;
+        private System.Windows.Forms.ListBox lbVerhuurdeMaterialen;
+        private System.Windows.Forms.ListBox lbVisitorInleveren;
     }
 }
