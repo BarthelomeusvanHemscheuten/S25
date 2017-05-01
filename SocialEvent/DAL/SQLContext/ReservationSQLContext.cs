@@ -123,6 +123,11 @@ namespace DAL.SQLContext
             query = query.Replace("@NAME", name);
             return databaseConnection.executeReaderInt(query);
         }
+        public List<int> GetAllMaterialsID()
+        {
+            string query = @"SELECT MaterialID, Name FROM [Material] WHERE StartDate IS NULL AND EndDate IS NULL GROUP BY Name, MaterialID";
+            return databaseConnection.executeReaderIntList(query, 1);
+        }
 
         public List<decimal> GetAllMaterialsPrice()
         {   // zorg ervoor dat de namen die met elkaar overeenkomen samengevoegd worden dmv SQL aangezien het materiaal per 1x in database wordt toegevoegd
@@ -145,6 +150,14 @@ namespace DAL.SQLContext
 
             return databaseConnection.executeReaderStringList(query, 1);
         }
+
+        public List<int> GetMaterialID(int userid)
+        {
+            string query = @"SELECT MaterialID FROM [Material] WHERE UserID = @id";
+            query = query.Replace("@id", userid.ToString());
+            return databaseConnection.executeReaderIntList(query, 1);
+        }
+
         public List<string> GetMaterialName(int userid)
         {
             string query = @"SELECT Name FROM [Material] WHERE UserID = @id";

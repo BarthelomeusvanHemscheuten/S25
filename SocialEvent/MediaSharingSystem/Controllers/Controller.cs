@@ -80,10 +80,12 @@ namespace MediaSharingSystem.Controllers
         {
             List<Material> result = new List<Material>();
 
+            List<int> id = new List<int>();
             List<decimal> price = new List<decimal>();
             List<string> name = new List<string>();
             List<string> description = new List<string>();
 
+            id = reservationRepo.GetAllMaterialsID();
             price = reservationRepo.GetAllMaterialsPrice();
             name = reservationRepo.GetAllMaterialsName();
             description = reservationRepo.GetAllMaterialsDescription();

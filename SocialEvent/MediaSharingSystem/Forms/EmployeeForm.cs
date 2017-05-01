@@ -263,16 +263,22 @@ namespace MediaSharingSystem.Forms
 
         private void btnInleveren_Click(object sender, EventArgs e)
         {
-            Material material = (Material)lbMaterialen.SelectedItem;
+            Material material = (Material)lbVerhuurdeMaterialen.SelectedItem;
             Visitor visitor = (Visitor)lbVisitorInleveren.SelectedItem;
-            if(controller.TakeMaterial(visitor, material))
+            if (controller.TakeMaterial(visitor, material))
             {
                 MessageBox.Show("Materiaal ingeleverd");
+                lbVerhuurdeMaterialen.Items.Clear();
+                foreach (Material mymaterial in controller.GetTakenMaterials(visitor.ID))
+                {
+                    lbVerhuurdeMaterialen.Items.Add(mymaterial);
+                }
             }
             else
             {
                 MessageBox.Show("Materiaal niet ingeleverd, probeer opnieuw");
             }
+
         }
 
         private void lbVisitorInleveren_SelectedIndexChanged(object sender, EventArgs e)
