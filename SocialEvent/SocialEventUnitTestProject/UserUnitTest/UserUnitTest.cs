@@ -20,9 +20,9 @@ namespace SocialEventUnitTestProject.UserUnitTest
         [TestInitialize]
         public void TestInitialize()
         {   
-            this.visitor = new Visitor("swaginator", "Roger", "lol69", "06133769420", 1,1);
-            this.admin = new Admin("baasje", "Roger", "immaboss", "pony@fony.com", "06555444333", "6969JK", new DateTime(09 - 08 - 1999), 1, 1);
-            this.employee = new Employee("werker", "henk", "lmao69", "kill@me.plz", "06999888777", "1337HH", new DateTime(09 - 08 - 1999), 1, 1);
+            this.visitor = new Visitor("swaginator", "Roger", "06133769420", 1,1);
+            this.admin = new Admin("baasje", "Roger", "pony@fony.com", "06555444333", "6969JK", new DateTime(09 - 08 - 1999), 1, 1);
+            this.employee = new Employee("werker", "henk", "kill@me.plz", "06999888777", "1337HH", new DateTime(09 - 08 - 1999), 1, 1);
         }
 
         [TestMethod]
@@ -31,7 +31,6 @@ namespace SocialEventUnitTestProject.UserUnitTest
             //visitor
             Assert.AreEqual("swaginator", this.visitor.Username);
             Assert.AreEqual("Roger", this.visitor.Name);
-            Assert.AreEqual("lol69", this.visitor.Password);
             Assert.AreEqual("06133769420", this.visitor.Telnr);
             Assert.AreEqual(1, this.visitor.EventID);
             Assert.AreEqual(1, this.visitor.ReservationID);
@@ -40,7 +39,6 @@ namespace SocialEventUnitTestProject.UserUnitTest
             //admin
             Assert.AreEqual("baasje", this.admin.Username);
             Assert.AreEqual("Roger", this.admin.Name);
-            Assert.AreEqual("immaboss", this.admin.Password);
             Assert.AreEqual("pony@fony.com", this.admin.EmailAddress);
             Assert.AreEqual("06555444333", this.admin.Telnr);
             Assert.AreEqual("6969JK", this.admin.Address);
@@ -52,7 +50,6 @@ namespace SocialEventUnitTestProject.UserUnitTest
             //employee
             Assert.AreEqual("werker", this.employee.Username);
             Assert.AreEqual("henk", this.employee.Name);
-            Assert.AreEqual("lmao69", this.employee.Password);
             Assert.AreEqual("kill@me.plz", this.employee.EmailAddress);
             Assert.AreEqual("06999888777", this.employee.Telnr);
             Assert.AreEqual("1337HH", this.employee.Address);
@@ -77,7 +74,7 @@ namespace SocialEventUnitTestProject.UserUnitTest
         }
         public void changeUserName()
         {
-            Assert.IsTrue(visitor.ChangeUsername("Rozer", "haha", "haha"));
+            Assert.IsTrue(visitor.ChangeUsername("Rozer"));
         }
     }
 }

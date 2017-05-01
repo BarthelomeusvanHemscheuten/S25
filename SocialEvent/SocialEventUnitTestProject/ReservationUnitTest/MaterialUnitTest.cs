@@ -18,8 +18,8 @@ namespace SocialEventUnitTestProject.ReservationUnitTest
         [TestInitialize]
         public void TestInitialize()
         {
-            this.material = new Material ("stok", "amazing", 10.50);
-            this.material = new Material(1, "stok", "amazing", 10.50);
+            this.material = new Material ("stok", "amazing", 10);
+            this.material = new Material(1, "stok", "amazing", 10);
         }
 
         [TestMethod]

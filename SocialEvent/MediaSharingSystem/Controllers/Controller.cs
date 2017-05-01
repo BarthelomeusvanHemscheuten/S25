@@ -35,7 +35,7 @@ namespace MediaSharingSystem.Controllers
 
         private int currentPostId;
         public int currentPostForm;
-        Random random;
+        Random random = new Random();
 
         public Controller()
         {
@@ -44,7 +44,7 @@ namespace MediaSharingSystem.Controllers
             mediaRepo = new MediaRepository(new MediaSQLContext());
             reservationRepo = new ReservationRepository(new ReservationSQLContext());
             ftp = new FTPConnection();
-            Event = new Event("Social Event");
+            Event = new Event("SocialEvent");
         }
 
         public bool AddLocation(int number, string features, string type)
@@ -669,10 +669,10 @@ namespace MediaSharingSystem.Controllers
         }
         public string RandomString(int length)
         {
-            random = new Random();
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
             return new string(Enumerable.Repeat(chars, length)
               .Select(s => s[random.Next(s.Length)]).ToArray());
         }
+
     }
 }

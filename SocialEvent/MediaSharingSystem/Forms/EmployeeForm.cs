@@ -44,8 +44,6 @@ namespace MediaSharingSystem.Forms
             {
                 userData.Add(new List<string>());
             }
-
-
             tbNaam.Text = controller.Employee.Name;
             tbEmail.Text = controller.Employee.EmailAddress;
             tbTelefoonNr.Text = controller.Employee.Telnr;
@@ -217,7 +215,7 @@ namespace MediaSharingSystem.Forms
         {
             Visitor visitor = (Visitor)lbVisitors.SelectedItem;
             Material material = (Material)lbMaterialen.SelectedItem;
-            if (controller.RentMaterial(visitor, material, DateTime.Now, dtmEinddatum.Value, Convert.ToInt32(tbAantalMaterialen.Text)))
+            if (controller.RentMaterial(visitor, material, DateTime.Now, dtmEinddatum.Value, Convert.ToInt32(cbHoeveelheid.Text)))
             {
                 MessageBox.Show("Materiaal verhuurd");
             }
@@ -273,23 +271,18 @@ namespace MediaSharingSystem.Forms
 
         private void btnMoreAanhangsels1_Click(object sender, EventArgs e)
         {
-            AddUserLocation(tbNaamAanhangsel1.Text, tbTelefoonNrAanhangsel1.Text, Convert.ToInt32(tbAanhangselLocatie1.Text));
+            userData[0].Add(controller.RandomString(8));
+            userData[1].Add(tbNaamAanhangsel1.Text);
+            userData[2].Add(controller.RandomString(8));
+            userData[3].Add(tbTelefoonNrAanhangsel1.Text);
+            int locatienr = Convert.ToInt32(tbAanhangselLocatie1.Text);
+            locations.Add(new Location(locatienr, controller.GetLocationFeatures(locatienr), controller.GetLocationType(locatienr)));
             MessageBox.Show("User added");
             lbReserveringVisitors.Items.Clear();
             foreach (string name in userData[1])
             {
                 lbReserveringVisitors.Items.Add(name);
             }
-        }
-
-
-        private void AddUserLocation(string name, string telnr, int locationnr)
-        {
-            userData[0].Add(controller.RandomString(8));
-            userData[1].Add(name);
-            userData[2].Add(controller.RandomString(8));
-            userData[3].Add(telnr);
-            locations.Add(new Location(locationnr, controller.GetLocationFeatures(locationnr), controller.GetLocationType(locationnr)));
         }
 
         private void lbGebruikers_SelectedIndexChanged(object sender, EventArgs e)
@@ -303,11 +296,23 @@ namespace MediaSharingSystem.Forms
         private void lbMaterialen_SelectedIndexChanged(object sender, EventArgs e)
         {
             Material material = (Material)lbMaterialen.SelectedItem;
-            tbMateriaalPrijsPerDag.Text = material.Price.ToString();
-            tbMateriaalOmschrijving.Text = material.Description;
-            tbHoeveelheidMateriaal.Text = controller.GetCountMaterial(material).ToString();
-            tbTypeMaterial.Text = material.Name;
-            if (material.StartDate != null)
+            if (material != null)
+            {
+                int hoeveelheid = controller.GetCountMaterial(material);
+                tbMateriaalPrijsPerDag.Text = material.Price.ToString();
+                tbMateriaalOmschrijving.Text = material.Description;
+                tbHoeveelheidMateriaal.Text = hoeveelheid.ToString();
+                tbTypeMaterial.Text = material.Name;
+                cbHoeveelheid.Items.Clear();
+                if(hoeveelheid>0)
+                {
+                    for(int i = 1; i <= hoeveelheid; i++)
+                    {
+                        cbHoeveelheid.Items.Add(i);
+                    }
+                }
+            }
+            if (tbHoeveelheidMateriaal.Text == "0")
             {
                 tbMateriaalBeschikbaar.Text = "Nee";
             }
@@ -351,7 +356,12 @@ namespace MediaSharingSystem.Forms
 
         private void lbVerhuurdeMaterialen_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            Material material = (Material)lbVerhuurdeMaterialen.SelectedItem;
+            if (material != null)
+            {
+                tbPrijs.Text = material.Price.ToString();
+                tbOmschrijving.Text = material.Description;
+            }
         }
 
         private void btnNextPost_Click(object sender, EventArgs e)
@@ -530,7 +540,7 @@ namespace MediaSharingSystem.Forms
 
         private void btnInfoMenuMedewerker_Click(object sender, EventArgs e)
         {
-
+            tbctrlMain.SelectedTab = tbctrlMain.TabPages[1];
         }
     }
 }

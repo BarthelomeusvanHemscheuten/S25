@@ -82,7 +82,6 @@
             this.panelVerhuurItem = new System.Windows.Forms.Panel();
             this.lblDatum = new System.Windows.Forms.Label();
             this.lblHoeveelheid = new System.Windows.Forms.Label();
-            this.tbAantalMaterialen = new System.Windows.Forms.TextBox();
             this.dtmEinddatum = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.tbHoeveelheidMateriaal = new System.Windows.Forms.TextBox();
@@ -152,6 +151,11 @@
             this.lbVerhuurdeMaterialen = new System.Windows.Forms.ListBox();
             this.lbVisitorInleveren = new System.Windows.Forms.ListBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.tbOmschrijving = new System.Windows.Forms.TextBox();
+            this.lblOmschrijving = new System.Windows.Forms.Label();
+            this.lblPrijs = new System.Windows.Forms.Label();
+            this.tbPrijs = new System.Windows.Forms.TextBox();
+            this.cbHoeveelheid = new System.Windows.Forms.ComboBox();
             this.panelMedewerker.SuspendLayout();
             this.tbctrlMain.SuspendLayout();
             this.tabAccountInstellingen.SuspendLayout();
@@ -728,9 +732,9 @@
             // panelVerhuurItem
             // 
             this.panelVerhuurItem.BackColor = System.Drawing.Color.Lavender;
+            this.panelVerhuurItem.Controls.Add(this.cbHoeveelheid);
             this.panelVerhuurItem.Controls.Add(this.lblDatum);
             this.panelVerhuurItem.Controls.Add(this.lblHoeveelheid);
-            this.panelVerhuurItem.Controls.Add(this.tbAantalMaterialen);
             this.panelVerhuurItem.Controls.Add(this.dtmEinddatum);
             this.panelVerhuurItem.Controls.Add(this.label1);
             this.panelVerhuurItem.Controls.Add(this.tbHoeveelheidMateriaal);
@@ -773,13 +777,6 @@
             this.lblHoeveelheid.TabIndex = 24;
             this.lblHoeveelheid.Text = "Hoeveelheid:";
             // 
-            // tbAantalMaterialen
-            // 
-            this.tbAantalMaterialen.Location = new System.Drawing.Point(420, 352);
-            this.tbAantalMaterialen.Name = "tbAantalMaterialen";
-            this.tbAantalMaterialen.Size = new System.Drawing.Size(100, 22);
-            this.tbAantalMaterialen.TabIndex = 23;
-            // 
             // dtmEinddatum
             // 
             this.dtmEinddatum.Location = new System.Drawing.Point(420, 319);
@@ -790,7 +787,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(235, 396);
+            this.label1.Location = new System.Drawing.Point(435, 238);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(173, 17);
@@ -800,7 +797,7 @@
             // tbHoeveelheidMateriaal
             // 
             this.tbHoeveelheidMateriaal.Enabled = false;
-            this.tbHoeveelheidMateriaal.Location = new System.Drawing.Point(420, 391);
+            this.tbHoeveelheidMateriaal.Location = new System.Drawing.Point(433, 258);
             this.tbHoeveelheidMateriaal.Margin = new System.Windows.Forms.Padding(4);
             this.tbHoeveelheidMateriaal.Name = "tbHoeveelheidMateriaal";
             this.tbHoeveelheidMateriaal.Size = new System.Drawing.Size(195, 22);
@@ -1418,6 +1415,10 @@
             // 
             // tabInleveren
             // 
+            this.tabInleveren.Controls.Add(this.tbPrijs);
+            this.tabInleveren.Controls.Add(this.lblPrijs);
+            this.tabInleveren.Controls.Add(this.lblOmschrijving);
+            this.tabInleveren.Controls.Add(this.tbOmschrijving);
             this.tabInleveren.Controls.Add(this.lblMateriaal);
             this.tabInleveren.Controls.Add(this.lblVisitors);
             this.tabInleveren.Controls.Add(this.btnInleveren);
@@ -1482,6 +1483,49 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // tbOmschrijving
+            // 
+            this.tbOmschrijving.Location = new System.Drawing.Point(15, 292);
+            this.tbOmschrijving.Multiline = true;
+            this.tbOmschrijving.Name = "tbOmschrijving";
+            this.tbOmschrijving.ReadOnly = true;
+            this.tbOmschrijving.Size = new System.Drawing.Size(288, 112);
+            this.tbOmschrijving.TabIndex = 5;
+            // 
+            // lblOmschrijving
+            // 
+            this.lblOmschrijving.AutoSize = true;
+            this.lblOmschrijving.Location = new System.Drawing.Point(12, 267);
+            this.lblOmschrijving.Name = "lblOmschrijving";
+            this.lblOmschrijving.Size = new System.Drawing.Size(89, 17);
+            this.lblOmschrijving.TabIndex = 6;
+            this.lblOmschrijving.Text = "Omschrijving";
+            // 
+            // lblPrijs
+            // 
+            this.lblPrijs.AutoSize = true;
+            this.lblPrijs.Location = new System.Drawing.Point(319, 267);
+            this.lblPrijs.Name = "lblPrijs";
+            this.lblPrijs.Size = new System.Drawing.Size(35, 17);
+            this.lblPrijs.TabIndex = 7;
+            this.lblPrijs.Text = "Prijs";
+            // 
+            // tbPrijs
+            // 
+            this.tbPrijs.Location = new System.Drawing.Point(322, 292);
+            this.tbPrijs.Name = "tbPrijs";
+            this.tbPrijs.ReadOnly = true;
+            this.tbPrijs.Size = new System.Drawing.Size(100, 22);
+            this.tbPrijs.TabIndex = 8;
+            // 
+            // cbHoeveelheid
+            // 
+            this.cbHoeveelheid.FormattingEnabled = true;
+            this.cbHoeveelheid.Location = new System.Drawing.Point(420, 352);
+            this.cbHoeveelheid.Name = "cbHoeveelheid";
+            this.cbHoeveelheid.Size = new System.Drawing.Size(121, 24);
+            this.cbHoeveelheid.TabIndex = 26;
             // 
             // EmployeeForm
             // 
@@ -1613,7 +1657,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dtmEinddatum;
-        private System.Windows.Forms.TextBox tbAantalMaterialen;
         private System.Windows.Forms.TextBox tbTelefoonNr;
         private System.Windows.Forms.Button btnMateriaalInleveren;
         private System.Windows.Forms.TabPage tabInleveren;
@@ -1647,5 +1690,10 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnNextPost;
         private System.Windows.Forms.Button btnPrevPost;
+        private System.Windows.Forms.TextBox tbPrijs;
+        private System.Windows.Forms.Label lblPrijs;
+        private System.Windows.Forms.Label lblOmschrijving;
+        private System.Windows.Forms.TextBox tbOmschrijving;
+        private System.Windows.Forms.ComboBox cbHoeveelheid;
     }
 }

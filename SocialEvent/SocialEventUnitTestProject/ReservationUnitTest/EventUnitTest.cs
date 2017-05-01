@@ -35,7 +35,7 @@ namespace SocialEventUnitTestProject.ReservationUnitTest
         }
         public void AddMaterialTest()
         {
-            Material material = new Material("stok", "gay", 10.50);
+            Material material = new Material("stok", "gay", 10);
             Assert.AreEqual(material, this.EVENT.Material.Last());
         }
     }

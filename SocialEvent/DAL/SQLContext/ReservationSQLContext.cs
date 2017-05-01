@@ -77,7 +77,7 @@ namespace DAL.SQLContext
 
         public int GetEventID(string name)
         {
-            string query = @"SELECT EventID FROM [Event] WHERE name = '@naam'";
+            string query = @"SELECT EventID FROM [Event] WHERE Name = '@naam'";
             query = query.Replace("@naam", name);
             return databaseConnection.executeReaderInt(query);
         }

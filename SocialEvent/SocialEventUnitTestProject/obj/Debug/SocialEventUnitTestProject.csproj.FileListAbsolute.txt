@@ -1,3 +1,13 @@
 C:\Users\thoma\Source\Repos\S25\SocialEvent\SocialEventUnitTestProject\obj\Debug\SocialEventUnitTestProject.csprojResolveAssemblyReference.cache
 C:\Users\Lucas Scheepers\Desktop\Lucas\School\Jaar 1\Semester 2\5. Proftaak\- Applicatie\SocialEvent\SocialEventUnitTestProject\obj\Debug\SocialEventUnitTestProject.csprojResolveAssemblyReference.cache
 C:\Users\Bart Engelen\Source\Repos\S25\SocialEvent\SocialEventUnitTestProject\obj\Debug\SocialEventUnitTestProject.csprojResolveAssemblyReference.cache
+C:\Users\Bart Engelen\Source\Repos\S25\SocialEvent\SocialEventUnitTestProject\bin\Debug\SocialEventUnitTestProject.dll
+C:\Users\Bart Engelen\Source\Repos\S25\SocialEvent\SocialEventUnitTestProject\bin\Debug\SocialEventUnitTestProject.pdb
+C:\Users\Bart Engelen\Source\Repos\S25\SocialEvent\SocialEventUnitTestProject\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\Bart Engelen\Source\Repos\S25\SocialEvent\SocialEventUnitTestProject\bin\Debug\Models.dll
+C:\Users\Bart Engelen\Source\Repos\S25\SocialEvent\SocialEventUnitTestProject\bin\Debug\DAL.dll
+C:\Users\Bart Engelen\Source\Repos\S25\SocialEvent\SocialEventUnitTestProject\bin\Debug\Models.pdb
+C:\Users\Bart Engelen\Source\Repos\S25\SocialEvent\SocialEventUnitTestProject\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
+C:\Users\Bart Engelen\Source\Repos\S25\SocialEvent\SocialEventUnitTestProject\bin\Debug\DAL.pdb
+C:\Users\Bart Engelen\Source\Repos\S25\SocialEvent\SocialEventUnitTestProject\obj\Debug\SocialEventUnitTestProject.dll
+C:\Users\Bart Engelen\Source\Repos\S25\SocialEvent\SocialEventUnitTestProject\obj\Debug\SocialEventUnitTestProject.pdb

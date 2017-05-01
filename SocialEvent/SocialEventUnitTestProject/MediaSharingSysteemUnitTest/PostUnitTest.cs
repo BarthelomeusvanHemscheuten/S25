@@ -44,12 +44,12 @@ namespace SocialEventUnitTestProject
         }
         public void LikeTest()
         {
-            Visitor visitor = new Visitor("Swag", "Roger", "Jemoeder", "06133769420", 1, 1);
+            Visitor visitor = new Visitor("Swag", "Roger", "06133769420", 1, 1);
             Assert.IsTrue(post.Like(visitor));
         }
         public void ReportPostTest()
         {
-            Visitor visitor = new Visitor("Swag", "Roger", "Jemoeder", "06133769420", 1, 1);
+            Visitor visitor = new Visitor("Swag", "Roger", "06133769420", 1, 1);
             Assert.IsTrue(post.ReportPost(1, visitor, "wtf is dit"));
         }
     }

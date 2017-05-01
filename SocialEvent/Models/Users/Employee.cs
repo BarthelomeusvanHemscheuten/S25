@@ -14,6 +14,7 @@ namespace Models.Users
     {
         UserRepository userRepo = new UserRepository(new UserSQLContext());
         ReservationRepository reservationRepo = new ReservationRepository(new ReservationSQLContext());
+        Random random = new Random();
 
         public Employee(string username, string name, string emailAddress, string telnr, string address, DateTime? dateOfBirth, int eventID, int reservationID) : base(username, name, emailAddress, telnr, address, dateOfBirth, eventID, reservationID)
         {
@@ -62,13 +63,14 @@ namespace Models.Users
             if (eventt != null)
             {
                 int reservationId = reservationRepo.InsertGetReservation(0);
-                string rfid = "???";
+                string rfid = RandomRFID();
 
                 // voor de eerste locatie. 
                 List<Visitor> visitors = new List<Visitor>();
                 userRepo.InsertUser(eventt.ID, reservationId, 3, 0, dateofbirth, emailAddress, address, name[0], username[0], password[0], telnr[0], rfid);
                 Visitor mainVisitor = AddVisitor(username[0], name[0], password[0], emailAddress, telnr[0], address, dateofbirth, eventt, locations[0], eventt.ID, reservationId);
                 eventt.Visitors.Add(mainVisitor);
+                visitors.Add(mainVisitor);
 
 
 
@@ -117,6 +119,22 @@ namespace Models.Users
 
             }
             return false;
+        }
+        public string RandomRFID()
+        {
+            string rfid = "";
+            for (int i = 0; i < 10; i++)
+            {
+                if (random.Next(0, 1) == 1)
+                {
+                    rfid += "1";
+                }
+                else
+                {
+                    rfid += "0";
+                }
+            }
+            return rfid;
         }
     }
 }
