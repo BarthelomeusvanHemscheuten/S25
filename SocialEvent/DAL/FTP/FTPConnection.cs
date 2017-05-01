@@ -42,27 +42,20 @@ namespace DAL.FTP
             byte[] fileContents = Encoding.UTF8.GetBytes(sourceStream.ReadToEnd());
             sourceStream.Close();
             request.ContentLength = fileContents.Length;
-
-            //Bestand wegschrijven naar de server
+            
             try
             {
+                //Bestand wegschrijven naar de server
                 Stream requestStream = request.GetRequestStream();
                 requestStream.Write(fileContents, 0, fileContents.Length);
                 requestStream.Close();
-            }
-            catch (WebException e)
-            {
-                string status = ((FtpWebResponse)e.Response).StatusDescription;
-                Console.WriteLine(status);
-            }
 
-            //Response opvangen en in de console zetten
-            try
-            {
+                //Response opvangen en in de console zetten
                 FtpWebResponse response = (FtpWebResponse)request.GetResponse();
                 Console.WriteLine("Upload File Complete, status {0}", response.StatusDescription);
                 response.Close();
-            } catch(WebException e)
+            }
+            catch (WebException e)
             {
                 string status = ((FtpWebResponse)e.Response).StatusDescription;
                 Console.WriteLine(status);
@@ -89,19 +82,27 @@ namespace DAL.FTP
 
             //Inloggen op de FTP server. (Onveilig. Demo only!!)
             request.Credentials = new NetworkCredential(username, password);
+            
+            try
+            {
+                //Response opvangen en in een stream zetten
+                FtpWebResponse response = (FtpWebResponse)request.GetResponse();
+                Stream responseStream = response.GetResponseStream();
 
-            //Response opvangen en in een stream zetten
-            FtpWebResponse response = (FtpWebResponse)request.GetResponse();
-            Stream responseStream = response.GetResponseStream();
+                //Opgevangen stream kopieëren naar een lokaal bestand.
+                FileStream fileStream = File.Create(downloadToPath);
+                responseStream.CopyTo(fileStream);
+                fileStream.Close();
 
-            //Opgevangen stream kopieëren naar een lokaal bestand.
-            FileStream fileStream = File.Create(downloadToPath);
-            responseStream.CopyTo(fileStream);
-            fileStream.Close();
-
-            //Response status weergeven in console
-            Console.WriteLine("Download Complete, status {0}", response.StatusDescription);
-            response.Close();
+                //Response status weergeven in console
+                Console.WriteLine("Download Complete, status {0}", response.StatusDescription);
+                response.Close();
+            }
+            catch (WebException e)
+            {
+                string status = ((FtpWebResponse)e.Response).StatusDescription;
+                Console.WriteLine(status);
+            }
         }
 
         /// <summary>

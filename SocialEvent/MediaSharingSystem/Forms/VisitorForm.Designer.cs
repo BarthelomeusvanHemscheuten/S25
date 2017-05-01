@@ -68,6 +68,7 @@
             this.tbNaam = new System.Windows.Forms.TextBox();
             this.tbctrlMain = new System.Windows.Forms.TabControl();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.btnDownload = new System.Windows.Forms.Button();
             this.panelGebruiker.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.panelNewsFeed.SuspendLayout();
@@ -136,6 +137,7 @@
             // panelNewsFeed
             // 
             this.panelNewsFeed.BackColor = System.Drawing.Color.Lavender;
+            this.panelNewsFeed.Controls.Add(this.btnDownload);
             this.panelNewsFeed.Controls.Add(this.lblLikes);
             this.panelNewsFeed.Controls.Add(this.btnNextComment);
             this.panelNewsFeed.Controls.Add(this.btnPrevComment);
@@ -483,6 +485,16 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // btnDownload
+            // 
+            this.btnDownload.Location = new System.Drawing.Point(300, 341);
+            this.btnDownload.Name = "btnDownload";
+            this.btnDownload.Size = new System.Drawing.Size(107, 109);
+            this.btnDownload.TabIndex = 24;
+            this.btnDownload.Text = "Download media";
+            this.btnDownload.UseVisualStyleBackColor = true;
+            this.btnDownload.Click += new System.EventHandler(this.btnDownload_Click);
+            // 
             // VisitorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -547,5 +559,6 @@
         private System.Windows.Forms.Button btnNextComment;
         private System.Windows.Forms.Button btnPrevComment;
         private System.Windows.Forms.Label lblLikes;
+        private System.Windows.Forms.Button btnDownload;
     }
 }

@@ -254,7 +254,8 @@ namespace MediaSharingSystem.Forms
 
         private void btnPlacePost_Click(object sender, EventArgs e)
         {
-            controller.AddAndShowPost(textPost.Text, lblFilePath.Text);
+            string filePath = controller.UploadFile(lblFilePath.Text);
+            controller.AddAndShowPost(textPost.Text, filePath);
             post = controller.GetAndShowPostComments(controller.currentPostForm, 0);
 
             naamP.Text = post.User.ToString();
@@ -279,8 +280,6 @@ namespace MediaSharingSystem.Forms
                 naamC.Text = post.Comments[currentComment].User.ToString();
                 contentTextC.Text = post.Comments[currentComment].Text;
             }
-
-            controller.UploadFile(lblFilePath.Text);
         }
 
         private void btnPlaceComment_Click(object sender, EventArgs e)
@@ -306,6 +305,11 @@ namespace MediaSharingSystem.Forms
         private void UploadFile_Click(object sender, EventArgs e)
         {
             lblFilePath.Text = controller.ChooseFile();
+        }
+
+        private void btnDownload_Click(object sender, EventArgs e)
+        {
+            controller.DownloadFile(post.Path);
         }
     }
 }

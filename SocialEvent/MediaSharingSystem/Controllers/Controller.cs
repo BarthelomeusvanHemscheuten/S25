@@ -543,10 +543,19 @@ namespace MediaSharingSystem.Controllers
             return null;
         }
 
-        public void UploadFile(string filePath)
+        public string UploadFile(string filePath)
         {
-            string filepathServer = @"Users\" + visitor.Username;
-            ftp.UploadFile(filePath, @"Users\ThomasJ10");
+            string[] splitFilePath = new string[10];
+            splitFilePath = filePath.Split('\\');
+            string filepathServer = @"Users\" + visitor.Username + @"\" + splitFilePath.Last();
+            ftp.UploadFile(filePath, filepathServer);
+            return filepathServer;
+        }
+
+        public void DownloadFile(string filePath)
+        {
+            //Users\Lucas Scheepers\Downloads
+            ftp.DownloadFileToFolder(filePath, @"C:\");
         }
 
         public Post GetAndShowPostComments(int i, int next)
