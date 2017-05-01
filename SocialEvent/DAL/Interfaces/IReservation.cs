@@ -24,9 +24,11 @@ namespace DAL.Interfaces
         string GetLocationType(int number);
         int CountMaterials();
         int GetCountMaterial(string name);
+        List<int> GetAllMaterialsID();
         List<decimal> GetAllMaterialsPrice();
         List<string> GetAllMaterialsDescription();
         List<string> GetAllMaterialsName();
+        List<int> GetMaterialID(int userid);
         List<decimal> GetMaterialPrice(int userid);
         List<string> GetMaterialDescription(int userid);
         List<string> GetMaterialName(int userid);

@@ -81,6 +81,10 @@ namespace DAL.Repositories
         {
             return context.GetCountMaterial(name);
         }
+        public List<int> GetAllMaterialsID()
+        {
+            return context.GetAllMaterialsID();
+        }
 
         public List<decimal> GetAllMaterialsPrice()
         {
@@ -95,6 +99,10 @@ namespace DAL.Repositories
         public List<string> GetAllMaterialsName()
         {
             return context.GetAllMaterialsName();
+        }
+        public List<int> GetMaterialID(int userid)
+        {
+            return context.GetMaterialID(userid);
         }
         public List<string> GetMaterialName(int userid)
         {
