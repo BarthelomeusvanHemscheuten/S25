@@ -29,37 +29,29 @@ namespace DAL.FTP
         public void UploadFile(string uploadFromPath, string uploadToPath)
         {
             //Geef aan waar we de file naar willen uploaden. De FTP server + in welke subfolder
-            FtpWebRequest request = (FtpWebRequest)WebRequest.Create(webserver + uploadToPath);
+            FtpWebRequest request = (FtpWebRequest)WebRequest.Create(@"ftp://192.168.20.18/" + uploadToPath);
 
             //Aangeven dat we een file willen uploaden
             request.Method = WebRequestMethods.Ftp.UploadFile;
 
             //Inloggen op de FTP server. (Onveilig. Demo only!!)
-            request.Credentials = new NetworkCredential(username, password);
+            request.Credentials = new NetworkCredential("Administrator", "Welkom10!");
 
             //Lokaal bestand uitlezen
             StreamReader sourceStream = new StreamReader(uploadFromPath);
-            byte[] fileContents = Encoding.UTF8.GetBytes(sourceStream.ReadToEnd());
+            byte[] fileContents = File.ReadAllBytes(uploadFromPath);
             sourceStream.Close();
             request.ContentLength = fileContents.Length;
-            
-            try
-            {
-                //Bestand wegschrijven naar de server
-                Stream requestStream = request.GetRequestStream();
-                requestStream.Write(fileContents, 0, fileContents.Length);
-                requestStream.Close();
 
-                //Response opvangen en in de console zetten
-                FtpWebResponse response = (FtpWebResponse)request.GetResponse();
-                Console.WriteLine("Upload File Complete, status {0}", response.StatusDescription);
-                response.Close();
-            }
-            catch (WebException e)
-            {
-                string status = ((FtpWebResponse)e.Response).StatusDescription;
-                Console.WriteLine(status);
-            }
+            //Bestand wegschrijven naar de server
+            Stream requestStream = request.GetRequestStream();
+            requestStream.Write(fileContents, 0, fileContents.Length);
+            requestStream.Close();
+
+            //Response opvangen en in de console zetten
+            FtpWebResponse response = (FtpWebResponse)request.GetResponse();
+            Console.WriteLine("Upload File Complete, status {0}", response.StatusDescription);
+            response.Close();
         }
 
         /// <summary>
