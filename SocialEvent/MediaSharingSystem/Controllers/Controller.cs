@@ -420,9 +420,9 @@ namespace MediaSharingSystem.Controllers
         }
         public bool TakeMaterial(Visitor visitor, Material material)
         {
-            if(visitor != null && material != null)
+            if (visitor != null && material != null)
             {
-              return  employee.TakeMaterial(visitor, material);
+                return employee.TakeMaterial(visitor, material);
             }
             return false;
         }
@@ -605,7 +605,8 @@ namespace MediaSharingSystem.Controllers
                     currentPostForm++;
                     currentPostId = postsID[currentPostForm];
                 }
-            } else
+            }
+            else
             {
                 currentPostForm = postsID.Count() - 1;
                 currentPostId = postsID[currentPostForm];
@@ -628,7 +629,7 @@ namespace MediaSharingSystem.Controllers
             }
             else
             {
-                post.User = new Visitor(userDataStringP[0], userDataStringP[1], userDataStringP[3], userDataIntP[0], userDataIntP[1]);    
+                post.User = new Visitor(userDataStringP[0], userDataStringP[1], userDataStringP[3], userDataIntP[0], userDataIntP[1]);
             }
 
             // Get commentsID from post
@@ -637,7 +638,7 @@ namespace MediaSharingSystem.Controllers
             {
                 string textComment = mediaRepo.GetTextComment(commentsID[j]);
                 Comment comment = new Comment(commentsID[j], textComment);
-                
+
                 output.Comments.Add(comment);
 
                 // Link comments to user

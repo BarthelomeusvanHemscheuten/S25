@@ -264,7 +264,8 @@ namespace MediaSharingSystem.Forms
         private void btnInleveren_Click(object sender, EventArgs e)
         {
             Material material = (Material)lbMaterialen.SelectedItem;
-            if(controller.TakeMaterial(material))
+            Visitor visitor = (Visitor)lbVisitorInleveren.SelectedItem;
+            if(controller.TakeMaterial(visitor, material))
             {
                 MessageBox.Show("Materiaal ingeleverd");
             }
