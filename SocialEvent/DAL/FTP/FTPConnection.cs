@@ -38,9 +38,7 @@ namespace DAL.FTP
             request.Credentials = new NetworkCredential("Administrator", "Welkom10!");
 
             //Lokaal bestand uitlezen
-            StreamReader sourceStream = new StreamReader(uploadFromPath);
             byte[] fileContents = File.ReadAllBytes(uploadFromPath);
-            sourceStream.Close();
             request.ContentLength = fileContents.Length;
 
             //Bestand wegschrijven naar de server
