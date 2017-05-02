@@ -262,16 +262,13 @@ namespace MediaSharingSystem.Controllers
             {
                 case 3:
                     post.ReportPost(0, visitor, reason);
-                    mediaRepo.InsertReportPost(visitor.ID, post.ID, reason);
-                    return true;
+                    return mediaRepo.InsertReportPost(visitor.ID, post.ID, reason);
                 case 2:
                     post.ReportPost(0, employee, reason);
-                    mediaRepo.InsertReportPost(employee.ID, post.ID, reason);
-                    return true;
+                    return mediaRepo.InsertReportPost(employee.ID, post.ID, reason);
                 case 1:
                     post.ReportPost(0, admin, reason);
-                    mediaRepo.InsertReportPost(admin.ID, post.ID, reason);
-                    return true;
+                    return mediaRepo.InsertReportPost(admin.ID, post.ID, reason);
             }
             return false;
         }

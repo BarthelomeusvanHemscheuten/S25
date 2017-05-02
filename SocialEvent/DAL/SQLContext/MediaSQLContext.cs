@@ -37,7 +37,7 @@ namespace DAL.SQLContext
 
         public bool InsertReportPost(int userId, int postId, string reason)
         {
-            string query = @"INSERT INTO  [Report] ([UserID], [PostID], [Reason]) VALUES (@userID, @postID, @reason)";
+            string query = @"INSERT INTO  [Report] ([UserID], [PostID], [Reason]) VALUES (@userID, @postID, '@reason')";
             query = query.Replace("@userID", userId.ToString()).Replace("@postID", postId.ToString()).Replace("@reason", reason);
 
             return databaseConnection.executeNonQuery(query);
