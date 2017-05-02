@@ -33,3 +33,4 @@ C:\Users\Bart Engelen\Source\Repos\S25\SocialEvent\AccesControlSystem\obj\Debug\
 C:\Users\Bart Engelen\Source\Repos\S25\SocialEvent\AccesControlSystem\obj\Debug\AccesControlSystem.pdb
 C:\Users\Bart Engelen\Source\Repos\S25\SocialEvent\AccesControlSystem\bin\Debug\AccesControlSystem.exe.CodeAnalysisLog.xml
 C:\Users\Bart Engelen\Source\Repos\S25\SocialEvent\AccesControlSystem\bin\Debug\AccesControlSystem.exe.lastcodeanalysissucceeded
+C:\Users\thoma\Source\Repos\S25\SocialEvent\AccesControlSystem\bin\Debug\Phidget21.NET.dll

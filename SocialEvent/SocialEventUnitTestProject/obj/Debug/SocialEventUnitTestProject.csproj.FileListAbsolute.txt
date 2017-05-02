@@ -11,3 +11,13 @@ C:\Users\Bart Engelen\Source\Repos\S25\SocialEvent\SocialEventUnitTestProject\bi
 C:\Users\Bart Engelen\Source\Repos\S25\SocialEvent\SocialEventUnitTestProject\bin\Debug\DAL.pdb
 C:\Users\Bart Engelen\Source\Repos\S25\SocialEvent\SocialEventUnitTestProject\obj\Debug\SocialEventUnitTestProject.dll
 C:\Users\Bart Engelen\Source\Repos\S25\SocialEvent\SocialEventUnitTestProject\obj\Debug\SocialEventUnitTestProject.pdb
+C:\Users\thoma\Source\Repos\S25\SocialEvent\SocialEventUnitTestProject\bin\Debug\SocialEventUnitTestProject.dll
+C:\Users\thoma\Source\Repos\S25\SocialEvent\SocialEventUnitTestProject\bin\Debug\SocialEventUnitTestProject.pdb
+C:\Users\thoma\Source\Repos\S25\SocialEvent\SocialEventUnitTestProject\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\Users\thoma\Source\Repos\S25\SocialEvent\SocialEventUnitTestProject\bin\Debug\Models.dll
+C:\Users\thoma\Source\Repos\S25\SocialEvent\SocialEventUnitTestProject\bin\Debug\DAL.dll
+C:\Users\thoma\Source\Repos\S25\SocialEvent\SocialEventUnitTestProject\bin\Debug\Models.pdb
+C:\Users\thoma\Source\Repos\S25\SocialEvent\SocialEventUnitTestProject\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
+C:\Users\thoma\Source\Repos\S25\SocialEvent\SocialEventUnitTestProject\bin\Debug\DAL.pdb
+C:\Users\thoma\Source\Repos\S25\SocialEvent\SocialEventUnitTestProject\obj\Debug\SocialEventUnitTestProject.dll
+C:\Users\thoma\Source\Repos\S25\SocialEvent\SocialEventUnitTestProject\obj\Debug\SocialEventUnitTestProject.pdb
