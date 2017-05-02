@@ -15,7 +15,7 @@ namespace DAL.Interfaces
         bool InsertReportPost(int userId, int postId, string reason);
         bool InsertReportComment(int userId, int commentId, string reason);
         bool InsertLike(int userId, int postId);
-        bool DeleteLike(int userId);
+        bool DeleteLike(int userId, int postId);
 
         bool UpdatePicture(int userId, Image image);
 
