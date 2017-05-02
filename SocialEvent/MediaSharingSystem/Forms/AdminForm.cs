@@ -33,18 +33,7 @@ namespace MediaSharingSystem.Forms
             lbGebruikers.DisplayMember = "UserName";
             lbReportedPosts.DisplayMember = "ID";
             lbReportedComments.DisplayMember = "ID";
-            foreach (User user in controller.GetAndShowVisitorsFromDatabase())
-            {
-                lbGebruikers.Items.Add(user);
-            }
-            foreach (Post post in controller.GetAndShowReportedPostsFromDatabase())
-            {
-                lbReportedPosts.Items.Add(post);
-            }
-            foreach (Comment comment in controller.GetAndShowReportedCommentsFromDatabase())
-            {
-                lbReportedComments.Items.Add(comment);
-            }
+
             tbNaam.Text = controller.Admin.Name;
             tbEmail.Text = controller.Admin.EmailAddress;
             tbTelefoonNr.Text = controller.Admin.Telnr;
@@ -109,11 +98,23 @@ namespace MediaSharingSystem.Forms
         private void btnGerapporteerdeBerichten_Click(object sender, EventArgs e)
         {
             tbctrlMain.SelectedTab = tbctrlMain.TabPages[4];
+            foreach (Post post in controller.GetAndShowReportedPostsFromDatabase())
+            {
+                lbReportedPosts.Items.Add(post);
+            }
+            foreach (Comment comment in controller.GetAndShowReportedCommentsFromDatabase())
+            {
+                lbReportedComments.Items.Add(comment);
+            }
         }
 
         private void btnGebruikersBeheren_Click(object sender, EventArgs e)
         {
             tbctrlMain.SelectedTab = tbctrlMain.TabPages[3];
+            foreach (User user in controller.GetAndShowVisitorsFromDatabase())
+            {
+                lbGebruikers.Items.Add(user);
+            }
         }
 
         private void btnUitloggen_Click(object sender, EventArgs e)
@@ -250,13 +251,19 @@ namespace MediaSharingSystem.Forms
         private void lbReportedPosts_SelectedIndexChanged(object sender, EventArgs e)
         {
             Post post = (Post)lbReportedPosts.SelectedItem;
-            tbReportedPost.Text = post.Text;
+            if (post != null)
+            {
+                tbReportedPost.Text = post.Text;
+            }
         }
 
         private void lbReportedComments_SelectedIndexChanged(object sender, EventArgs e)
         {
             Comment comment = (Comment)lbReportedComments.SelectedItem;
-            tbReportedComment.Text = comment.Text;
+            if (comment != null)
+            {
+                tbReportedComment.Text = comment.Text;
+            }
         }
 
         private void btnNextPost_Click(object sender, EventArgs e)
@@ -431,6 +438,42 @@ namespace MediaSharingSystem.Forms
         private void btnDownload_Click(object sender, EventArgs e)
         {
             controller.DownloadFile(post.Path);
+        }
+
+        private void btnDeletePost_Click(object sender, EventArgs e)
+        {
+            Post post = (Post)lbReportedPosts.SelectedItem;
+            if (controller.DeleteShowPost(post, "delete") && controller.DeleteReportPost(post.ID))
+            {
+                MessageBox.Show("Post Verwijderd");
+                lbReportedPosts.Items.Clear();
+                foreach(Post mypost in controller.GetAndShowReportedPostsFromDatabase())
+                {
+                    lbReportedPosts.Items.Add(mypost);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Post niet verwijderd");
+            }
+        }
+
+        private void btnDeleteComment_Click(object sender, EventArgs e)
+        {
+            Comment comment = (Comment)lbReportedComments.SelectedItem;
+            if (controller.DeleteShowComment(comment, "delete") && controller.DeleteReportComment(comment.ID))
+            {
+                MessageBox.Show("Comment verwijderd");
+                lbReportedComments.Items.Clear();
+                foreach(Comment mycomment in controller.GetAndShowReportedCommentsFromDatabase())
+                {
+                    lbReportedComments.Items.Add(mycomment);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Comment niet verwijder");
+            }
         }
     }
 }

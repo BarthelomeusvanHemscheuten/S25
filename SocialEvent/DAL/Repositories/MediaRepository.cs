@@ -155,6 +155,14 @@ namespace DAL.Repositories
         {
             return context.GetAllSwearword();
         }
+        public bool DeleteReportPost(int postid)
+        {
+            return context.DeleteReportPost(postid);
+        }
+        public bool DeleteReportComment(int commentid)
+        {
+            return context.DeleteReportComment(commentid);
+        }
 
 
 

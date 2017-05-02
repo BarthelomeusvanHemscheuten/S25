@@ -126,7 +126,10 @@ namespace DAL.SQLContext
                     {
                         for (int i = 0; i < amount; i++)
                         {
-                            list.Add(reader.GetInt32(i));
+                            if (!reader.IsDBNull(i))
+                            {
+                                list.Add(reader.GetInt32(i));
+                            }
                         }
                     }
                     return list;

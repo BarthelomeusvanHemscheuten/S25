@@ -45,9 +45,8 @@ namespace Models.Users
         {
             if (post != null && deleteOrShow == "delete")
             {
-                mediaRepo.DeletePost(post.ID);
+                return mediaRepo.DeletePost(post.ID);
 
-                return true;
             }
             else if (post != null && deleteOrShow == "show")
             {
@@ -62,9 +61,7 @@ namespace Models.Users
         {
             if (comment != null && deleteOrShow == "delete")
             {
-                mediaRepo.DeleteComment(comment.ID);
-
-                return true;
+                return mediaRepo.DeleteComment(comment.ID);
             }
             else if (comment != null && deleteOrShow == "show")
             {
@@ -73,6 +70,15 @@ namespace Models.Users
                 return true;
             }
             return false;
+        }
+        public bool DeleteReportPost(int postid)
+        {
+            return mediaRepo.DeleteReportPost(postid);
+
+        }
+        public bool DeleteReportComment(int commentid)
+        {
+            return mediaRepo.DeleteReportComment(commentid);
         }
 
     }

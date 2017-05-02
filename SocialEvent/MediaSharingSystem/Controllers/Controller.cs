@@ -408,9 +408,7 @@ namespace MediaSharingSystem.Controllers
         {
             if (post != null && deleteOrShow != null)
             {
-                admin.DeleteShowPost(post, deleteOrShow);
-
-                return true;
+               return admin.DeleteShowPost(post, deleteOrShow);
             }
             return false;
         }
@@ -419,11 +417,17 @@ namespace MediaSharingSystem.Controllers
         {
             if (comment != null && deleteOrShow != null)
             {
-                admin.DeleteShowComment(comment, deleteOrShow);
-
-                return true;
+                return admin.DeleteShowComment(comment, deleteOrShow);
             }
             return false;
+        }
+        public bool DeleteReportPost(int postId)
+        {
+            return admin.DeleteReportPost(postId);
+        }
+        public bool DeleteReportComment(int commentId)
+        {
+            return admin.DeleteReportComment(commentId);
         }
 
         // VISITOR
@@ -464,8 +468,8 @@ namespace MediaSharingSystem.Controllers
             for (int i = 0; i < quantity; i++)
             {
                 List<string> textPathPost = mediaRepo.GetTextPathPost(listPostsID[i]);
-                Post post = visitor.PlacePost(listPostsID[i], textPathPost[0], textPathPost[1]);
-                visitor.Posts.Add(post);
+                Post post = admin.PlacePost(listPostsID[i], textPathPost[0], textPathPost[1]);
+                admin.Posts.Add(post);
                 result.Add(post);
             }
             return result;
@@ -483,7 +487,7 @@ namespace MediaSharingSystem.Controllers
             for (int i = 0; i < quantity; i++)
             {
                 string textComment = mediaRepo.GetTextComment(listCommentsID[i]);
-                User user = visitor as User;
+                User user = admin as User;
                 Comment comment = user.PlaceComment(listCommentsID[i], textComment);
                 result.Add(comment);
             }

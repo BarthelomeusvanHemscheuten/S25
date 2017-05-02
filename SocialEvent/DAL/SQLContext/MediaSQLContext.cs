@@ -126,14 +126,14 @@ namespace DAL.SQLContext
 
         public int CountReportedPosts() 
         {
-            string query = @"SELECT COUNT(*) FROM [Report]";
+            string query = @"SELECT COUNT(PostID) FROM [Report] WHERE PostID IS NOT NULL";
 
             return databaseConnection.executeReaderInt(query);
         }
 
         public int CountReportedComments()
         {
-            string query = @"SELECT COUNT(*) FROM [Report] ";
+            string query = @"SELECT COUNT(CommentID) FROM [Report] WHERE CommentID IS NOT NULL ";
 
             return databaseConnection.executeReaderInt(query);
         }
@@ -214,13 +214,13 @@ namespace DAL.SQLContext
         public List<int> GetReportedPostsId()
         {
             string query = @"SELECT [PostID] FROM [Report]";
-            return databaseConnection.executeReaderIntList(query, -1);
+            return databaseConnection.executeReaderIntList(query, 1);
         }
 
         public List<int> GetReportedCommentsId()
         {
             string query = @"SELECT [CommentID] FROM [Report]";
-            return databaseConnection.executeReaderIntList(query, -1);
+            return databaseConnection.executeReaderIntList(query, 1);
         }
 
         public List<int> GetPostsID()
@@ -259,6 +259,20 @@ namespace DAL.SQLContext
         {
             string query = @"SELECT [Word] FROM [Swearword]";
             return databaseConnection.executeReaderStringList(query, 1);
+        }
+
+        public bool DeleteReportPost(int postid)
+        {
+            string query = @"DELETE FROM [Report] WHERE PostID = @postid ";
+            query = query.Replace("@postid", postid.ToString());
+            return databaseConnection.executeNonQuery(query);
+        }
+
+        public bool DeleteReportComment(int commentid)
+        {
+            string query = @"DELETE FROM [Report] WHERE CommentID = @commentid";
+            query = query.Replace("@commentid", commentid.ToString());
+            return databaseConnection.executeNonQuery(query);
         }
     }
 }
