@@ -47,9 +47,9 @@ namespace DAL.Repositories
             return context.InsertLike(userId, postId);
         }
 
-        public bool DeleteLike(int userId)
+        public bool DeleteLike(int userId, int postId)
         {
-            return context.DeleteLike(userId);
+            return context.DeleteLike(userId, postId);
         }
 
         public bool UpdatePicture(int userId, Image image)

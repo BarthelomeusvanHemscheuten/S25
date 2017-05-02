@@ -62,7 +62,7 @@ namespace Models.MediaSharingSystem
             {
                 if(mediaRepo.CheckLike(user.ID, this.ID) == 1)
                 {
-                    mediaRepo.DeleteLike(user.ID);
+                    mediaRepo.DeleteLike(user.ID, this.ID);
                 }
                 else
                 {

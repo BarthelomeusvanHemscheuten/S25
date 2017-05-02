@@ -60,10 +60,10 @@ namespace DAL.SQLContext
             return databaseConnection.executeNonQuery(query);
         }
 
-        public bool DeleteLike(int userId)
+        public bool DeleteLike(int userId, int postId)
         {
-            string query = @"DELETE FROM [Like] WHERE [UserID] = @userId";
-            query = query.Replace("@userId", userId.ToString());
+            string query = @"DELETE FROM [Like] WHERE [UserID] = @userId AND [PostID] = @postId";
+            query = query.Replace("@userId", userId.ToString()).Replace("@postId", postId.ToString());
 
             return databaseConnection.executeNonQuery(query);
         }
