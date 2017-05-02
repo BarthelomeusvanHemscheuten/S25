@@ -45,7 +45,7 @@ namespace DAL.SQLContext
 
         public bool InsertReportComment(int userId, int commentId, string reason)
         {
-            string query = @"INSERT INTO [Report] ([UserID], [CommentID], [Reason]) VALUES (@userID, @commentID, @reason)";
+            string query = @"INSERT INTO [Report] ([UserID], [CommentID], [Reason]) VALUES (@userID, @commentID, '@reason')";
             query = query.Replace("@userID", userId.ToString()).Replace("@commentID", commentId.ToString()).Replace("@reason", reason);
 
 
@@ -110,14 +110,14 @@ namespace DAL.SQLContext
 
         public int CountReportedPosts() 
         {
-            string query = @"SELECT COUNT(Post-ID) FROM [Report]";
+            string query = @"SELECT COUNT(*) FROM [Report]";
 
             return databaseConnection.executeReaderInt(query);
         }
 
         public int CountReportedComments()
         {
-            string query = @"SELECT COUNT(Comment-ID) FROM [Report] ";
+            string query = @"SELECT COUNT(*) FROM [Report] ";
 
             return databaseConnection.executeReaderInt(query);
         }

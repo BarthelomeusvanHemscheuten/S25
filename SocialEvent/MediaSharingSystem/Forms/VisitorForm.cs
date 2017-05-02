@@ -55,6 +55,7 @@ namespace MediaSharingSystem.Forms
             {
                 btnNextComment.Enabled = false;
                 btnPrevComment.Enabled = false;
+                btnReportComment.Enabled = false;
 
                 lbCommentUsername.Text = "";
                 lbComment.Text = "";
@@ -63,13 +64,11 @@ namespace MediaSharingSystem.Forms
             {
                 btnNextComment.Enabled = true;
                 btnPrevComment.Enabled = true;
+                btnReportComment.Enabled = true;
 
                 lbCommentUsername.Text = post.Comments[currentComment].User.ToString();
                 lbComment.Text = post.Comments[currentComment].Text;
             }
-
-            int likes = controller.GetAndShowLikes(post);
-            lblLikesPost.Text = likes + " mensen vinden dit leuk";
 
             if (post.Path != "-")
             {
@@ -79,6 +78,9 @@ namespace MediaSharingSystem.Forms
             {
                 pictureBox1.Image = null;
             }
+
+            int likes = controller.GetAndShowLikes(post);
+            lblLikesPost.Text = likes + " mensen vinden dit leuk";
         }
 
         private void btnNextPost_Click(object sender, EventArgs e)
@@ -93,6 +95,7 @@ namespace MediaSharingSystem.Forms
             {
                 btnNextComment.Enabled = false;
                 btnPrevComment.Enabled = false;
+                btnReportComment.Enabled = false;
 
                 lbCommentUsername.Text = "";
                 lbComment.Text = "";
@@ -101,13 +104,11 @@ namespace MediaSharingSystem.Forms
             {
                 btnNextComment.Enabled = true;
                 btnPrevComment.Enabled = true;
+                btnReportComment.Enabled = true;
 
                 lbCommentUsername.Text = post.Comments[currentComment].User.ToString();
                 lbComment.Text = post.Comments[currentComment].Text;
             }
-
-            int likes = controller.GetAndShowLikes(post);
-            lblLikesPost.Text = likes + " mensen vinden dit leuk";
 
             if (post.Path != "-")
             {
@@ -117,6 +118,9 @@ namespace MediaSharingSystem.Forms
             {
                 pictureBox1.Image = null;
             }
+
+            int likes = controller.GetAndShowLikes(post);
+            lblLikesPost.Text = likes + " mensen vinden dit leuk";
         }
 
         private void btnPrevPost_Click(object sender, EventArgs e)
@@ -131,6 +135,7 @@ namespace MediaSharingSystem.Forms
             {
                 btnNextComment.Enabled = false;
                 btnPrevComment.Enabled = false;
+                btnReportComment.Enabled = false;
 
                 lbCommentUsername.Text = "";
                 lbComment.Text = "";
@@ -139,13 +144,11 @@ namespace MediaSharingSystem.Forms
             {
                 btnNextComment.Enabled = true;
                 btnPrevComment.Enabled = true;
+                btnReportComment.Enabled = true;
 
                 lbCommentUsername.Text = post.Comments[currentComment].User.ToString();
                 lbComment.Text = post.Comments[currentComment].Text;
             }
-
-            int likes = controller.GetAndShowLikes(post);
-            lblLikesPost.Text = likes + " mensen vinden dit leuk";
 
             if (post.Path != "-")
             {
@@ -155,6 +158,9 @@ namespace MediaSharingSystem.Forms
             {
                 pictureBox1.Image = null;
             }
+
+            int likes = controller.GetAndShowLikes(post);
+            lblLikesPost.Text = likes + " mensen vinden dit leuk";
         }
 
         private void btnNextComment_Click(object sender, EventArgs e)
@@ -273,6 +279,7 @@ namespace MediaSharingSystem.Forms
             {
                 btnNextComment.Enabled = false;
                 btnPrevComment.Enabled = false;
+                btnReportComment.Enabled = false;
 
                 lbCommentUsername.Text = "";
                 lbComment.Text = "";
@@ -281,6 +288,7 @@ namespace MediaSharingSystem.Forms
             {
                 btnNextComment.Enabled = true;
                 btnPrevComment.Enabled = true;
+                btnReportComment.Enabled = true;
 
                 lbCommentUsername.Text = post.Comments[currentComment].User.ToString();
                 lbComment.Text = post.Comments[currentComment].Text;
@@ -304,6 +312,7 @@ namespace MediaSharingSystem.Forms
             
             btnNextComment.Enabled = true;
             btnPrevComment.Enabled = true;
+            btnReportComment.Enabled = true;
 
             lbCommentUsername.Text = post.Comments[currentComment].User.ToString();
             lbComment.Text = post.Comments[currentComment].Text;
@@ -324,6 +333,30 @@ namespace MediaSharingSystem.Forms
         private void btnDownload_Click(object sender, EventArgs e)
         {
             controller.DownloadFile(post.Path);
+        }
+
+        private void btnReportPost_Click(object sender, EventArgs e)
+        {
+            if(controller.Reportpost(post, "Ongewenst!"))
+            {
+                MessageBox.Show("Post reported");
+            }
+            else
+            {
+                MessageBox.Show("Something went wrong");
+            }
+        }
+
+        private void btnReportComment_Click(object sender, EventArgs e)
+        {
+            if(controller.ReportComment(post.Comments[currentComment], "Ongewenst!"))
+            {
+                MessageBox.Show("Comment reported!");
+            }
+            else
+            {
+                MessageBox.Show("Something went wrong");
+            }
         }
     }
 }

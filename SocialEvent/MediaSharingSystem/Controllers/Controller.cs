@@ -245,16 +245,13 @@ namespace MediaSharingSystem.Controllers
             {
                 case 3:
                     comment.ReportComment(0, visitor, reason);
-                    mediaRepo.InsertReportComment(visitor.ID, comment.ID, reason);
-                    return true;
+                    return mediaRepo.InsertReportComment(visitor.ID, comment.ID, reason);
                 case 2:
                     comment.ReportComment(0, employee, reason);
-                    mediaRepo.InsertReportComment(employee.ID, comment.ID, reason);
-                    return true;
+                    return mediaRepo.InsertReportComment(employee.ID, comment.ID, reason);
                 case 1:
                     comment.ReportComment(0, admin, reason);
-                    mediaRepo.InsertReportComment(admin.ID, comment.ID, reason);
-                    return true;
+                    return mediaRepo.InsertReportComment(admin.ID, comment.ID, reason);
             }
             return false;
         }

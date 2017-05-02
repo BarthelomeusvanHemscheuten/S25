@@ -15,7 +15,7 @@ namespace Models.MediaSharingSystem
         public int ID { get; private set; }
         public string Text { get; private set; }
 
-        public List<Report> Reports { get; private set; }
+        public List<Report> Reports { get; private set; } = new List<Report>();
         public User User { get; set; }
 
         // constructor om nieuwe comment aan te maken
