@@ -47,12 +47,70 @@ namespace DAL.SQLContext
             return databaseConnection.executeNonQuery(query);
         }
 
-        public bool DeleteUser(int id)
+        public int DeleteUser(int id)
         {
-            string query = @"DELETE FROM [User] WHERE [userid] = @ID";
-            query = query.Replace("@ID", id.ToString());
+            string queryMaterial = @"SELECT COUNT(*) FROM [Material] WHERE [UserID] = @ID";
+            string queryReport1 = @"DELETE FROM [Report] WHERE [PostID] IN (SELECT [PostID] FROM [Post] WHERE [UserID] = @ID)";
+            string queryReport2 = @"DELETE FROM [Report] WHERE [CommentID] IN (SELECT [CommentID] FROM [Comment] WHERE [UserID] = @ID)";
+            string queryReport3 = @"DELETE FROM [Report] WHERE [UserID] = @ID";
+            string queryComment1 = @"DELETE FROM [Comment] WHERE [PostID] IN (SELECT [PostID] FROM [Post] WHERE [UserID] = @ID)";
+            string queryComment2 = @"DELETE FROM [Comment] WHERE [UserID] = @ID";
+            string queryLike1 = @"DELETE FROM [Like] WHERE [PostID] IN (SELECT [PostID] FROM [Post] WHERE [UserID] = @ID)";
+            string queryLike2 = @"DELETE FROM [Like] WHERE [UserID] = @ID";
+            string queryPost = @"DELETE FROM [Post] WHERE [UserID] = @ID";
+            string queryUser = @"DELETE FROM [User] WHERE [UserID] = @ID";
+            queryMaterial = queryMaterial.Replace("@ID", id.ToString());
+            queryReport1 = queryReport1.Replace("@ID", id.ToString());
+            queryReport2 = queryReport2.Replace("@ID", id.ToString());
+            queryReport3 = queryReport3.Replace("@ID", id.ToString());
+            queryComment1 = queryComment1.Replace("@ID", id.ToString());
+            queryComment2 = queryComment2.Replace("@ID", id.ToString());
+            queryLike1 = queryLike1.Replace("@ID", id.ToString());
+            queryLike2 = queryLike2.Replace("@ID", id.ToString());
+            queryPost = queryPost.Replace("@ID", id.ToString());
+            queryUser = queryUser.Replace("@ID", id.ToString());
 
-            return databaseConnection.executeNonQuery(query);
+            if (databaseConnection.executeReaderInt(queryMaterial) > 0)
+            {
+                return 2;
+            }
+            if (databaseConnection.executeNonQuery(queryReport1) == false){
+                return 1;
+            }
+            if(databaseConnection.executeNonQuery(queryReport2) == false)
+            {
+                return 1;
+            }
+            if (databaseConnection.executeNonQuery(queryReport3) == false)
+            {
+                return 1;
+            }
+            if (databaseConnection.executeNonQuery(queryComment1) == false)
+            {
+                return 1;
+            }
+            if(databaseConnection.executeNonQuery(queryComment2) == false)
+            {
+                return 1;
+            }
+            if(databaseConnection.executeNonQuery(queryLike1) == false)
+            {
+                return 1;
+            }
+            if(databaseConnection.executeNonQuery(queryLike2) == false)
+            {
+                return 1;
+            }
+            if (databaseConnection.executeNonQuery(queryPost) == false)
+            {
+                return 1;
+            }
+            if (databaseConnection.executeNonQuery(queryUser) == false)
+            {
+                return 1;
+            }
+
+            return 0;
         }
 
         public bool InsertSwearWord(string swearWord)

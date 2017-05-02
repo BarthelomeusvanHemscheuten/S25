@@ -348,19 +348,16 @@ namespace MediaSharingSystem.Controllers
         }
 
         // EMPLOYEE AND ADMIN
-        public bool DeleteVisitor(Visitor visitor)
+        public int DeleteVisitor(Visitor visitor)
         {
-            if (visitor != null)
+            switch (userGroup)
             {
-                switch (userGroup)
-                {
-                    case 2:
-                        return employee.DeleteVisitor(visitor);
-                    case 1:
-                        return admin.DeleteVisitor(visitor);
-                }
+                case 2:
+                    return employee.DeleteVisitor(visitor);
+                case 1:
+                    return admin.DeleteVisitor(visitor);
             }
-            return false;
+            return 1;
         }
 
 

@@ -219,7 +219,8 @@ namespace MediaSharingSystem.Forms
         private void btnVerwijderGebruiker_Click(object sender, EventArgs e)
         {
             Visitor visitor = (Visitor)lbGebruikers.SelectedItem;
-            if (controller.DeleteVisitor(visitor))
+            int result = controller.DeleteVisitor(visitor);
+            if (result == 0)
             {
                 MessageBox.Show("User Deleted");
                 lbGebruikers.Items.Clear();
@@ -228,9 +229,12 @@ namespace MediaSharingSystem.Forms
                     lbGebruikers.Items.Add(user);
                 }
             }
-            else
+            else if(result == 1)
             {
                 MessageBox.Show("Something went wrong");
+            } else if(result == 2)
+            {
+                MessageBox.Show("User can't be deleted (owned material)");
             }
         }
 

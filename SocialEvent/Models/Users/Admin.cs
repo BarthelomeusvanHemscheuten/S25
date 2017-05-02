@@ -32,15 +32,13 @@ namespace Models.Users
             return false;
         }
 
-        public bool DeleteVisitor(Visitor visitor)
+        public int DeleteVisitor(Visitor visitor)
         {
             if (visitor != null)
             {
-                userRepo.DeleteUser(visitor.ID);
-
-                return true;
+                return userRepo.DeleteUser(visitor.ID);
             }
-            return false;
+            return 1;
         }
 
         public bool DeleteShowPost(Post post, string deleteOrShow)
