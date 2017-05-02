@@ -86,10 +86,26 @@ namespace DAL.SQLContext
             return databaseConnection.executeReaderInt(query);
         }
 
-        public int CheckLike(int userId)
+        public int CheckLike(int userId, int postId)
         {
-            string query = @"SELECT COUNT(*) FROM [Like] WHERE [UserID] = @userId";
-            query = query.Replace("@userId", userId.ToString());
+            string query = @"SELECT COUNT(*) FROM [Like] WHERE [UserID] = @userId AND [PostID] = @postId";
+            query = query.Replace("@userId", userId.ToString()).Replace("@postId", postId.ToString());
+
+            return databaseConnection.executeReaderInt(query);
+        }
+
+        public int CheckReportedPost(int userId, int postId)
+        {
+            string query = @"SELECT COUNT(*) FROM [Report] WHERE [UserID] = @userId AND [PostID] = @postId";
+            query = query.Replace("@postId", postId.ToString()).Replace("@userId", userId.ToString());
+
+            return databaseConnection.executeReaderInt(query);
+        }
+
+        public int CheckReportedComment(int userId, int commentId)
+        {
+            string query = @"SELECT COUNT(*) FROM [Report] WHERE [UserID] = @userId AND [CommentID] = @commentId";
+            query = query.Replace("@commentId", commentId.ToString()).Replace("@userId", userId.ToString());
 
             return databaseConnection.executeReaderInt(query);
         }

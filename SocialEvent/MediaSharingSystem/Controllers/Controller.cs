@@ -244,14 +244,11 @@ namespace MediaSharingSystem.Controllers
             switch (userGroup)
             {
                 case 3:
-                    comment.ReportComment(0, visitor, reason);
-                    return mediaRepo.InsertReportComment(visitor.ID, comment.ID, reason);
+                    return comment.ReportComment(0, visitor, reason);
                 case 2:
-                    comment.ReportComment(0, employee, reason);
-                    return mediaRepo.InsertReportComment(employee.ID, comment.ID, reason);
+                    return comment.ReportComment(0, employee, reason);
                 case 1:
-                    comment.ReportComment(0, admin, reason);
-                    return mediaRepo.InsertReportComment(admin.ID, comment.ID, reason);
+                    return comment.ReportComment(0, admin, reason);
             }
             return false;
         }
@@ -261,14 +258,11 @@ namespace MediaSharingSystem.Controllers
             switch (userGroup)
             {
                 case 3:
-                    post.ReportPost(0, visitor, reason);
-                    return mediaRepo.InsertReportPost(visitor.ID, post.ID, reason);
+                    return post.ReportPost(0, visitor, reason);
                 case 2:
-                    post.ReportPost(0, employee, reason);
-                    return mediaRepo.InsertReportPost(employee.ID, post.ID, reason);
+                    return post.ReportPost(0, employee, reason);
                 case 1:
-                    post.ReportPost(0, admin, reason);
-                    return mediaRepo.InsertReportPost(admin.ID, post.ID, reason);
+                    return post.ReportPost(0, admin, reason);
             }
             return false;
         }

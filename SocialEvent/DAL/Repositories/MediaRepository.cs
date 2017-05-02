@@ -62,9 +62,19 @@ namespace DAL.Repositories
             return context.CountLikes(postId);
         }
 
-        public int CheckLike(int userId)
+        public int CheckLike(int userId, int postId)
         {
-            return context.CheckLike(userId);
+            return context.CheckLike(userId, postId);
+        }
+
+        public int CheckReportedPost(int userId, int postId)
+        {
+            return context.CheckReportedPost(userId, postId);
+        }
+
+        public int CheckReportedComment(int userId, int commentId)
+        {
+            return context.CheckReportedComment(userId, commentId);
         }
 
         public int CountPosts()

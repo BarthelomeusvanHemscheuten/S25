@@ -343,7 +343,7 @@ namespace MediaSharingSystem.Forms
             }
             else
             {
-                MessageBox.Show("Something went wrong");
+                MessageBox.Show("Post already reported");
             }
         }
 
@@ -355,7 +355,7 @@ namespace MediaSharingSystem.Forms
             }
             else
             {
-                MessageBox.Show("Something went wrong");
+                MessageBox.Show("Comment already reported");
             }
         }
     }

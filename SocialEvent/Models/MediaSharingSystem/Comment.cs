@@ -36,11 +36,18 @@ namespace Models.MediaSharingSystem
         {
             if(user != null || reason != null)
             {
-                Report report = new Report(reason);
-                this.Reports.Add(report);
-                user.Reports.Add(report);
+                if (mediaRepo.CheckReportedComment(user.ID, this.ID) == 1)
+                {
+                    return false;
+                }
+                else
+                {
+                    Report report = new Report(reason);
+                    this.Reports.Add(report);
+                    user.Reports.Add(report);
 
-                return true;
+                    return mediaRepo.InsertReportComment(user.ID, this.ID, reason);
+                }
             } else if(user != null || reason != null && id > 0)
             {
                 Report report = new Report(id, reason);
