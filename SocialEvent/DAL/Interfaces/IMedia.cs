@@ -27,6 +27,7 @@ namespace DAL.Interfaces
         int CountComments();
         int CountReportedPosts();
         int CountReportedComments();
+        int CountReported();
         List<string> GetTextPathPost(int id);
         int GetUserIdPost(int id);
         string GetTextComment(int id);

@@ -230,11 +230,14 @@ namespace MediaSharingSystem.Controllers
 
         public bool AddAndShowLike(Post post)
         {
-            if (post != null)
+            switch (userGroup)
             {
-                post.Like(visitor);
-
-                return true;
+                case 3:
+                    return post.Like(visitor);
+                case 2:
+                    return post.Like(employee);
+                case 1:
+                    return post.Like(admin);
             }
             return false;
         }

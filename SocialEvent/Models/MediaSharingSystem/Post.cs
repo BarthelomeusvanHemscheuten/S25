@@ -62,14 +62,13 @@ namespace Models.MediaSharingSystem
             {
                 if(mediaRepo.CheckLike(user.ID, this.ID) == 1)
                 {
-                    mediaRepo.DeleteLike(user.ID, this.ID);
+                    return mediaRepo.DeleteLike(user.ID, this.ID);
                 }
                 else
                 {
                     this.Likes.Add(user);
-                    mediaRepo.InsertLike(user.ID, this.ID);
+                    return mediaRepo.InsertLike(user.ID, this.ID);
                 }
-                return true;
             }
             return false;
         }

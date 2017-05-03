@@ -97,6 +97,11 @@ namespace DAL.Repositories
             return context.CountReportedComments();
         }
 
+        public int CountReported()
+        {
+            return context.CountReported();
+        }
+
         public List<string> GetTextPathPost(int id)
         {
             return context.GetTextPathPost(id);

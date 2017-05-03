@@ -137,6 +137,14 @@ namespace DAL.SQLContext
 
             return databaseConnection.executeReaderInt(query);
         }
+
+        public int CountReported()
+        {
+            string query = @"SELECT COUNT(*) FROM [Report]";
+
+            return databaseConnection.executeReaderInt(query);
+        }
+
         public List<string> GetTextPathPost(int id)
         {
             string query = @"SELECT [Text], [Path] FROM [Post] WHERE PostID = @id";

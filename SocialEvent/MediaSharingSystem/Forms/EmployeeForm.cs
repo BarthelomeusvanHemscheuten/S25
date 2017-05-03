@@ -51,15 +51,13 @@ namespace MediaSharingSystem.Forms
             tbctrlMain.SelectedTab = tbctrlMain.TabPages[0];
         }
 
-        private void btnNieuwsOverzicht_Click(object sender, EventArgs e)
+        private void btnInfoMenuMedewerker_Click(object sender, EventArgs e)
         {
             tbctrlMain.SelectedTab = tbctrlMain.TabPages[1];
 
             post = controller.GetAndShowPostComments(controller.currentPostForm, 0);
 
-
-
-            lbPostUsername.Text = post.User.ToString();
+            lbPostUsername.Text = post.User.Name;
             lbPost.Text = post.Text;
 
             currentComment = post.Comments.Count() - 1;
@@ -77,7 +75,7 @@ namespace MediaSharingSystem.Forms
                 btnNextComment.Enabled = true;
                 btnPrevComment.Enabled = true;
 
-                lbCommentUsername.Text = post.Comments[currentComment].User.ToString();
+                lbCommentUsername.Text = post.Comments[currentComment].User.Name;
                 lbComment.Text = post.Comments[currentComment].Text;
             }
 
@@ -370,7 +368,7 @@ namespace MediaSharingSystem.Forms
         {
             post = controller.GetAndShowPostComments(controller.currentPostForm, 1);
 
-            lbPostUsername.Text = post.User.ToString();
+            lbPostUsername.Text = post.User.Name;
             lbPost.Text = post.Text;
 
             currentComment = post.Comments.Count() - 1;
@@ -387,7 +385,7 @@ namespace MediaSharingSystem.Forms
                 btnNextComment.Enabled = true;
                 btnPrevComment.Enabled = true;
 
-                lbCommentUsername.Text = post.Comments[currentComment].User.ToString();
+                lbCommentUsername.Text = post.Comments[currentComment].User.Name;
                 lbComment.Text = post.Comments[currentComment].Text;
             }
 
@@ -408,7 +406,7 @@ namespace MediaSharingSystem.Forms
         {
             post = controller.GetAndShowPostComments(controller.currentPostForm, -1);
 
-            lbPostUsername.Text = post.User.ToString();
+            lbPostUsername.Text = post.User.Name;
             lbPost.Text = post.Text;
 
             currentComment = post.Comments.Count() - 1;
@@ -425,7 +423,7 @@ namespace MediaSharingSystem.Forms
                 btnNextComment.Enabled = true;
                 btnPrevComment.Enabled = true;
 
-                lbCommentUsername.Text = post.Comments[currentComment].User.ToString();
+                lbCommentUsername.Text = post.Comments[currentComment].User.Name;
                 lbComment.Text = post.Comments[currentComment].Text;
             }
 
@@ -453,7 +451,7 @@ namespace MediaSharingSystem.Forms
                 currentComment--;
             }
 
-            lbCommentUsername.Text = post.Comments[currentComment].User.ToString();
+            lbCommentUsername.Text = post.Comments[currentComment].User.Name;
             lbComment.Text = post.Comments[currentComment].Text;
         }
 
@@ -468,7 +466,7 @@ namespace MediaSharingSystem.Forms
                 currentComment++;
             }
 
-            lbCommentUsername.Text = post.Comments[currentComment].User.ToString();
+            lbCommentUsername.Text = post.Comments[currentComment].User.Name;
             lbComment.Text = post.Comments[currentComment].Text;
         }
 
@@ -478,7 +476,7 @@ namespace MediaSharingSystem.Forms
             controller.AddAndShowPost(textPost.Text, filePath);
             post = controller.GetAndShowPostComments(controller.currentPostForm, 0);
 
-            lbPostUsername.Text = post.User.ToString();
+            lbPostUsername.Text = post.User.Name;
             lbPost.Text = post.Text;
 
             currentComment = post.Comments.Count() - 1;
@@ -496,7 +494,7 @@ namespace MediaSharingSystem.Forms
                 btnNextComment.Enabled = true;
                 btnPrevComment.Enabled = true;
 
-                lbCommentUsername.Text = post.Comments[currentComment].User.ToString();
+                lbCommentUsername.Text = post.Comments[currentComment].User.Name;
                 lbComment.Text = post.Comments[currentComment].Text;
             }
 
@@ -519,7 +517,7 @@ namespace MediaSharingSystem.Forms
             btnNextComment.Enabled = true;
             btnPrevComment.Enabled = true;
 
-            lbCommentUsername.Text = post.Comments[currentComment].User.ToString();
+            lbCommentUsername.Text = post.Comments[currentComment].User.Name;
             lbComment.Text = post.Comments[currentComment].Text;
         }
 
@@ -541,9 +539,28 @@ namespace MediaSharingSystem.Forms
             MessageBox.Show("Downloaden voltooid");
         }
 
-        private void btnInfoMenuMedewerker_Click(object sender, EventArgs e)
+        private void btnReportPost_Click(object sender, EventArgs e)
         {
-            tbctrlMain.SelectedTab = tbctrlMain.TabPages[1];
+            if (controller.Reportpost(post, "Ongewenst!"))
+            {
+                MessageBox.Show("Post reported");
+            }
+            else
+            {
+                MessageBox.Show("Post already reported");
+            }
+        }
+
+        private void btnReportComment_Click(object sender, EventArgs e)
+        {
+            if (controller.ReportComment(post.Comments[currentComment], "Ongewenst!"))
+            {
+                MessageBox.Show("Comment reported!");
+            }
+            else
+            {
+                MessageBox.Show("Comment already reported");
+            }
         }
     }
 }
