@@ -41,6 +41,7 @@ namespace MediaSharingSystem.Forms
             {
                 userData.Add(new List<string>());
             }
+            pbPicture.Image = controller.GetPicture();
             tbNaam.Text = controller.Employee.Name;
             tbEmail.Text = controller.Employee.EmailAddress;
             tbTelefoonNr.Text = controller.Employee.Telnr;
@@ -159,7 +160,7 @@ namespace MediaSharingSystem.Forms
             {
                 string imagepath = openFileDialog1.FileName;
                 picture = Image.FromFile(imagepath);
-                pbPicture.Image = controller.ChangePicture(picture, imagepath);
+                pbPicture.Image = controller.ChangePicture(imagepath);
             }
             else
             {

@@ -69,11 +69,10 @@ namespace DAL.SQLContext
         }
 
 
-        public bool UpdatePicture(int userID, string image)
+        public bool UpdatePicture(int userID, string imagepath)
         {
-            string query = @"UPDATE [User] SET Picture = '@image' WHERE UserID = @userid";
-            query = query.Replace("@userid", userID.ToString());
-            query = query.Replace("@imagepath", image);
+            string query = @"UPDATE [User] SET [PicturePath] = '@imagepath' WHERE UserID = @userid";
+            query = query.Replace("@userid", userID.ToString()).Replace("@imagepath", imagepath);
 
             return databaseConnection.executeNonQuery(query);
         }

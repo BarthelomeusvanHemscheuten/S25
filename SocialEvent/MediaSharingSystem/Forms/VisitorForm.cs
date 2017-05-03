@@ -27,6 +27,7 @@ namespace MediaSharingSystem.Forms
             this.controller = controller;
             this.login = f;
 
+            pbPicture.Image = controller.GetPicture();
             tbNaam.Text = controller.Visitor.Name;
             tbEmail.Text = controller.Visitor.EmailAddress;
             tbTelefoonNr.Text = controller.Visitor.Telnr;
@@ -256,7 +257,7 @@ namespace MediaSharingSystem.Forms
             {
                 string imagepath = openFileDialog1.FileName;
                 picture = Image.FromFile(imagepath);
-                pbPicture.Image = controller.ChangePicture(picture, imagepath);
+                pbPicture.Image = controller.ChangePicture(imagepath);
                 MessageBox.Show("Foto is gewijzigd");
             }
             else

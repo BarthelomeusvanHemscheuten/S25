@@ -35,6 +35,8 @@
             this.btnAccountInstellingenGebruik = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.panelNewsFeed = new System.Windows.Forms.Panel();
+            this.btnReportComment = new System.Windows.Forms.Button();
+            this.btnReportPost = new System.Windows.Forms.Button();
             this.lbComment = new System.Windows.Forms.Label();
             this.lbPost = new System.Windows.Forms.Label();
             this.lblLikesPost = new System.Windows.Forms.Label();
@@ -75,8 +77,6 @@
             this.tbNaam = new System.Windows.Forms.TextBox();
             this.tbctrlMain = new System.Windows.Forms.TabControl();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.btnReportPost = new System.Windows.Forms.Button();
-            this.btnReportComment = new System.Windows.Forms.Button();
             this.panelGebruiker.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.panelNewsFeed.SuspendLayout();
@@ -175,6 +175,26 @@
             this.panelNewsFeed.Name = "panelNewsFeed";
             this.panelNewsFeed.Size = new System.Drawing.Size(744, 600);
             this.panelNewsFeed.TabIndex = 23;
+            // 
+            // btnReportComment
+            // 
+            this.btnReportComment.Location = new System.Drawing.Point(598, 14);
+            this.btnReportComment.Name = "btnReportComment";
+            this.btnReportComment.Size = new System.Drawing.Size(122, 37);
+            this.btnReportComment.TabIndex = 45;
+            this.btnReportComment.Text = "Rapporteren";
+            this.btnReportComment.UseVisualStyleBackColor = true;
+            this.btnReportComment.Click += new System.EventHandler(this.btnReportComment_Click);
+            // 
+            // btnReportPost
+            // 
+            this.btnReportPost.Location = new System.Drawing.Point(274, 11);
+            this.btnReportPost.Name = "btnReportPost";
+            this.btnReportPost.Size = new System.Drawing.Size(122, 40);
+            this.btnReportPost.TabIndex = 24;
+            this.btnReportPost.Text = "Rapporteren";
+            this.btnReportPost.UseVisualStyleBackColor = true;
+            this.btnReportPost.Click += new System.EventHandler(this.btnReportPost_Click);
             // 
             // lbComment
             // 
@@ -445,7 +465,7 @@
             this.pbPicture.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pbPicture.Name = "pbPicture";
             this.pbPicture.Size = new System.Drawing.Size(225, 249);
-            this.pbPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbPicture.TabIndex = 13;
             this.pbPicture.TabStop = false;
             // 
@@ -581,26 +601,6 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // btnReportPost
-            // 
-            this.btnReportPost.Location = new System.Drawing.Point(274, 11);
-            this.btnReportPost.Name = "btnReportPost";
-            this.btnReportPost.Size = new System.Drawing.Size(122, 40);
-            this.btnReportPost.TabIndex = 24;
-            this.btnReportPost.Text = "Rapporteren";
-            this.btnReportPost.UseVisualStyleBackColor = true;
-            this.btnReportPost.Click += new System.EventHandler(this.btnReportPost_Click);
-            // 
-            // btnReportComment
-            // 
-            this.btnReportComment.Location = new System.Drawing.Point(598, 14);
-            this.btnReportComment.Name = "btnReportComment";
-            this.btnReportComment.Size = new System.Drawing.Size(122, 37);
-            this.btnReportComment.TabIndex = 45;
-            this.btnReportComment.Text = "Rapporteren";
-            this.btnReportComment.UseVisualStyleBackColor = true;
-            this.btnReportComment.Click += new System.EventHandler(this.btnReportComment_Click);
             // 
             // VisitorForm
             // 

@@ -86,6 +86,8 @@
             this.tbNaamFilterwoord = new System.Windows.Forms.TextBox();
             this.tabNieuwsoverzicht = new System.Windows.Forms.TabPage();
             this.panelNewsFeed = new System.Windows.Forms.Panel();
+            this.btnReportComment = new System.Windows.Forms.Button();
+            this.btnReportPost = new System.Windows.Forms.Button();
             this.lbComment = new System.Windows.Forms.Label();
             this.lbPost = new System.Windows.Forms.Label();
             this.lbPostUsername = new System.Windows.Forms.Label();
@@ -125,8 +127,6 @@
             this.lblNaam = new System.Windows.Forms.Label();
             this.tbNaam = new System.Windows.Forms.TextBox();
             this.tbctrlMain = new System.Windows.Forms.TabControl();
-            this.btnReportComment = new System.Windows.Forms.Button();
-            this.btnReportPost = new System.Windows.Forms.Button();
             this.PanelBeheerder.SuspendLayout();
             this.tabGereserveerdeBerichten.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -779,6 +779,26 @@
             this.panelNewsFeed.Size = new System.Drawing.Size(748, 675);
             this.panelNewsFeed.TabIndex = 24;
             // 
+            // btnReportComment
+            // 
+            this.btnReportComment.Location = new System.Drawing.Point(609, 17);
+            this.btnReportComment.Name = "btnReportComment";
+            this.btnReportComment.Size = new System.Drawing.Size(122, 37);
+            this.btnReportComment.TabIndex = 47;
+            this.btnReportComment.Text = "Rapporteren";
+            this.btnReportComment.UseVisualStyleBackColor = true;
+            this.btnReportComment.Click += new System.EventHandler(this.btnReportComment_Click);
+            // 
+            // btnReportPost
+            // 
+            this.btnReportPost.Location = new System.Drawing.Point(285, 14);
+            this.btnReportPost.Name = "btnReportPost";
+            this.btnReportPost.Size = new System.Drawing.Size(122, 40);
+            this.btnReportPost.TabIndex = 46;
+            this.btnReportPost.Text = "Rapporteren";
+            this.btnReportPost.UseVisualStyleBackColor = true;
+            this.btnReportPost.Click += new System.EventHandler(this.btnReportPost_Click_1);
+            // 
             // lbComment
             // 
             this.lbComment.Location = new System.Drawing.Point(438, 66);
@@ -1048,7 +1068,7 @@
             this.pbPicture.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pbPicture.Name = "pbPicture";
             this.pbPicture.Size = new System.Drawing.Size(225, 249);
-            this.pbPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbPicture.TabIndex = 13;
             this.pbPicture.TabStop = false;
             // 
@@ -1183,26 +1203,6 @@
             this.tbctrlMain.SelectedIndex = 0;
             this.tbctrlMain.Size = new System.Drawing.Size(744, 665);
             this.tbctrlMain.TabIndex = 13;
-            // 
-            // btnReportComment
-            // 
-            this.btnReportComment.Location = new System.Drawing.Point(609, 17);
-            this.btnReportComment.Name = "btnReportComment";
-            this.btnReportComment.Size = new System.Drawing.Size(122, 37);
-            this.btnReportComment.TabIndex = 47;
-            this.btnReportComment.Text = "Rapporteren";
-            this.btnReportComment.UseVisualStyleBackColor = true;
-            this.btnReportComment.Click += new System.EventHandler(this.btnReportComment_Click);
-            // 
-            // btnReportPost
-            // 
-            this.btnReportPost.Location = new System.Drawing.Point(285, 14);
-            this.btnReportPost.Name = "btnReportPost";
-            this.btnReportPost.Size = new System.Drawing.Size(122, 40);
-            this.btnReportPost.TabIndex = 46;
-            this.btnReportPost.Text = "Rapporteren";
-            this.btnReportPost.UseVisualStyleBackColor = true;
-            this.btnReportPost.Click += new System.EventHandler(this.btnReportPost_Click_1);
             // 
             // AdminForm
             // 
