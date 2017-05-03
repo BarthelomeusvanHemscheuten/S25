@@ -272,7 +272,7 @@ namespace MediaSharingSystem.Forms
             userData[2].Insert(0, controller.RandomString(8));
             userData[3].Insert(0, tbTelefoonNrHoofdreserveerder.Text);
             userData[4].Insert(0, controller.RandomString(8));
-            locations.Insert(0, new Location(locationnr, controller.GetLocationFeatures(locationnr), controller.GetLocationType(locationnr)));
+            locations.Insert(0, controller.GetLocation(Convert.ToInt32(cbAanhangselLocatie.Text)));
             if (controller.Reserve(locations, userData[0].Count, locations.Count, userData[0], userData[1], userData[2], tbEmailHoofdreserveerder.Text, userData[3], userData[4], tbAddressHoofdreserveerder.Text, dtmHoofdreserveerder.Value))
             {
                 MessageBox.Show("Locatie gereserveerd");
@@ -296,8 +296,7 @@ namespace MediaSharingSystem.Forms
             userData[2].Add(controller.RandomString(8));
             userData[3].Add(tbTelefoonNrAanhangsel1.Text);
             userData[4].Add(controller.RandomString(8));
-            int locatienr = Convert.ToInt32(cbAanhangselLocatie.Text);
-            locations.Add(new Location(locatienr, controller.GetLocationFeatures(locatienr), controller.GetLocationType(locatienr)));
+            locations.Add(controller.GetLocation(Convert.ToInt32(cbAanhangselLocatie.Text)));
             MessageBox.Show("Gebruiker toegevoegd");
             lbReserveringVisitors.Items.Clear();
             foreach (string name in userData[1])

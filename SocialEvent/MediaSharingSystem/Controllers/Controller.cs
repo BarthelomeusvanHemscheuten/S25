@@ -657,14 +657,12 @@ namespace MediaSharingSystem.Controllers
 
             return materials;
         }
-        public string GetLocationFeatures(int locationnr)
+
+        public Location GetLocation(int locationnr)
         {
-            return reservationRepo.GetLocationFeatures(locationnr);
+            return new Location(locationnr, reservationRepo.GetLocationFeatures(locationnr), reservationRepo.GetLocationType(locationnr));
         }
-        public string GetLocationType(int locationnr)
-        {
-            return reservationRepo.GetLocationType(locationnr);
-        }
+
         public List<Location> GetFreeLocations()
         {
             List<Location> locations = new List<Location>();
