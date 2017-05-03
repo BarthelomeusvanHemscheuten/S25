@@ -47,9 +47,9 @@ namespace DAL.Repositories
             return context.InsertLike(userId, postId);
         }
 
-        public bool DeleteLike(int userId)
+        public bool DeleteLike(int userId, int postId)
         {
-            return context.DeleteLike(userId);
+            return context.DeleteLike(userId, postId);
         }
 
         public bool UpdatePicture(int userId, Image image)
@@ -62,9 +62,19 @@ namespace DAL.Repositories
             return context.CountLikes(postId);
         }
 
-        public int CheckLike(int userId)
+        public int CheckLike(int userId, int postId)
         {
-            return context.CheckLike(userId);
+            return context.CheckLike(userId, postId);
+        }
+
+        public int CheckReportedPost(int userId, int postId)
+        {
+            return context.CheckReportedPost(userId, postId);
+        }
+
+        public int CheckReportedComment(int userId, int commentId)
+        {
+            return context.CheckReportedComment(userId, commentId);
         }
 
         public int CountPosts()
@@ -145,7 +155,23 @@ namespace DAL.Repositories
         {
             return context.GetAllSwearword();
         }
+        public bool DeleteReportPost(int postid)
+        {
+            return context.DeleteReportPost(postid);
+        }
+        public bool DeleteReportComment(int commentid)
+        {
+            return context.DeleteReportComment(commentid);
+        }
 
+        public bool DeletePostComments(int postid)
+        {
+            return context.DeletePostComments(postid);
+        }
+        public bool DeleteLikesPost(int postid)
+        {
+            return context.DeleteLikesPost(postid);
+        }
 
 
         // nog niet nodig

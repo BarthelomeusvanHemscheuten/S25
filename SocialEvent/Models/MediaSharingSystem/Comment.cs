@@ -15,7 +15,7 @@ namespace Models.MediaSharingSystem
         public int ID { get; private set; }
         public string Text { get; private set; }
 
-        public List<Report> Reports { get; private set; }
+        public List<Report> Reports { get; private set; } = new List<Report>();
         public User User { get; set; }
 
         // constructor om nieuwe comment aan te maken
@@ -36,11 +36,18 @@ namespace Models.MediaSharingSystem
         {
             if(user != null || reason != null)
             {
-                Report report = new Report(reason);
-                this.Reports.Add(report);
-                user.Reports.Add(report);
+                if (mediaRepo.CheckReportedComment(user.ID, this.ID) == 1)
+                {
+                    return false;
+                }
+                else
+                {
+                    Report report = new Report(reason);
+                    this.Reports.Add(report);
+                    user.Reports.Add(report);
 
-                return true;
+                    return mediaRepo.InsertReportComment(user.ID, this.ID, reason);
+                }
             } else if(user != null || reason != null && id > 0)
             {
                 Report report = new Report(id, reason);

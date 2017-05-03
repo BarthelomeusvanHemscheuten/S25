@@ -32,24 +32,21 @@ namespace Models.Users
             return false;
         }
 
-        public bool DeleteVisitor(Visitor visitor)
+        public int DeleteVisitor(Visitor visitor)
         {
             if (visitor != null)
             {
-                userRepo.DeleteUser(visitor.ID);
-
-                return true;
+                return userRepo.DeleteUser(visitor.ID);
             }
-            return false;
+            return 1;
         }
 
         public bool DeleteShowPost(Post post, string deleteOrShow)
         {
             if (post != null && deleteOrShow == "delete")
             {
-                mediaRepo.DeletePost(post.ID);
+                return mediaRepo.DeletePost(post.ID);
 
-                return true;
             }
             else if (post != null && deleteOrShow == "show")
             {
@@ -59,14 +56,16 @@ namespace Models.Users
             }
             return false;
         }
+        public bool DeleteCommentsFromReportedPost(int postid)
+        {
+            return mediaRepo.DeletePostComments(postid);
+        }
 
         public bool DeleteShowComment(Comment comment, string deleteOrShow)
         {
             if (comment != null && deleteOrShow == "delete")
             {
-                mediaRepo.DeleteComment(comment.ID);
-
-                return true;
+                return mediaRepo.DeleteComment(comment.ID);
             }
             else if (comment != null && deleteOrShow == "show")
             {
@@ -75,6 +74,19 @@ namespace Models.Users
                 return true;
             }
             return false;
+        }
+        public bool DeleteReportPost(int postid)
+        {
+            return mediaRepo.DeleteReportPost(postid);
+
+        }
+        public bool DeleteReportComment(int commentid)
+        {
+            return mediaRepo.DeleteReportComment(commentid);
+        }
+        public bool DeleteLikesPost(int postid)
+        {
+            return mediaRepo.DeleteLikesPost(postid);
         }
 
     }

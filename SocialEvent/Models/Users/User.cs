@@ -59,7 +59,7 @@ namespace Models.Users
         {
             if (text != null && path != null)
             {
-                Post post = new Post(text, path);
+                Post post = new Post(id, text, path);
                 this.Posts.Add(post);
                 post.User = this;
 
@@ -125,7 +125,7 @@ namespace Models.Users
         {
             if (text != null && id != 0)
             {
-                Comment comment = new Comment(text);
+                Comment comment = new Comment(id, text);
                 this.Comments.Add(comment); ;
                 comment.User = this;
 

@@ -11,7 +11,7 @@ namespace DAL.Interfaces
     {
         bool InsertUser(int eventId, int reservationId, int userGroup, int isPresent, DateTime? dateOfBirth, string emailAddress, string address, string name, string username, string password, string telnr, string rfid);
         bool InsertUser(int eventId, int reservationId, int userGroup, int isPresent, string name, string username, string password, string telnr, string rfid);
-        bool DeleteUser(int Id);
+        int DeleteUser(int Id);
         bool InsertSwearWord(string swearWord);
         
         int GetUserGroup(string username);

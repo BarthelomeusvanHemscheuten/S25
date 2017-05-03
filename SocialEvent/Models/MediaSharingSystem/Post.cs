@@ -60,9 +60,9 @@ namespace Models.MediaSharingSystem
         {
             if(user != null)
             {
-                if(mediaRepo.CheckLike(user.ID) == 1)
+                if(mediaRepo.CheckLike(user.ID, this.ID) == 1)
                 {
-                    mediaRepo.DeleteLike(user.ID);
+                    mediaRepo.DeleteLike(user.ID, this.ID);
                 }
                 else
                 {
@@ -78,11 +78,18 @@ namespace Models.MediaSharingSystem
         {
             if (user != null && reason != null)
             {
-                Report report = new Report(reason);
-                this.Reports.Add(report);
-                user.Reports.Add(report);
+                if (mediaRepo.CheckReportedPost(user.ID, this.ID) == 1)
+                {
+                    return false;
+                }
+                else
+                {
+                    Report report = new Report(reason);
+                    this.Reports.Add(report);
+                    user.Reports.Add(report);
 
-                return true;
+                    return mediaRepo.InsertReportPost(user.ID, this.ID, reason);
+                }
             } else if (user != null && reason != null && id > 0)
             {
                 Report report = new Report(id, reason);

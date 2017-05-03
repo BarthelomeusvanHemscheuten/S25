@@ -244,17 +244,11 @@ namespace MediaSharingSystem.Controllers
             switch (userGroup)
             {
                 case 3:
-                    comment.ReportComment(0, visitor, reason);
-                    mediaRepo.InsertReportComment(visitor.ID, comment.ID, reason);
-                    return true;
+                    return comment.ReportComment(0, visitor, reason);
                 case 2:
-                    comment.ReportComment(0, employee, reason);
-                    mediaRepo.InsertReportComment(employee.ID, comment.ID, reason);
-                    return true;
+                    return comment.ReportComment(0, employee, reason);
                 case 1:
-                    comment.ReportComment(0, admin, reason);
-                    mediaRepo.InsertReportComment(admin.ID, comment.ID, reason);
-                    return true;
+                    return comment.ReportComment(0, admin, reason);
             }
             return false;
         }
@@ -264,17 +258,11 @@ namespace MediaSharingSystem.Controllers
             switch (userGroup)
             {
                 case 3:
-                    post.ReportPost(0, visitor, reason);
-                    mediaRepo.InsertReportPost(visitor.ID, post.ID, reason);
-                    return true;
+                    return post.ReportPost(0, visitor, reason);
                 case 2:
-                    post.ReportPost(0, employee, reason);
-                    mediaRepo.InsertReportPost(employee.ID, post.ID, reason);
-                    return true;
+                    return post.ReportPost(0, employee, reason);
                 case 1:
-                    post.ReportPost(0, admin, reason);
-                    mediaRepo.InsertReportPost(admin.ID, post.ID, reason);
-                    return true;
+                    return post.ReportPost(0, admin, reason);
             }
             return false;
         }
@@ -348,19 +336,16 @@ namespace MediaSharingSystem.Controllers
         }
 
         // EMPLOYEE AND ADMIN
-        public bool DeleteVisitor(Visitor visitor)
+        public int DeleteVisitor(Visitor visitor)
         {
-            if (visitor != null)
+            switch (userGroup)
             {
-                switch (userGroup)
-                {
-                    case 2:
-                        return employee.DeleteVisitor(visitor);
-                    case 1:
-                        return admin.DeleteVisitor(visitor);
-                }
+                case 2:
+                    return employee.DeleteVisitor(visitor);
+                case 1:
+                    return admin.DeleteVisitor(visitor);
             }
-            return false;
+            return 1;
         }
 
 
@@ -423,9 +408,7 @@ namespace MediaSharingSystem.Controllers
         {
             if (post != null && deleteOrShow != null)
             {
-                admin.DeleteShowPost(post, deleteOrShow);
-
-                return true;
+                return admin.DeleteShowPost(post, deleteOrShow);
             }
             return false;
         }
@@ -434,11 +417,17 @@ namespace MediaSharingSystem.Controllers
         {
             if (comment != null && deleteOrShow != null)
             {
-                admin.DeleteShowComment(comment, deleteOrShow);
-
-                return true;
+                return admin.DeleteShowComment(comment, deleteOrShow);
             }
             return false;
+        }
+        public bool DeleteReportPost(int postId)
+        {
+            return admin.DeleteReportPost(postId);
+        }
+        public bool DeleteReportComment(int commentId)
+        {
+            return admin.DeleteReportComment(commentId);
         }
 
         // VISITOR
@@ -479,8 +468,8 @@ namespace MediaSharingSystem.Controllers
             for (int i = 0; i < quantity; i++)
             {
                 List<string> textPathPost = mediaRepo.GetTextPathPost(listPostsID[i]);
-                Post post = visitor.PlacePost(listPostsID[i], textPathPost[0], textPathPost[1]);
-                visitor.Posts.Add(post);
+                Post post = admin.PlacePost(listPostsID[i], textPathPost[0], textPathPost[1]);
+                admin.Posts.Add(post);
                 result.Add(post);
             }
             return result;
@@ -498,11 +487,19 @@ namespace MediaSharingSystem.Controllers
             for (int i = 0; i < quantity; i++)
             {
                 string textComment = mediaRepo.GetTextComment(listCommentsID[i]);
-                User user = visitor as User;
+                User user = admin as User;
                 Comment comment = user.PlaceComment(listCommentsID[i], textComment);
                 result.Add(comment);
             }
             return result;
+        }
+        public bool DeleteCommentsFromReportedPost(int postid)
+        {
+            return admin.DeleteCommentsFromReportedPost(postid);
+        }
+        public bool DeleteLikesFromReportedPost(int postid)
+        {
+            return admin.DeleteLikesPost(postid);
         }
 
         public int GetAndShowLikes(Post post)

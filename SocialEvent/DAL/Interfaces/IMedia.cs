@@ -15,12 +15,14 @@ namespace DAL.Interfaces
         bool InsertReportPost(int userId, int postId, string reason);
         bool InsertReportComment(int userId, int commentId, string reason);
         bool InsertLike(int userId, int postId);
-        bool DeleteLike(int userId);
+        bool DeleteLike(int userId, int postId);
 
         bool UpdatePicture(int userId, Image image);
 
         int CountLikes(int postId);
-        int CheckLike(int userId);
+        int CheckLike(int userId, int postId);
+        int CheckReportedPost(int userId, int postId);
+        int CheckReportedComment(int userId, int commentId);
         int CountPosts();
         int CountComments();
         int CountReportedPosts();
@@ -41,6 +43,10 @@ namespace DAL.Interfaces
 
         bool DeletePost(int id);
         bool DeleteComment(int id);
+        bool DeleteReportPost(int postid);
+        bool DeleteReportComment(int commentid);
+        bool DeletePostComments(int postid);
+        bool DeleteLikesPost(int postid);
         
     }
 }

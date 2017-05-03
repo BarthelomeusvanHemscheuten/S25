@@ -27,7 +27,7 @@ namespace DAL.Repositories
             return context.InsertUser(eventId, reservationId, userGroup, isPresent, name, username, password, telnr, rfid);
         }
 
-        public bool DeleteUser(int Id)
+        public int DeleteUser(int Id)
         {
             return context.DeleteUser(Id);
         }

@@ -121,6 +121,10 @@
             this.lblNaam = new System.Windows.Forms.Label();
             this.tbNaam = new System.Windows.Forms.TextBox();
             this.tbctrlMain = new System.Windows.Forms.TabControl();
+            this.lblPosts = new System.Windows.Forms.Label();
+            this.lblPostText = new System.Windows.Forms.Label();
+            this.lblComments = new System.Windows.Forms.Label();
+            this.lblCommentText = new System.Windows.Forms.Label();
             this.PanelBeheerder.SuspendLayout();
             this.tabGereserveerdeBerichten.SuspendLayout();
             this.tabPage3.SuspendLayout();
@@ -230,6 +234,10 @@
             // 
             // tabGereserveerdeBerichten
             // 
+            this.tabGereserveerdeBerichten.Controls.Add(this.lblCommentText);
+            this.tabGereserveerdeBerichten.Controls.Add(this.lblComments);
+            this.tabGereserveerdeBerichten.Controls.Add(this.lblPostText);
+            this.tabGereserveerdeBerichten.Controls.Add(this.lblPosts);
             this.tabGereserveerdeBerichten.Controls.Add(this.tbReportedPost);
             this.tabGereserveerdeBerichten.Controls.Add(this.tbReportedComment);
             this.tabGereserveerdeBerichten.Controls.Add(this.btnDeletePost);
@@ -269,15 +277,17 @@
             this.btnDeletePost.TabIndex = 3;
             this.btnDeletePost.Text = "Delete Post";
             this.btnDeletePost.UseVisualStyleBackColor = true;
+            this.btnDeletePost.Click += new System.EventHandler(this.btnDeletePost_Click);
             // 
             // btnDeleteComment
             // 
             this.btnDeleteComment.Location = new System.Drawing.Point(504, 472);
             this.btnDeleteComment.Name = "btnDeleteComment";
-            this.btnDeleteComment.Size = new System.Drawing.Size(126, 23);
+            this.btnDeleteComment.Size = new System.Drawing.Size(126, 28);
             this.btnDeleteComment.TabIndex = 2;
             this.btnDeleteComment.Text = "Delete Comment";
             this.btnDeleteComment.UseVisualStyleBackColor = true;
+            this.btnDeleteComment.Click += new System.EventHandler(this.btnDeleteComment_Click);
             // 
             // lbReportedComments
             // 
@@ -1128,6 +1138,42 @@
             this.tbctrlMain.Size = new System.Drawing.Size(661, 532);
             this.tbctrlMain.TabIndex = 13;
             // 
+            // lblPosts
+            // 
+            this.lblPosts.AutoSize = true;
+            this.lblPosts.Location = new System.Drawing.Point(12, 12);
+            this.lblPosts.Name = "lblPosts";
+            this.lblPosts.Size = new System.Drawing.Size(49, 17);
+            this.lblPosts.TabIndex = 6;
+            this.lblPosts.Text = "PostID";
+            // 
+            // lblPostText
+            // 
+            this.lblPostText.AutoSize = true;
+            this.lblPostText.Location = new System.Drawing.Point(220, 12);
+            this.lblPostText.Name = "lblPostText";
+            this.lblPostText.Size = new System.Drawing.Size(35, 17);
+            this.lblPostText.TabIndex = 7;
+            this.lblPostText.Text = "Text";
+            // 
+            // lblComments
+            // 
+            this.lblComments.AutoSize = true;
+            this.lblComments.Location = new System.Drawing.Point(12, 231);
+            this.lblComments.Name = "lblComments";
+            this.lblComments.Size = new System.Drawing.Size(80, 17);
+            this.lblComments.TabIndex = 8;
+            this.lblComments.Text = "CommentID";
+            // 
+            // lblCommentText
+            // 
+            this.lblCommentText.AutoSize = true;
+            this.lblCommentText.Location = new System.Drawing.Point(220, 230);
+            this.lblCommentText.Name = "lblCommentText";
+            this.lblCommentText.Size = new System.Drawing.Size(35, 17);
+            this.lblCommentText.TabIndex = 9;
+            this.lblCommentText.Text = "Text";
+            // 
             // AdminForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1263,5 +1309,9 @@
         private System.Windows.Forms.Label lbPostUsername;
         private System.Windows.Forms.Label lbCommentUsername;
         private System.Windows.Forms.Label lbComment;
+        private System.Windows.Forms.Label lblPostText;
+        private System.Windows.Forms.Label lblPosts;
+        private System.Windows.Forms.Label lblCommentText;
+        private System.Windows.Forms.Label lblComments;
     }
 }

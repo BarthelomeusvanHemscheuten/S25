@@ -47,15 +47,13 @@ namespace Models.Users
             return null;
         }
 
-        public bool DeleteVisitor(Visitor visitor)
+        public int DeleteVisitor(Visitor visitor)
         {
             if (visitor != null)
             {
-                userRepo.DeleteUser(visitor.ID);
-
-                return true;
+                return userRepo.DeleteUser(visitor.ID);
             }
-            return false;
+            return 1;
         }
 
         public bool Reserve(Event eventt, List<Location> locations, int quantityVisitors, int quantityLocations, List<string> username, List<string> name, List<string> password, string emailAddress, List<string> telnr, string address, DateTime dateofbirth)
