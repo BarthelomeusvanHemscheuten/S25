@@ -357,7 +357,7 @@ namespace MediaSharingSystem.Controllers
         {
             if (locations != null && quantityVisitors > 0 && quantityLocations > 0 && username != null && name != null && password != null && emailAddress != null && telnr != null && rfid != null && address != null && dateOfBirth != null)
             {
-               return employee.Reserve(Event, locations, quantityVisitors, quantityLocations, username, name, password, emailAddress, telnr, rfid, address, dateOfBirth);
+                return employee.Reserve(Event, locations, quantityVisitors, quantityLocations, username, name, password, emailAddress, telnr, rfid, address, dateOfBirth);
             }
             return false;
         }
@@ -664,6 +664,26 @@ namespace MediaSharingSystem.Controllers
         public string GetLocationType(int locationnr)
         {
             return reservationRepo.GetLocationType(locationnr);
+        }
+        public List<Location> GetFreeLocations()
+        {
+            List<Location> locations = new List<Location>();
+            List<int> locationNr = reservationRepo.GetFreeLocationNr();
+            foreach (int number in locationNr)
+            {
+                locations.Add(new Location(number, reservationRepo.GetLocationFeatures(number), reservationRepo.GetLocationType(number)));
+            }
+            return locations;
+        }
+        public List<Location> GetAllLocations()
+        {
+            List<Location> locations = new List<Location>();
+            List<int> locationNr = reservationRepo.GetAllLocationNr();
+            foreach(int number in locationNr)
+            {
+                locations.Add(new Location(number, reservationRepo.GetLocationFeatures(number), reservationRepo.GetLocationType(number)));
+            }
+            return locations;
         }
         public string RandomString(int length)
         {

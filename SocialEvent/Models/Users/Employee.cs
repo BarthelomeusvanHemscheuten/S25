@@ -83,11 +83,8 @@ namespace Models.Users
                 // method. dit zou problemen veroorzaken in de database omdat de visitors al zijn aangemaakt.
                 for (int i = 0; i < quantityLocations; i++)
                 {
-                    for (int j = 0; j < quantityVisitors; j++)
-                    {
-                        locations[i].Visitors.Add(visitors[j]);
-                        reservationRepo.UpdateLocation(locations[i].ID, reservationId);
-                    }
+                    locations[i].Visitors.Add(visitors[i]);
+                    reservationRepo.UpdateLocation(locations[i].ID, reservationId);
                 }
 
 
@@ -117,6 +114,7 @@ namespace Models.Users
             }
             return false;
         }
+
         public string RandomRFID()
         {
             string rfid = "";

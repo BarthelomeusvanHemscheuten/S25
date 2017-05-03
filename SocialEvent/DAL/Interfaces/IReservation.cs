@@ -20,8 +20,11 @@ namespace DAL.Interfaces
         int GetEventID(string name);
         string GetEventDescription(int id);
         int GetLocationID(int number);
+        List<int> GetFreeLocationNr();
+        List<int> GetAllLocationNr();
         string GetLocationFeatures(int number);
         string GetLocationType(int number);
+        
         int CountMaterials();
         int GetCountMaterial(string name);
         List<int> GetAllMaterialsID();

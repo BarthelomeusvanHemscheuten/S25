@@ -37,7 +37,7 @@ namespace MediaSharingSystem.Forms
             tbctrlMain.ItemSize = new Size(0, 1);
             tbctrlMain.SizeMode = TabSizeMode.Fixed;
             lbMaterialen.DisplayMember = "Name";
-            for (int i = 0; i <= 3; i++)
+            for (int i = 0; i <= 4; i++)
             {
                 userData.Add(new List<string>());
             }
@@ -95,6 +95,15 @@ namespace MediaSharingSystem.Forms
         private void btnReserveren_Click(object sender, EventArgs e)
         {
             tbctrlMain.SelectedTab = tbctrlMain.TabPages[4];
+            foreach(Location location in controller.GetFreeLocations())
+            {
+                cbAanhangselLocatie.Items.Add(location.ID);
+                cbHoofdLocatie.Items.Add(location.ID);
+            }
+            foreach(Location location in controller.GetAllLocations())
+            {
+                lbLocaties.Items.Add(location);
+            }
         }
 
         private void btnVerhuurItemMedewerker_Click(object sender, EventArgs e)
@@ -256,16 +265,17 @@ namespace MediaSharingSystem.Forms
 
         private void btnReserverenLocatie_Click(object sender, EventArgs e)
         {
-            int locationnr = Convert.ToInt32(tbLocatieNrHoofdreserveerder.Text);
+            int locationnr = Convert.ToInt32(cbHoofdLocatie.Text);
             userData[0].Insert(0, controller.RandomString(8));
             userData[1].Insert(0, tbNaamHoofdreserveerder.Text);
             userData[2].Insert(0, controller.RandomString(8));
             userData[3].Insert(0, tbTelefoonNrHoofdreserveerder.Text);
+            userData[4].Insert(0, controller.RandomString(8));
             locations.Insert(0, new Location(locationnr, controller.GetLocationFeatures(locationnr), controller.GetLocationType(locationnr)));
             if (controller.Reserve(locations, userData[0].Count, locations.Count, userData[0], userData[1], userData[2], tbEmailHoofdreserveerder.Text, userData[3], userData[4], tbAddressHoofdreserveerder.Text, dtmHoofdreserveerder.Value))
             {
                 MessageBox.Show("Locatie gereserveerd");
-                for (int i = 0; i <= 3; i++)
+                for (int i = 0; i <= 4; i++)
                 {
                     userData[i].Clear();
                 }
@@ -284,7 +294,8 @@ namespace MediaSharingSystem.Forms
             userData[1].Add(tbNaamAanhangsel1.Text);
             userData[2].Add(controller.RandomString(8));
             userData[3].Add(tbTelefoonNrAanhangsel1.Text);
-            int locatienr = Convert.ToInt32(tbAanhangselLocatie1.Text);
+            userData[4].Add(controller.RandomString(8));
+            int locatienr = Convert.ToInt32(cbAanhangselLocatie.Text);
             locations.Add(new Location(locatienr, controller.GetLocationFeatures(locatienr), controller.GetLocationType(locatienr)));
             MessageBox.Show("Gebruiker toegevoegd");
             lbReserveringVisitors.Items.Clear();

@@ -55,7 +55,7 @@ namespace DAL.SQLContext
 
         public bool UpdateLocation(int id, int reservationID)
         {
-            string query = @"UPDATE [location] SET [reservationid] = ['@RESERVATIONID'] WHERE locationid = '@LOCATIONID'";
+            string query = @"UPDATE [location] SET ReservationID = '@RESERVATIONID' WHERE LocationID = '@LOCATIONID' AND ReservationID IS NULL";
             query = query.Replace("@RESERVATIONID", reservationID.ToString());
             query = query.Replace("@LOCATIONID", id.ToString());
 
@@ -109,6 +109,16 @@ namespace DAL.SQLContext
             query = query.Replace("@number", number.ToString());
 
             return databaseConnection.executeReaderString(query);
+        }
+        public List<int> GetFreeLocationNr()
+        {
+            string query = @"SELECT LocationNr FROM [Location] WHERE ReservationID IS NULL";
+            return databaseConnection.executeReaderIntList(query, 1);
+        }
+        public List<int> GetAllLocationNr()
+        {
+            string query = @"SELECT LocationNr FROM [Location]";
+            return databaseConnection.executeReaderIntList(query, 1);
         }
 
         public int CountMaterials()

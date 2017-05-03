@@ -27,5 +27,9 @@ namespace Models.ReservationSystem
             this.Type = type;
             this.Visitors = new List<Visitor>();
         }
+        public override string ToString()
+        {
+            return "LocatieNr: " + Number.ToString() + "        Type: " + Type;
+        }
     }
 }

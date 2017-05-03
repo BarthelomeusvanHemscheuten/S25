@@ -72,6 +72,14 @@ namespace DAL.Repositories
         {
             return context.GetLocationType(number);
         }
+        public List<int> GetFreeLocationNr()
+        {
+            return context.GetFreeLocationNr();
+        }
+        public List<int> GetAllLocationNr()
+        {
+            return context.GetAllLocationNr();
+        }
 
         public int CountMaterials()
         {
