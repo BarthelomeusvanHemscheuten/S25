@@ -248,25 +248,30 @@ namespace MediaSharingSystem.Forms
         private void btnVerwijderGebruiker_Click(object sender, EventArgs e)
         {
             Visitor visitor = (Visitor)lbGebruikers.SelectedItem;
-            int result = controller.DeleteVisitor(visitor);
-            if (result == 0)
+            DialogResult dialogResult = MessageBox.Show("Wilt u zeker " + visitor.Name + " verwijderen?", "User Verwijderen", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
             {
-                MessageBox.Show("Gebruiker verwijderd");
-                lbGebruikers.Items.Clear();
-                foreach (User user in controller.GetAndShowVisitorsFromDatabase())
+                int result = controller.DeleteVisitor(visitor);
+                if (result == 0)
                 {
-                    lbGebruikers.Items.Add(user);
+                    MessageBox.Show("Gebruiker verwijderd");
+                    lbGebruikers.Items.Clear();
+                    foreach (User user in controller.GetAndShowVisitorsFromDatabase())
+                    {
+                        lbGebruikers.Items.Add(user);
+                    }
+                }
+                else if (result == 1)
+                {
+                    MessageBox.Show("Er ging iets fout!");
+                }
+                else if (result == 2)
+                {
+                    MessageBox.Show("Gebruiker kan niet worden verwijderd. De gebruiker heeft nog materiaal in zijn bezit.");
                 }
             }
-            else if (result == 1)
-            {
-                MessageBox.Show("Er ging iets fout!");
-            }
-            else if (result == 2)
-            {
-                MessageBox.Show("Gebruiker kan niet worden verwijderd. De gebruiker heeft nog materiaal in zijn bezit.");
-            }
         }
+
 
         private void btnReserverenLocatie_Click(object sender, EventArgs e)
         {

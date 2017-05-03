@@ -190,14 +190,26 @@ namespace MediaSharingSystem.Forms
         //Adds Material
         private void btnAddMaterial_Click(object sender, EventArgs e)
         {
-            if (controller.AddMaterial(tbNaamMateriaal.Text, tbOmschrijvingMateriaal.Text, Convert.ToDecimal(tbHuurprijs.Text), Convert.ToInt32(tbHoeveelheidMateriaal.Text)) != null)
+            try
             {
-                MessageBox.Show("Materiaal toegevoegd");
+                string naam = tbNaamMateriaal.Text;
+                string omschrijving = tbOmschrijvingMateriaal.Text;
+                decimal prijs = Convert.ToDecimal(tbHuurprijs.Text);
+                int hoeveelheid = Convert.ToInt32(tbHoeveelheidMateriaal.Text);
+                if (controller.AddMaterial(naam, omschrijving, prijs, hoeveelheid))
+                {
+                    MessageBox.Show("Materiaal toegevoegd");
+                }
+                else
+                {
+                    MessageBox.Show("Materiaal niet toegevoegd");
+                }
             }
-            else
+            catch
             {
-                MessageBox.Show("Materiaal niet toegevoegd");
+                MessageBox.Show("Vul per veld de juiste informatie in");
             }
+
         }
         //Adds Swearword
         private void btnAddFilterwoord_Click(object sender, EventArgs e)
@@ -220,32 +232,39 @@ namespace MediaSharingSystem.Forms
         private void btnVerwijderGebruiker_Click(object sender, EventArgs e)
         {
             Visitor visitor = (Visitor)lbGebruikers.SelectedItem;
-            int result = controller.DeleteVisitor(visitor);
-            if (result == 0)
+            DialogResult dialogResult = MessageBox.Show("Wilt u zeker " + visitor.Name + " verwijderen?", "User Verwijderen", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
             {
-                MessageBox.Show("Gebruiker verwijderd");
-                lbGebruikers.Items.Clear();
-                foreach (User user in controller.GetAndShowVisitorsFromDatabase())
+                int result = controller.DeleteVisitor(visitor);
+                if (result == 0)
                 {
-                    lbGebruikers.Items.Add(user);
+                    MessageBox.Show("Gebruiker verwijderd");
+                    lbGebruikers.Items.Clear();
+                    foreach (User user in controller.GetAndShowVisitorsFromDatabase())
+                    {
+                        lbGebruikers.Items.Add(user);
+                    }
                 }
-            }
-            else if (result == 1)
-            {
-                MessageBox.Show("Er is iets fout gegaan.");
-            }
-            else if (result == 2)
-            {
-                MessageBox.Show("Gebruiker kan niet worden verwijderd. De gebruiker heeft nog materiaal in zijn bezit.");
+                else if (result == 1)
+                {
+                    MessageBox.Show("Er is iets fout gegaan.");
+                }
+                else if (result == 2)
+                {
+                    MessageBox.Show("Gebruiker kan niet worden verwijderd. De gebruiker heeft nog materiaal in zijn bezit.");
+                }
             }
         }
 
         private void lbGebruikers_SelectedIndexChanged(object sender, EventArgs e)
         {
             Visitor visitor = (Visitor)lbGebruikers.SelectedItem;
-            tbNaamGebruikersBeheren.Text = visitor.Name;
-            tbEmailGebruikersBeheren.Text = visitor.EmailAddress;
-            tbTelefoonNrGebruikersBeheren.Text = visitor.Telnr;
+            if (visitor != null)
+            {
+                tbNaamGebruikersBeheren.Text = visitor.Name;
+                tbEmailGebruikersBeheren.Text = visitor.EmailAddress;
+                tbTelefoonNrGebruikersBeheren.Text = visitor.Telnr;
+            }
 
         }
 
@@ -445,36 +464,42 @@ namespace MediaSharingSystem.Forms
         private void btnDeletePost_Click(object sender, EventArgs e)
         {
             Post post = (Post)lbReportedPosts.SelectedItem;
-            if (controller.DeleteReportPost(post.ID) && controller.DeleteLikesFromReportedPost(post.ID) && controller.DeleteShowPost(post, "delete"))
+            if (post != null)
             {
-                MessageBox.Show("Post Verwijderd");
-                lbReportedPosts.Items.Clear();
-                foreach (Post mypost in controller.GetAndShowReportedPostsFromDatabase())
+                if (controller.DeleteReportPost(post.ID) && controller.DeleteLikesFromReportedPost(post.ID) && controller.DeleteShowPost(post, "delete"))
                 {
-                    lbReportedPosts.Items.Add(mypost);
+                    MessageBox.Show("Post Verwijderd");
+                    lbReportedPosts.Items.Clear();
+                    foreach (Post mypost in controller.GetAndShowReportedPostsFromDatabase())
+                    {
+                        lbReportedPosts.Items.Add(mypost);
+                    }
                 }
-            }
-            else
-            {
-                MessageBox.Show("Post niet verwijderd");
+                else
+                {
+                    MessageBox.Show("Post niet verwijderd");
+                }
             }
         }
 
         private void btnDeleteComment_Click(object sender, EventArgs e)
         {
             Comment comment = (Comment)lbReportedComments.SelectedItem;
-            if (controller.DeleteReportComment(comment.ID) && controller.DeleteShowComment(comment, "delete"))
+            if (comment != null)
             {
-                MessageBox.Show("Comment verwijderd");
-                lbReportedComments.Items.Clear();
-                foreach (Comment mycomment in controller.GetAndShowReportedCommentsFromDatabase())
+                if (controller.DeleteReportComment(comment.ID) && controller.DeleteShowComment(comment, "delete"))
                 {
-                    lbReportedComments.Items.Add(mycomment);
+                    MessageBox.Show("Comment verwijderd");
+                    lbReportedComments.Items.Clear();
+                    foreach (Comment mycomment in controller.GetAndShowReportedCommentsFromDatabase())
+                    {
+                        lbReportedComments.Items.Add(mycomment);
+                    }
                 }
-            }
-            else
-            {
-                MessageBox.Show("Comment niet verwijderd");
+                else
+                {
+                    MessageBox.Show("Comment niet verwijderd");
+                }
             }
         }
 

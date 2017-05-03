@@ -59,21 +59,19 @@ namespace MediaSharingSystem.Controllers
             return false;
         }
 
-        public List<Material> AddMaterial(string name, string description, decimal price, int quantity)
+        public bool AddMaterial(string name, string description, decimal price, int quantity)
         {
-            List<Material> result = new List<Material>();
 
-            if (name != null && description != null && price > 0 && quantity > 0)
+            if (name != "" && description != "" && price > 0 && quantity > 0)
             {
                 for (int i = 0; i < quantity; i++)
                 {
-                    result.Add(Event.AddMaterial(name, description, price));
                     reservationRepo.InsertMaterial(name, description, price);
                 }
 
-                return result;
+                return true;
             }
-            return null;
+            return false;
         }
 
         public List<Material> GetAndShowMaterialFromDatabase()
