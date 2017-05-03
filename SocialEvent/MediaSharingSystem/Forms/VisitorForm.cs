@@ -333,6 +333,7 @@ namespace MediaSharingSystem.Forms
         private void btnDownload_Click(object sender, EventArgs e)
         {
             controller.DownloadFile(post.Path);
+            MessageBox.Show("Downloaden voltooid");
         }
 
         private void btnReportPost_Click(object sender, EventArgs e)

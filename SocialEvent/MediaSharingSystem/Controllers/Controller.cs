@@ -441,13 +441,13 @@ namespace MediaSharingSystem.Controllers
                 DateTime? dateTime = userRepo.GetUserDataDateTime(id);
                 List<int> userDataInt = userRepo.GetUserDataInt(id);
                 List<string> userDataString = userRepo.GetUserDataString(id);
-                if (dateTime != null)
+                if (userDataString.Count() == 5)
                 {
                     result.Add(new Visitor(userDataString[0], userDataString[1], userDataString[2], userDataString[3], userDataString[4], dateTime, userDataInt[0], userDataInt[1]));
                 }
                 else
                 {
-                    result.Add(new Visitor(userDataString[0], userDataString[1], userDataString[4], userDataInt[0], userDataInt[1]));
+                    result.Add(new Visitor(userDataString[0], userDataString[1], userDataString[2], userDataInt[0], userDataInt[1]));
                 }
             }
 
@@ -594,7 +594,7 @@ namespace MediaSharingSystem.Controllers
             List<int> userDataIntP = userRepo.GetUserDataInt(userIDPost);
             List<string> userDataStringP = userRepo.GetUserDataString(userIDPost);
 
-            if (dateTimeP != null)
+            if (userDataStringP.Count == 5)
             {
                 post.User = new Visitor(userDataStringP[0], userDataStringP[1], userDataStringP[2], userDataStringP[3], userDataStringP[4], dateTimeP, userDataIntP[0], userDataIntP[1]);
             }
@@ -619,7 +619,7 @@ namespace MediaSharingSystem.Controllers
                 List<int> userDataIntC = userRepo.GetUserDataInt(userIDComment);
                 List<string> userDataStringC = userRepo.GetUserDataString(userIDComment);
 
-                if (dateTimeC != null)
+                if (userDataStringC.Count() == 5)
                 {
                     comment.User = new Visitor(userDataStringC[0], userDataStringC[1], userDataStringC[2], userDataStringC[3], userDataStringC[4], dateTimeC, userDataIntC[0], userDataIntC[1]);
                 }

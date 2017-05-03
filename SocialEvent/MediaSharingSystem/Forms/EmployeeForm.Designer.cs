@@ -80,6 +80,7 @@
             this.btnPrevPost = new System.Windows.Forms.Button();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.panelVerhuurItem = new System.Windows.Forms.Panel();
+            this.cbHoeveelheid = new System.Windows.Forms.ComboBox();
             this.lblDatum = new System.Windows.Forms.Label();
             this.lblHoeveelheid = new System.Windows.Forms.Label();
             this.dtmEinddatum = new System.Windows.Forms.DateTimePicker();
@@ -89,7 +90,6 @@
             this.btnVerhuurMateriaal = new System.Windows.Forms.Button();
             this.tbTypeMaterial = new System.Windows.Forms.TextBox();
             this.lblTypeMaterial = new System.Windows.Forms.Label();
-            this.pbMateriaalFoto = new System.Windows.Forms.PictureBox();
             this.lbVerhuurbareMaterialen = new System.Windows.Forms.Label();
             this.tbMateriaalPrijsPerDag = new System.Windows.Forms.TextBox();
             this.lblPrijsPerDagMateriaal = new System.Windows.Forms.Label();
@@ -145,17 +145,16 @@
             this.tbLocatieNrHoofdreserveerder = new System.Windows.Forms.TextBox();
             this.tbNaamHoofdreserveerder = new System.Windows.Forms.TextBox();
             this.tabInleveren = new System.Windows.Forms.TabPage();
+            this.tbPrijs = new System.Windows.Forms.TextBox();
+            this.lblPrijs = new System.Windows.Forms.Label();
+            this.lblOmschrijving = new System.Windows.Forms.Label();
+            this.tbOmschrijving = new System.Windows.Forms.TextBox();
             this.lblMateriaal = new System.Windows.Forms.Label();
             this.lblVisitors = new System.Windows.Forms.Label();
             this.btnInleveren = new System.Windows.Forms.Button();
             this.lbVerhuurdeMaterialen = new System.Windows.Forms.ListBox();
             this.lbVisitorInleveren = new System.Windows.Forms.ListBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.tbOmschrijving = new System.Windows.Forms.TextBox();
-            this.lblOmschrijving = new System.Windows.Forms.Label();
-            this.lblPrijs = new System.Windows.Forms.Label();
-            this.tbPrijs = new System.Windows.Forms.TextBox();
-            this.cbHoeveelheid = new System.Windows.Forms.ComboBox();
             this.panelMedewerker.SuspendLayout();
             this.tbctrlMain.SuspendLayout();
             this.tabAccountInstellingen.SuspendLayout();
@@ -166,7 +165,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabPage1.SuspendLayout();
             this.panelVerhuurItem.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMateriaalFoto)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.panelGebruikersBeheren.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbPictureGebruikersBeheren)).BeginInit();
@@ -742,7 +740,6 @@
             this.panelVerhuurItem.Controls.Add(this.btnVerhuurMateriaal);
             this.panelVerhuurItem.Controls.Add(this.tbTypeMaterial);
             this.panelVerhuurItem.Controls.Add(this.lblTypeMaterial);
-            this.panelVerhuurItem.Controls.Add(this.pbMateriaalFoto);
             this.panelVerhuurItem.Controls.Add(this.lbVerhuurbareMaterialen);
             this.panelVerhuurItem.Controls.Add(this.tbMateriaalPrijsPerDag);
             this.panelVerhuurItem.Controls.Add(this.lblPrijsPerDagMateriaal);
@@ -756,6 +753,14 @@
             this.panelVerhuurItem.Name = "panelVerhuurItem";
             this.panelVerhuurItem.Size = new System.Drawing.Size(661, 500);
             this.panelVerhuurItem.TabIndex = 17;
+            // 
+            // cbHoeveelheid
+            // 
+            this.cbHoeveelheid.FormattingEnabled = true;
+            this.cbHoeveelheid.Location = new System.Drawing.Point(420, 352);
+            this.cbHoeveelheid.Name = "cbHoeveelheid";
+            this.cbHoeveelheid.Size = new System.Drawing.Size(121, 24);
+            this.cbHoeveelheid.TabIndex = 26;
             // 
             // lblDatum
             // 
@@ -810,7 +815,7 @@
             this.lbVisitors.Location = new System.Drawing.Point(160, 42);
             this.lbVisitors.Margin = new System.Windows.Forms.Padding(4);
             this.lbVisitors.Name = "lbVisitors";
-            this.lbVisitors.Size = new System.Drawing.Size(151, 180);
+            this.lbVisitors.Size = new System.Drawing.Size(250, 180);
             this.lbVisitors.TabIndex = 18;
             // 
             // btnVerhuurMateriaal
@@ -842,15 +847,6 @@
             this.lblTypeMaterial.Size = new System.Drawing.Size(106, 17);
             this.lblTypeMaterial.TabIndex = 9;
             this.lblTypeMaterial.Text = "Type materiaal:";
-            // 
-            // pbMateriaalFoto
-            // 
-            this.pbMateriaalFoto.Location = new System.Drawing.Point(320, 42);
-            this.pbMateriaalFoto.Margin = new System.Windows.Forms.Padding(4);
-            this.pbMateriaalFoto.Name = "pbMateriaalFoto";
-            this.pbMateriaalFoto.Size = new System.Drawing.Size(188, 181);
-            this.pbMateriaalFoto.TabIndex = 8;
-            this.pbMateriaalFoto.TabStop = false;
             // 
             // lbVerhuurbareMaterialen
             // 
@@ -1432,6 +1428,41 @@
             this.tabInleveren.Text = "tabInleveren";
             this.tabInleveren.UseVisualStyleBackColor = true;
             // 
+            // tbPrijs
+            // 
+            this.tbPrijs.Location = new System.Drawing.Point(322, 292);
+            this.tbPrijs.Name = "tbPrijs";
+            this.tbPrijs.ReadOnly = true;
+            this.tbPrijs.Size = new System.Drawing.Size(100, 22);
+            this.tbPrijs.TabIndex = 8;
+            // 
+            // lblPrijs
+            // 
+            this.lblPrijs.AutoSize = true;
+            this.lblPrijs.Location = new System.Drawing.Point(319, 267);
+            this.lblPrijs.Name = "lblPrijs";
+            this.lblPrijs.Size = new System.Drawing.Size(35, 17);
+            this.lblPrijs.TabIndex = 7;
+            this.lblPrijs.Text = "Prijs";
+            // 
+            // lblOmschrijving
+            // 
+            this.lblOmschrijving.AutoSize = true;
+            this.lblOmschrijving.Location = new System.Drawing.Point(12, 267);
+            this.lblOmschrijving.Name = "lblOmschrijving";
+            this.lblOmschrijving.Size = new System.Drawing.Size(89, 17);
+            this.lblOmschrijving.TabIndex = 6;
+            this.lblOmschrijving.Text = "Omschrijving";
+            // 
+            // tbOmschrijving
+            // 
+            this.tbOmschrijving.Location = new System.Drawing.Point(15, 292);
+            this.tbOmschrijving.Multiline = true;
+            this.tbOmschrijving.Name = "tbOmschrijving";
+            this.tbOmschrijving.ReadOnly = true;
+            this.tbOmschrijving.Size = new System.Drawing.Size(288, 112);
+            this.tbOmschrijving.TabIndex = 5;
+            // 
             // lblMateriaal
             // 
             this.lblMateriaal.AutoSize = true;
@@ -1484,49 +1515,6 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // tbOmschrijving
-            // 
-            this.tbOmschrijving.Location = new System.Drawing.Point(15, 292);
-            this.tbOmschrijving.Multiline = true;
-            this.tbOmschrijving.Name = "tbOmschrijving";
-            this.tbOmschrijving.ReadOnly = true;
-            this.tbOmschrijving.Size = new System.Drawing.Size(288, 112);
-            this.tbOmschrijving.TabIndex = 5;
-            // 
-            // lblOmschrijving
-            // 
-            this.lblOmschrijving.AutoSize = true;
-            this.lblOmschrijving.Location = new System.Drawing.Point(12, 267);
-            this.lblOmschrijving.Name = "lblOmschrijving";
-            this.lblOmschrijving.Size = new System.Drawing.Size(89, 17);
-            this.lblOmschrijving.TabIndex = 6;
-            this.lblOmschrijving.Text = "Omschrijving";
-            // 
-            // lblPrijs
-            // 
-            this.lblPrijs.AutoSize = true;
-            this.lblPrijs.Location = new System.Drawing.Point(319, 267);
-            this.lblPrijs.Name = "lblPrijs";
-            this.lblPrijs.Size = new System.Drawing.Size(35, 17);
-            this.lblPrijs.TabIndex = 7;
-            this.lblPrijs.Text = "Prijs";
-            // 
-            // tbPrijs
-            // 
-            this.tbPrijs.Location = new System.Drawing.Point(322, 292);
-            this.tbPrijs.Name = "tbPrijs";
-            this.tbPrijs.ReadOnly = true;
-            this.tbPrijs.Size = new System.Drawing.Size(100, 22);
-            this.tbPrijs.TabIndex = 8;
-            // 
-            // cbHoeveelheid
-            // 
-            this.cbHoeveelheid.FormattingEnabled = true;
-            this.cbHoeveelheid.Location = new System.Drawing.Point(420, 352);
-            this.cbHoeveelheid.Name = "cbHoeveelheid";
-            this.cbHoeveelheid.Size = new System.Drawing.Size(121, 24);
-            this.cbHoeveelheid.TabIndex = 26;
-            // 
             // EmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1551,7 +1539,6 @@
             this.tabPage1.ResumeLayout(false);
             this.panelVerhuurItem.ResumeLayout(false);
             this.panelVerhuurItem.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbMateriaalFoto)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.panelGebruikersBeheren.ResumeLayout(false);
             this.panelGebruikersBeheren.PerformLayout();
@@ -1596,7 +1583,6 @@
         private System.Windows.Forms.Button btnVerhuurMateriaal;
         private System.Windows.Forms.TextBox tbTypeMaterial;
         private System.Windows.Forms.Label lblTypeMaterial;
-        private System.Windows.Forms.PictureBox pbMateriaalFoto;
         private System.Windows.Forms.Label lbVerhuurbareMaterialen;
         private System.Windows.Forms.TextBox tbMateriaalPrijsPerDag;
         private System.Windows.Forms.Label lblPrijsPerDagMateriaal;

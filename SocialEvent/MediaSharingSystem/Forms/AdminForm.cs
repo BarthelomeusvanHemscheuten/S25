@@ -223,19 +223,20 @@ namespace MediaSharingSystem.Forms
             int result = controller.DeleteVisitor(visitor);
             if (result == 0)
             {
-                MessageBox.Show("User Deleted");
+                MessageBox.Show("Gebruiker verwijderd");
                 lbGebruikers.Items.Clear();
                 foreach (User user in controller.GetAndShowVisitorsFromDatabase())
                 {
                     lbGebruikers.Items.Add(user);
                 }
             }
-            else if(result == 1)
+            else if (result == 1)
             {
-                MessageBox.Show("Something went wrong");
-            } else if(result == 2)
+                MessageBox.Show("Er is iets fout gegaan.");
+            }
+            else if (result == 2)
             {
-                MessageBox.Show("User can't be deleted (owned material)");
+                MessageBox.Show("Gebruiker kan niet worden verwijderd. De gebruiker heeft nog materiaal in zijn bezit.");
             }
         }
 
@@ -438,6 +439,7 @@ namespace MediaSharingSystem.Forms
         private void btnDownload_Click(object sender, EventArgs e)
         {
             controller.DownloadFile(post.Path);
+            MessageBox.Show("Downloaden voltooid");
         }
 
         private void btnDeletePost_Click(object sender, EventArgs e)
@@ -447,7 +449,7 @@ namespace MediaSharingSystem.Forms
             {
                 MessageBox.Show("Post Verwijderd");
                 lbReportedPosts.Items.Clear();
-                foreach(Post mypost in controller.GetAndShowReportedPostsFromDatabase())
+                foreach (Post mypost in controller.GetAndShowReportedPostsFromDatabase())
                 {
                     lbReportedPosts.Items.Add(mypost);
                 }
@@ -465,7 +467,7 @@ namespace MediaSharingSystem.Forms
             {
                 MessageBox.Show("Comment verwijderd");
                 lbReportedComments.Items.Clear();
-                foreach(Comment mycomment in controller.GetAndShowReportedCommentsFromDatabase())
+                foreach (Comment mycomment in controller.GetAndShowReportedCommentsFromDatabase())
                 {
                     lbReportedComments.Items.Add(mycomment);
                 }

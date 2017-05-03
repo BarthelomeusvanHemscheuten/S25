@@ -37,9 +37,6 @@ namespace MediaSharingSystem.Forms
             tbctrlMain.ItemSize = new Size(0, 1);
             tbctrlMain.SizeMode = TabSizeMode.Fixed;
             lbMaterialen.DisplayMember = "Name";
-            lbVisitors.DisplayMember = "UserName";
-            lbGebruikers.DisplayMember = "UserName";
-            lbVisitorInleveren.DisplayMember = "UserName";
             for (int i = 0; i <= 3; i++)
             {
                 userData.Add(new List<string>());
@@ -233,7 +230,7 @@ namespace MediaSharingSystem.Forms
             int result = controller.DeleteVisitor(visitor);
             if (result == 0)
             {
-                MessageBox.Show("User Deleted");
+                MessageBox.Show("Gebruiker verwijderd");
                 lbGebruikers.Items.Clear();
                 foreach (User user in controller.GetAndShowVisitorsFromDatabase())
                 {
@@ -242,11 +239,11 @@ namespace MediaSharingSystem.Forms
             }
             else if (result == 1)
             {
-                MessageBox.Show("Something went wrong");
+                MessageBox.Show("Er ging iets fout!");
             }
             else if (result == 2)
             {
-                MessageBox.Show("User can't be deleted (owned material)");
+                MessageBox.Show("Gebruiker kan niet worden verwijderd. De gebruiker heeft nog materiaal in zijn bezit.");
             }
         }
 
@@ -260,7 +257,7 @@ namespace MediaSharingSystem.Forms
             locations.Insert(0, new Location(locationnr, controller.GetLocationFeatures(locationnr), controller.GetLocationType(locationnr)));
             if (controller.Reserve(locations, userData[0].Count, locations.Count, userData[0], userData[1], userData[2], tbEmailHoofdreserveerder.Text, userData[3], tbAddressHoofdreserveerder.Text, dtmHoofdreserveerder.Value))
             {
-                MessageBox.Show("Location Reserved");
+                MessageBox.Show("Locatie gereserveerd");
                 for (int i = 0; i <= 3; i++)
                 {
                     userData[i].Clear();
@@ -269,7 +266,7 @@ namespace MediaSharingSystem.Forms
             }
             else
             {
-                MessageBox.Show("Something went wrong");
+                MessageBox.Show("Er ging iets fout!");
             }
         }
 
@@ -282,7 +279,7 @@ namespace MediaSharingSystem.Forms
             userData[3].Add(tbTelefoonNrAanhangsel1.Text);
             int locatienr = Convert.ToInt32(tbAanhangselLocatie1.Text);
             locations.Add(new Location(locatienr, controller.GetLocationFeatures(locatienr), controller.GetLocationType(locatienr)));
-            MessageBox.Show("User added");
+            MessageBox.Show("Gebruiker toegevoegd");
             lbReserveringVisitors.Items.Clear();
             foreach (string name in userData[1])
             {
@@ -541,6 +538,7 @@ namespace MediaSharingSystem.Forms
         private void btnDownload_Click(object sender, EventArgs e)
         {
             controller.DownloadFile(post.Path);
+            MessageBox.Show("Downloaden voltooid");
         }
 
         private void btnInfoMenuMedewerker_Click(object sender, EventArgs e)
