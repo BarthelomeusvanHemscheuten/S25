@@ -68,7 +68,7 @@ namespace AccesControlSystem.Forms
             //Laat de gebruiker weten dat er eerst weer een nieuwe scanner moet worden gekoppelt.
             Console.WriteLine("RFID reader {0} detached!", e.Device.SerialNumber.ToString());
             panel1.BackColor = Color.Maroon;
-            lbInfo.Text = "Bevestig een RFID scanner om te kunnen scannen.";
+            lbInfo.Text = "Koppel een RFID scanner om te kunnen scannen.";
         }
 
         //Als er iets mis gaat met de scanner, wordt de error in de console weergegeven.
@@ -113,8 +113,8 @@ namespace AccesControlSystem.Forms
 
         private void resetForm()
         {
-            lbname.Text = "Error";
-            lbPayed.Text = "Error";
+            lbname.Text = "Geen";
+            lbPayed.Text = "Geen";
             pnlName.Visible = false;
             btnCheckIn.Visible = false;
             btnCheckOut.Visible = false;
@@ -151,7 +151,6 @@ namespace AccesControlSystem.Forms
         private void btnAllUsers_Click(object sender, EventArgs e)
         {
             int i = 0;
-            string adding = "";
             pnAllUsers.Visible = true;
             lbxAllUsers.Items.Clear();
             foreach (string s in c.GetAllPresentUsers())
@@ -160,13 +159,11 @@ namespace AccesControlSystem.Forms
                 {
                     case 0:
                         i = 1;
-                        adding = s + "\t\t";
+                        lbxAllUsers.Items.Add(s);
                         break;
-                    case 2:
+                    case 1:
                         i = 0;
-                        adding = adding + s;
-                        lbxAllUsers.Items.Add(adding);
-                        adding = "";
+                        lbxNummer.Items.Add(s);
                         break;
                 }
             }

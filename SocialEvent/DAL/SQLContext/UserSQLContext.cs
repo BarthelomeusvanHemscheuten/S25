@@ -239,8 +239,8 @@ namespace DAL.SQLContext
 
         public List<string> GetAllPresentUsers()
         {
-            string query = @"SELECT u1.name, u1.Email, u1.Telnr FROM [user] u1 WHERE u1.IsPresent = 1";
-            return databaseConnection.executeReaderStringList(query, 3);
+            string query = @"SELECT u1.name, u1.Telnr FROM [user] u1 WHERE u1.IsPresent = 1";
+            return databaseConnection.executeReaderStringList(query, 2);
         }
 
 
