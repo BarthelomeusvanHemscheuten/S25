@@ -210,8 +210,17 @@ namespace MediaSharingSystem.Forms
         {
             Visitor visitor = (Visitor)lbVisitors.SelectedItem;
             Material material = (Material)lbMaterialen.SelectedItem;
-            if (controller.RentMaterial(visitor, material, DateTime.Now, dtmEinddatum.Value, Convert.ToInt32(cbHoeveelheid.Text)))
+            int hoeveelheid_materialen = Convert.ToInt32(tbHoeveelheidMateriaal.Text);
+            if ( hoeveelheid_materialen > 0 && controller.RentMaterial(visitor, material, DateTime.Now, dtmEinddatum.Value, hoeveelheid_materialen))
             {
+                int hoeveelheid = controller.GetCountMaterial(material);
+                tbHoeveelheidMateriaal.Text = hoeveelheid.ToString();
+                cbHoeveelheid.Items.Clear();
+                cbHoeveelheid.Text = null;
+                for(int i = 1; i <= hoeveelheid; i++)
+                {
+                    cbHoeveelheid.Items.Add(i);
+                }
                 MessageBox.Show("Materiaal verhuurd");
             }
             else
@@ -253,7 +262,7 @@ namespace MediaSharingSystem.Forms
             userData[2].Insert(0, controller.RandomString(8));
             userData[3].Insert(0, tbTelefoonNrHoofdreserveerder.Text);
             locations.Insert(0, new Location(locationnr, controller.GetLocationFeatures(locationnr), controller.GetLocationType(locationnr)));
-            if (controller.Reserve(locations, userData[0].Count, locations.Count, userData[0], userData[1], userData[2], tbEmailHoofdreserveerder.Text, userData[3], tbAddressHoofdreserveerder.Text, dtmHoofdreserveerder.Value))
+            if (controller.Reserve(locations, userData[0].Count, locations.Count, userData[0], userData[1], userData[2], tbEmailHoofdreserveerder.Text, userData[3], userData[4], tbAddressHoofdreserveerder.Text, dtmHoofdreserveerder.Value))
             {
                 MessageBox.Show("Locatie gereserveerd");
                 for (int i = 0; i <= 3; i++)
