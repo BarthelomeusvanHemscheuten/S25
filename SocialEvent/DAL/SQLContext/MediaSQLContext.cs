@@ -263,15 +263,27 @@ namespace DAL.SQLContext
 
         public bool DeleteReportPost(int postid)
         {
-            string query = @"DELETE FROM [Report] WHERE PostID = @postid ";
+            string query = @"DELETE FROM [Report] WHERE ReportID IN (SELECT ReportID FROM [Report] WHERE PostID = @postid) ";
             query = query.Replace("@postid", postid.ToString());
             return databaseConnection.executeNonQuery(query);
         }
 
         public bool DeleteReportComment(int commentid)
         {
-            string query = @"DELETE FROM [Report] WHERE CommentID = @commentid";
+            string query = @"DELETE FROM [Report] WHERE ReportID IN (SELECT ReportID FROM [Report] WHERE CommentID = @commentid)";
             query = query.Replace("@commentid", commentid.ToString());
+            return databaseConnection.executeNonQuery(query);
+        }
+        public bool DeletePostComments(int postid)
+        {
+            string query = @"DELETE FROM [Comment] WHERE CommentID IN (SELECT CommentID FROM [Comment] WHERE PostID = @postid)";
+            query = query.Replace("@postid", postid.ToString());
+            return databaseConnection.executeNonQuery(query);
+        }
+        public bool DeleteLikesPost(int postid)
+        {
+            string query = @"DELETE FROM [Like] WHERE LikeID IN (SELECT LikeID FROM [Like] WHERE PostID = @postid)";
+            query = query.Replace("@postid", postid.ToString());
             return databaseConnection.executeNonQuery(query);
         }
     }

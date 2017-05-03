@@ -408,7 +408,7 @@ namespace MediaSharingSystem.Controllers
         {
             if (post != null && deleteOrShow != null)
             {
-               return admin.DeleteShowPost(post, deleteOrShow);
+                return admin.DeleteShowPost(post, deleteOrShow);
             }
             return false;
         }
@@ -492,6 +492,14 @@ namespace MediaSharingSystem.Controllers
                 result.Add(comment);
             }
             return result;
+        }
+        public bool DeleteCommentsFromReportedPost(int postid)
+        {
+            return admin.DeleteCommentsFromReportedPost(postid);
+        }
+        public bool DeleteLikesFromReportedPost(int postid)
+        {
+            return admin.DeleteLikesPost(postid);
         }
 
         public int GetAndShowLikes(Post post)

@@ -443,7 +443,7 @@ namespace MediaSharingSystem.Forms
         private void btnDeletePost_Click(object sender, EventArgs e)
         {
             Post post = (Post)lbReportedPosts.SelectedItem;
-            if (controller.DeleteShowPost(post, "delete") && controller.DeleteReportPost(post.ID))
+            if (controller.DeleteReportPost(post.ID) && controller.DeleteLikesFromReportedPost(post.ID) && controller.DeleteShowPost(post, "delete"))
             {
                 MessageBox.Show("Post Verwijderd");
                 lbReportedPosts.Items.Clear();
@@ -461,7 +461,7 @@ namespace MediaSharingSystem.Forms
         private void btnDeleteComment_Click(object sender, EventArgs e)
         {
             Comment comment = (Comment)lbReportedComments.SelectedItem;
-            if (controller.DeleteShowComment(comment, "delete") && controller.DeleteReportComment(comment.ID))
+            if (controller.DeleteReportComment(comment.ID) && controller.DeleteShowComment(comment, "delete"))
             {
                 MessageBox.Show("Comment verwijderd");
                 lbReportedComments.Items.Clear();
@@ -472,7 +472,7 @@ namespace MediaSharingSystem.Forms
             }
             else
             {
-                MessageBox.Show("Comment niet verwijder");
+                MessageBox.Show("Comment niet verwijderd");
             }
         }
     }

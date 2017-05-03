@@ -56,6 +56,10 @@ namespace Models.Users
             }
             return false;
         }
+        public bool DeleteCommentsFromReportedPost(int postid)
+        {
+            return mediaRepo.DeletePostComments(postid);
+        }
 
         public bool DeleteShowComment(Comment comment, string deleteOrShow)
         {
@@ -79,6 +83,10 @@ namespace Models.Users
         public bool DeleteReportComment(int commentid)
         {
             return mediaRepo.DeleteReportComment(commentid);
+        }
+        public bool DeleteLikesPost(int postid)
+        {
+            return mediaRepo.DeleteLikesPost(postid);
         }
 
     }

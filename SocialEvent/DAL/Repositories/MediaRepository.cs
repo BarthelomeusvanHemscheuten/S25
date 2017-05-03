@@ -164,6 +164,14 @@ namespace DAL.Repositories
             return context.DeleteReportComment(commentid);
         }
 
+        public bool DeletePostComments(int postid)
+        {
+            return context.DeletePostComments(postid);
+        }
+        public bool DeleteLikesPost(int postid)
+        {
+            return context.DeleteLikesPost(postid);
+        }
 
 
         // nog niet nodig
