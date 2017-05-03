@@ -52,7 +52,7 @@ namespace DAL.Repositories
             return context.DeleteLike(userId, postId);
         }
 
-        public bool UpdatePicture(int userId, Image image)
+        public bool UpdatePicture(int userId, string image)
         {
             return context.UpdatePicture(userId, image);
         }

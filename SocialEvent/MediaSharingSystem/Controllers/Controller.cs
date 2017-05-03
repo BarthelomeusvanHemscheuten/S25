@@ -298,16 +298,16 @@ namespace MediaSharingSystem.Controllers
             return false;
         }
 
-        public Image ChangePicture(Image image)
+        public Image ChangePicture(Image image, string imagepath)
         {
             switch (userGroup)
             {
                 case 1:
-                    return admin.ChangePicture(image);
+                    return admin.ChangePicture(image, imagepath);
                 case 2:
-                    return employee.ChangePicture(image);
+                    return employee.ChangePicture(image, imagepath);
                 case 3:
-                    return visitor.ChangePicture(image);
+                    return visitor.ChangePicture(image, imagepath);
             }
             return null;
         }

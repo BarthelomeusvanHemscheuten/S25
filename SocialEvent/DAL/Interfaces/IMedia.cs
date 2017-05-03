@@ -17,7 +17,7 @@ namespace DAL.Interfaces
         bool InsertLike(int userId, int postId);
         bool DeleteLike(int userId, int postId);
 
-        bool UpdatePicture(int userId, Image image);
+        bool UpdatePicture(int userId, string image);
 
         int CountLikes(int postId);
         int CheckLike(int userId, int postId);

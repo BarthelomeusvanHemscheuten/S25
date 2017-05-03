@@ -142,12 +142,12 @@ namespace Models.Users
             return null;
         }
 
-        public Image ChangePicture(Image image)
+        public Image ChangePicture(Image image, string imagepath)
         {
             if (image != null)
             {
                 this.Picture = image;
-                mediaRepo.UpdatePicture(this.ID, image);
+                mediaRepo.UpdatePicture(this.ID, imagepath);
 
                 return image;
             }

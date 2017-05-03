@@ -157,8 +157,9 @@ namespace MediaSharingSystem.Forms
             Image picture;
             if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                picture = Image.FromFile(openFileDialog1.FileName);
-                pbPicture.Image = controller.ChangePicture(picture);
+                string imagepath = openFileDialog1.FileName;
+                picture = Image.FromFile(imagepath);
+                pbPicture.Image = controller.ChangePicture(picture, imagepath);
             }
             else
             {
