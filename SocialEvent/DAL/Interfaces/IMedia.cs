@@ -46,7 +46,7 @@ namespace DAL.Interfaces
         bool DeleteReportPost(int postid);
         bool DeleteReportComment(int commentid);
         bool DeletePostComments(int postid);
-        bool DeleteLikesPost(int postid);
+        bool DeleteLikesPost(int postfid);
         
     }
 }

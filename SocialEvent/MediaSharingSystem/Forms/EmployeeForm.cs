@@ -40,7 +40,7 @@ namespace MediaSharingSystem.Forms
             lbVisitors.DisplayMember = "UserName";
             lbGebruikers.DisplayMember = "UserName";
             lbVisitorInleveren.DisplayMember = "UserName";
-            for (int i = 0; i <= 3; i++)
+            for (int i = 0; i <= 4; i++)
             {
                 userData.Add(new List<string>());
             }
@@ -218,6 +218,12 @@ namespace MediaSharingSystem.Forms
             if (controller.RentMaterial(visitor, material, DateTime.Now, dtmEinddatum.Value, Convert.ToInt32(cbHoeveelheid.Text)))
             {
                 MessageBox.Show("Materiaal verhuurd");
+                cbHoeveelheid.Items.Clear();
+                cbHoeveelheid.Text = null;
+                for (int i = 1; i <= controller.GetCountMaterial(material); i++)
+                {
+                    cbHoeveelheid.Items.Add(i);
+                }
             }
             else
             {
@@ -257,8 +263,9 @@ namespace MediaSharingSystem.Forms
             userData[1].Insert(0, tbNaamHoofdreserveerder.Text);
             userData[2].Insert(0, controller.RandomString(8));
             userData[3].Insert(0, tbTelefoonNrHoofdreserveerder.Text);
+            userData[4].Insert(0, controller.RandomString(8));
             locations.Insert(0, new Location(locationnr, controller.GetLocationFeatures(locationnr), controller.GetLocationType(locationnr)));
-            if (controller.Reserve(locations, userData[0].Count, locations.Count, userData[0], userData[1], userData[2], tbEmailHoofdreserveerder.Text, userData[3], tbAddressHoofdreserveerder.Text, dtmHoofdreserveerder.Value))
+            if (controller.Reserve(locations, userData[0].Count, locations.Count, userData[0], userData[1], userData[2], tbEmailHoofdreserveerder.Text, userData[3], userData[4], tbAddressHoofdreserveerder.Text, dtmHoofdreserveerder.Value))
             {
                 MessageBox.Show("Location Reserved");
                 for (int i = 0; i <= 3; i++)
@@ -280,6 +287,7 @@ namespace MediaSharingSystem.Forms
             userData[1].Add(tbNaamAanhangsel1.Text);
             userData[2].Add(controller.RandomString(8));
             userData[3].Add(tbTelefoonNrAanhangsel1.Text);
+            userData[4].Add(controller.RandomString(8));
             int locatienr = Convert.ToInt32(tbAanhangselLocatie1.Text);
             locations.Add(new Location(locatienr, controller.GetLocationFeatures(locatienr), controller.GetLocationType(locatienr)));
             MessageBox.Show("User added");
@@ -309,6 +317,7 @@ namespace MediaSharingSystem.Forms
                 tbHoeveelheidMateriaal.Text = hoeveelheid.ToString();
                 tbTypeMaterial.Text = material.Name;
                 cbHoeveelheid.Items.Clear();
+                cbHoeveelheid.Text = null;
                 if(hoeveelheid>0)
                 {
                     for(int i = 1; i <= hoeveelheid; i++)
