@@ -254,8 +254,9 @@ namespace DAL.SQLContext
 
         public bool CheckOutOrIn(string RFID, int inOrOut)
         {
-            string query = @"UPDATE [User] SET [user].IsPresent = @inOrOut";
+            string query = @"UPDATE [User] SET [user].IsPresent = @inOrOut WHERE [User].RFID = '@RFID'";
             query = query.Replace("@inOrOut", Convert.ToString(inOrOut));
+            query = query.Replace("@RFID", RFID);
             return databaseConnection.executeNonQuery(query);
         }
 

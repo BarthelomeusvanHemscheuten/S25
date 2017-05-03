@@ -153,6 +153,7 @@ namespace AccesControlSystem.Forms
             int i = 0;
             pnAllUsers.Visible = true;
             lbxAllUsers.Items.Clear();
+            lbxNummer.Items.Clear();
             foreach (string s in c.GetAllPresentUsers())
             {
                 switch (i)
