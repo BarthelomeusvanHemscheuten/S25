@@ -47,10 +47,8 @@ namespace MediaSharingSystem.Forms
             tbctrlMain.SelectedTab = tbctrlMain.TabPages[1];
 
             post = controller.GetAndShowPostComments(controller.currentPostForm, 0);
-
-
-
-            lbPostUsername.Text = post.User.ToString();
+            
+            lbPostUsername.Text = post.User.Name;
             lbPost.Text = post.Text;
 
             currentComment = post.Comments.Count() - 1;
@@ -68,7 +66,7 @@ namespace MediaSharingSystem.Forms
                 btnNextComment.Enabled = true;
                 btnPrevComment.Enabled = true;
 
-                lbCommentUsername.Text = post.Comments[currentComment].User.ToString();
+                lbCommentUsername.Text = post.Comments[currentComment].User.Name;
                 lbComment.Text = post.Comments[currentComment].Text;
             }
 
@@ -223,19 +221,20 @@ namespace MediaSharingSystem.Forms
             int result = controller.DeleteVisitor(visitor);
             if (result == 0)
             {
-                MessageBox.Show("User Deleted");
+                MessageBox.Show("Gebruiker verwijderd");
                 lbGebruikers.Items.Clear();
                 foreach (User user in controller.GetAndShowVisitorsFromDatabase())
                 {
                     lbGebruikers.Items.Add(user);
                 }
             }
-            else if(result == 1)
+            else if (result == 1)
             {
-                MessageBox.Show("Something went wrong");
-            } else if(result == 2)
+                MessageBox.Show("Er is iets fout gegaan.");
+            }
+            else if (result == 2)
             {
-                MessageBox.Show("User can't be deleted (owned material)");
+                MessageBox.Show("Gebruiker kan niet worden verwijderd. De gebruiker heeft nog materiaal in zijn bezit.");
             }
         }
 
@@ -270,7 +269,7 @@ namespace MediaSharingSystem.Forms
         {
             post = controller.GetAndShowPostComments(controller.currentPostForm, 1);
 
-            lbPostUsername.Text = post.User.ToString();
+            lbPostUsername.Text = post.User.Name;
             lbPost.Text = post.Text;
 
             currentComment = post.Comments.Count() - 1;
@@ -287,7 +286,7 @@ namespace MediaSharingSystem.Forms
                 btnNextComment.Enabled = true;
                 btnPrevComment.Enabled = true;
 
-                lbCommentUsername.Text = post.Comments[currentComment].User.ToString();
+                lbCommentUsername.Text = post.Comments[currentComment].User.Name;
                 lbComment.Text = post.Comments[currentComment].Text;
             }
 
@@ -308,7 +307,7 @@ namespace MediaSharingSystem.Forms
         {
             post = controller.GetAndShowPostComments(controller.currentPostForm, -1);
 
-            lbPostUsername.Text = post.User.ToString();
+            lbPostUsername.Text = post.User.Name;
             lbPost.Text = post.Text;
 
             currentComment = post.Comments.Count() - 1;
@@ -325,7 +324,7 @@ namespace MediaSharingSystem.Forms
                 btnNextComment.Enabled = true;
                 btnPrevComment.Enabled = true;
 
-                lbCommentUsername.Text = post.Comments[currentComment].User.ToString();
+                lbCommentUsername.Text = post.Comments[currentComment].User.Name;
                 lbComment.Text = post.Comments[currentComment].Text;
             }
 
@@ -353,7 +352,7 @@ namespace MediaSharingSystem.Forms
                 currentComment--;
             }
 
-            lbCommentUsername.Text = post.Comments[currentComment].User.ToString();
+            lbCommentUsername.Text = post.Comments[currentComment].User.Name;
             lbComment.Text = post.Comments[currentComment].Text;
         }
 
@@ -368,7 +367,7 @@ namespace MediaSharingSystem.Forms
                 currentComment++;
             }
 
-            lbCommentUsername.Text = post.Comments[currentComment].User.ToString();
+            lbCommentUsername.Text = post.Comments[currentComment].User.Name;
             lbComment.Text = post.Comments[currentComment].Text;
         }
 
@@ -378,7 +377,7 @@ namespace MediaSharingSystem.Forms
             controller.AddAndShowPost(textPost.Text, filePath);
             post = controller.GetAndShowPostComments(controller.currentPostForm, 0);
 
-            lbPostUsername.Text = post.User.ToString();
+            lbPostUsername.Text = post.User.Name;
             lbPost.Text = post.Text;
 
             currentComment = post.Comments.Count() - 1;
@@ -396,7 +395,7 @@ namespace MediaSharingSystem.Forms
                 btnNextComment.Enabled = true;
                 btnPrevComment.Enabled = true;
 
-                lbCommentUsername.Text = post.Comments[currentComment].User.ToString();
+                lbCommentUsername.Text = post.Comments[currentComment].User.Name;
                 lbComment.Text = post.Comments[currentComment].Text;
             }
 
@@ -419,7 +418,7 @@ namespace MediaSharingSystem.Forms
             btnNextComment.Enabled = true;
             btnPrevComment.Enabled = true;
 
-            lbCommentUsername.Text = post.Comments[currentComment].User.ToString();
+            lbCommentUsername.Text = post.Comments[currentComment].User.Name;
             lbComment.Text = post.Comments[currentComment].Text;
         }
 
@@ -438,6 +437,7 @@ namespace MediaSharingSystem.Forms
         private void btnDownload_Click(object sender, EventArgs e)
         {
             controller.DownloadFile(post.Path);
+            MessageBox.Show("Downloaden voltooid");
         }
 
         private void btnDeletePost_Click(object sender, EventArgs e)
@@ -447,7 +447,7 @@ namespace MediaSharingSystem.Forms
             {
                 MessageBox.Show("Post Verwijderd");
                 lbReportedPosts.Items.Clear();
-                foreach(Post mypost in controller.GetAndShowReportedPostsFromDatabase())
+                foreach (Post mypost in controller.GetAndShowReportedPostsFromDatabase())
                 {
                     lbReportedPosts.Items.Add(mypost);
                 }
@@ -465,7 +465,7 @@ namespace MediaSharingSystem.Forms
             {
                 MessageBox.Show("Comment verwijderd");
                 lbReportedComments.Items.Clear();
-                foreach(Comment mycomment in controller.GetAndShowReportedCommentsFromDatabase())
+                foreach (Comment mycomment in controller.GetAndShowReportedCommentsFromDatabase())
                 {
                     lbReportedComments.Items.Add(mycomment);
                 }
@@ -473,6 +473,30 @@ namespace MediaSharingSystem.Forms
             else
             {
                 MessageBox.Show("Comment niet verwijderd");
+            }
+        }
+
+        private void btnReportPost_Click_1(object sender, EventArgs e)
+        {
+            if (controller.Reportpost(post, "Ongewenst!"))
+            {
+                MessageBox.Show("Post reported");
+            }
+            else
+            {
+                MessageBox.Show("Post already reported");
+            }
+        }
+
+        private void btnReportComment_Click(object sender, EventArgs e)
+        {
+            if (controller.ReportComment(post.Comments[currentComment], "Ongewenst!"))
+            {
+                MessageBox.Show("Comment reported!");
+            }
+            else
+            {
+                MessageBox.Show("Comment already reported");
             }
         }
     }

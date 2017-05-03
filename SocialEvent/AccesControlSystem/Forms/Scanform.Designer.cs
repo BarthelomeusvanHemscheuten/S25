@@ -33,6 +33,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.lbInfo = new System.Windows.Forms.Label();
             this.pnlName = new System.Windows.Forms.Panel();
+            this.lbRFID = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.lbPayed = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.lbname = new System.Windows.Forms.Label();
@@ -41,8 +43,7 @@
             this.btnReturn = new System.Windows.Forms.Button();
             this.lbxAllUsers = new System.Windows.Forms.ListBox();
             this.btnAllUsers = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lbRFID = new System.Windows.Forms.Label();
+            this.lbxNummer = new System.Windows.Forms.ListBox();
             this.panel1.SuspendLayout();
             this.pnlName.SuspendLayout();
             this.pnAllUsers.SuspendLayout();
@@ -103,6 +104,26 @@
             this.pnlName.TabIndex = 6;
             this.pnlName.Visible = false;
             // 
+            // lbRFID
+            // 
+            this.lbRFID.AutoSize = true;
+            this.lbRFID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lbRFID.Location = new System.Drawing.Point(81, 29);
+            this.lbRFID.Name = "lbRFID";
+            this.lbRFID.Size = new System.Drawing.Size(54, 25);
+            this.lbRFID.TabIndex = 5;
+            this.lbRFID.Text = "Error";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label1.Location = new System.Drawing.Point(13, 29);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(62, 25);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "RFID:";
+            // 
             // lbPayed
             // 
             this.lbPayed.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -145,6 +166,7 @@
             // 
             // pnAllUsers
             // 
+            this.pnAllUsers.Controls.Add(this.lbxNummer);
             this.pnAllUsers.Controls.Add(this.btnReturn);
             this.pnAllUsers.Controls.Add(this.lbxAllUsers);
             this.pnAllUsers.Location = new System.Drawing.Point(12, 12);
@@ -169,7 +191,7 @@
             this.lbxAllUsers.ItemHeight = 16;
             this.lbxAllUsers.Location = new System.Drawing.Point(13, 79);
             this.lbxAllUsers.Name = "lbxAllUsers";
-            this.lbxAllUsers.Size = new System.Drawing.Size(1016, 468);
+            this.lbxAllUsers.Size = new System.Drawing.Size(160, 468);
             this.lbxAllUsers.TabIndex = 0;
             // 
             // btnAllUsers
@@ -182,25 +204,14 @@
             this.btnAllUsers.UseVisualStyleBackColor = true;
             this.btnAllUsers.Click += new System.EventHandler(this.btnAllUsers_Click);
             // 
-            // label1
+            // lbxNummer
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label1.Location = new System.Drawing.Point(13, 29);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 25);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "RFID:";
-            // 
-            // lbRFID
-            // 
-            this.lbRFID.AutoSize = true;
-            this.lbRFID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lbRFID.Location = new System.Drawing.Point(81, 29);
-            this.lbRFID.Name = "lbRFID";
-            this.lbRFID.Size = new System.Drawing.Size(54, 25);
-            this.lbRFID.TabIndex = 5;
-            this.lbRFID.Text = "Error";
+            this.lbxNummer.FormattingEnabled = true;
+            this.lbxNummer.ItemHeight = 16;
+            this.lbxNummer.Location = new System.Drawing.Point(179, 79);
+            this.lbxNummer.Name = "lbxNummer";
+            this.lbxNummer.Size = new System.Drawing.Size(160, 468);
+            this.lbxNummer.TabIndex = 2;
             // 
             // Scanform
             // 
@@ -241,5 +252,6 @@
         private System.Windows.Forms.Button btnAllUsers;
         private System.Windows.Forms.Label lbRFID;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ListBox lbxNummer;
     }
 }

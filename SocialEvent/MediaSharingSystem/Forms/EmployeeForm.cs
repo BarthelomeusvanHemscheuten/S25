@@ -37,10 +37,7 @@ namespace MediaSharingSystem.Forms
             tbctrlMain.ItemSize = new Size(0, 1);
             tbctrlMain.SizeMode = TabSizeMode.Fixed;
             lbMaterialen.DisplayMember = "Name";
-            lbVisitors.DisplayMember = "UserName";
-            lbGebruikers.DisplayMember = "UserName";
-            lbVisitorInleveren.DisplayMember = "UserName";
-            for (int i = 0; i <= 4; i++)
+            for (int i = 0; i <= 3; i++)
             {
                 userData.Add(new List<string>());
             }
@@ -54,15 +51,13 @@ namespace MediaSharingSystem.Forms
             tbctrlMain.SelectedTab = tbctrlMain.TabPages[0];
         }
 
-        private void btnNieuwsOverzicht_Click(object sender, EventArgs e)
+        private void btnInfoMenuMedewerker_Click(object sender, EventArgs e)
         {
             tbctrlMain.SelectedTab = tbctrlMain.TabPages[1];
 
             post = controller.GetAndShowPostComments(controller.currentPostForm, 0);
 
-
-
-            lbPostUsername.Text = post.User.ToString();
+            lbPostUsername.Text = post.User.Name;
             lbPost.Text = post.Text;
 
             currentComment = post.Comments.Count() - 1;
@@ -80,7 +75,7 @@ namespace MediaSharingSystem.Forms
                 btnNextComment.Enabled = true;
                 btnPrevComment.Enabled = true;
 
-                lbCommentUsername.Text = post.Comments[currentComment].User.ToString();
+                lbCommentUsername.Text = post.Comments[currentComment].User.Name;
                 lbComment.Text = post.Comments[currentComment].Text;
             }
 
@@ -218,12 +213,6 @@ namespace MediaSharingSystem.Forms
             if (controller.RentMaterial(visitor, material, DateTime.Now, dtmEinddatum.Value, Convert.ToInt32(cbHoeveelheid.Text)))
             {
                 MessageBox.Show("Materiaal verhuurd");
-                cbHoeveelheid.Items.Clear();
-                cbHoeveelheid.Text = null;
-                for (int i = 1; i <= controller.GetCountMaterial(material); i++)
-                {
-                    cbHoeveelheid.Items.Add(i);
-                }
             }
             else
             {
@@ -239,7 +228,7 @@ namespace MediaSharingSystem.Forms
             int result = controller.DeleteVisitor(visitor);
             if (result == 0)
             {
-                MessageBox.Show("User Deleted");
+                MessageBox.Show("Gebruiker verwijderd");
                 lbGebruikers.Items.Clear();
                 foreach (User user in controller.GetAndShowVisitorsFromDatabase())
                 {
@@ -248,11 +237,11 @@ namespace MediaSharingSystem.Forms
             }
             else if (result == 1)
             {
-                MessageBox.Show("Something went wrong");
+                MessageBox.Show("Er ging iets fout!");
             }
             else if (result == 2)
             {
-                MessageBox.Show("User can't be deleted (owned material)");
+                MessageBox.Show("Gebruiker kan niet worden verwijderd. De gebruiker heeft nog materiaal in zijn bezit.");
             }
         }
 
@@ -263,11 +252,10 @@ namespace MediaSharingSystem.Forms
             userData[1].Insert(0, tbNaamHoofdreserveerder.Text);
             userData[2].Insert(0, controller.RandomString(8));
             userData[3].Insert(0, tbTelefoonNrHoofdreserveerder.Text);
-            userData[4].Insert(0, controller.RandomString(8));
             locations.Insert(0, new Location(locationnr, controller.GetLocationFeatures(locationnr), controller.GetLocationType(locationnr)));
-            if (controller.Reserve(locations, userData[0].Count, locations.Count, userData[0], userData[1], userData[2], tbEmailHoofdreserveerder.Text, userData[3], userData[4], tbAddressHoofdreserveerder.Text, dtmHoofdreserveerder.Value))
+            if (controller.Reserve(locations, userData[0].Count, locations.Count, userData[0], userData[1], userData[2], tbEmailHoofdreserveerder.Text, userData[3], tbAddressHoofdreserveerder.Text, dtmHoofdreserveerder.Value))
             {
-                MessageBox.Show("Location Reserved");
+                MessageBox.Show("Locatie gereserveerd");
                 for (int i = 0; i <= 3; i++)
                 {
                     userData[i].Clear();
@@ -276,7 +264,7 @@ namespace MediaSharingSystem.Forms
             }
             else
             {
-                MessageBox.Show("Something went wrong");
+                MessageBox.Show("Er ging iets fout!");
             }
         }
 
@@ -287,10 +275,9 @@ namespace MediaSharingSystem.Forms
             userData[1].Add(tbNaamAanhangsel1.Text);
             userData[2].Add(controller.RandomString(8));
             userData[3].Add(tbTelefoonNrAanhangsel1.Text);
-            userData[4].Add(controller.RandomString(8));
             int locatienr = Convert.ToInt32(tbAanhangselLocatie1.Text);
             locations.Add(new Location(locatienr, controller.GetLocationFeatures(locatienr), controller.GetLocationType(locatienr)));
-            MessageBox.Show("User added");
+            MessageBox.Show("Gebruiker toegevoegd");
             lbReserveringVisitors.Items.Clear();
             foreach (string name in userData[1])
             {
@@ -317,7 +304,6 @@ namespace MediaSharingSystem.Forms
                 tbHoeveelheidMateriaal.Text = hoeveelheid.ToString();
                 tbTypeMaterial.Text = material.Name;
                 cbHoeveelheid.Items.Clear();
-                cbHoeveelheid.Text = null;
                 if(hoeveelheid>0)
                 {
                     for(int i = 1; i <= hoeveelheid; i++)
@@ -382,7 +368,7 @@ namespace MediaSharingSystem.Forms
         {
             post = controller.GetAndShowPostComments(controller.currentPostForm, 1);
 
-            lbPostUsername.Text = post.User.ToString();
+            lbPostUsername.Text = post.User.Name;
             lbPost.Text = post.Text;
 
             currentComment = post.Comments.Count() - 1;
@@ -399,7 +385,7 @@ namespace MediaSharingSystem.Forms
                 btnNextComment.Enabled = true;
                 btnPrevComment.Enabled = true;
 
-                lbCommentUsername.Text = post.Comments[currentComment].User.ToString();
+                lbCommentUsername.Text = post.Comments[currentComment].User.Name;
                 lbComment.Text = post.Comments[currentComment].Text;
             }
 
@@ -420,7 +406,7 @@ namespace MediaSharingSystem.Forms
         {
             post = controller.GetAndShowPostComments(controller.currentPostForm, -1);
 
-            lbPostUsername.Text = post.User.ToString();
+            lbPostUsername.Text = post.User.Name;
             lbPost.Text = post.Text;
 
             currentComment = post.Comments.Count() - 1;
@@ -437,7 +423,7 @@ namespace MediaSharingSystem.Forms
                 btnNextComment.Enabled = true;
                 btnPrevComment.Enabled = true;
 
-                lbCommentUsername.Text = post.Comments[currentComment].User.ToString();
+                lbCommentUsername.Text = post.Comments[currentComment].User.Name;
                 lbComment.Text = post.Comments[currentComment].Text;
             }
 
@@ -465,7 +451,7 @@ namespace MediaSharingSystem.Forms
                 currentComment--;
             }
 
-            lbCommentUsername.Text = post.Comments[currentComment].User.ToString();
+            lbCommentUsername.Text = post.Comments[currentComment].User.Name;
             lbComment.Text = post.Comments[currentComment].Text;
         }
 
@@ -480,7 +466,7 @@ namespace MediaSharingSystem.Forms
                 currentComment++;
             }
 
-            lbCommentUsername.Text = post.Comments[currentComment].User.ToString();
+            lbCommentUsername.Text = post.Comments[currentComment].User.Name;
             lbComment.Text = post.Comments[currentComment].Text;
         }
 
@@ -490,7 +476,7 @@ namespace MediaSharingSystem.Forms
             controller.AddAndShowPost(textPost.Text, filePath);
             post = controller.GetAndShowPostComments(controller.currentPostForm, 0);
 
-            lbPostUsername.Text = post.User.ToString();
+            lbPostUsername.Text = post.User.Name;
             lbPost.Text = post.Text;
 
             currentComment = post.Comments.Count() - 1;
@@ -508,7 +494,7 @@ namespace MediaSharingSystem.Forms
                 btnNextComment.Enabled = true;
                 btnPrevComment.Enabled = true;
 
-                lbCommentUsername.Text = post.Comments[currentComment].User.ToString();
+                lbCommentUsername.Text = post.Comments[currentComment].User.Name;
                 lbComment.Text = post.Comments[currentComment].Text;
             }
 
@@ -531,7 +517,7 @@ namespace MediaSharingSystem.Forms
             btnNextComment.Enabled = true;
             btnPrevComment.Enabled = true;
 
-            lbCommentUsername.Text = post.Comments[currentComment].User.ToString();
+            lbCommentUsername.Text = post.Comments[currentComment].User.Name;
             lbComment.Text = post.Comments[currentComment].Text;
         }
 
@@ -550,11 +536,31 @@ namespace MediaSharingSystem.Forms
         private void btnDownload_Click(object sender, EventArgs e)
         {
             controller.DownloadFile(post.Path);
+            MessageBox.Show("Downloaden voltooid");
         }
 
-        private void btnInfoMenuMedewerker_Click(object sender, EventArgs e)
+        private void btnReportPost_Click(object sender, EventArgs e)
         {
-            tbctrlMain.SelectedTab = tbctrlMain.TabPages[1];
+            if (controller.Reportpost(post, "Ongewenst!"))
+            {
+                MessageBox.Show("Post reported");
+            }
+            else
+            {
+                MessageBox.Show("Post already reported");
+            }
+        }
+
+        private void btnReportComment_Click(object sender, EventArgs e)
+        {
+            if (controller.ReportComment(post.Comments[currentComment], "Ongewenst!"))
+            {
+                MessageBox.Show("Comment reported!");
+            }
+            else
+            {
+                MessageBox.Show("Comment already reported");
+            }
         }
     }
 }

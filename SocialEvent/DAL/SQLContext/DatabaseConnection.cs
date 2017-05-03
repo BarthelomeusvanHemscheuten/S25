@@ -75,7 +75,10 @@ namespace DAL.SQLContext
                     {
                         for (int i = 0; i < amount; i++)
                         {
-                            list.Add(reader.GetString(i));
+                            if (!reader.IsDBNull(i))
+                            {
+                                list.Add(reader.GetString(i));
+                            }
                         }
                     }
                     return list;
@@ -155,7 +158,7 @@ namespace DAL.SQLContext
                     SqlDataReader reader = command.ExecuteReader();
 
                     DateTime output = new DateTime();
-                    output = reader.GetDateTime(0);
+                    output = Convert.ToDateTime(reader.GetDateTime(0));
                     Console.WriteLine("Execute reader executed");
 
                     return DateTime.Today;

@@ -18,7 +18,7 @@ namespace Models.MediaSharingSystem
         // constructor om nieuwe report aan te maken
         public Report(string reason)
         {
-            this.ID = mediaRepo.CountReportedPosts() + 1;
+            this.ID = mediaRepo.CountReported() + 1;
             this.Reason = reason;
         }
 

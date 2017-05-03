@@ -41,10 +41,10 @@ namespace MediaSharingSystem.Forms
                     this.Hide();
                     break;
                 case -1:
-                    MessageBox.Show("Failed to login, incorrect login credentials");
+                    MessageBox.Show("Inloggen mislukt, ongeldige gegevens!");
                     break;
                 default:
-                    MessageBox.Show("An unknown error has occured");
+                    MessageBox.Show("Er heeft zich een onbekend probleem voorgedaan!");
                     break;
             }
         }

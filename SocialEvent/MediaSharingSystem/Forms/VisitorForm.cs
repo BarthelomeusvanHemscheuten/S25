@@ -46,7 +46,7 @@ namespace MediaSharingSystem.Forms
 
             post = controller.GetAndShowPostComments(controller.currentPostForm, 0);
 
-            lbPostUsername.Text = post.User.ToString();
+            lbPostUsername.Text = post.User.Name;
             lbPost.Text = post.Text;
 
             currentComment = post.Comments.Count() - 1;
@@ -66,7 +66,7 @@ namespace MediaSharingSystem.Forms
                 btnPrevComment.Enabled = true;
                 btnReportComment.Enabled = true;
 
-                lbCommentUsername.Text = post.Comments[currentComment].User.ToString();
+                lbCommentUsername.Text = post.Comments[currentComment].User.Name;
                 lbComment.Text = post.Comments[currentComment].Text;
             }
 
@@ -87,7 +87,7 @@ namespace MediaSharingSystem.Forms
         {
             post = controller.GetAndShowPostComments(controller.currentPostForm, 1);
 
-            lbPostUsername.Text = post.User.ToString();
+            lbPostUsername.Text = post.User.Name;
             lbPost.Text = post.Text;
 
             currentComment = post.Comments.Count() - 1;
@@ -106,7 +106,7 @@ namespace MediaSharingSystem.Forms
                 btnPrevComment.Enabled = true;
                 btnReportComment.Enabled = true;
 
-                lbCommentUsername.Text = post.Comments[currentComment].User.ToString();
+                lbCommentUsername.Text = post.Comments[currentComment].User.Name;
                 lbComment.Text = post.Comments[currentComment].Text;
             }
 
@@ -127,7 +127,7 @@ namespace MediaSharingSystem.Forms
         {
             post = controller.GetAndShowPostComments(controller.currentPostForm, -1);
             
-            lbPostUsername.Text = post.User.ToString();
+            lbPostUsername.Text = post.User.Name;
             lbPost.Text = post.Text;
 
             currentComment = post.Comments.Count() - 1;
@@ -146,7 +146,7 @@ namespace MediaSharingSystem.Forms
                 btnPrevComment.Enabled = true;
                 btnReportComment.Enabled = true;
 
-                lbCommentUsername.Text = post.Comments[currentComment].User.ToString();
+                lbCommentUsername.Text = post.Comments[currentComment].User.Name;
                 lbComment.Text = post.Comments[currentComment].Text;
             }
 
@@ -174,7 +174,7 @@ namespace MediaSharingSystem.Forms
                 currentComment--;
             }
         
-            lbCommentUsername.Text = post.Comments[currentComment].User.ToString();
+            lbCommentUsername.Text = post.Comments[currentComment].User.Name;
             lbComment.Text = post.Comments[currentComment].Text;
         }
 
@@ -189,7 +189,7 @@ namespace MediaSharingSystem.Forms
                 currentComment++;
             }
 
-            lbCommentUsername.Text = post.Comments[currentComment].User.ToString();
+            lbCommentUsername.Text = post.Comments[currentComment].User.Name;
             lbComment.Text = post.Comments[currentComment].Text;
         }
 
@@ -270,7 +270,7 @@ namespace MediaSharingSystem.Forms
             controller.AddAndShowPost(textPost.Text, filePath);
             post = controller.GetAndShowPostComments(controller.currentPostForm, 0);
 
-            lbPostUsername.Text = post.User.ToString();
+            lbPostUsername.Text = post.User.Name;
             lbPost.Text = post.Text;
 
             currentComment = post.Comments.Count() - 1;
@@ -290,7 +290,7 @@ namespace MediaSharingSystem.Forms
                 btnPrevComment.Enabled = true;
                 btnReportComment.Enabled = true;
 
-                lbCommentUsername.Text = post.Comments[currentComment].User.ToString();
+                lbCommentUsername.Text = post.Comments[currentComment].User.Name;
                 lbComment.Text = post.Comments[currentComment].Text;
             }
 
@@ -314,7 +314,7 @@ namespace MediaSharingSystem.Forms
             btnPrevComment.Enabled = true;
             btnReportComment.Enabled = true;
 
-            lbCommentUsername.Text = post.Comments[currentComment].User.ToString();
+            lbCommentUsername.Text = post.Comments[currentComment].User.Name;
             lbComment.Text = post.Comments[currentComment].Text;
         }
 
@@ -333,6 +333,7 @@ namespace MediaSharingSystem.Forms
         private void btnDownload_Click(object sender, EventArgs e)
         {
             controller.DownloadFile(post.Path);
+            MessageBox.Show("Downloaden voltooid");
         }
 
         private void btnReportPost_Click(object sender, EventArgs e)
