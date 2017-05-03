@@ -96,12 +96,15 @@ namespace MediaSharingSystem.Forms
         private void btnReserveren_Click(object sender, EventArgs e)
         {
             tbctrlMain.SelectedTab = tbctrlMain.TabPages[4];
-            foreach(Location location in controller.GetFreeLocations())
+            cbAanhangselLocatie.Items.Clear();
+            cbHoofdLocatie.Items.Clear();
+            foreach (Location location in controller.GetFreeLocations())
             {
                 cbAanhangselLocatie.Items.Add(location.ID);
                 cbHoofdLocatie.Items.Add(location.ID);
             }
-            foreach(Location location in controller.GetAllLocations())
+            lbLocaties.Items.Clear();
+            foreach (Location location in controller.GetAllLocations())
             {
                 lbLocaties.Items.Add(location);
             }
@@ -112,11 +115,11 @@ namespace MediaSharingSystem.Forms
             tbctrlMain.SelectedTab = tbctrlMain.TabPages[2];
             lbVisitors.Items.Clear();
             lbMaterialen.Items.Clear();
-            foreach(User user in controller.GetAndShowVisitorsFromDatabase())
+            foreach (User user in controller.GetAndShowVisitorsFromDatabase())
             {
                 lbVisitors.Items.Add(user);
             }
-            foreach(Material material in controller.GetAndShowMaterialFromDatabase())
+            foreach (Material material in controller.GetAndShowMaterialFromDatabase())
             {
                 lbMaterialen.Items.Add(material);
             }
@@ -137,7 +140,7 @@ namespace MediaSharingSystem.Forms
             tbctrlMain.SelectedTab = tbctrlMain.TabPages[5];
             lbVisitorInleveren.Items.Clear();
             lbMaterialen.Items.Clear();
-            foreach(User user in controller.GetAndShowVisitorsFromDatabase())
+            foreach (User user in controller.GetAndShowVisitorsFromDatabase())
             {
                 lbVisitorInleveren.Items.Add(user);
             }
@@ -222,13 +225,13 @@ namespace MediaSharingSystem.Forms
             Visitor visitor = (Visitor)lbVisitors.SelectedItem;
             Material material = (Material)lbMaterialen.SelectedItem;
             int hoeveelheid_materialen = Convert.ToInt32(tbHoeveelheidMateriaal.Text);
-            if ( hoeveelheid_materialen > 0 && controller.RentMaterial(visitor, material, DateTime.Now, dtmEinddatum.Value, hoeveelheid_materialen))
+            if (hoeveelheid_materialen > 0 && controller.RentMaterial(visitor, material, DateTime.Now, dtmEinddatum.Value, hoeveelheid_materialen))
             {
                 int hoeveelheid = controller.GetCountMaterial(material);
                 tbHoeveelheidMateriaal.Text = hoeveelheid.ToString();
                 cbHoeveelheid.Items.Clear();
                 cbHoeveelheid.Text = null;
-                for(int i = 1; i <= hoeveelheid; i++)
+                for (int i = 1; i <= hoeveelheid; i++)
                 {
                     cbHoeveelheid.Items.Add(i);
                 }
@@ -308,10 +311,13 @@ namespace MediaSharingSystem.Forms
 
         private void lbGebruikers_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Visitor visitor = (Visitor)lbGebruikers.SelectedItem;
-            tbNaamGebruikersBeheren.Text = visitor.Name;
-            tbEmailGebruikersBeheren.Text = visitor.EmailAddress;
-            tbTelefoonNrGebruikersBeheren.Text = visitor.Telnr;
+            if (lbGebruikers.SelectedItem != null)
+            {
+                Visitor visitor = (Visitor)lbGebruikers.SelectedItem;
+                tbNaamGebruikersBeheren.Text = visitor.Name;
+                tbEmailGebruikersBeheren.Text = visitor.EmailAddress;
+                tbTelefoonNrGebruikersBeheren.Text = visitor.Telnr;
+            }
         }
 
         private void lbMaterialen_SelectedIndexChanged(object sender, EventArgs e)
@@ -325,9 +331,9 @@ namespace MediaSharingSystem.Forms
                 tbHoeveelheidMateriaal.Text = hoeveelheid.ToString();
                 tbTypeMaterial.Text = material.Name;
                 cbHoeveelheid.Items.Clear();
-                if(hoeveelheid>0)
+                if (hoeveelheid > 0)
                 {
-                    for(int i = 1; i <= hoeveelheid; i++)
+                    for (int i = 1; i <= hoeveelheid; i++)
                     {
                         cbHoeveelheid.Items.Add(i);
                     }
@@ -369,7 +375,7 @@ namespace MediaSharingSystem.Forms
         {
             Visitor visitor = (Visitor)lbVisitorInleveren.SelectedItem;
             lbVerhuurdeMaterialen.Items.Clear();
-            foreach(Material material in controller.GetTakenMaterials(visitor.ID))
+            foreach (Material material in controller.GetTakenMaterials(visitor.ID))
             {
                 lbVerhuurdeMaterialen.Items.Add(material);
             }
