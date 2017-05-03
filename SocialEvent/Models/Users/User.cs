@@ -23,7 +23,7 @@ namespace Models.Users
         public string Password { get; private set; }
         public string EmailAddress { get; private set; }
         public string Telnr { get; private set; }
-        public Image Picture { get; private set; }
+        public string Picture { get; private set; }
         public string Address { get; private set; }
         public DateTime? DateOfBirth { get; private set; }
 
@@ -43,6 +43,7 @@ namespace Models.Users
             this.Telnr = telnr;
             this.Address = address;
             this.DateOfBirth = dateOfBirth;
+            this.Picture = userRepo.GetImage(username);
         }
 
         public User(string username, string name, string telnr, int eventID, int reservationID)
@@ -53,6 +54,7 @@ namespace Models.Users
             this.Telnr = telnr;
             this.EventID = eventID;
             this.ReservationID = reservationID;
+            this.Picture = userRepo.GetImage(username);
         }
 
         public Post PlacePost(int id, string text, string path)
@@ -142,16 +144,14 @@ namespace Models.Users
             return null;
         }
 
-        public Image ChangePicture(Image image, string imagepath)
+        public bool ChangePicture(string imagepath)
         {
-            if (image != null)
+            if (imagepath != null)
             {
-                this.Picture = image;
-                mediaRepo.UpdatePicture(this.ID, imagepath);
-
-                return image;
+                this.Picture = imagepath;
+                return mediaRepo.UpdatePicture(this.ID, imagepath);
             }
-            return null;
+            return false;
         }
 
         public bool ChangePassword(string password1, string password2)

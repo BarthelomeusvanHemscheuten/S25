@@ -145,6 +145,14 @@ namespace DAL.SQLContext
             return databaseConnection.executeReaderInt(query);
         }
 
+        public string GetImage(string username)
+        {
+            string query = @"SELECT [PicturePath] FROM [User] WHERE [Username] = '@username'";
+            query = query.Replace("@username", username.ToString());
+
+            return databaseConnection.executeReaderString(query);
+        }
+
         public List<string> GetUserDataString(string username)
         {
             string query = @"SELECT [username], [name], [email], [telnr], [address] FROM [user] WHERE [username] = '@USERNAME'";

@@ -16,6 +16,7 @@ namespace DAL.Interfaces
         
         int GetUserGroup(string username);
         int GetID(string username);
+        string GetImage(string username);
         List<string> GetUserDataString(string username);
         List<int> GetUserDataInt(string username);
         DateTime? GetUserDataDateTime(string username);
@@ -38,15 +39,5 @@ namespace DAL.Interfaces
         string GetUsernameFromRFID(string RFID);
         bool CheckOutOrIn(string RFID, int inOrOut);
         List<string> GetAllPresentUsers();
-
-
-
-
-
-        // CONTROLEREN!!
-
-        //bool getIsPresent(string username);
-        //string getRFID(string username);
-        //Image getImage(string username);
     }
 }

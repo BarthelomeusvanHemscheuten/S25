@@ -47,6 +47,11 @@ namespace DAL.Repositories
             return context.GetID(username);
         }
 
+        public string GetImage(string username)
+        {
+            return context.GetImage(username);
+        }
+
         public List<string> GetUserDataString(string username)
         {
             return context.GetUserDataString(username);
@@ -139,28 +144,5 @@ namespace DAL.Repositories
         {
             return context.GetAllPresentUsers();
         }
-
-
-
-        // CONTROLEREN!!
-
-        //public bool getIsPresent(string username)
-        //{
-        //    if (context.getIsPresent(username))
-        //    {
-        //        return true;
-        //    }
-        //    return false;
-        //}
-
-        //public string getRFID(string username)
-        //{
-        //    return context.getRFID(username);
-        //}
-
-        //public Image getImage(string username)
-        //{
-        //    return context.getImage(username);
-        //}
     }
 }

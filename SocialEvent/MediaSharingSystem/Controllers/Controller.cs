@@ -298,16 +298,45 @@ namespace MediaSharingSystem.Controllers
             return false;
         }
 
-        public Image ChangePicture(Image image, string imagepath)
+        public Image GetPicture()
         {
             switch (userGroup)
             {
                 case 1:
-                    return admin.ChangePicture(image, imagepath);
+                    if (admin.Picture != "")
+                    {
+                        return ftp.GetImageFromFTP(admin.Picture);
+                    }
+                    return ftp.GetImageFromFTP(@"Users\placeholder.png");
                 case 2:
-                    return employee.ChangePicture(image, imagepath);
+                    if (employee.Picture != "")
+                    {
+                        return ftp.GetImageFromFTP(employee.Picture);
+                    }
+                    return ftp.GetImageFromFTP(@"Users\placeholder.png");
                 case 3:
-                    return visitor.ChangePicture(image, imagepath);
+                    if (visitor.Picture != "")
+                    {
+                        return ftp.GetImageFromFTP(visitor.Picture);
+                    }
+                    return ftp.GetImageFromFTP(@"Users\placeholder.png");
+            }
+            return null;
+        }
+
+        public Image ChangePicture(string imagepath)
+        {
+            switch (userGroup)
+            {
+                case 1:
+                    admin.ChangePicture(UploadFile(imagepath));
+                    return ftp.GetImageFromFTP(admin.Picture);
+                case 2:
+                    employee.ChangePicture(UploadFile(imagepath));
+                    return ftp.GetImageFromFTP(employee.Picture);
+                case 3:
+                    visitor.ChangePicture(UploadFile(imagepath));
+                    return ftp.GetImageFromFTP(visitor.Picture);
             }
             return null;
         }

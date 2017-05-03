@@ -34,6 +34,7 @@ namespace MediaSharingSystem.Forms
             lbReportedPosts.DisplayMember = "ID";
             lbReportedComments.DisplayMember = "ID";
 
+            pbPicture.Image = controller.GetPicture();
             tbNaam.Text = controller.Admin.Name;
             tbEmail.Text = controller.Admin.EmailAddress;
             tbTelefoonNr.Text = controller.Admin.Telnr;
@@ -178,7 +179,7 @@ namespace MediaSharingSystem.Forms
             {
                 string imagepath = openFileDialog1.FileName;
                 picture = Image.FromFile(imagepath);
-                pbPicture.Image = controller.ChangePicture(picture, imagepath);
+                pbPicture.Image = controller.ChangePicture(imagepath);
                 MessageBox.Show("Foto is gewijzigd");
             }
             else
