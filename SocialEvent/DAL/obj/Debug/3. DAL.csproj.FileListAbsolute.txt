@@ -20,3 +20,5 @@ C:\Users\Bart Engelen\Source\Repos\S25\SocialEvent\DAL\obj\Debug\3. DAL.csprojRe
 C:\Users\thoma\Source\Repos\S25\SocialEvent\DAL\obj\Debug\3. DAL.csprojResolveAssemblyReference.cache
 C:\Users\thoma\Source\Repos\S25\SocialEvent\DAL\obj\Debug\DAL.Properties.Resources.resources
 C:\Users\thoma\Source\Repos\S25\SocialEvent\DAL\obj\Debug\3. DAL.csproj.GenerateResource.Cache
+C:\Users\Lucas Scheepers\Desktop\Lucas\School\Jaar 1\Semester 2\5. Proftaak\- Applicatie\SocialEvent\DAL\obj\Debug\DAL.Properties.Resources.resources
+C:\Users\Lucas Scheepers\Desktop\Lucas\School\Jaar 1\Semester 2\5. Proftaak\- Applicatie\SocialEvent\DAL\obj\Debug\3. DAL.csproj.GenerateResource.Cache
