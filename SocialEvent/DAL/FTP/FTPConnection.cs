@@ -52,7 +52,8 @@ namespace DAL.FTP
                 FtpWebResponse response = (FtpWebResponse)request.GetResponse();
                 Console.WriteLine("Upload File Complete, status {0}", response.StatusDescription);
                 response.Close();
-            } catch(WebException e)
+            }
+            catch (WebException e)
             {
                 string status = ((FtpWebResponse)e.Response).StatusDescription;
                 Console.WriteLine(status);
@@ -79,7 +80,7 @@ namespace DAL.FTP
 
             //Inloggen op de FTP server. (Onveilig. Demo only!!)
             request.Credentials = new NetworkCredential(username, password);
-            
+
             try
             {
                 //Response opvangen en in een stream zetten
@@ -127,7 +128,15 @@ namespace DAL.FTP
             Stream responseStream = response.GetResponseStream();
 
             //Opgevangen stream kopieëren naar een lokaal bestand.
-            Image output = Bitmap.FromStream(responseStream);
+            Image output = DAL.Properties.Resources._1024px_No_image_available_svg;
+            try
+            {
+                output = Bitmap.FromStream(responseStream);
+            }
+            catch
+            {
+                Console.WriteLine("Data is no image");
+            }
 
             //Response status weergeven in console
             Console.WriteLine("Download Complete, status {0}", response.StatusDescription);
@@ -180,7 +189,8 @@ namespace DAL.FTP
                     //Response status weergeven in console
                     Console.WriteLine("Download Complete, status {0}", response.StatusDescription);
                     response.Close();
-                } catch (WebException e)
+                }
+                catch (WebException e)
                 {
                     string status = ((FtpWebResponse)e.Response).StatusDescription;
                     Console.WriteLine(status);
